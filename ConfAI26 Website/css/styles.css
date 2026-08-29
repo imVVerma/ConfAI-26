@@ -1,0 +1,1345 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Open+Sans:wght@400;600;700&display=swap');
+
+:root {
+  --color-teal: #007878;
+  --color-aqua: #00A0B4;
+  --color-navy: #005078;
+  --color-chalk-bg: #F2F0EC;
+  --color-chalk-line: #DBD9D5;
+  --color-graphite: #333333;
+  --color-graphite-dark: #000000;
+
+  --font-display: 'Merriweather', serif;
+  --font-sans: 'Open Sans', sans-serif;
+
+  --header-h: 4.25rem;
+  --radius: 0.5rem;
+  --transition: 0.22s ease;
+  --content-max: 72rem;
+}
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-graphite);
+  background: var(--color-chalk-bg);
+  line-height: 1.6;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+body.nav-open {
+  overflow: hidden;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: var(--color-teal);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--color-teal);
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--color-teal);
+  outline-offset: 3px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 2000;
+  padding: 0.65rem 1rem;
+  background: var(--color-teal);
+  color: var(--color-chalk-bg);
+  font-weight: 700;
+  border-radius: var(--radius);
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+.site-header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 1000;
+  height: var(--header-h);
+  display: flex;
+  align-items: center;
+  background: transparent;
+  transition: background var(--transition), box-shadow var(--transition), backdrop-filter var(--transition);
+}
+
+.site-header.is-scrolled,
+body.nav-open .site-header {
+  background: var(--color-chalk-bg); border-bottom: 1px solid var(--color-chalk-line);
+    }
+
+.header-inner {
+  width: 100%;
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: 0 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  color: var(--color-graphite-dark);
+    letter-spacing: -0.02em;
+  flex-shrink: 0;
+}
+
+.brand:hover {
+  color: var(--color-teal);
+}
+
+.brand-mark {
+  font-size: 1.35rem;
+  font-weight: 600;
+}
+
+.brand-year {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--color-teal);
+}
+
+.nav-toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.32rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0.4rem;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+.nav-toggle-bar {
+  display: block;
+  width: 1.35rem;
+  height: 2px;
+  background: var(--color-graphite-dark);
+  border-radius: 2px;
+  transition: transform var(--transition), opacity var(--transition);
+}
+
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(1) {
+  transform: translateY(0.44rem) rotate(45deg);
+}
+
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(3) {
+  transform: translateY(-0.44rem) rotate(-45deg);
+}
+
+.site-nav {
+  position: fixed;
+  top: var(--header-h);
+  left: 0;
+  right: 0;
+  background: var(--color-chalk-bg);
+  transform: translateY(calc(-100% - var(--header-h)));
+  visibility: hidden;
+  transition: transform var(--transition), visibility var(--transition);
+  max-height: calc(100vh - var(--header-h));
+  overflow-y: auto;
+  border-bottom: 1px solid var(--color-chalk-line);
+}
+
+.site-nav.is-open {
+  transform: none;
+  visibility: visible;
+}
+
+.nav-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem 0 1.25rem;
+}
+
+.nav-list > li > a,
+.nav-more-link {
+  display: block;
+  padding: 0.8rem 1.25rem;
+  color: var(--color-graphite);
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.nav-list a:hover,
+.nav-more-link:hover {
+  color: var(--color-teal);
+}
+
+.nav-list a[aria-current="page"] {
+  color: var(--color-teal);
+}
+
+.has-dropdown {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.has-dropdown > .nav-more-link {
+  flex: 1 1 auto;
+}
+
+.dropdown-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  background: transparent;
+  border: 0;
+  color: rgba(247, 244, 238, 0.7);
+  cursor: pointer;
+}
+
+.dropdown-caret {
+  font-size: 0.65rem;
+  transition: transform var(--transition);
+}
+
+.has-dropdown > .nav-more-link .dropdown-caret {
+  display: none;
+}
+
+.has-dropdown.is-open > .dropdown-toggle .dropdown-caret,
+.has-dropdown:hover > .nav-more-link .dropdown-caret {
+  transform: rotate(180deg);
+}
+
+.nav-dropdown {
+  list-style: none;
+  flex: 1 0 100%;
+  display: none;
+  padding: 0.25rem 0 0.75rem;
+  background: rgba(42, 157, 143, 0.08);
+}
+
+.has-dropdown.is-open > .nav-dropdown {
+  display: block;
+}
+
+.nav-dropdown a {
+  display: block;
+  padding: 0.55rem 1.5rem;
+  color: rgba(247, 244, 238, 0.82);
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding: calc(var(--header-h) + 2rem) 1.25rem 3.5rem;
+}
+
+/*
+  Hero photograph swap-in:
+  When a conference photo is available, set it on .hero-photo, e.g.
+  .hero-photo { background-image: url("../img/hero.jpg"); }
+  Keep .hero-shade so text stays readable over the image.
+*/
+.hero-photo {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 55% at 80% 15%, rgba(42, 157, 143, 0.32), transparent 58%),
+    radial-gradient(ellipse 60% 50% at 12% 85%, rgba(240, 193, 75, 0.16), transparent 55%),
+    linear-gradient(165deg, var(--color-chalk-bg) 0%, var(--color-chalk-bg) 46%, var(--color-navy) 100%);
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-shade {
+  position: absolute;
+  inset: 0;
+  background: var(--color-teal);
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 44rem;
+  margin: 0 auto;
+}
+
+.eyebrow {
+  display: inline-block;
+  margin-bottom: 1rem;
+  padding: 0.3rem 0.85rem;
+  border: 1px solid rgba(62, 207, 191, 0.4);
+  border-radius: 100px;
+  background: rgba(42, 157, 143, 0.14);
+  color: var(--color-teal);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  color: var(--color-chalk-bg);
+    font-size: clamp(2.6rem, 12vw, 5.5rem);
+  font-weight: 600;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  color: var(--color-chalk-bg);
+  margin-bottom: 0.85rem;
+}
+
+.hero-theme {
+    font-size: clamp(1.15rem, 3.4vw, 1.65rem);
+  font-weight: 500;
+  font-style: italic;
+  color: var(--color-teal);
+  margin-bottom: 1.25rem;
+}
+
+.hero-organizer {
+  font-size: 0.98rem;
+  color: var(--color-graphite);
+  max-width: 36rem;
+  margin-bottom: 1.75rem;
+}
+
+.hero-organizer span {
+  display: block;
+  margin-bottom: 0.2rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-teal);
+}
+
+.hero-facts {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin-bottom: 2rem;
+}
+
+.hero-fact {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.hero-fact svg {
+  width: 1.35rem;
+  height: 1.35rem;
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+  stroke: var(--color-aqua);
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.hero-fact span {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-teal);
+}
+
+.hero-fact strong {
+  display: block;
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: var(--color-graphite-dark);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  min-height: 3.15rem;
+  padding: 0.9rem 1.85rem;
+  border-radius: var(--radius);
+  font-family: var(--font-sans);
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  border: 0;
+  cursor: pointer;
+  transition: transform var(--transition), box-shadow var(--transition), background var(--transition), color var(--transition);
+}
+
+.btn-primary {
+  background: var(--color-teal);
+  color: var(--color-chalk-bg);
+  }
+
+.btn-primary:hover {
+  background: var(--color-aqua);
+  color: var(--color-chalk-bg);
+  transform: translateY(-2px);
+  }
+
+@media (min-width: 40rem) {
+  .hero-facts {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1.5rem 2.25rem;
+  }
+}
+
+@media (min-width: 64rem) {
+  .nav-toggle {
+    display: none;
+  }
+
+  .dropdown-toggle {
+    display: none;
+  }
+
+  .site-nav {
+    position: static;
+    background: transparent;
+    transform: none;
+    visibility: visible;
+    overflow: visible;
+    border: 0;
+    max-height: none;
+  }
+
+  .nav-list {
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 0.15rem;
+    padding: 0;
+  }
+
+  .nav-list > li > a,
+  .nav-more-link {
+    padding: 0.45rem 0.55rem;
+    font-size: 0.86rem;
+    white-space: nowrap;
+  }
+
+  .has-dropdown {
+    position: relative;
+    display: block;
+  }
+
+  .has-dropdown > .nav-more-link .dropdown-caret {
+    display: inline-block;
+    margin-left: 0.2rem;
+  }
+
+  .nav-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    min-width: 11.5rem;
+    flex: none;
+    display: block;
+    padding: 0.45rem 0;
+    background: rgba(18, 36, 51, 0.98);
+    border: 1px solid rgba(62, 207, 191, 0.2);
+    border-radius: var(--radius);
+        opacity: 0;
+    visibility: hidden;
+    transform: translateY(-0.35rem);
+    transition: opacity var(--transition), visibility var(--transition), transform var(--transition);
+  }
+
+  .has-dropdown:hover > .nav-dropdown,
+  .has-dropdown:focus-within > .nav-dropdown,
+  .has-dropdown.is-open > .nav-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+
+  .nav-dropdown a {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+  }
+
+  .hero {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .hero-content {
+    margin: 0;
+    max-width: 46rem;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────
+   SECTION SHARED STRUCTURE
+   Used by both Conference Overview and Why Attend sections.
+   Visual treatment deferred — design direction pending sign-off.
+──────────────────────────────────────────────────────────── */
+.section-inner {
+  width: 100%;
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.section-overview,
+.section-why-attend {
+  padding: 3.5rem 0;
+}
+
+.section-overview h2,
+.section-why-attend h2 {
+    font-size: clamp(1.6rem, 4vw, 2.25rem);
+  font-weight: 600;
+  color: var(--color-chalk-bg);
+  margin-bottom: 1.25rem;
+}
+
+.section-overview p {
+  font-size: 1.05rem;
+  color: var(--color-graphite);
+  max-width: 68ch;
+  line-height: 1.7;
+}
+
+/* ─────────────────────────────────────────────────────────
+   WHY ATTEND LIST
+   Plain unstyled list — no cards, no icons, no numbering.
+   Rendered as a simple column; grid/columns deferred to design phase.
+──────────────────────────────────────────────────────────── */
+.why-attend-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.why-attend-list li {
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(247, 244, 238, 0.12);
+}
+
+.why-attend-list h3 {
+  font-family: var(--font-sans);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-graphite-dark);
+  margin-bottom: 0.35rem;
+}
+
+.why-attend-list p {
+  font-size: 0.98rem;
+  color: var(--color-graphite);
+  max-width: 60ch;
+  line-height: 1.65;
+}
+
+@media (min-width: 48rem) {
+  .section-inner {
+    padding: 0 2rem;
+  }
+
+  .why-attend-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.75rem 3rem;
+  }
+}
+
+
+/* ─────────────────────────────────────────────────────────
+   FEATURED KEYNOTE SPEAKERS  (H4)
+   Visual treatment deferred — design direction pending sign-off.
+──────────────────────────────────────────────────────────── */
+.section-speakers {
+  padding: 3.5rem 0;
+}
+
+.section-note {
+  font-size: 0.88rem;
+  color: var(--color-graphite);
+  margin-bottom: 2rem;
+}
+
+.speakers-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.speaker {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(247, 244, 238, 0.12);
+}
+
+/*
+  Speaker photo placeholder.
+  TO SWAP IN A REAL PHOTO: add a background-image rule scoped to a
+  speaker-specific selector, e.g.:
+    .speaker:nth-child(1) .speaker-photo { background-image: url("../img/speakers/ravindran.jpg"); }
+  and remove or override the background-color + ::after rules below for that speaker.
+*/
+.speaker-photo {
+  flex-shrink: 0;
+  width: 4rem;
+  height: 4rem;
+  background-color: rgba(247, 244, 238, 0.08);
+  background-size: cover;
+  background-position: center;
+  object-fit: cover;
+  position: relative;
+}
+
+.speaker-photo::after {
+  content: attr(data-initials);
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-graphite);
+  letter-spacing: 0.04em;
+}
+
+.speaker-name {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-graphite-dark);
+  margin-bottom: 0.25rem;
+}
+
+.speaker-name a {
+  color: inherit;
+}
+
+.speaker-name a:hover {
+  color: var(--color-teal);
+}
+
+.speaker-role {
+  font-size: 0.9rem;
+  color: var(--color-graphite);
+  line-height: 1.5;
+}
+
+/* ─────────────────────────────────────────────────────────
+   WHO SHOULD ATTEND?  (H5)
+   Same structural pattern as Why Attend — plain list, no decoration.
+──────────────────────────────────────────────────────────── */
+.section-audience {
+  padding: 3.5rem 0;
+}
+
+.audience-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.audience-list li {
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(247, 244, 238, 0.12);
+}
+
+.audience-list h3 {
+  font-family: var(--font-sans);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-graphite-dark);
+  margin-bottom: 0.35rem;
+}
+
+.audience-list p {
+  font-size: 0.98rem;
+  color: var(--color-graphite);
+  max-width: 60ch;
+  line-height: 1.65;
+}
+
+@media (min-width: 48rem) {
+  .speakers-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.75rem 3rem;
+  }
+
+  .audience-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.75rem 3rem;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────
+   WHAT'S IN STORE — PROGRAM SNAPSHOT  (H6)
+   Same structural pattern as Why Attend and Who Should Attend.
+   Visual treatment deferred — design direction pending sign-off.
+──────────────────────────────────────────────────────────── */
+.section-program {
+  padding: 3.5rem 0;
+}
+
+.program-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.program-list li {
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(247, 244, 238, 0.12);
+}
+
+.program-list h3 {
+  font-family: var(--font-sans);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-graphite-dark);
+  margin-bottom: 0.35rem;
+}
+
+.program-list p {
+  font-size: 0.98rem;
+  color: var(--color-graphite);
+  max-width: 60ch;
+  line-height: 1.65;
+}
+
+@media (min-width: 48rem) {
+  .program-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.75rem 3rem;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────
+   KEY DATES  (H9)
+   Ordered list — sequence encodes real information (chronological).
+   Native list counters suppressed; visual order communicates sequence.
+   Visual treatment deferred — design direction pending sign-off.
+──────────────────────────────────────────────────────────── */
+.section-dates {
+  padding: 3.5rem 0;
+}
+
+.dates-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-width: 44rem;
+}
+
+.date-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid rgba(247, 244, 238, 0.12);
+}
+
+.date-item:first-child {
+  border-top: 1px solid rgba(247, 244, 238, 0.12);
+}
+
+.date-label {
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-graphite);
+}
+
+.date-value {
+  font-family: var(--font-sans);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-graphite-dark);
+}
+
+.date-note {
+  font-weight: 400;
+  font-size: 0.95rem;
+  color: var(--color-graphite);
+}
+
+@media (min-width: 48rem) {
+  .date-item {
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────
+   KEY NUMBERS  (H10)
+   <dl> with <div class="stat-item"> wrappers — value+label pair.
+   Numbers made prominent via font-size only; no animation, no icons.
+   Visual treatment deferred — design direction pending sign-off.
+──────────────────────────────────────────────────────────── */
+.section-stats {
+  padding: 3.5rem 0;
+}
+
+.stats-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem 3rem;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.stat-value {
+    font-size: clamp(2rem, 6vw, 2.75rem);
+  font-weight: 600;
+  color: var(--color-chalk-bg);
+  line-height: 1;
+}
+
+.stat-label {
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  color: var(--color-graphite);
+  margin-left: 0;
+}
+
+/* ─────────────────────────────────────────────────────────
+   HERO COUNTDOWN CLOCK
+   Sits between .hero-facts and the Register button in the hero.
+   No flip animation — numbers update in place.
+   Layout shift prevention: .countdown-digit has a fixed min-width
+   so the column never jumps when digit count changes (e.g. 9 → 10 days).
+   prefers-reduced-motion: no transitions are defined, so nothing to suppress.
+──────────────────────────────────────────────────────────── */
+.nav-countdown {
+  display: flex;
+  align-items: center;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-graphite);
+  margin-left: auto;
+  margin-right: 1.5rem;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.cd-full { display: none; }
+.cd-short { display: none; }
+
+/* Desktop */
+@media (min-width: 900px) {
+  .cd-full { display: inline; }
+}
+
+/* Tablet / small screens */
+@media (min-width: 500px) and (max-width: 899px) {
+  .cd-short { display: inline; }
+}
+
+/* Hide on mobile to prevent navbar overflow */
+@media (max-width: 499px) {
+  .nav-countdown { display: none; }
+}
+
+/* Message shown once the conference has started or ended */
+.countdown-ended {
+  font-style: italic;
+  font-weight: 500;
+  color: var(--color-teal);
+}
+
+/* ─────────────────────────────────────────────────────────
+   SPEAKER MODAL
+──────────────────────────────────────────────────────────── */
+.speaker-trigger {
+  all: unset;
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+}
+
+.speaker-trigger:focus-visible {
+  outline: 2px solid var(--color-teal);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+.speaker-trigger .speaker-info {
+  display: block;
+}
+
+.speaker-trigger .speaker-name {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-graphite-dark);
+  margin-bottom: 0.25rem;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  transition: text-decoration-color 0.2s;
+}
+
+.speaker-trigger:hover .speaker-name {
+  text-decoration-color: var(--color-chalk-bg);
+}
+
+.speaker-trigger .speaker-role {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  color: var(--color-graphite);
+  line-height: 1.4;
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(22, 28, 26, 0.85); /* Uses var(--color-chalk-bg) with opacity */
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.modal-overlay[hidden] {
+  display: none;
+}
+
+.modal-content {
+  background-color: var(--color-chalk-bg);
+  padding: 2.5rem;
+  max-width: 30rem;
+  width: 100%;
+  position: relative;
+  text-align: center;
+    display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modal-close {
+  all: unset;
+  position: absolute;
+  top: 1rem;
+  right: 1.25rem;
+  font-size: 2rem;
+  line-height: 1;
+  color: var(--color-graphite);
+  cursor: pointer;
+  padding: 0.25rem;
+}
+
+.modal-close:focus-visible {
+  outline: 2px solid var(--color-teal);
+}
+
+.modal-close:hover {
+  color: var(--color-graphite-dark);
+}
+
+.modal-speaker-photo {
+  margin-bottom: 1.25rem;
+  width: 6rem;
+  height: 6rem;
+  font-size: 1.75rem; /* Larger initials for modal */
+}
+
+.modal-speaker-name {
+  font-family: var(--font-sans);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-graphite-dark);
+  margin-bottom: 0.5rem;
+}
+
+.modal-speaker-role {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  color: var(--color-graphite);
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+.modal-btn {
+  width: 100%;
+  text-align: center;
+}
+
+/* ─────────────────────────────────────────────────────────
+   H8 · TRACKS DIAGRAM
+──────────────────────────────────────────────────────────── */
+.section-tracks-diagram {
+  padding-bottom: 2rem;
+}
+
+.radial-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.radial-hub {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: var(--color-chalk-bg);
+  color: var(--color-chalk-bg);
+    font-size: 1.25rem;
+  font-weight: 600;
+  width: 7rem;
+  height: 7rem;
+  border-radius: 50%;
+  border: 4px solid var(--color-chalk-bg);
+  z-index: 2;
+  line-height: 1.1;
+}
+
+.radial-tracks {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  max-width: 28rem;
+}
+
+.radial-track {
+  display: block;
+}
+
+.track-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: var(--color-chalk-bg);
+  border: 1px solid rgba(247, 244, 238, 0.15);
+  text-decoration: none;
+  color: var(--color-graphite-dark);
+  transition: background 0.2s, border-color 0.2s;
+  border-radius: 4px;
+}
+
+.track-link:hover,
+.track-link:focus-visible {
+  background: rgba(247, 244, 238, 0.05);
+  border-color: rgba(247, 244, 238, 0.3);
+  outline: none;
+}
+
+.track-link:focus-visible {
+  outline: 2px solid var(--color-teal);
+}
+
+.track-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  background: var(--color-graphite);
+  color: var(--color-chalk-bg);
+  border-radius: 50%;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+.track-name {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  line-height: 1.3;
+}
+
+/* --- Desktop Radial Layout --- */
+@media (min-width: 64rem) {
+  .radial-container {
+    height: 600px;
+    margin: 3rem 0;
+    padding: 0;
+  }
+  
+  .radial-hub {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .radial-tracks {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: block;
+    max-width: none;
+  }
+
+  .radial-track {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 260px; /* Max width for track boxes */
+    transform-origin: center center;
+    /* Translate container to center, rotate based on index, then push out by 260px radius */
+    transform: translate(-50%, -50%) rotate(calc(var(--track-idx) * 45deg)) translateX(260px);
+    z-index: 1;
+  }
+  
+  /* The line connecting hub to node */
+  .radial-track::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 260px; /* same as radius */
+    height: 1px;
+    background: var(--color-graphite);
+    opacity: 0.3;
+    transform: translate(-100%, -50%);
+    z-index: -1;
+  }
+
+  .track-link {
+    /* Counter-rotate text so it remains horizontal, reading left-to-right */
+    transform: rotate(calc(var(--track-idx) * -45deg));
+    width: 100%;
+  }
+}
+
+
+h2:not(.sr-only) {
+  font-family: var(--font-display);
+  font-variant: small-caps;
+  letter-spacing: 0.05em;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid;
+  border-image: linear-gradient(to right, var(--color-teal), var(--color-aqua)) 1;
+  color: var(--color-graphite-dark);
+}
+
+/* ==========================================================================
+   DESIGN PASS OVERRIDES
+   ========================================================================== */
+
+h1 {
+  font-family: var(--font-display);
+}
+
+h2 {
+  text-transform: lowercase;
+}
+
+
+
+/* Section dividers */
+section + section {
+  border-top: 1px solid var(--color-chalk-line);
+}
+
+/* Hero Overrides */
+.hero {
+  background-color: var(--color-navy);
+  color: var(--color-chalk-bg);
+}
+.hero h1 {
+  color: var(--color-chalk-bg);
+}
+.hero p {
+  color: var(--color-chalk-bg);
+}
+.hero .hero-meta {
+  color: var(--color-chalk-bg);
+}
+
+/* Stats Ticker Overrides */
+.section-stats {
+  background-color: var(--color-chalk-bg);
+}
+.stat-number {
+  color: var(--color-teal);
+}
+.stat-label {
+  color: var(--color-graphite);
+}
+
+/* Button Overrides (Removing old gold/aqua backgrounds and gradients if any) */
+.btn-primary {
+  background: var(--color-teal) !important;
+  color: var(--color-chalk-bg) !important;
+  background-image: none !important;
+}
+.btn-primary:hover {
+  background: var(--color-aqua) !important;
+}
+
+/* Modal Overrides */
+.modal-content {
+  background-color: var(--color-chalk-bg);
+  color: var(--color-graphite);
+  text-align: left; /* Left align body text blocks */
+}
+.modal-content .modal-btn .btn-primary {
+  background: var(--color-teal) !important;
+  color: var(--color-chalk-bg) !important;
+}
+.modal-content .modal-btn .btn-primary:hover {
+  background: var(--color-aqua) !important;
+}
+.modal-speaker-name {
+  color: var(--color-graphite-dark);
+}
+.modal-speaker-role {
+  color: var(--color-graphite);
+}
+.modal-close {
+  color: var(--color-graphite);
+}
+.modal-close:hover {
+  color: var(--color-graphite-dark);
+}
+
+/* Ensure body text blocks are left aligned globally */
+p {
+  text-align: left !important;
+}
+
+/* Navbar Overrides */
+.site-header {
+  background-color: var(--color-chalk-bg);
+  border-bottom: 1px solid var(--color-chalk-line);
+}
+.site-nav a {
+  color: var(--color-graphite);
+}
+.site-nav a:hover,
+.site-nav a[aria-current="page"] {
+  color: var(--color-teal);
+}
+.brand {
+  color: var(--color-graphite-dark);
+}
+.brand:hover {
+  color: var(--color-teal);
+}
+.brand-year {
+  color: var(--color-graphite); /* Usually gold, but let's make it graphite to blend in, or teal */
+}
+.nav-countdown {
+  color: var(--color-graphite);
+}

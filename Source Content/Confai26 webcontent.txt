@@ -1,0 +1,390 @@
+COnfai webcontent : 
+ConfAI (Website Content) 
+ 
+Main Content Structure 
+
+Home 
+
+Register for ConfAI 2026 
+
+Agenda 
+
+Sponsorship 
+
+FAQ 
+
+Contact 
+
+Relive ConfAI 2025 
+
+More (Dropdown: Relive 2022, Relive 2023) 
+
+Home Page 
+
+Hero Section 
+
+Main Title: ConfAI 2026 or Conference on Artificial Intelligence  
+
+Conference Theme: Conversations that Shape AI Future 
+
+Organized By: Harish and Bina Shah School of AI & Computer Science, Plaksha University 
+
+Date: October 30 – November 1, 2026  
+
+Venue: Plaksha University Campus, Mohali, Punjab 
+
+Primary Call to Action Button: [Register Now]  
+
+Conference Overview (To be kept same word by word: No Changes) : The three day academic conference aims to highlight the potential of AI in exploring effective solutions to societal challenges. The talks and discussions aim to foster collaboration, knowledge sharing, and innovative discussions. It will bring together students, researchers, and practitioners across diverse AI domains to shape the future of research, development, and impactful applications in the Indian AI landscape. 
+
+Why Attend ConfAI 2026? 
+
+Prominent Keynote & Guest Speakers: Engage with top leaders from industry and academia across 8 curated tracks. 
+
+Latest AI Research: Attend cutting-edge research presentations highlighting the newest breakthroughs in artificial intelligence. 
+
+Practical Frameworks & Insights: Learn frameworks, ideas, and explore critical questions around AI, innovation, emerging technologies, and their broader societal impact. 
+
+Collaborative Networking: Build visibility for research collaborations and engage in high-impact industry conversations. 
+
+Featured Keynote Speakers (Mention this Note: Non-exhaustive list. Additional speakers to be announced.) (the section must include hyperlinks to the speakers name and images, Note: the hyperlinks must be affiliated to the organizations the speakers work in ) 
+
+Dr. Balaraman Ravindran: Head, Dept. of Data Science & AI, IIT Madras (https://wsai.iitm.ac.in/~ravi/ ) 
+
+Dr. Manish Gupta: Senior Director, Google DeepMind (https://research.google/people/106704/?& ) 
+
+Dr. Parag Singla: Professor, CSE Dept., IIT Delhi (https://homecse.iitd.ac.in/team/parag-singla/ ) 
+
+Dr. Ponnurangam Kumaraguru: Visiting Scientist, ANRF | Professor of CS, IIIT Hyderabad (https://www.iiit.ac.in/faculty/ponnurangam-kumaraguru/ ) 
+
+Dr. Sanghamitra Bandyopadhyay: Ex-Director, ISI Kolkata | Padmashree Awardee (https://en.wikipedia.org/wiki/Sanghamitra_Bandyopadhyay#Awards_and_honours ) 
+
+Dr. Santanu Choudhary: Dean, Vachani School of Advanced Computing & Professor of CS, Ashoka University (https://www.ashoka.edu.in/profile/santanu-chaudhury/ ) 
+
+Who Should Attend? 
+
+UG & PG Students: Specialized in Computer Science, AI/ML, Data Science, and Electrical Engineering. 
+
+Early-Career Faculty & Research Scholars: Focused on exploring practical AI applications within their respective domains. 
+
+PhD Students: Advanced researchers conducting deep-tech studies in AI. 
+
+Industry Professionals: Practitioners actively building and deploying solutions in AI and tech sectors. 
+
+AI Enthusiasts & Curious Learners: Anyone looking to understand future directions and trends in AI research. 
+
+What’s in Store (Program Snapshot) 
+
+3 Days of Insights: 8 curated research tracks spanning academic and practical AI disciplines. 
+
+Diverse Presentation Formats: Keynotes, panel discussions, oral presentations, and poster presentations. 
+
+Direct Mentorship: One-on-one mentorship sessions. 
+
+Networking: Dedicated interactive sessions and informal meetups throughout the 3-day conference. 
+
+Technical Program Committee (Button) 
+ 
+list of faculty to be included in the Technical Program Committee :(To be arranged in alphabetical order , must include hyperlinks to their names and images )  
+
+(Note: Attached hyperlinks directly to the names listed below , please refer to them ) 
+
+Dr. Alok Ranjan 
+
+ Dr. Nikhil George 
+
+ Dr. Divyanshu Jain 
+
+Dr. Sunita Chauhan 
+
+ Dr. Sandeep Manjanna 
+
+Dr. Monika Sharma 
+
+ Dr. Chaitanya Lekshmi Indira 
+
+Dr. Appan Rakaraddi 
+
+ Dr. Arshdeep Sidhu 
+
+ Dr. Amruta R Behera 
+
+ Dr. Rucha Joshi 
+
+ Dr. Swagata Halder 
+
+ Dr. Sanjeev Khosla 
+
+Dr. Anupam Sobti  
+
+Dr. Malini Balakrishnan 
+
+ Dr. Prashanth Suresh Kumar 
+
+ Dr. Pankaj Pansari 
+
+Dr. Anil Roy 
+
+ Dr. Praveen Kumar 
+
+Dr. Pankaj Pansari 
+
+ Dr. Deepan Muthirayan 
+
+Dr. Rajesh Sharma 
+
+ Dr. Sachindranath 
+
+Dr. Deepak Khemani 
+
+ Dr. Saeed Salehi 
+
+  Dr. Tapas Pandit 
+
+Sandilya Garimella 
+
+ 
+
+ 
+Track Details:  must include track names, track number, track chairs names (with hyperlinks attached to their names) and track description  
+ 
+Track 1: AI in the Economy 
+
+Track Co-Chairs  
+
+Dr. Alok Ranjan, Dr. Nikhil George, Dr. Divyanshu Jain 
+
+Description : 
+This session focuses on artificial intelligence as a transformative force across three interlocking pillars of modern economies: labor markets, financial systems, and governance structures. On the labor side, we invite work on automation and job displacement, AI-augmented productivity, reskilling and workforce transitions, monitoring and evaluation, and the distributional effects of AI adoption. In finance, topics of interest include algorithmic trading and market microstructure, AI-driven credit scoring and lending, fraud detection, robo-advisory systems, and the use of large language models in financial forecasting and regulatory compliance. In the domain of governance, we seek contributions on AI in public administration and policy design, algorithmic accountability and auditing, AI regulation frameworks , and the role of AI in macroeconomic policymaking and central banking. Finally, in urban and public systems, we welcome work on smart city infrastructure, AI-driven traffic and mobility optimization, land use modeling, and the equitable allocation of public resources across communities. 
+ 
+ 
+
+Track 2: AI in Healthcare 
+
+Track Co-Chairs 
+
+Dr. Sunita Chauhan, Dr. Sandeep Manjanna, Dr. Monika Sharma, Dr. Chaitanya Lekshmi Indira, Dr. Appan Rakaraddi, Dr. Arshdeep Sidhu, Dr. Amruta R Behera, Dr. Rucha Joshi, Dr. Swagata Halder, Dr. Sanjeev Khosla 
+ 
+Description :  
+This session aims to explore how AI technologies can be designed and deployed to deliver tailored healthcare solutions while ensuring fair and inclusive access. It will examine the role of AI in precision medicine, early disease detection, and adaptive care pathways, alongside application in expanding healthcare reach through low-cost diagnostics, telemedicine, and language-inclusive tools. Key challenges will be addressed, including algorithmic bias, data underrepresentation, the digital divide, and the risk of exacerbating existing health disparities. 
+
+ 
+
+ 
+
+Track 3: AI in Sensors 
+
+Track Co-Chairs 
+Dr. Anil Roy, Dr. Praveen Kumar, Dr. Sandilya Garimella 
+
+ 
+
+Description:  
+
+Ours is a data driven society. Our life and lifestyle- are overwhelmingly impacted by data supported intelligent systems, be it products or services. A vast portion of these data is emanating from various sensors, appropriate for that event. Sensing technologies are evolving rapidly, generating vast streams of data that require real-time processing, intelligent pattern recognition, and robust decision-making. The specially curated session on "AI in Sensing" of ConfAI invites all researchers, academicians, developers, practitioners, thought leaders, policy makers and overall users of this rapidly growing field which is inventing itself since AI models, tools and techniques are being used to develop the next generation of solutions, physical sensors, hardware systems, and domain-specific analytical engines. Unlike general computer science conferences, this venue explicitly focuses on intelligent application domains, sensor hardware-software co-design, and deployment physics. We welcome contributions from researchers engineering sensors, data acquisition boards, and intelligent transducer networks to make predictions and support real-time decision systems. No matter if it was published earlier, do submit your work. We aim for a highly intense discussion, debate and direction for and of AI in Sensing. Some of the targeted tracks are (but not all): accessibility, clean water, cognitive load assessment, critical infrastructure, Edge AI hardware system, education, entertainment industry, environment, food security, gaming, green energy, haptics, industry 5.0, life on poles, PolSAR image, quantum materials towards circular electronics, quantum sensors, rehabilitation, sanitation, satellite technology, security & surveillance, smart agriculture, sports, underwater world, wearables. 
+
+ 
+
+Track 4: Reasoning in Vision Language Models 
+
+Track Co-Chairs 
+Dr. Pankaj Pansari, Dr. Deepan Muthirayan 
+
+Description:  
+Reasoning is central to intelligence, problem solving, and decision making. Frontier foundation models like VLMs have been able to achieve significant improvements in performance across benchmarks that involve texts and visual data. Notwithstanding, it is critical to know what the model truly understands and does not, when a model might fail and why a model fails. Evaluating the reasoning capabilities of a model directly addresses such questions. The proposed workshop aims to span several topics ranging from benchmarking reasoning, fine-tuning and inference time scaling for reasoning, techniques for probing and analysis, and training and architectures for reasoning. The workshop aims to bring in researchers and expert to share their work and shed light on the recent advances and to create a platform for fostering discussions and collaborations to advance benchmarking and reasoning capabilities of VLMs. 
+
+ 
+
+Track 5: AI4Cities: Enhancing Resilience, Improving Liveability 
+
+Track Co-Chairs  
+
+Dr. Anupam Sobti, Dr. Malini Balakrishnan, Dr. Prashanth Suresh Kumar, Dr. Pankaj Pansari 
+
+ 
+
+Description :  
+
+Tier-2 and Tier-3 Indian cities are undergoing rapid expansion and population growth. They are also being impacted by extreme weather events caused by climate change. These have intensified challenges around urban infrastructure leading to erratic power and water supply, inadequate solid waste and wastewater management, urban flooding, traffic congestion etc., thus directly impacting liveability. Traditional infrastructure and planning approaches are unable to keep pace with this complex, fragmented and rapid urban development. In this context, AI offers a powerful approach for predictive urban management through real-time, data-driven insights, that can enable cities to anticipate water and energy demand, optimize waste and wastewater management systems, and overall, enable better quality of living. The impact of AI also depends on how well it is embedded into governance and decision-making processes that can help urban local bodies make informed, timely decisions. Thus, scalable, low-cost digital tools are required, along with suitable data-sharing frameworks, enhanced institutional capacity, and citizen engagement. 
+
+ 
+
+Track 6: Responsible and Ethical AI    
+
+Track Co-Chairs 
+
+Dr. Rajesh Sharma, Dr. Sachindranath 
+
+Description :  
+Artificial intelligence is reshaping institutions, economies, and social relations at a pace that has outrun existing governance structures. This session examines the ethical, legal, and sociotechnical dimensions of responsible AI, bringing together interdisciplinary perspectives from computer science, law, philosophy, political science, and sociology. We explore how foundational ethical theories inform practical governance models, including structures for accountability, transparency, and stakeholder participation. Central concerns include algorithmic fairness, epistemic risks, power concentration, and the design of cross-jurisdictional regulatory frameworks — particularly for generative and agentic AI systems. The session also engages with the growing recognition that adherence to emerging AI standards must translate into meaningful real-world behavior, not mere compliance. We invite contributions that treat responsible AI not as a technical problem alone, but as a fundamentally human and political one. 
+ 
+
+ 
+Track 7: AI and Logic: Relations and Applications 
+
+Track Co-Chairs 
+
+Dr. Deepak Khemani, Dr. Saeed Salehi,  Dr. Tapas Pandit 
+Description :  
+The interaction of various logics and different AI tools is two-way: logic is used and can, in fact, help design an AI tool; an AI tool can, in turn, be trained for solving some logical problems (which could have more mathematical flavor). Logic has always played a role in AI—starting with theorem proving, model checking, event calculus, reasoning with ontologies on the web, and epistemic reasoning in multi-agent systems. Also, logic can provide rigorous guarantees needed for data privacy and the protection of sensitive information. Thus, logic is not only an important outcome of a successfully designed AI device but also a cornerstone tool in any AI development. This track welcomes all submissions related to AI and logic. 
+
+ 
+
+Track 8: Recent Advances in AI 
+
+Description :  
+Submissions are not limited to the tracks given above. Work pertaining to the theme of the conference is welcome. It could include ongoing research and previously published work 
+ 
+ 
+
+Specific Numbers / Details to be added : 
+Dates : 
+
+Call for Abstracts Deadline : August 10th 2026  
+
+Notification of Acceptance : August 31st 2026 
+
+Conference Dates : October 30th 2026 (Friday) to November 1st 2026 (Sunday ) 
+
+ 
+
+Numbers:  
+
+5+ Keynote Speakers  
+
+20+ Oral Presenters  
+20+ Poster Presenters  
+
+600+ Students  
+
+100+ Attendees  
+
+ 
+Attach , Revisit ConfAI 2025 Event Video :  
+Link: https://youtu.be/k3G5v5cH-bo  
+ 
+CONTACT US Details  
+
+Sector 101, Alpha, IT City Rd, JLPL Industrial Area, Sahibzada Ajit Singh Nagar, Punjab 140306, India 
+
+Email : confai@plaksha.edu.in 
+Linkedin : ConfAI 2026 
+Note : Add a google map location to the plaksha campus :  
+
+ 
+
+Register ConfAI 2026 
+
+Registration Information : Join us at the Plaksha University campus in Mohali, Punjab, from October 30 to November 1, 2026. Register online to secure your place at ConfAI 2026. 
+ 
+Register : Redirects to the Rayzor pay Gateway, or Microsoft form links (Gateway not yet created) 
+
+Payment Slabs :  
+
+Payment Category 
+
+Amount(Rs.) 
+
+3 Days Conference Pass plus Networking Dinner 
+
+3500 
+
+3 Days Conference Pass 
+
+2500 
+
+2 Days Conference Pass (Saturday +Sunday) 
+
+2000 
+
+Any 1 Day Conference Pass 
+
+1000 
+
+Separate dinner pass 
+
+1000 
+
+ 
+
+Accommodation Details: Limited campus accommodation is available on request for registered participants. For room availability, booking procedures, and inquiries, please email the organizing team directly at confai@plaksha.edu.in. 
+
+ 
+
+Agenda  
+
+Agenda Note: The Agenda Attached is tentative and can be changed  
+
+Sponsorship 
+
+Partner With ConfAI 2026 ConfAI 2026 offers companies and organizations a platform to connect with leading researchers, faculty, students, and industry professionals shaping the future of AI. Hosted by the Harish and Bina Shah School of AI & Computer Science at Plaksha University, sponsoring the event provides access to top talent, research initiatives, and strategic industry visibility. 
+ 
+
+Sponsorship Buckets refer to the Sponsorship Deck PPT for the confirmed slabs (Note: Confirm with Khyati Sagar for the Sponsorship Slabs to be presented ) 
+ 
+ConfAI 2026 Sponsorship Deck.pptx 
+
+Sponsorship Inquiries: confai@plaksha.edu.in 
+
+Image/ Video Gallery  
+
+Refer to the attached drive folder for Previous ConfAI videos / Images  
+
+Drive link  
+
+FAQ & Contact 
+
+Frequently Asked Questions  
+
+Q: What will happen to the accepted abstracts? Will it be published in an indexed proceedings? 
+
+A: All accepted abstracts will be presented by the authors at the conference. The conference schedule, once ready, will have detailed information about the presentation time and format. The proceedings of ConfAI 2026 will be published on the conference website. 
+  
+
+Q: Can a review or summary article also be submitted, like part of their Master's/PhD theses? 
+
+A: Yes, absolutely. We welcome all kinds of abstracts in the areas of interest mentioned in the Call for Abstracts. 
+  
+
+Q: Do authors have to submit original research in the abstract? 
+A: While authors are highly encouraged to submit their ongoing research, it is not a mandatory requirement. We also welcome research that has recently been published in A* conference avenues like NeurIPS, ICLR, CVPR, CHI, etc. 
+  
+
+Q: Are undergraduate students also allowed to submit abstracts? 
+
+A: No. For ConfAI 2026, we are only soliciting abstracts from graduate students, postdocs, and early-career faculty. 
+  
+
+Q: Can non-authors also attend ConfAI? 
+
+A: Yes, registration for everyone will open soon on the conference website. 
+  
+
+Q: Is there any registration fee to attend ConfAI?  
+
+A: There is no registration fee for selected authors whose abstracts have been accepted. For everyone else, a registration fee will be charged as given on the registration page.  
+  
+
+Q: Will there be some scholarship (financial support) available for outstation attendees, even if limited in number? 
+
+A: For ConfAI 2026, financial support for travel, accommodation, and other expenses will be provided to researchers whose abstracts have been accepted for presentation at the conference. No financial support will be provided for other participants. 
+  
+
+Q: What is the talk schedule for different speakers at ConfAI? 
+
+A: Details will soon be updated on the conference website 
+  
+
+Q: Is there any special support/consideration for female participants? 
+
+A: The organising committee may choose to provide special financial support to female participants for attending ConfAI. Please reach out at confai@plaksha.edu.in 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 

@@ -1,0 +1,637 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Robot Expo at AICOR, an IJCAI 2026 side event in Bremen on 18 August 2026."
+    />
+    <title>Robot Expo @ AICOR | IJCAI 2026 Co-Located Event</title>
+    <link rel="stylesheet" href="css/styles.css?v=20260819-1" />
+    <script src="js/script.js?v=20260716-2" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
+    <header class="site-header">
+      <a class="brand-lockup" href="#top" aria-label="University of Bremen and AICOR home">
+        <img
+          class="brand-logo brand-logo--university"
+          src="img/UniBremen_Logo_Web_negativ.png"
+          alt="University of Bremen"
+        />
+        <span class="brand-divider" aria-hidden="true"></span>
+        <img
+          class="brand-logo brand-logo--aicor"
+          src="img/aicor_logo_no_subline_rgb_white.png"
+          alt="AICOR"
+        />
+      </a>
+
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span class="sr-only">Toggle navigation</span>
+        <svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22">
+          <path d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+
+      <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#program">Program</a>
+        <a href="#details">Event details</a>
+        <a href="#venue">Venue</a>
+        <a href="#registration">Registration</a>
+      </nav>
+    </header>
+
+    <main id="main-content">
+      <section class="hero" id="top" aria-labelledby="event-title">
+        <div class="hero-photo" aria-hidden="true"></div>
+        <div class="hero-shade" aria-hidden="true"></div>
+        <div class="dot-field dot-field--top" aria-hidden="true"></div>
+        <div class="dot-field dot-field--bottom" aria-hidden="true"></div>
+
+        <div class="hero-content">
+          <p class="eyebrow"><span>IJCAI 2026</span> Co-Located in Bremen</p>
+          <h1 id="event-title">Robot Expo @ <strong>AICOR</strong></h1>
+          <p class="hero-intro">
+            An evening of live robotics, research exchange, and conversations with the people
+            building intelligent machines.
+          </p>
+
+          <div class="hero-facts" aria-label="Event date and time">
+            <div class="hero-fact">
+              <svg aria-hidden="true" viewBox="0 0 24 24">
+                <path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14H3V6a2 2 0 0 1 2-2Z" />
+              </svg>
+              <div>
+                <span>Tuesday</span>
+                <strong>18 August 2026</strong>
+              </div>
+            </div>
+            <div class="hero-fact">
+              <svg aria-hidden="true" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="9" />
+                <path d="M12 7v5l3.5 2" />
+              </svg>
+              <div>
+                <span>From</span>
+                <strong>18:30</strong>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="scroll-cue" aria-hidden="true">
+          <span>Discover</span>
+          <i></i>
+        </div>
+      </section>
+
+      <p class="image-disclaimer hero-disclaimer">The image of the PR2 robot above was AI-generated.</p>
+
+      <section class="event-overview" id="about" aria-labelledby="overview-title">
+        <div class="section-shell overview-layout">
+          <div class="overview-heading">
+            <p class="eyebrow">About the event</p>
+            <h2 id="overview-title">IJCAI Co-Located Event - Robot Expo at AICOR</h2>
+          </div>
+          <div class="overview-copy">
+            <p class="overview-lead">
+              The event offers IJCAI participants, researchers, and industry partners
+              the opportunity to join a hands-on robotics exhibition to explore cutting-edge AI
+              and robotics through scientific talks, live demonstrations, a panel discussion, and
+              a networking reception. Hosted by the AICOR Institute for Artificial Intelligence at
+              the University of Bremen, the event brings together the international AI research
+              community and the German and European robotics ecosystem for an evening of
+              scientific exchange and networking. The event will take place on 18 August 2026 from
+              18:30 to 21:30.
+            </p>
+            <p class="institute-note">
+              The AICOR Institute for Artificial Intelligence at the University of Bremen is a
+              leading research institute dedicated to cognition-enabled robotics, advancing AI
+              technologies that allow robots to autonomously understand and perform everyday tasks.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="gallery" aria-labelledby="gallery-title">
+        <div class="section-shell">
+          <div class="gallery-heading">
+            <div>
+              <p class="eyebrow">Inside AICOR</p>
+              <h2 id="gallery-title">Robotics in practice.</h2>
+            </div>
+            <div class="carousel-controls" aria-label="Gallery controls">
+              <button
+                class="carousel-button"
+                type="button"
+                data-carousel-prev
+                aria-controls="robotics-gallery"
+                title="Previous image"
+              >
+                <span class="sr-only">Previous image</span>
+                <svg aria-hidden="true" viewBox="0 0 24 24">
+                  <path d="m15 18-6-6 6-6" />
+                </svg>
+              </button>
+              <button
+                class="carousel-button"
+                type="button"
+                data-carousel-next
+                aria-controls="robotics-gallery"
+                title="Next image"
+              >
+                <span class="sr-only">Next image</span>
+                <svg aria-hidden="true" viewBox="0 0 24 24">
+                  <path d="m9 18 6-6-6-6" />
+                </svg>
+              </button>
+              <button
+                class="carousel-button"
+                type="button"
+                data-carousel-toggle
+                aria-controls="robotics-gallery"
+                title="Pause slideshow"
+              >
+                <span class="sr-only" data-carousel-toggle-label>Pause slideshow</span>
+                <svg data-carousel-pause-icon aria-hidden="true" viewBox="0 0 24 24">
+                  <path d="M9 5v14M15 5v14" />
+                </svg>
+                <svg data-carousel-play-icon aria-hidden="true" viewBox="0 0 24 24" hidden>
+                  <path d="m8 5 11 7-11 7Z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <div
+            class="carousel"
+            id="robotics-gallery"
+            data-carousel
+            role="region"
+            aria-roledescription="carousel"
+            aria-label="AICOR robotics research gallery"
+            tabindex="0"
+          >
+            <div class="carousel-slides" aria-live="off">
+              <figure class="carousel-slide is-active" role="group" aria-roledescription="slide" aria-label="1 of 6" aria-hidden="false">
+                <div class="carousel-media">
+                  <img
+                    src="img/robot-expo-university-bremen-01.webp"
+                    alt="A PR2 robot working at a kitchen counter with two researchers"
+                    width="1800"
+                    height="1350"
+                  />
+                </div>
+                <figcaption>
+                  <span>© Universität Bremen</span>
+                  <span>01 / 06</span>
+                </figcaption>
+              </figure>
+              <figure class="carousel-slide" role="group" aria-roledescription="slide" aria-label="2 of 6" aria-hidden="true">
+                <div class="carousel-media">
+                  <img
+                    src="img/robot-expo-university-bremen-02.webp"
+                    alt="A PR2 robot handling a cooking pot in a laboratory kitchen"
+                    width="1800"
+                    height="1350"
+                  />
+                </div>
+                <figcaption>
+                  <span>© Universität Bremen</span>
+                  <span>02 / 06</span>
+                </figcaption>
+              </figure>
+              <figure class="carousel-slide" role="group" aria-roledescription="slide" aria-label="3 of 6" aria-hidden="true">
+                <div class="carousel-media">
+                  <img
+                    src="img/robot-expo-pollmeier-01.webp"
+                    alt="A researcher reviewing a simulated robot task on a large display"
+                    width="1800"
+                    height="1351"
+                  />
+                </div>
+                <figcaption>
+                  <span>© Patrick Pollmeier, Matena innovate! Center</span>
+                  <span>03 / 06</span>
+                </figcaption>
+              </figure>
+              <figure class="carousel-slide" role="group" aria-roledescription="slide" aria-label="4 of 6" aria-hidden="true">
+                <div class="carousel-media">
+                  <img
+                    src="img/robot-expo-pollmeier-02.webp"
+                    alt="A researcher working with a PR2 robot during a manipulation test"
+                    width="1800"
+                    height="1350"
+                  />
+                </div>
+                <figcaption>
+                  <span>© Patrick Pollmeier, Matena innovate! Center</span>
+                  <span>04 / 06</span>
+                </figcaption>
+              </figure>
+              <figure class="carousel-slide" role="group" aria-roledescription="slide" aria-label="5 of 6" aria-hidden="true">
+                <div class="carousel-media">
+                  <img
+                    src="img/robot-expo-pollmeier-03.webp"
+                    alt="Two researchers configuring a mobile service robot in a domestic laboratory"
+                    width="1800"
+                    height="1351"
+                  />
+                </div>
+                <figcaption>
+                  <span>© Patrick Pollmeier, Matena innovate! Center</span>
+                  <span>05 / 06</span>
+                </figcaption>
+              </figure>
+              <figure class="carousel-slide" role="group" aria-roledescription="slide" aria-label="6 of 6" aria-hidden="true">
+                <div class="carousel-media">
+                  <img
+                    src="img/robot-expo-pollmeier-04.webp"
+                    alt="Mobile service robots operating in a domestic laboratory environment"
+                    width="1800"
+                    height="1351"
+                  />
+                </div>
+                <figcaption>
+                  <span>© Patrick Pollmeier, Matena innovate! Center</span>
+                  <span>06 / 06</span>
+                </figcaption>
+              </figure>
+            </div>
+
+            <div class="carousel-indicators" aria-label="Choose an image">
+              <button type="button" data-carousel-dot aria-label="Show image 1" aria-current="true"></button>
+              <button type="button" data-carousel-dot aria-label="Show image 2"></button>
+              <button type="button" data-carousel-dot aria-label="Show image 3"></button>
+              <button type="button" data-carousel-dot aria-label="Show image 4"></button>
+              <button type="button" data-carousel-dot aria-label="Show image 5"></button>
+              <button type="button" data-carousel-dot aria-label="Show image 6"></button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="program" id="program" aria-labelledby="program-title">
+        <div class="section-shell">
+          <div class="section-heading">
+            <p class="eyebrow">Tuesday, 18 August<br />18:30–21:30</p>
+            <div class="section-heading-copy">
+              <h2 id="program-title">The Program.</h2>
+              <p>
+                Short scientific talks lead into a focused panel, followed by open laboratories,
+                live demonstrations, and networking across the TAB building.
+              </p>
+              <p class="program-disclaimer">
+                At this event photos are being taken for promotional and archival purposes. If you
+                do not wish to be photographed, please inform our staff at the registration desk to the event.
+              </p>
+            </div>
+          </div>
+
+          <div class="agenda" role="list" aria-label="Evening agenda">
+            <article class="agenda-item" role="listitem">
+              <time datetime="2026-08-18T18:30">18:30</time>
+              <span class="agenda-marker" aria-hidden="true"></span>
+              <div class="agenda-content">
+                <div class="agenda-header">
+                  <div>
+                    <p class="agenda-kicker">Doors open</p>
+                    <h3>Welcome and first look</h3>
+                  </div>
+                  <span class="agenda-duration">15 min</span>
+                </div>
+                <p>Arrive, settle in, and take a first look at the demonstration stations.</p>
+              </div>
+            </article>
+
+            <article class="agenda-item" role="listitem">
+              <time datetime="2026-08-18T18:45">18:45</time>
+              <span class="agenda-marker" aria-hidden="true"></span>
+              <div class="agenda-content">
+                <div class="agenda-header">
+                  <div>
+                    <p class="agenda-kicker">Welcome</p>
+                    <h3>Prof. Dr. Jutta Günther and Prof. Dr. h.c. Michael Beetz, PhD</h3>
+                  </div>
+                  <span class="agenda-duration">18:45</span>
+                </div>
+                <p>Brief welcome by the Rector of the University of Bremen and the Head of the AICOR Institute for Artificial Intelligence.</p>
+                <br>
+                <div class="agenda-header">
+                  <div>
+                    <p class="agenda-kicker">Introductory talks</p>
+                    <h3>Four perspectives on physical AI</h3>
+                  </div>
+                  <span class="agenda-duration">18:47–19:30</span>
+                </div>
+                <p>Four short scientific talks of approximately 10–12 minutes each.</p>
+                <p class="talk-moderator">Moderated by Prof. Alessandro Saffiotti</p>
+
+                <ol class="talk-list">
+                  <li>
+                    <span class="talk-number">Talk 01</span>
+                    <div>
+                      <h4>Prof. Tamim Asfour</h4>
+                      <p>Coordinator, Robotics Institute Germany</p>
+                      <strong>Humanoid Robotics: The Next Frontier of AI, and Its Hardest Problems</strong>
+                    </div>
+                  </li>
+                  <li>
+                    <span class="talk-number">Talk 02</span>
+                    <div>
+                      <h4>Rebecca Schedl-Warpup</h4>
+                      <p>Manager of euROBIN European Network of Excellence Centres in Robotics</p>
+                      <strong>Physical AI in Europe – Transferability</strong>
+                    </div>
+                  </li>
+                  <li>
+                    <span class="talk-number">Talk 03</span>
+                    <div>
+                      <h4>Prof. Michael Beetz</h4>
+                      <p>CRC EASE, University of Bremen</p>
+                      <strong>Accountable robot manipulation and knowledge-enabled control</strong>
+                    </div>
+                  </li>
+                  <li>
+                    <span class="talk-number">Talk 04</span>
+                    <div>
+                      <h4>Prof. David Vernon</h4>
+                      <p>Author of <cite>Artificial Cognitive Systems</cite> (MIT Press)</p>
+                      <strong>Cognitive architectures for autonomous robots</strong>
+                    </div>
+                  </li>
+                </ol>
+              </div>
+            </article>
+
+            <article class="agenda-item" role="listitem">
+              <time datetime="2026-08-18T19:30">19:30</time>
+              <span class="agenda-marker" aria-hidden="true"></span>
+              <div class="agenda-content">
+                <div class="agenda-header">
+                  <div>
+                    <p class="agenda-kicker">Panel discussion</p>
+                    <h3>Physical AI - From Research to Sustainable Impact</h3>
+                  </div>
+                  <span class="agenda-duration">19:30–19:50</span>
+                </div>
+                <p class="agenda-lead"><strong>Moderator:</strong> Radu Rusu, CEO, Exponential VC</p>
+                <p>
+                  Research coordinators, company representatives, and funding bodies discuss how
+                  physical AI can move reliably from demonstration to deployment — from technical
+                  and organizational requirements to standards, benchmarks, open platforms, and
+                  sustained public investment.
+                </p>
+                <h4 class="panelist-heading">Participants</h4>
+                <ul class="panelist-list">
+                  <li>
+                    <strong>Prof. Michael Beetz</strong>
+                    <span>CRC EASE, University of Bremen</span>
+                  </li>
+                  <li>
+                    <strong>Catie Cuan</strong>
+                    <span>CEO and founder of ART Lab</span>
+                  </li>
+                  <li>
+                    <strong>Eitan Marder-Eppstein</strong>
+                    <span>CEO and founder of Hippo Harvest</span>
+                  </li>
+                  <li>
+                    <strong>Cyril Nader</strong>
+                    <span>CEO and founder of Phenix Space</span>
+                  </li>
+                  <li>
+                    <strong>Lesya Hendrix</strong>
+                    <span>CEO and founder of Spacer Robotics</span>
+                  </li>
+                  <li>
+                    <strong>Alexander König</strong>
+                    <span>Professor TUM, CEO of Reactive Robotics GmbH</span>
+                  </li>
+                  <li>
+                    <strong>Felix Röse</strong>
+                    <span>Project Manager Digitalization, Siemens Gamesa Renewable Energy Deutschland GmbH</span>
+                  </li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="agenda-item" role="listitem">
+              <time datetime="2026-08-18T19:50">19:50</time>
+              <span class="agenda-marker" aria-hidden="true"></span>
+              <div class="agenda-content">
+                <div class="agenda-header">
+                  <div>
+                    <p class="agenda-kicker">Open laboratories and networking reception</p>
+                    <h3>Live robot demonstrations</h3>
+                  </div>
+                  <span class="agenda-duration">19:50–21:30</span>
+                </div>
+                <p>
+                  Move freely between demonstration areas as research groups and companies present
+                  working systems. The catered networking reception runs in parallel.
+                </p>
+
+                <div class="laboratory-layout">
+                  <div>
+                    <h4>Research demonstrations</h4>
+                    <ul class="demonstration-list">
+                      <li>Autonomous robots accomplishing everyday manipulation tasks</li>
+                      <li>Laboratory robotics for scientific automation</li>
+                      <li>Retail robots and service robotics in commercial settings</li>
+                      <li>Learning robot manipulation from instruction videos and written instructions</li>
+                      <li>Robot perception and scene understanding</li>
+                      <li>Knowledge representation and reasoning for robot task execution</li>
+                      <li>Plan-based control and AI-powered robot control architectures</li>
+                    </ul>
+                  </div>
+                  <div class="industry-note">
+                    <p class="agenda-kicker">Industry showcase</p>
+                    <h4>Start-ups and companies</h4>
+                    <p>
+                      At least five robotics start-ups and companies present products and
+                      technologies, coordinated through the Robotics Institute Germany Robotic
+                      Booster Program.
+                    </p>
+                    <p class="reception-note">
+                      <strong>Networking reception</strong>
+                      Catering and conversations with European and German robotics researchers and
+                      industry representatives continue throughout the demonstrations.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="video-showcase" aria-labelledby="video-title">
+        <div class="section-shell">
+          <div class="video-heading">
+            <p class="eyebrow">AICOR demonstration</p>
+            <h2 id="video-title">A PR2 robot at work.</h2>
+          </div>
+          <div class="video-frame">
+            <video
+              controls
+              muted
+              playsinline
+              preload="metadata"
+              poster="img/robot-expo-video-poster.webp"
+              aria-label="PR2 apartment robot demonstration"
+            >
+              <source src="videos/robot-expo-pr2-apartment-demo.mp4" type="video/mp4" />
+              Your browser does not support the video element.
+            </video>
+          </div>
+        </div>
+      </section>
+
+      <section class="details" id="details" aria-labelledby="details-title">
+        <div class="section-shell details-layout">
+          <div class="details-copy">
+            <p class="eyebrow">Event details</p>
+            <h2 id="details-title">Join us at AICOR.</h2>
+            <p>
+              The Robot Expo brings the IJCAI 2026 community into AICOR for an evening of talks,
+              discussion, demonstrations, and an up-close look at current robotics research.
+            </p>
+          </div>
+
+          <dl class="detail-list">
+            <div class="detail-row">
+              <dt>Date</dt>
+              <dd>Tuesday, 18 August 2026</dd>
+            </div>
+            <div class="detail-row">
+              <dt>Time</dt>
+              <dd>18:30–21:30</dd>
+            </div>
+            <div class="detail-row">
+              <dt>Venue</dt>
+              <dd>
+                <strong>AICOR Institute for Artificial Intelligence</strong>
+                Am Fallturm 1, TAB Entrance E, 28359 Bremen, Germany
+              </dd>
+            </div>
+          </dl>
+        </div>
+        <div class="section-shell registration-layout" id="registration">
+          <div>
+            <p class="eyebrow">Registration</p>
+            <h2 id="registration-title">Registration is closed.</h2>
+            <p class="registration-note">
+              The event is over. Thank you to all participants and guests for attending.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="venue" id="venue" aria-labelledby="venue-title">
+        <div class="venue-media">
+          <div class="venue-image" role="img" aria-label="A robot preparing food beside an AICOR virtual research environment"></div>
+          <p class="image-disclaimer venue-image-disclaimer">The image of the PR2 robot above was AI-generated.</p>
+        </div>
+        <div class="venue-panel">
+          <div class="venue-information">
+            <div class="venue-block">
+              <p class="venue-label">Address</p>
+              <address>
+                <strong>AICOR Institute for Artificial Intelligence</strong><br />
+                University Bremen<br />
+                Am Fallturm 1, TAB Entrance E<br />
+                28359 Bremen<br />
+                Germany
+              </address>
+            </div>
+            <div class="venue-block">
+              <p class="venue-label">Directions</p>
+              <p class="venue-directions">
+                From <strong>Hauptbahnhof-Nord/Messe</strong> (Bremen Central Station Nord/Messe), take tram line 6
+                towards <strong>Universität</strong> and get off at <strong>Universität-Nord</strong> (terminus). The journey takes approximately
+                <strong>14 minutes</strong> and includes <strong>12 stops</strong>. From there, it is a short 3-minute walk
+                (approximately 280 metres) to the AICOR Institute for Artificial Intelligence,
+                located at the <strong>Technische Akademie Bremen (TAB), Am Fallturm 1, Entrance E</strong>.
+              </p>
+            </div>
+          </div>
+          <div class="venue-actions">
+            <a
+              class="primary-action"
+              href="https://www.google.com/maps/search/?api=1&query=AICOR+Institute+for+Artificial+Intelligence%2C+Am+Fallturm+1%2C+TAB+Entrance+E%2C+28359+Bremen%2C+Germany"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Get directions
+              <svg aria-hidden="true" viewBox="0 0 24 24">
+                <path d="M14 5h5v5M10 14 19 5M19 13v6H5V5h6" />
+              </svg>
+            </a>
+            <button class="text-action" type="button" data-copy-address>
+              <svg aria-hidden="true" viewBox="0 0 24 24">
+                <rect x="8" y="8" width="11" height="11" rx="2" />
+                <path d="M16 8V5H5v11h3" />
+              </svg>
+              <span>Copy address</span>
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-event">
+          <p class="footer-title">Robot Expo @ <strong>AICOR</strong></p>
+          <p>An IJCAI 2026 co-located in Bremen.</p>
+          <p class="footer-date">18 August 2026 <span aria-hidden="true">/</span> From 18:30</p>
+        </div>
+        <div class="footer-organization">
+          <p class="footer-label">Organizer</p>
+          <p>AICOR Institute for Artificial Intelligence</p>
+        </div>
+        <div class="footer-organization">
+          <p class="footer-label">Contributing organizations</p>
+          <ul>
+            <li>Robotics Institute Germany (RIG)</li>
+            <li>euROBIN — European Network of Excellence Centres in Robotics</li>
+          </ul>
+        </div>
+      </div>
+      <section class="footer-logos" aria-label="Partners and funding organizations">
+        <div class="footer-logo-track">
+          <img src="img/external-logos/university-bremen-color.png" alt="University of Bremen" />
+          <img
+            src="img/external-logos/free-hanseatic-city-bremen.png"
+            alt="Free Hanseatic City of Bremen"
+          />
+          <img
+            src="img/external-logos/eu.jpg"
+            alt="European Union"
+          />
+          <img
+            src="img/external-logos/dfg.png"
+            alt="German Research Foundation"
+          />
+          <img src="img/external-logos/bmftr.png" alt="BMFTR" />
+          <img src="img/external-logos/fame.png" alt="FAME" />
+          <img src="img/external-logos/ease.png" alt="EASE Collaborative Research Center" />
+          <img
+            src="img/external-logos/robotics-institute-germany.png"
+            alt="Robotics Institute Germany"
+          />
+          <img src="img/external-logos/eurobin.png" alt="euROBIN" />
+          <img src="img/external-logos/minds-media-machines.png" alt="Minds, Media, Machines" />
+          <img src="img/external-logos/tzi.png" alt="TZI, Center for Computing Technologies" />
+        </div>
+      </section>
+    </footer>
+  </body>
+</html>
