@@ -625,85 +625,150 @@ body.nav-open .site-header {
 
 /* ─────────────────────────────────────────────────────────
    FEATURED KEYNOTE SPEAKERS  (H4)
-   Visual treatment deferred — design direction pending sign-off.
+   Clean, borderless layout with big portrait photos (Ashoka style)
 ──────────────────────────────────────────────────────────── */
 .section-speakers {
-  padding: 3.5rem 0;
+  padding: 4.5rem 0;
 }
 
 .section-note {
-  font-size: 0.88rem;
+  font-size: 0.95rem;
   color: var(--color-graphite);
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
 }
 
-.speakers-list {
-  list-style: none;
+.speakers-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem 2rem;
+}
+
+@media (min-width: 36rem) {
+  .speakers-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem 2rem;
+  }
+}
+
+@media (min-width: 58rem) {
+  .speakers-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3.5rem 2.25rem;
+  }
+}
+
+@media (min-width: 72rem) {
+  .speakers-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3.5rem 2.25rem;
+  }
+}
+
+.speaker-card {
   display: flex;
   flex-direction: column;
-  gap: 1.75rem;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  overflow: visible;
 }
 
-.speaker {
-  display: flex;
-  align-items: flex-start;
-  gap: 1.25rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid rgba(247, 244, 238, 0.12);
+.speaker-photo-wrap {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background-color: #e5e5e5;
+  overflow: hidden;
+  text-decoration: none;
+  cursor: pointer;
 }
 
-/*
-  Speaker photo placeholder.
-  TO SWAP IN A REAL PHOTO: add a background-image rule scoped to a
-  speaker-specific selector, e.g.:
-    .speaker:nth-child(1) .speaker-photo { background-image: url("../img/speakers/ravindran.jpg"); }
-  and remove or override the background-color + ::after rules below for that speaker.
-*/
 .speaker-photo {
-  flex-shrink: 0;
-  width: 4rem;
-  height: 4rem;
-  background-color: rgba(247, 244, 238, 0.08);
-  background-size: cover;
-  background-position: center;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  position: relative;
+  object-position: top center;
+  display: block;
+  transition: opacity 0.2s ease, transform 0.25s ease;
 }
 
-.speaker-photo::after {
-  content: attr(data-initials);
-  position: absolute;
-  inset: 0;
+.speaker-photo-wrap:hover .speaker-photo {
+  opacity: 0.94;
+  transform: scale(1.02);
+}
+
+.speaker-info {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-sans);
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: var(--color-graphite);
-  letter-spacing: 0.04em;
+  flex-direction: column;
+  padding: 0;
+  margin-top: 1rem;
 }
 
 .speaker-name {
-  font-family: var(--font-sans);
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--color-graphite-dark);
-  margin-bottom: 0.25rem;
+  font-family: var(--font-display, 'Merriweather', serif);
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: #003366;
+  line-height: 1.3;
+  margin-bottom: 0.4rem;
 }
 
 .speaker-name a {
   color: inherit;
+  text-decoration: none;
 }
 
 .speaker-name a:hover {
   color: var(--color-teal);
+  text-decoration: underline;
 }
 
 .speaker-role {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: #222222;
+  line-height: 1.45;
+  margin-bottom: 0.4rem;
+}
+
+.speaker-affil {
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  font-style: italic;
+  color: #333333;
+  line-height: 1.4;
+  margin-bottom: 0.65rem;
+}
+
+.speaker-email-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-sans);
   font-size: 0.9rem;
-  color: var(--color-graphite);
-  line-height: 1.5;
+  font-weight: 400;
+  color: #222222;
+  text-decoration: none;
+  word-break: break-all;
+}
+
+.speaker-email-link:hover {
+  color: var(--color-teal);
+  text-decoration: underline;
+}
+
+.speaker-email-icon {
+  width: 1.15rem;
+  height: 1.15rem;
+  flex-shrink: 0;
+  stroke: #222222;
+  vertical-align: middle;
+}
+
+.speaker-email-link:hover .speaker-email-icon {
+  stroke: var(--color-teal);
 }
 
 /* ─────────────────────────────────────────────────────────
@@ -742,12 +807,6 @@ body.nav-open .site-header {
 }
 
 @media (min-width: 48rem) {
-  .speakers-list {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.75rem 3rem;
-  }
-
   .audience-list {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -1503,4 +1562,156 @@ p {
 }
 .nav-countdown {
   color: var(--color-graphite);
+}
+
+/* ─────────────────────────────────────────────────────────
+   FAQ ACCORDION & INNER PAGE STYLES
+──────────────────────────────────────────────────────────── */
+.page-main {
+  padding-top: calc(var(--header-h) + 2.5rem);
+  padding-bottom: 5rem;
+  min-height: calc(100vh - var(--header-h));
+}
+
+.page-heading-block {
+  margin-bottom: 2rem;
+}
+
+.page-heading-block h1 {
+  font-family: var(--font-display, 'Merriweather', serif);
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  color: var(--color-graphite-dark);
+  line-height: 1.2;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.section-faq {
+  padding: 1rem 0 3rem;
+}
+
+.faq-accordion {
+  width: 100%;
+  max-width: 52rem;
+  margin: 0;
+}
+
+.faq-item {
+  border-top: 1px solid var(--color-chalk-line);
+}
+
+.faq-item:last-child {
+  border-bottom: 1px solid var(--color-chalk-line);
+}
+
+.faq-item h3 {
+  margin: 0;
+  font-size: inherit;
+  font-weight: normal;
+}
+
+.faq-question-btn {
+  all: unset;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 1.35rem 0;
+  cursor: pointer;
+  box-sizing: border-box;
+  text-align: left;
+  gap: 1.5rem;
+}
+
+.faq-question-btn:focus-visible {
+  outline: 2px solid var(--color-teal);
+  outline-offset: 4px;
+}
+
+.faq-question-text {
+  font-family: var(--font-sans);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--color-graphite-dark);
+  line-height: 1.45;
+  transition: color var(--transition);
+}
+
+.faq-question-btn:hover .faq-question-text {
+  color: var(--color-teal);
+}
+
+.faq-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  flex-shrink: 0;
+  color: var(--color-graphite);
+}
+
+.faq-icon svg {
+  display: block;
+  stroke: var(--color-graphite);
+  transition: transform 0.25s cubic-bezier(0.2, 0, 0, 1);
+  transform-origin: center center;
+}
+
+.faq-question-btn[aria-expanded="true"] .faq-icon svg,
+.faq-item.is-open .faq-icon svg {
+  transform: rotate(45deg);
+}
+
+.faq-answer {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s cubic-bezier(0.2, 0, 0, 1), opacity 0.25s ease, visibility 0.3s ease;
+  overflow: hidden;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.faq-answer[aria-hidden="false"],
+.faq-item.is-open .faq-answer {
+  grid-template-rows: 1fr;
+  visibility: visible;
+  opacity: 1;
+}
+
+.faq-answer-inner {
+  min-height: 0;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+}
+
+.faq-answer p {
+  font-family: var(--font-sans);
+  font-size: 0.96rem;
+  color: var(--color-graphite);
+  line-height: 1.65;
+  margin: 0;
+  padding-bottom: 1.35rem;
+  max-width: 65ch;
+  text-align: left;
+}
+
+.faq-answer a {
+  color: var(--color-teal);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.faq-answer a:hover {
+  color: var(--color-aqua);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .faq-answer {
+    transition: none !important;
+  }
+  .faq-icon svg {
+    transition: none !important;
+  }
 }
