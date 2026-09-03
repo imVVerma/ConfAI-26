@@ -871,45 +871,99 @@ body.nav-open .site-header {
 
 /* ─────────────────────────────────────────────────────────
    WHAT'S IN STORE — PROGRAM SNAPSHOT  (H6)
-   Same structural pattern as Why Attend and Who Should Attend.
-   Visual treatment deferred — design direction pending sign-off.
 ──────────────────────────────────────────────────────────── */
 .section-program {
   padding: 3.5rem 0;
 }
 
-.program-list {
-  list-style: none;
+.program-strip {
   display: flex;
   flex-direction: column;
-  gap: 1.75rem;
+  gap: 2rem;
+  padding: 1rem 0;
 }
 
-.program-list li {
-  padding-top: 1.5rem;
-  border-top: 1px solid rgba(247, 244, 238, 0.12);
+.program-item {
+  display: flex;
+  flex-direction: column;
 }
 
-.program-list h3 {
+.program-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  background-color: var(--color-chalk-bg);
+  color: var(--color-teal);
+  border: 1px solid var(--color-chalk-line);
+  margin-bottom: 1.25rem;
+}
+
+.program-icon svg {
+  display: block;
+}
+
+.program-item h3 {
   font-family: var(--font-sans);
-  font-size: 1.05rem;
+  font-size: 1.1rem;
   font-weight: 700;
   color: var(--color-graphite-dark);
-  margin-bottom: 0.35rem;
+  margin: 0 0 0.5rem 0;
 }
 
-.program-list p {
-  font-size: 0.98rem;
+.program-item p {
+  font-size: 0.95rem;
   color: var(--color-graphite);
-  max-width: 60ch;
-  line-height: 1.65;
+  line-height: 1.6;
+  margin: 0;
+  max-width: 90%;
 }
 
 @media (min-width: 48rem) {
-  .program-list {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.75rem 3rem;
+  .program-strip {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 3rem 0;
+  }
+  
+  .program-item {
+    width: 50%;
+    padding-right: 2rem;
+    box-sizing: border-box;
+  }
+  
+  .program-item:nth-child(even) {
+    padding-left: 2rem;
+    border-left: 1px solid var(--color-chalk-line);
+  }
+}
+
+@media (min-width: 64rem) {
+  .program-strip {
+    flex-wrap: nowrap;
+    gap: 0;
+    align-items: stretch;
+  }
+  
+  .program-item {
+    width: 25%;
+    padding: 0 1.5rem;
+    border-left: 1px solid var(--color-chalk-line);
+  }
+  
+  .program-item:first-child {
+    padding-left: 0;
+    border-left: none;
+  }
+  
+  .program-item:nth-child(even) {
+    padding-left: 1.5rem; /* override tablet */
+  }
+  
+  .program-item:last-child {
+    padding-right: 0;
   }
 }
 
