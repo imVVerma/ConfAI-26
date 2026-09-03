@@ -413,69 +413,130 @@
       </section>
 
       <!-- ═══════════════════════════════════════════════
-           H8 · TRACK DIAGRAM (WIREFRAME)
+           H8 · CONFERENCE TRACKS
            ═══════════════════════════════════════════════ -->
       <section class="section-tracks-diagram" id="tracks-diagram" aria-labelledby="tracks-diagram-heading">
         <div class="section-inner">
-          <h2 id="tracks-diagram-heading" class="sr-only">Conference Tracks</h2>
-          
-          <div class="radial-container">
-            <!-- Center Hub -->
-            <div class="radial-hub">
-              ConfAI<br>2026
+          <h2 id="tracks-diagram-heading">Conference Tracks</h2>
+
+          <div class="radial-container" role="list" aria-label="8 conference tracks">
+            <!-- Center Hub — logo placeholder, no real logo supplied yet -->
+            <div class="radial-hub" aria-hidden="true">
+              <span class="radial-hub-mark">ConfAI</span>
+              <span class="radial-hub-year">2026</span>
             </div>
-            
-            <!-- 8 Tracks radiating outwards -->
-            <ul class="radial-tracks">
-              <li class="radial-track" style="--track-idx: 0;">
-                <a href="#track-1" class="track-link">
-                  <span class="track-num">1</span>
-                  <span class="track-name">AI in the Economy</span>
-                </a>
-              </li>
-              <li class="radial-track" style="--track-idx: 1;">
-                <a href="#track-2" class="track-link">
-                  <span class="track-num">2</span>
-                  <span class="track-name">AI in Healthcare</span>
-                </a>
-              </li>
-              <li class="radial-track" style="--track-idx: 2;">
-                <a href="#track-3" class="track-link">
-                  <span class="track-num">3</span>
-                  <span class="track-name">AI in Sensors</span>
-                </a>
-              </li>
-              <li class="radial-track" style="--track-idx: 3;">
-                <a href="#track-4" class="track-link">
-                  <span class="track-num">4</span>
-                  <span class="track-name">Reasoning in Vision Language Models</span>
-                </a>
-              </li>
-              <li class="radial-track" style="--track-idx: 4;">
-                <a href="#track-5" class="track-link">
-                  <span class="track-num">5</span>
-                  <span class="track-name">AI4Cities: Enhancing Resilience, Improving Liveability</span>
-                </a>
-              </li>
-              <li class="radial-track" style="--track-idx: 5;">
-                <a href="#track-6" class="track-link">
-                  <span class="track-num">6</span>
-                  <span class="track-name">Responsible and Ethical AI</span>
-                </a>
-              </li>
-              <li class="radial-track" style="--track-idx: 6;">
-                <a href="#track-7" class="track-link">
-                  <span class="track-num">7</span>
-                  <span class="track-name">AI and Logic: Relations and Applications</span>
-                </a>
-              </li>
-              <li class="radial-track" style="--track-idx: 7;">
-                <a href="#track-8" class="track-link">
-                  <span class="track-num">8</span>
-                  <span class="track-name">Recent Advances in AI</span>
-                </a>
-              </li>
-            </ul>
+
+            <!-- Track 1 -->
+            <div class="radial-track" style="--track-idx:0;" role="listitem">
+              <div class="radial-connector" aria-hidden="true"></div>
+              <button class="track-node" type="button"
+                data-track-num="1"
+                data-track-name="AI in the Economy"
+                data-track-chairs="Dr. Alok Ranjan, Dr. Nikhil George, Dr. Divyanshu Jain"
+                data-track-desc="This session focuses on artificial intelligence as a transformative force across three interlocking pillars of modern economies: labor markets, financial systems, and governance structures. On the labor side, we invite work on automation and job displacement, AI-augmented productivity, reskilling and workforce transitions, monitoring and evaluation, and the distributional effects of AI adoption. In finance, topics of interest include algorithmic trading and market microstructure, AI-driven credit scoring and lending, fraud detection, robo-advisory systems, and the use of large language models in financial forecasting and regulatory compliance. In the domain of governance, we seek contributions on AI in public administration and policy design, algorithmic accountability and auditing, AI regulation frameworks , and the role of AI in macroeconomic policymaking and central banking. Finally, in urban and public systems, we welcome work on smart city infrastructure, AI-driven traffic and mobility optimization, land use modeling, and the equitable allocation of public resources across communities."
+                aria-haspopup="dialog">
+                <span class="track-num">1</span>
+                <span class="track-name">AI in the Economy</span>
+              </button>
+            </div>
+
+            <!-- Track 2 -->
+            <div class="radial-track" style="--track-idx:1;" role="listitem">
+              <div class="radial-connector" aria-hidden="true"></div>
+              <button class="track-node" type="button"
+                data-track-num="2"
+                data-track-name="AI in Healthcare"
+                data-track-chairs="Dr. Sunita Chauhan, Dr. Sandeep Manjanna, Dr. Monika Sharma, Dr. Chaitanya Lekshmi Indira, Dr. Appan Rakaraddi, Dr. Arshdeep Sidhu, Dr. Amruta R Behera, Dr. Rucha Joshi, Dr. Swagata Halder, Dr. Sanjeev Khosla"
+                data-track-desc="This session aims to explore how AI technologies can be designed and deployed to deliver tailored healthcare solutions while ensuring fair and inclusive access. It will examine the role of AI in precision medicine, early disease detection, and adaptive care pathways, alongside application in expanding healthcare reach through low-cost diagnostics, telemedicine, and language-inclusive tools. Key challenges will be addressed, including algorithmic bias, data underrepresentation, the digital divide, and the risk of exacerbating existing health disparities."
+                aria-haspopup="dialog">
+                <span class="track-num">2</span>
+                <span class="track-name">AI in Healthcare</span>
+              </button>
+            </div>
+
+            <!-- Track 3 -->
+            <div class="radial-track" style="--track-idx:2;" role="listitem">
+              <div class="radial-connector" aria-hidden="true"></div>
+              <button class="track-node" type="button"
+                data-track-num="3"
+                data-track-name="AI in Sensors"
+                data-track-chairs="Dr. Anil Roy, Dr. Praveen Kumar, Dr. Sandilya Garimella"
+                data-track-desc="Ours is a data driven society. Our life and lifestyle- are overwhelmingly impacted by data supported intelligent systems, be it products or services. A vast portion of these data is emanating from various sensors, appropriate for that event. Sensing technologies are evolving rapidly, generating vast streams of data that require real-time processing, intelligent pattern recognition, and robust decision-making. The specially curated session on &quot;AI in Sensing&quot; of ConfAI invites all researchers, academicians, developers, practitioners, thought leaders, policy makers and overall users of this rapidly growing field which is inventing itself since AI models, tools and techniques are being used to develop the next generation of solutions, physical sensors, hardware systems, and domain-specific analytical engines. Unlike general computer science conferences, this venue explicitly focuses on intelligent application domains, sensor hardware-software co-design, and deployment physics. We welcome contributions from researchers engineering sensors, data acquisition boards, and intelligent transducer networks to make predictions and support real-time decision systems. No matter if it was published earlier, do submit your work. We aim for a highly intense discussion, debate and direction for and of AI in Sensing. Some of the targeted tracks are (but not all): accessibility, clean water, cognitive load assessment, critical infrastructure, Edge AI hardware system, education, entertainment industry, environment, food security, gaming, green energy, haptics, industry 5.0, life on poles, PolSAR image, quantum materials towards circular electronics, quantum sensors, rehabilitation, sanitation, satellite technology, security &amp; surveillance, smart agriculture, sports, underwater world, wearables."
+                aria-haspopup="dialog">
+                <span class="track-num">3</span>
+                <span class="track-name">AI in Sensors</span>
+              </button>
+            </div>
+
+            <!-- Track 4 -->
+            <div class="radial-track" style="--track-idx:3;" role="listitem">
+              <div class="radial-connector" aria-hidden="true"></div>
+              <button class="track-node" type="button"
+                data-track-num="4"
+                data-track-name="Reasoning in Vision Language Models"
+                data-track-chairs="Dr. Pankaj Pansari, Dr. Deepan Muthirayan"
+                data-track-desc="Reasoning is central to intelligence, problem solving, and decision making. Frontier foundation models like VLMs have been able to achieve significant improvements in performance across benchmarks that involve texts and visual data. Notwithstanding, it is critical to know what the model truly understands and does not, when a model might fail and why a model fails. Evaluating the reasoning capabilities of a model directly addresses such questions. The proposed workshop aims to span several topics ranging from benchmarking reasoning, fine-tuning and inference time scaling for reasoning, techniques for probing and analysis, and training and architectures for reasoning. The workshop aims to bring in researchers and expert to share their work and shed light on the recent advances and to create a platform for fostering discussions and collaborations to advance benchmarking and reasoning capabilities of VLMs."
+                aria-haspopup="dialog">
+                <span class="track-num">4</span>
+                <span class="track-name">Reasoning in Vision Language Models</span>
+              </button>
+            </div>
+
+            <!-- Track 5 -->
+            <div class="radial-track" style="--track-idx:4;" role="listitem">
+              <div class="radial-connector" aria-hidden="true"></div>
+              <button class="track-node" type="button"
+                data-track-num="5"
+                data-track-name="AI4Cities: Enhancing Resilience, Improving Liveability"
+                data-track-chairs="Dr. Anupam Sobti, Dr. Malini Balakrishnan, Dr. Prashanth Suresh Kumar, Dr. Pankaj Pansari"
+                data-track-desc="Tier-2 and Tier-3 Indian cities are undergoing rapid expansion and population growth. They are also being impacted by extreme weather events caused by climate change. These have intensified challenges around urban infrastructure leading to erratic power and water supply, inadequate solid waste and wastewater management, urban flooding, traffic congestion etc., thus directly impacting liveability. Traditional infrastructure and planning approaches are unable to keep pace with this complex, fragmented and rapid urban development. In this context, AI offers a powerful approach for predictive urban management through real-time, data-driven insights, that can enable cities to anticipate water and energy demand, optimize waste and wastewater management systems, and overall, enable better quality of living. The impact of AI also depends on how well it is embedded into governance and decision-making processes that can help urban local bodies make informed, timely decisions. Thus, scalable, low-cost digital tools are required, along with suitable data-sharing frameworks, enhanced institutional capacity, and citizen engagement."
+                aria-haspopup="dialog">
+                <span class="track-num">5</span>
+                <span class="track-name">AI4Cities: Enhancing Resilience, Improving Liveability</span>
+              </button>
+            </div>
+
+            <!-- Track 6 -->
+            <div class="radial-track" style="--track-idx:5;" role="listitem">
+              <div class="radial-connector" aria-hidden="true"></div>
+              <button class="track-node" type="button"
+                data-track-num="6"
+                data-track-name="Responsible and Ethical AI"
+                data-track-chairs="Dr. Rajesh Sharma, Dr. Sachindranath"
+                data-track-desc="Artificial intelligence is reshaping institutions, economies, and social relations at a pace that has outrun existing governance structures. This session examines the ethical, legal, and sociotechnical dimensions of responsible AI, bringing together interdisciplinary perspectives from computer science, law, philosophy, political science, and sociology. We explore how foundational ethical theories inform practical governance models, including structures for accountability, transparency, and stakeholder participation. Central concerns include algorithmic fairness, epistemic risks, power concentration, and the design of cross-jurisdictional regulatory frameworks — particularly for generative and agentic AI systems. The session also engages with the growing recognition that adherence to emerging AI standards must translate into meaningful real-world behavior, not mere compliance. We invite contributions that treat responsible AI not as a technical problem alone, but as a fundamentally human and political one."
+                aria-haspopup="dialog">
+                <span class="track-num">6</span>
+                <span class="track-name">Responsible and Ethical AI</span>
+              </button>
+            </div>
+
+            <!-- Track 7 -->
+            <div class="radial-track" style="--track-idx:6;" role="listitem">
+              <div class="radial-connector" aria-hidden="true"></div>
+              <button class="track-node" type="button"
+                data-track-num="7"
+                data-track-name="AI and Logic: Relations and Applications"
+                data-track-chairs="Dr. Deepak Khemani, Dr. Saeed Salehi, Dr. Tapas Pandit"
+                data-track-desc="The interaction of various logics and different AI tools is two-way: logic is used and can, in fact, help design an AI tool; an AI tool can, in turn, be trained for solving some logical problems (which could have more mathematical flavor). Logic has always played a role in AI—starting with theorem proving, model checking, event calculus, reasoning with ontologies on the web, and epistemic reasoning in multi-agent systems. Also, logic can provide rigorous guarantees needed for data privacy and the protection of sensitive information. Thus, logic is not only an important outcome of a successfully designed AI device but also a cornerstone tool in any AI development. This track welcomes all submissions related to AI and logic."
+                aria-haspopup="dialog">
+                <span class="track-num">7</span>
+                <span class="track-name">AI and Logic: Relations and Applications</span>
+              </button>
+            </div>
+
+            <!-- Track 8 -->
+            <div class="radial-track" style="--track-idx:7;" role="listitem">
+              <div class="radial-connector" aria-hidden="true"></div>
+              <button class="track-node" type="button"
+                data-track-num="8"
+                data-track-name="Recent Advances in AI"
+                data-track-chairs=""
+                data-track-desc="Submissions are not limited to the tracks given above. Work pertaining to the theme of the conference is welcome. It could include ongoing research and previously published work."
+                aria-haspopup="dialog">
+                <span class="track-num">8</span>
+                <span class="track-name">Recent Advances in AI</span>
+              </button>
+            </div>
           </div>
         </div>
       </section>
@@ -504,6 +565,67 @@
       </section>
 
 
+      <!-- ═══════════════════════════════════════════════
+           H10 · KEY NUMBERS
+           Heading assumed: "ConfAI 2026 By the Numbers"
+           (no exact heading supplied in the brief)
+           ═══════════════════════════════════════════════ -->
+      <section class="section-stats" id="key-numbers" aria-labelledby="stats-heading">
+        <div class="section-inner">
+          <h2 id="stats-heading">ConfAI 2026 By the Numbers</h2>
+          <dl class="stats-list">
+            <div class="stat-item">
+              <dt class="stat-value">5+</dt>
+              <dd class="stat-label">Keynote Speakers</dd>
+            </div>
+            <div class="stat-item">
+              <dt class="stat-value">20+</dt>
+              <dd class="stat-label">Oral Presenters</dd>
+            </div>
+            <div class="stat-item">
+              <dt class="stat-value">20+</dt>
+              <dd class="stat-label">Poster Presenters</dd>
+            </div>
+            <div class="stat-item">
+              <dt class="stat-value">600+</dt>
+              <dd class="stat-label">Students</dd>
+            </div>
+            <div class="stat-item">
+              <dt class="stat-value">100+</dt>
+              <dd class="stat-label">Attendees</dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════
+           H11 · RELIVE CONFAI 2025
+           ═══════════════════════════════════════════════ -->
+      <section class="section-relive" id="relive-2025" aria-labelledby="relive-heading">
+        <div class="section-inner">
+          <h2 id="relive-heading">Relive ConfAI 2025</h2>
+
+          <!-- 16:9 Responsive YouTube Embed -->
+          <div class="video-wrapper" aria-label="ConfAI 2025 highlights video">
+            <iframe
+              src="https://www.youtube.com/embed/k3G5v5cH-bo"
+              title="ConfAI 2025 Highlights"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+              loading="lazy"
+            ></iframe>
+          </div>
+
+          <!-- Photo Gallery — rendered from img/gallery-2025/manifest.json by script.js -->
+          <div id="gallery-2025" class="gallery-grid" aria-label="ConfAI 2025 photo gallery" role="list">
+            <!-- Photos injected here by initGallery() in script.js -->
+            <!-- To add a real photo: drop the file into img/gallery-2025/
+                 then add one object to img/gallery-2025/manifest.json:
+                 { "file": "your-photo.jpg", "alt": "ConfAI 2025 conference photo — <short description>" }
+                 Remove the "placeholder": true field if present. -->
+          </div>
+        </div>
+      </section>
     </main>
 
     <!-- ═══════════════════════════════════════════════
@@ -516,6 +638,32 @@
         <h3 id="modal-speaker-name" class="modal-speaker-name"></h3>
         <p id="modal-speaker-role" class="modal-speaker-role"></p>
         <a id="modal-speaker-link" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-primary modal-btn">View faculty profile</a>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════
+         PHOTO LIGHTBOX MODAL
+         ═══════════════════════════════════════════════ -->
+    <div class="modal-overlay" id="photo-modal" aria-modal="true" role="dialog" aria-labelledby="photo-modal-caption" hidden>
+      <div class="modal-content photo-modal-content" role="document">
+        <button class="modal-close" aria-label="Close photo">&times;</button>
+        <img id="photo-modal-img" src="" alt="" class="photo-modal-img">
+        <p id="photo-modal-caption" class="photo-modal-caption"></p>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════
+         TRACK MODAL
+         ═══════════════════════════════════════════════ -->
+    <div class="modal-overlay" id="track-modal" aria-modal="true" role="dialog" aria-labelledby="track-modal-name" hidden>
+      <div class="modal-content track-modal-content" role="document">
+        <button class="modal-close" aria-label="Close track details">&times;</button>
+        <div class="track-modal-header">
+          <span class="track-modal-num" id="track-modal-num"></span>
+          <h3 class="track-modal-name" id="track-modal-name"></h3>
+        </div>
+        <p class="track-modal-chairs" id="track-modal-chairs"></p>
+        <p class="track-modal-desc" id="track-modal-desc"></p>
       </div>
     </div>
   </body>
