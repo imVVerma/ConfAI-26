@@ -151,68 +151,122 @@
         <div class="section-inner">
           <h2 id="speakers-heading">Featured Keynote Speakers</h2>
           <p class="section-note">Non-exhaustive list. Additional speakers to be announced.</p>
-          <ul class="speakers-list">
-            <li class="speaker">
-              <button class="speaker-trigger" aria-haspopup="dialog" data-name="Dr. Balaraman Ravindran" data-role="Head, Dept. of Data Science &amp; AI, IIT Madras" data-url="https://wsai.iitm.ac.in/~ravi/" data-initials="BR">
-                <!-- Placeholder: swap in real photo by setting background-image on .speaker-photo -->
-                <img src="img/speakers/ravindran.jpeg" alt="Dr. Balaraman Ravindran, Head, Dept. of Data Science &amp; AI, IIT Madras" class="speaker-photo">
-                <span class="speaker-info">
-                  <span class="speaker-name">Dr. Balaraman Ravindran</span>
-                  <span class="speaker-role">Head, Dept. of Data Science &amp; AI, IIT Madras</span>
-                </span>
-              </button>
-            </li>
-            <li class="speaker">
-              <button class="speaker-trigger" aria-haspopup="dialog" data-name="Dr. Manish Gupta" data-role="Senior Director, Google DeepMind" data-url="https://research.google/people/106704/?&" data-initials="MG">
-                <!-- Placeholder: swap in real photo by setting background-image on .speaker-photo -->
-                <img src="img/speakers/gupta.png" alt="Dr. Manish Gupta, Senior Director, Google DeepMind" class="speaker-photo">
-                <span class="speaker-info">
-                  <span class="speaker-name">Dr. Manish Gupta</span>
-                  <span class="speaker-role">Senior Director, Google DeepMind</span>
-                </span>
-              </button>
-            </li>
-            <li class="speaker">
-              <button class="speaker-trigger" aria-haspopup="dialog" data-name="Dr. Parag Singla" data-role="Professor, CSE Dept., IIT Delhi" data-url="https://homecse.iitd.ac.in/team/parag-singla/" data-initials="PS">
-                <!-- Placeholder: swap in real photo by setting background-image on .speaker-photo -->
-                <img src="img/speakers/singla.jpg" alt="Dr. Parag Singla, Professor, CSE Dept., IIT Delhi" class="speaker-photo">
-                <span class="speaker-info">
-                  <span class="speaker-name">Dr. Parag Singla</span>
-                  <span class="speaker-role">Professor, CSE Dept., IIT Delhi</span>
-                </span>
-              </button>
-            </li>
-            <li class="speaker">
-              <button class="speaker-trigger" aria-haspopup="dialog" data-name="Dr. Ponnurangam Kumaraguru" data-role="Visiting Scientist, ANRF | Professor of CS, IIIT Hyderabad" data-url="https://www.iiit.ac.in/faculty/ponnurangam-kumaraguru/" data-initials="PK">
-                <!-- Placeholder: swap in real photo by setting background-image on .speaker-photo -->
-                <img src="img/speakers/kumaraguru.jpg" alt="Dr. Ponnurangam Kumaraguru, Visiting Scientist, ANRF | Professor of CS, IIIT Hyderabad" class="speaker-photo">
-                <span class="speaker-info">
-                  <span class="speaker-name">Dr. Ponnurangam Kumaraguru</span>
-                  <span class="speaker-role">Visiting Scientist, ANRF | Professor of CS, IIIT Hyderabad</span>
-                </span>
-              </button>
-            </li>
-            <li class="speaker">
-              <button class="speaker-trigger" aria-haspopup="dialog" data-name="Dr. Sanghamitra Bandyopadhyay" data-role="Ex-Director, ISI Kolkata | Padmashree Awardee" data-url="https://en.wikipedia.org/wiki/Sanghamitra_Bandyopadhyay#Awards_and_honours" data-initials="SB">
-                <!-- Placeholder: swap in real photo by setting background-image on .speaker-photo -->
-                <img src="img/speakers/bandyopadhyay.jpg" alt="Dr. Sanghamitra Bandyopadhyay, Ex-Director, ISI Kolkata | Padmashree Awardee" class="speaker-photo">
-                <span class="speaker-info">
-                  <span class="speaker-name">Dr. Sanghamitra Bandyopadhyay</span>
-                  <span class="speaker-role">Ex-Director, ISI Kolkata | Padmashree Awardee</span>
-                </span>
-              </button>
-            </li>
-            <li class="speaker">
-              <button class="speaker-trigger" aria-haspopup="dialog" data-name="Dr. Santanu Choudhary" data-role="Dean, Vachani School of Advanced Computing &amp; Professor of CS, Ashoka University" data-url="https://www.ashoka.edu.in/profile/santanu-chaudhury/" data-initials="SC">
-                <!-- Placeholder: swap in real photo by setting background-image on .speaker-photo -->
-                <img src="img/speakers/choudhary.jpg" alt="Dr. Santanu Choudhary, Dean, Vachani School of Advanced Computing &amp; Professor of CS, Ashoka University" class="speaker-photo">
-                <span class="speaker-info">
-                  <span class="speaker-name">Dr. Santanu Choudhary</span>
-                  <span class="speaker-role">Dean, Vachani School of Advanced Computing &amp; Professor of CS, Ashoka University</span>
-                </span>
-              </button>
-            </li>
-          </ul>
+          
+          <div class="speakers-grid">
+            <!-- Speaker 1 -->
+            <article class="speaker-card">
+              <a href="https://wsai.iitm.ac.in/~ravi/" target="_blank" rel="noopener noreferrer" class="speaker-photo-wrap" aria-label="Visit Dr. Balaraman Ravindran's website">
+                <img src="img/speakers/ravindran.jpeg" alt="Dr. Balaraman Ravindran" class="speaker-photo" loading="lazy" />
+              </a>
+              <div class="speaker-info">
+                <h3 class="speaker-name"><a href="https://wsai.iitm.ac.in/~ravi/" target="_blank" rel="noopener noreferrer">Dr. Balaraman Ravindran</a></h3>
+                <p class="speaker-role">Head, Dept. of Data Science &amp; AI, IIT Madras</p>
+                <p class="speaker-affil">Ph.D. University of Massachusetts Amherst</p>
+                <a href="https://wsai.iitm.ac.in/~ravi/" target="_blank" rel="noopener noreferrer" class="speaker-email-link" aria-label="Email / profile for Dr. Balaraman Ravindran">
+                  <svg class="speaker-email-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                  </svg>
+                  <span>ravi@cse.iitm.ac.in</span>
+                </a>
+              </div>
+            </article>
+
+            <!-- Speaker 2 -->
+            <article class="speaker-card">
+              <a href="https://research.google/people/106704/?&" target="_blank" rel="noopener noreferrer" class="speaker-photo-wrap" aria-label="Visit Dr. Manish Gupta's website">
+                <img src="img/speakers/gupta.png" alt="Dr. Manish Gupta" class="speaker-photo" loading="lazy" />
+              </a>
+              <div class="speaker-info">
+                <h3 class="speaker-name"><a href="https://research.google/people/106704/?&" target="_blank" rel="noopener noreferrer">Dr. Manish Gupta</a></h3>
+                <p class="speaker-role">Senior Director, Google DeepMind</p>
+                <p class="speaker-affil">Ph.D. University of Illinois Urbana-Champaign</p>
+                <a href="https://research.google/people/106704/?&" target="_blank" rel="noopener noreferrer" class="speaker-email-link" aria-label="Email / profile for Dr. Manish Gupta">
+                  <svg class="speaker-email-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                  </svg>
+                  <span>manishgupta@google.com</span>
+                </a>
+              </div>
+            </article>
+
+            <!-- Speaker 3 -->
+            <article class="speaker-card">
+              <a href="https://homecse.iitd.ac.in/team/parag-singla/" target="_blank" rel="noopener noreferrer" class="speaker-photo-wrap" aria-label="Visit Dr. Parag Singla's website">
+                <img src="img/speakers/singla.jpg" alt="Dr. Parag Singla" class="speaker-photo" loading="lazy" />
+              </a>
+              <div class="speaker-info">
+                <h3 class="speaker-name"><a href="https://homecse.iitd.ac.in/team/parag-singla/" target="_blank" rel="noopener noreferrer">Dr. Parag Singla</a></h3>
+                <p class="speaker-role">Professor, CSE Dept., IIT Delhi</p>
+                <p class="speaker-affil">Ph.D. University of Washington</p>
+                <a href="https://homecse.iitd.ac.in/team/parag-singla/" target="_blank" rel="noopener noreferrer" class="speaker-email-link" aria-label="Email / profile for Dr. Parag Singla">
+                  <svg class="speaker-email-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                  </svg>
+                  <span>parags@cse.iitd.ac.in</span>
+                </a>
+              </div>
+            </article>
+
+            <!-- Speaker 4 -->
+            <article class="speaker-card">
+              <a href="https://www.iiit.ac.in/faculty/ponnurangam-kumaraguru/" target="_blank" rel="noopener noreferrer" class="speaker-photo-wrap" aria-label="Visit Dr. Ponnurangam Kumaraguru's website">
+                <img src="img/speakers/kumaraguru.jpg" alt="Dr. Ponnurangam Kumaraguru" class="speaker-photo" loading="lazy" />
+              </a>
+              <div class="speaker-info">
+                <h3 class="speaker-name"><a href="https://www.iiit.ac.in/faculty/ponnurangam-kumaraguru/" target="_blank" rel="noopener noreferrer">Dr. Ponnurangam Kumaraguru</a></h3>
+                <p class="speaker-role">Visiting Scientist, ANRF | Professor of CS, IIIT Hyderabad</p>
+                <p class="speaker-affil">Ph.D. Carnegie Mellon University</p>
+                <a href="https://www.iiit.ac.in/faculty/ponnurangam-kumaraguru/" target="_blank" rel="noopener noreferrer" class="speaker-email-link" aria-label="Email / profile for Dr. Ponnurangam Kumaraguru">
+                  <svg class="speaker-email-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                  </svg>
+                  <span>pk.guru@iiit.ac.in</span>
+                </a>
+              </div>
+            </article>
+
+            <!-- Speaker 5 -->
+            <article class="speaker-card">
+              <a href="https://en.wikipedia.org/wiki/Sanghamitra_Bandyopadhyay#Awards_and_honours" target="_blank" rel="noopener noreferrer" class="speaker-photo-wrap" aria-label="Visit Dr. Sanghamitra Bandyopadhyay's website">
+                <img src="img/speakers/bandyopadhyay.jpg" alt="Dr. Sanghamitra Bandyopadhyay" class="speaker-photo" loading="lazy" />
+              </a>
+              <div class="speaker-info">
+                <h3 class="speaker-name"><a href="https://en.wikipedia.org/wiki/Sanghamitra_Bandyopadhyay#Awards_and_honours" target="_blank" rel="noopener noreferrer">Dr. Sanghamitra Bandyopadhyay</a></h3>
+                <p class="speaker-role">Ex-Director, ISI Kolkata | Padmashree Awardee</p>
+                <p class="speaker-affil">Ph.D. Indian Statistical Institute</p>
+                <a href="https://en.wikipedia.org/wiki/Sanghamitra_Bandyopadhyay#Awards_and_honours" target="_blank" rel="noopener noreferrer" class="speaker-email-link" aria-label="Email / profile for Dr. Sanghamitra Bandyopadhyay">
+                  <svg class="speaker-email-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                  </svg>
+                  <span>sanghami@isical.ac.in</span>
+                </a>
+              </div>
+            </article>
+
+            <!-- Speaker 6 -->
+            <article class="speaker-card">
+              <a href="https://www.ashoka.edu.in/profile/santanu-chaudhury/" target="_blank" rel="noopener noreferrer" class="speaker-photo-wrap" aria-label="Visit Dr. Santanu Chaudhury's website">
+                <img src="img/speakers/choudhary.jpg" alt="Dr. Santanu Chaudhury" class="speaker-photo" loading="lazy" />
+              </a>
+              <div class="speaker-info">
+                <h3 class="speaker-name"><a href="https://www.ashoka.edu.in/profile/santanu-chaudhury/" target="_blank" rel="noopener noreferrer">Dr. Santanu Chaudhury</a></h3>
+                <p class="speaker-role">Dean, Vachani School of Advanced Computing, Ashoka University</p>
+                <p class="speaker-affil">Professor of CS | Ph.D. IIT Kharagpur</p>
+                <a href="https://www.ashoka.edu.in/profile/santanu-chaudhury/" target="_blank" rel="noopener noreferrer" class="speaker-email-link" aria-label="Email / profile for Dr. Santanu Chaudhury">
+                  <svg class="speaker-email-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                  </svg>
+                  <span>santanu.chaudhury@ashoka.edu.in</span>
+                </a>
+              </div>
+            </article>
+          </div>
         </div>
       </section>
 

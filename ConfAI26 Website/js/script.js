@@ -220,4 +220,28 @@
     });
   })();
 
+  /* ── FAQ ACCORDION ──────────────────────────────────────────────────────── */
+  (function initFaqAccordion() {
+    var accordion = document.getElementById("faq-accordion");
+    if (!accordion) return;
+
+    var buttons = accordion.querySelectorAll(".faq-question-btn");
+
+    buttons.forEach(function (button) {
+      button.addEventListener("click", function () {
+        var isExpanded = button.getAttribute("aria-expanded") === "true";
+        var targetId = button.getAttribute("aria-controls");
+        var panel = document.getElementById(targetId);
+        var item = button.closest(".faq-item");
+
+        if (!panel || !item) return;
+
+        var nextState = !isExpanded;
+        button.setAttribute("aria-expanded", String(nextState));
+        panel.setAttribute("aria-hidden", String(!nextState));
+        item.classList.toggle("is-open", nextState);
+      });
+    });
+  })();
+
 })();
