@@ -37,16 +37,24 @@
 
   dropdownItems.forEach(function (item) {
     var toggle = item.querySelector(".dropdown-toggle");
+    var link = item.querySelector(".nav-more-link");
     if (!toggle) {
       return;
     }
-    toggle.addEventListener("click", function (event) {
+    function toggleDropdown(event) {
       event.stopPropagation();
       var isOpen = item.classList.contains("is-open");
       closeDropdowns();
       item.classList.toggle("is-open", !isOpen);
       toggle.setAttribute("aria-expanded", String(!isOpen));
-    });
+    }
+    toggle.addEventListener("click", toggleDropdown);
+    if (link) {
+      link.addEventListener("click", function (event) {
+        event.preventDefault();
+        toggleDropdown(event);
+      });
+    }
   });
 
   document.addEventListener("click", function (event) {
@@ -101,16 +109,27 @@
     var TARGET_START = Date.UTC(2026, 9, 29, 18, 30, 0); // Oct 30 2026 00:00 IST
     var TARGET_END   = Date.UTC(2026, 10, 1, 18, 30, 0); // Nov 2  2026 00:00 IST
 
-    var container = document.getElementById("nav-countdown");
-    if (!container) { return; }
+    var cdDays    = document.getElementById("cd-days");
+    var cdHours   = document.getElementById("cd-hours");
+    var cdMinutes = document.getElementById("cd-minutes");
+    var cdSeconds = document.getElementById("cd-seconds");
+    var heroCards = document.getElementById("hero-countdown");
+    var navContainer = document.getElementById("nav-countdown");
+
+    if (!cdDays && !navContainer) { return; }
 
     function pad(n) {
       return n < 10 ? "0" + n : String(n);
     }
 
     function showEnded(message) {
-      container.textContent = message;
-      container.classList.add("countdown-ended");
+      if (heroCards) {
+        heroCards.innerHTML = '<div class="countdown-message">' + message + '</div>';
+      }
+      if (navContainer) {
+        navContainer.textContent = message;
+        navContainer.classList.add("countdown-ended");
+      }
     }
 
     function tick() {
@@ -133,8 +152,17 @@
       var mins  = Math.floor((totalSecs % 3600) / 60);
       var secs  = totalSecs % 60;
 
-      container.innerHTML = '<span class="cd-full">' + days + 'd ' + pad(hours) + 'h ' + pad(mins) + 'm ' + pad(secs) + 's</span>' +
-                            '<span class="cd-short">' + days + ' days</span>';
+      if (cdDays && cdHours && cdMinutes && cdSeconds) {
+        cdDays.textContent    = String(days);
+        cdHours.textContent   = pad(hours);
+        cdMinutes.textContent = pad(mins);
+        cdSeconds.textContent = pad(secs);
+      }
+
+      if (navContainer) {
+        navContainer.innerHTML = '<span class="cd-full">' + days + 'd ' + pad(hours) + 'h ' + pad(mins) + 'm ' + pad(secs) + 's</span>' +
+                                 '<span class="cd-short">' + days + ' days</span>';
+      }
     }
 
     // Run immediately to avoid a 1-second blank flash, then tick every second

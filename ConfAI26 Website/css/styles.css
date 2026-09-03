@@ -861,78 +861,248 @@ body.nav-open .site-header {
 }
 
 /* ─────────────────────────────────────────────────────────
-   KEY NUMBERS  (H10)
-   <dl> with <div class="stat-item"> wrappers — value+label pair.
-   Numbers made prominent via font-size only; no animation, no icons.
-   Visual treatment deferred — design direction pending sign-off.
+   KEY NUMBERS TICKER
+   Continuously scrolling horizontal ticker moving left to right (LTR).
+   Seamless loop with duplicated DOM list.
+   Pause on hover and keyboard focus.
+   prefers-reduced-motion fallback to static row.
 ──────────────────────────────────────────────────────────── */
 .section-stats {
-  padding: 3.5rem 0;
+  padding: 3rem 0 2rem;
+  background-color: var(--color-chalk-bg);
+  border-bottom: 1px solid var(--color-chalk-line);
+}
+
+.stats-header {
+  margin-bottom: 2rem;
+  border-bottom: 2px solid var(--color-aqua);
+  padding-bottom: 0.75rem;
+}
+
+.stats-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 3vw, 1.65rem);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-graphite-dark);
+  margin: 0;
+}
+
+.stats-ticker-viewport {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding: 0.5rem 0 1rem;
+  mask-image: linear-gradient(to right, transparent 0%, black 4%, black 96%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 4%, black 96%, transparent 100%);
+}
+
+.stats-ticker-viewport:focus-visible {
+  outline: 2px solid var(--color-teal);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+.stats-ticker-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: ticker-scroll-ltr 28s linear infinite;
+}
+
+/* Pause ticker on hover or when any child or the viewport has focus */
+.stats-ticker-viewport:hover .stats-ticker-track,
+.stats-ticker-viewport:focus .stats-ticker-track,
+.stats-ticker-viewport:focus-within .stats-ticker-track {
+  animation-play-state: paused;
+}
+
+@keyframes ticker-scroll-ltr {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
 
 .stats-list {
   display: flex;
-  flex-wrap: wrap;
-  gap: 2rem 3rem;
+  align-items: center;
+  gap: 4rem;
+  padding-right: 4rem;
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
 }
 
 .stat-item {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  align-items: flex-start;
+  flex-shrink: 0;
 }
 
 .stat-value {
-    font-size: clamp(2rem, 6vw, 2.75rem);
-  font-weight: 600;
-  color: var(--color-chalk-bg);
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 5vw, 2.85rem);
+  font-weight: 700;
+  color: var(--color-teal);
   line-height: 1;
+  letter-spacing: -0.02em;
 }
 
 .stat-label {
   font-family: var(--font-sans);
-  font-size: 0.9rem;
-  color: var(--color-graphite);
-  margin-left: 0;
-}
-
-/* ─────────────────────────────────────────────────────────
-   HERO COUNTDOWN CLOCK
-   Sits between .hero-facts and the Register button in the hero.
-   No flip animation — numbers update in place.
-   Layout shift prevention: .countdown-digit has a fixed min-width
-   so the column never jumps when digit count changes (e.g. 9 → 10 days).
-   prefers-reduced-motion: no transitions are defined, so nothing to suppress.
-──────────────────────────────────────────────────────────── */
-.nav-countdown {
-  display: flex;
-  align-items: center;
-  font-family: var(--font-sans);
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   font-weight: 600;
   color: var(--color-graphite);
-  margin-left: auto;
-  margin-right: 1.5rem;
-  font-variant-numeric: tabular-nums;
+  margin-top: 0.4rem;
   white-space: nowrap;
 }
 
-.cd-full { display: none; }
-.cd-short { display: none; }
-
-/* Desktop */
-@media (min-width: 900px) {
-  .cd-full { display: inline; }
+/* On small screens, slow down animation to keep text legible */
+@media (max-width: 48rem) {
+  .stats-ticker-track {
+    animation-duration: 36s;
+  }
+  .stats-list {
+    gap: 3rem;
+    padding-right: 3rem;
+  }
 }
 
-/* Tablet / small screens */
-@media (min-width: 500px) and (max-width: 899px) {
-  .cd-short { display: inline; }
+/* prefers-reduced-motion: static wrapped row */
+@media (prefers-reduced-motion: reduce) {
+  .stats-ticker-viewport {
+    mask-image: none;
+    -webkit-mask-image: none;
+    overflow: visible;
+  }
+  .stats-ticker-track {
+    animation: none !important;
+    transform: none !important;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .stats-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem 3rem;
+    padding-right: 0;
+  }
+  .stats-list-duplicate {
+    display: none !important;
+  }
 }
 
-/* Hide on mobile to prevent navbar overflow */
-@media (max-width: 499px) {
-  .nav-countdown { display: none; }
+/* ─────────────────────────────────────────────────────────
+   COUNTDOWN SECTION (DAYS UNTIL CONFAI 2026)
+   Positioned directly after Key Numbers ticker, before Overview.
+   4 boxed cards: Days, Hours, Minutes, Seconds.
+──────────────────────────────────────────────────────────── */
+.section-countdown {
+  padding: 3.5rem 0;
+  background-color: var(--color-chalk-bg);
+  border-bottom: 1px solid var(--color-chalk-line);
+  text-align: center;
+}
+
+.countdown-heading {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 4vw, 2.25rem);
+  font-weight: 600;
+  color: var(--color-graphite-dark);
+  margin-bottom: 2rem;
+  text-align: center !important;
+}
+
+.countdown-cards {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  max-width: 42rem;
+  margin: 0 auto;
+}
+
+.countdown-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #E7E3DC;
+  border: 1px solid var(--color-chalk-line);
+  border-radius: 8px;
+  min-width: 5.5rem;
+  padding: 1.25rem 0.85rem;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+  transition: transform var(--transition);
+}
+
+.countdown-card:hover {
+  transform: translateY(-2px);
+}
+
+.countdown-num {
+  font-family: var(--font-display);
+  font-size: clamp(1.85rem, 5vw, 3rem);
+  font-weight: 700;
+  color: var(--color-graphite-dark);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.countdown-unit {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-graphite);
+  margin-top: 0.5rem;
+}
+
+.countdown-sep {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+  font-weight: 700;
+  color: var(--color-teal);
+  line-height: 1;
+  user-select: none;
+}
+
+@media (max-width: 40rem) {
+  .section-countdown {
+    padding: 2.5rem 0;
+  }
+  .countdown-cards {
+    gap: 0.35rem;
+  }
+  .countdown-card {
+    min-width: 4.25rem;
+    padding: 1rem 0.4rem;
+  }
+  .countdown-num {
+    font-size: 1.6rem;
+  }
+  .countdown-unit {
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+  }
+  .countdown-sep {
+    font-size: 1.35rem;
+  }
+}
+
+.countdown-message {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-teal);
 }
 
 /* Message shown once the conference has started or ended */
@@ -1267,16 +1437,7 @@ section + section {
   color: var(--color-chalk-bg);
 }
 
-/* Stats Ticker Overrides */
-.section-stats {
-  background-color: var(--color-chalk-bg);
-}
-.stat-number {
-  color: var(--color-teal);
-}
-.stat-label {
-  color: var(--color-graphite);
-}
+
 
 /* Button Overrides (Removing old gold/aqua backgrounds and gradients if any) */
 .btn-primary {

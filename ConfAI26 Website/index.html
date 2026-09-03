@@ -27,8 +27,6 @@
           <span class="brand-year">2026</span>
         </a>
         
-        <div id="nav-countdown" class="nav-countdown" aria-label="Time remaining until ConfAI 2026" aria-live="polite" aria-atomic="true"></div>
-
         <button
           class="nav-toggle"
           type="button"
@@ -46,20 +44,17 @@
             <li><a href="index.html" aria-current="page">Home</a></li>
             <li><a href="register.html">Register</a></li>
             <li><a href="agenda.html">Agenda</a></li>
-            <li><a href="sponsorship.html">Sponsorship</a></li>
-            <li><a href="faq.html">FAQ</a></li>
-            <li><a href="#">Contact</a></li>
-            <li><a href="#">Relive ConfAI 2025</a></li>
             <li class="has-dropdown">
-              <a class="nav-more-link" href="#">
-                More <span class="dropdown-caret" aria-hidden="true">&#9662;</span>
+              <a class="nav-more-link" href="#" aria-haspopup="true">
+                Relive ConfAI <span class="dropdown-caret" aria-hidden="true">&#9662;</span>
               </a>
-              <button class="dropdown-toggle" type="button" aria-label="Toggle More menu" aria-expanded="false">
+              <button class="dropdown-toggle" type="button" aria-label="Toggle Relive ConfAI menu" aria-expanded="false">
                 <span class="dropdown-caret" aria-hidden="true">&#9662;</span>
               </button>
               <ul class="nav-dropdown">
-                <li><a href="#">Relive 2022</a></li>
-                <li><a href="#">Relive 2023</a></li>
+                <li><a href="#">ConfAI 2025</a></li>
+                <li><a href="#">ConfAI 2023</a></li>
+                <li><a href="#">ConfAI 2022</a></li>
               </ul>
             </li>
           </ul>
@@ -104,6 +99,95 @@
           </div>
 
           <a class="btn btn-primary" href="register.html">Register Now</a>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════
+           KEY NUMBERS (CONTINUOUS TICKER)
+           ═══════════════════════════════════════════════ -->
+      <section class="section-stats" id="key-numbers" aria-labelledby="stats-heading">
+        <div class="section-inner">
+          <div class="stats-header">
+            <h2 id="stats-heading" class="stats-title">ConfAI 2026 By the Numbers</h2>
+          </div>
+          <div class="stats-ticker-viewport" tabindex="0" aria-label="Key conference statistics ticker, moving left to right. Pause on hover or focus.">
+            <div class="stats-ticker-track">
+              <ul class="stats-list" aria-hidden="false">
+                <li class="stat-item">
+                  <span class="stat-value">5+</span>
+                  <span class="stat-label">Keynote Speakers</span>
+                </li>
+                <li class="stat-item">
+                  <span class="stat-value">20+</span>
+                  <span class="stat-label">Oral Presenters</span>
+                </li>
+                <li class="stat-item">
+                  <span class="stat-value">20+</span>
+                  <span class="stat-label">Poster Presenters</span>
+                </li>
+                <li class="stat-item">
+                  <span class="stat-value">600+</span>
+                  <span class="stat-label">Students</span>
+                </li>
+                <li class="stat-item">
+                  <span class="stat-value">100+</span>
+                  <span class="stat-label">Attendees</span>
+                </li>
+              </ul>
+              <ul class="stats-list stats-list-duplicate" aria-hidden="true">
+                <li class="stat-item">
+                  <span class="stat-value">5+</span>
+                  <span class="stat-label">Keynote Speakers</span>
+                </li>
+                <li class="stat-item">
+                  <span class="stat-value">20+</span>
+                  <span class="stat-label">Oral Presenters</span>
+                </li>
+                <li class="stat-item">
+                  <span class="stat-value">20+</span>
+                  <span class="stat-label">Poster Presenters</span>
+                </li>
+                <li class="stat-item">
+                  <span class="stat-value">600+</span>
+                  <span class="stat-label">Students</span>
+                </li>
+                <li class="stat-item">
+                  <span class="stat-value">100+</span>
+                  <span class="stat-label">Attendees</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════
+           COUNTDOWN SECTION
+           ═══════════════════════════════════════════════ -->
+      <section class="section-countdown" id="countdown-section" aria-labelledby="countdown-heading">
+        <div class="section-inner">
+          <h2 id="countdown-heading" class="countdown-heading">Days until ConfAI 2026</h2>
+          <div class="countdown-cards" id="hero-countdown" aria-live="polite" aria-atomic="true">
+            <div class="countdown-card">
+              <span class="countdown-num" id="cd-days">--</span>
+              <span class="countdown-unit">Days</span>
+            </div>
+            <span class="countdown-sep" aria-hidden="true">:</span>
+            <div class="countdown-card">
+              <span class="countdown-num" id="cd-hours">--</span>
+              <span class="countdown-unit">Hours</span>
+            </div>
+            <span class="countdown-sep" aria-hidden="true">:</span>
+            <div class="countdown-card">
+              <span class="countdown-num" id="cd-minutes">--</span>
+              <span class="countdown-unit">Minutes</span>
+            </div>
+            <span class="countdown-sep" aria-hidden="true">:</span>
+            <div class="countdown-card">
+              <span class="countdown-num" id="cd-seconds">--</span>
+              <span class="countdown-unit">Seconds</span>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -365,38 +449,7 @@
         </div>
       </section>
 
-      <!-- ═══════════════════════════════════════════════
-           H10 · KEY NUMBERS
-           Heading assumed: "ConfAI 2026 By the Numbers"
-           (no exact heading supplied in the brief)
-           ═══════════════════════════════════════════════ -->
-      <section class="section-stats" id="key-numbers" aria-labelledby="stats-heading">
-        <div class="section-inner">
-          <h2 id="stats-heading">ConfAI 2026 By the Numbers</h2>
-          <dl class="stats-list">
-            <div class="stat-item">
-              <dt class="stat-value">5+</dt>
-              <dd class="stat-label">Keynote Speakers</dd>
-            </div>
-            <div class="stat-item">
-              <dt class="stat-value">20+</dt>
-              <dd class="stat-label">Oral Presenters</dd>
-            </div>
-            <div class="stat-item">
-              <dt class="stat-value">20+</dt>
-              <dd class="stat-label">Poster Presenters</dd>
-            </div>
-            <div class="stat-item">
-              <dt class="stat-value">600+</dt>
-              <dd class="stat-label">Students</dd>
-            </div>
-            <div class="stat-item">
-              <dt class="stat-value">100+</dt>
-              <dd class="stat-label">Attendees</dd>
-            </div>
-          </dl>
-        </div>
-      </section>
+
     </main>
 
     <!-- ═══════════════════════════════════════════════
