@@ -14,7 +14,7 @@
       href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Source+Sans+3:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="css/styles.css?v=2" />
+    <link rel="stylesheet" href="css/styles.css?v=5" />
     <script src="js/script.js" defer></script>
   </head>
   <body>
@@ -446,7 +446,19 @@
           <h2 id="tracks-diagram-heading">Conference Tracks</h2>
 
           <div class="radial-container" role="list" aria-label="8 conference tracks">
-            <!-- Center Hub — logo placeholder, no real logo supplied yet -->
+            <!-- Radial Spokes radiating towards the 8 tracks -->
+            <svg class="radial-spokes" viewBox="0 0 600 600" aria-hidden="true">
+              <line class="radial-spoke" x1="364" y1="300" x2="445" y2="300" />
+              <line class="radial-spoke" x1="345" y1="345" x2="403" y2="403" />
+              <line class="radial-spoke" x1="300" y1="364" x2="300" y2="445" />
+              <line class="radial-spoke" x1="255" y1="345" x2="197" y2="403" />
+              <line class="radial-spoke" x1="236" y1="300" x2="155" y2="300" />
+              <line class="radial-spoke" x1="255" y1="255" x2="197" y2="197" />
+              <line class="radial-spoke" x1="300" y1="236" x2="300" y2="155" />
+              <line class="radial-spoke" x1="345" y1="255" x2="403" y2="197" />
+            </svg>
+
+            <!-- Center Hub — ConfAI Logo -->
             <div class="radial-hub" aria-hidden="true">
               <span class="radial-hub-mark">ConfAI</span>
               <span class="radial-hub-year">2026</span>

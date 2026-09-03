@@ -1355,6 +1355,361 @@ body.modal-open {
   text-align: center;
 }
 
+/* ─────────────────────────────────────────────────────────
+   H8 · CONFERENCE TRACKS & RADIAL DIAGRAM
+──────────────────────────────────────────────────────────── */
+.section-tracks-diagram {
+  padding: 4rem 0 5rem;
+  background-color: var(--color-chalk-bg);
+}
+
+.radial-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  width: 100%;
+  margin: 2rem 0;
+}
+
+.radial-spokes {
+  display: none;
+}
+
+/* Center Hub — ConfAI Logo */
+.radial-hub {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: #FFFFFF;
+  width: 8rem;
+  height: 8rem;
+  border-radius: 50%;
+  border: 3px solid var(--color-teal);
+  outline: 1.5px solid rgba(42, 157, 143, 0.35);
+  outline-offset: -7px;
+  box-shadow: 0 4px 24px rgba(42, 157, 143, 0.2), 0 2px 8px rgba(0, 0, 0, 0.08);
+  z-index: 10;
+  line-height: 1.15;
+  user-select: none;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.radial-hub:hover {
+  transform: scale(1.04);
+  box-shadow: 0 6px 28px rgba(42, 157, 143, 0.28), 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.radial-hub-mark {
+  font-family: var(--font-display);
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: var(--color-graphite-dark);
+  letter-spacing: -0.01em;
+}
+
+.radial-hub-year {
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--color-teal);
+  letter-spacing: 0.08em;
+  margin-top: 0.25rem;
+}
+
+.radial-track {
+  display: block;
+}
+
+.track-node {
+  all: unset;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  text-align: left;
+  padding: 0.45rem 0.75rem;
+  background: var(--color-chalk-bg);
+  border: 1px solid rgba(22, 28, 26, 0.12);
+  border-radius: 6px;
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+  width: 100%;
+  max-width: 28rem;
+  box-sizing: border-box;
+}
+
+.track-node:hover {
+  background-color: rgba(42, 157, 143, 0.08);
+  border-color: var(--color-teal);
+  transform: translateY(-2px);
+}
+
+.track-node:focus-visible {
+  outline: 2px solid var(--color-teal);
+  outline-offset: 3px;
+}
+
+.track-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  background: var(--color-graphite-dark);
+  color: #FFFFFF;
+  border-radius: 50%;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 0.88rem;
+  flex-shrink: 0;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.track-node:hover .track-num {
+  background: var(--color-teal);
+  transform: scale(1.08);
+}
+
+.track-name {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-graphite-dark);
+  line-height: 1.35;
+}
+
+/* --- Desktop Radial Layout (Spokes radiating from ConfAI center logo) --- */
+@media (min-width: 64rem) {
+  .radial-container {
+    height: 620px;
+    margin: 3.5rem auto;
+    padding: 0;
+    max-width: 960px;
+  }
+
+  .radial-hub {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .radial-hub:hover {
+    transform: translate(-50%, -50%) scale(1.05);
+  }
+
+  .radial-spokes {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .radial-spoke {
+    stroke: var(--color-graphite);
+    stroke-width: 1.5;
+    stroke-opacity: 0.32;
+    stroke-linecap: round;
+  }
+
+  .radial-track {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 260px;
+    transform-origin: center center;
+    /* Translate to center, rotate 45deg per track, push out by radius */
+    transform: translate(-50%, -50%) rotate(calc(var(--track-idx) * 45deg)) translateX(275px);
+    z-index: 2;
+  }
+
+  .track-node {
+    position: relative;
+    z-index: 3;
+    /* Counter-rotate text so it stays upright */
+    transform: rotate(calc(var(--track-idx) * -45deg));
+    width: max-content;
+    max-width: 250px;
+    background: var(--color-chalk-bg);
+    border: 1px solid transparent;
+    padding: 0.35rem 0.65rem;
+    border-radius: 6px;
+  }
+
+  .track-node:hover {
+    background: #FFFFFF;
+    border-color: rgba(42, 157, 143, 0.4);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+    transform: rotate(calc(var(--track-idx) * -45deg)) scale(1.03);
+  }
+}
+
+/* ─────────────────────────────────────────────────────────
+   TRACK MODAL
+──────────────────────────────────────────────────────────── */
+.track-modal-content {
+  text-align: left;
+  max-width: 38rem;
+  padding: 2.5rem;
+}
+
+.track-modal-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+  width: 100%;
+}
+
+.track-modal-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.35rem 0.85rem;
+  background: var(--color-teal);
+  color: #FFFFFF;
+  border-radius: 999px;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  flex-shrink: 0;
+}
+
+.track-modal-name {
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--color-graphite-dark);
+  margin: 0;
+  line-height: 1.25;
+}
+
+.track-modal-chairs {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-teal);
+  margin-bottom: 1.25rem;
+  line-height: 1.45;
+  border-left: 3px solid var(--color-teal);
+  padding-left: 0.75rem;
+  width: 100%;
+}
+
+.track-modal-desc {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  color: var(--color-graphite);
+  line-height: 1.65;
+  margin: 0;
+  width: 100%;
+}
+
+/* ─────────────────────────────────────────────────────────
+   H11 · RELIVE CONFAI 2025 & GALLERY
+──────────────────────────────────────────────────────────── */
+.section-relive {
+  padding: 4rem 0;
+  background-color: var(--color-chalk-bg);
+  border-top: 1px solid var(--color-chalk-line);
+}
+
+.video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 ratio */
+  height: 0;
+  overflow: hidden;
+  max-width: 54rem;
+  margin: 2rem auto 3rem;
+  border-radius: 8px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  background: #000;
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+  gap: 1.25rem;
+  margin-top: 2rem;
+}
+
+.gallery-item {
+  all: unset;
+  cursor: pointer;
+  border-radius: 6px;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  background: #E7E3DC;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.gallery-item:hover,
+.gallery-item:focus-visible {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-item:focus-visible {
+  outline: 2px solid var(--color-teal);
+  outline-offset: 3px;
+}
+
+.gallery-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gallery-placeholder-label {
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-graphite);
+}
+
+.photo-modal-content {
+  max-width: 48rem;
+  padding: 1.5rem;
+  background: #FFFFFF;
+}
+
+.photo-modal-img {
+  width: 100%;
+  max-height: 70vh;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+.photo-modal-caption {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  color: var(--color-graphite);
+  margin-top: 1rem;
+  text-align: center;
+}
+
 
 h2:not(.sr-only) {
   font-family: var(--font-display);
