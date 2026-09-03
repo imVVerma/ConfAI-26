@@ -1,44 +1,40 @@
 {
   "photos": [
     {
-      "file": "placeholder-1.jpg",
-      "alt": "ConfAI 2025 conference photo 1",
-      "placeholder": true
+      "file": "DSC06941.JPG",
+      "alt": "ConfAI 2025 conference photo 1"
     },
     {
-      "file": "placeholder-2.jpg",
-      "alt": "ConfAI 2025 conference photo 2",
-      "placeholder": true
+      "file": "DSC06943.JPG",
+      "alt": "ConfAI 2025 conference photo 2"
     },
     {
-      "file": "placeholder-3.jpg",
-      "alt": "ConfAI 2025 conference photo 3",
-      "placeholder": true
+      "file": "DSC_2074.JPG",
+      "alt": "ConfAI 2025 conference photo 3"
     },
     {
-      "file": "placeholder-4.jpg",
-      "alt": "ConfAI 2025 conference photo 4",
-      "placeholder": true
+      "file": "DSC_3258.JPG",
+      "alt": "ConfAI 2025 conference photo 4"
     },
     {
-      "file": "placeholder-5.jpg",
-      "alt": "ConfAI 2025 conference photo 5",
-      "placeholder": true
+      "file": "DSC_3357.JPG",
+      "alt": "ConfAI 2025 conference photo 5"
     },
     {
-      "file": "placeholder-6.jpg",
-      "alt": "ConfAI 2025 conference photo 6",
-      "placeholder": true
+      "file": "DSC_3527.JPG",
+      "alt": "ConfAI 2025 conference photo 6"
     },
     {
-      "file": "placeholder-7.jpg",
-      "alt": "ConfAI 2025 conference photo 7",
-      "placeholder": true
+      "file": "DSC_3608.JPG",
+      "alt": "ConfAI 2025 conference photo 7"
     },
     {
-      "file": "placeholder-8.jpg",
-      "alt": "ConfAI 2025 conference photo 8",
-      "placeholder": true
+      "file": "DSC_4245.JPG",
+      "alt": "ConfAI 2025 conference photo 8"
+    },
+    {
+      "file": "RGV01849.JPG",
+      "alt": "ConfAI 2025 conference photo 9"
     }
   ]
 }

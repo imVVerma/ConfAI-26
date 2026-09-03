@@ -461,6 +461,19 @@
         if (!panel || !item) return;
 
         var nextState = !isExpanded;
+
+        buttons.forEach(function (otherButton) {
+          var otherTargetId = otherButton.getAttribute("aria-controls");
+          var otherPanel = otherTargetId ? document.getElementById(otherTargetId) : null;
+          var otherItem = otherButton.closest(".faq-item");
+
+          if (otherButton !== button && otherPanel && otherItem) {
+            otherButton.setAttribute("aria-expanded", "false");
+            otherPanel.setAttribute("aria-hidden", "true");
+            otherItem.classList.remove("is-open");
+          }
+        });
+
         button.setAttribute("aria-expanded", String(nextState));
         panel.setAttribute("aria-hidden", String(!nextState));
         item.classList.toggle("is-open", nextState);
