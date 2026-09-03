@@ -114,9 +114,8 @@
     var cdMinutes = document.getElementById("cd-minutes");
     var cdSeconds = document.getElementById("cd-seconds");
     var heroCards = document.getElementById("hero-countdown");
-    var navContainer = document.getElementById("nav-countdown");
 
-    if (!cdDays && !navContainer) { return; }
+    if (!cdDays) { return; }
 
     function pad(n) {
       return n < 10 ? "0" + n : String(n);
@@ -125,10 +124,6 @@
     function showEnded(message) {
       if (heroCards) {
         heroCards.innerHTML = '<div class="countdown-message">' + message + '</div>';
-      }
-      if (navContainer) {
-        navContainer.textContent = message;
-        navContainer.classList.add("countdown-ended");
       }
     }
 
@@ -157,11 +152,6 @@
         cdHours.textContent   = pad(hours);
         cdMinutes.textContent = pad(mins);
         cdSeconds.textContent = pad(secs);
-      }
-
-      if (navContainer) {
-        navContainer.innerHTML = '<span class="cd-full">' + days + 'd ' + pad(hours) + 'h ' + pad(mins) + 'm ' + pad(secs) + 's</span>' +
-                                 '<span class="cd-short">' + days + ' days</span>';
       }
     }
 

@@ -1571,9 +1571,6 @@ p {
 .brand-year {
   color: var(--color-graphite); /* Usually gold, but let's make it graphite to blend in, or teal */
 }
-.nav-countdown {
-  color: var(--color-graphite);
-}
 
 /* ─────────────────────────────────────────────────────────
    FAQ ACCORDION & INNER PAGE STYLES
