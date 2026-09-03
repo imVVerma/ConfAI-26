@@ -784,7 +784,6 @@ body.nav-open .site-header {
 
 /* ─────────────────────────────────────────────────────────
    WHO SHOULD ATTEND?  (H5)
-   Same structural pattern as Why Attend — plain list, no decoration.
 ──────────────────────────────────────────────────────────── */
 .section-audience {
   padding: 3.5rem 0;
@@ -792,36 +791,81 @@ body.nav-open .site-header {
 
 .audience-list {
   list-style: none;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  padding: 0;
+  margin: 0;
+}
+
+.audience-item {
+  display: flex;
+}
+
+.audience-card {
   display: flex;
   flex-direction: column;
-  gap: 1.75rem;
+  background-color: #FFFFFF;
+  border: 1px solid var(--color-chalk-line);
+  border-radius: 8px;
+  padding: 1.75rem;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+  transition: transform var(--transition, 0.2s);
+  width: 100%;
 }
 
-.audience-list li {
-  padding-top: 1.5rem;
-  border-top: 1px solid rgba(247, 244, 238, 0.12);
+.audience-card:hover {
+  transform: translateY(-4px);
 }
 
-.audience-list h3 {
+.audience-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 8px;
+  background-color: var(--color-teal);
+  color: var(--color-chalk-bg);
+  margin-bottom: 1.25rem;
+}
+
+.audience-card h3 {
   font-family: var(--font-sans);
-  font-size: 1.05rem;
+  font-size: 1.1rem;
   font-weight: 700;
   color: var(--color-graphite-dark);
-  margin-bottom: 0.35rem;
+  margin: 0 0 0.5rem 0;
 }
 
-.audience-list p {
-  font-size: 0.98rem;
+.audience-card p {
+  font-size: 0.95rem;
   color: var(--color-graphite);
-  max-width: 60ch;
-  line-height: 1.65;
+  line-height: 1.6;
+  margin: 0;
 }
 
 @media (min-width: 48rem) {
   .audience-list {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.75rem 3rem;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 64rem) {
+  .audience-list {
+    grid-template-columns: repeat(6, 1fr);
+  }
+  
+  .audience-item {
+    grid-column: span 2;
+  }
+  
+  /* Center the 4th and 5th items in the 3-col grid */
+  .audience-item:nth-child(4) {
+    grid-column: 2 / span 2;
+  }
+  .audience-item:nth-child(5) {
+    grid-column: 4 / span 2;
   }
 }
 
