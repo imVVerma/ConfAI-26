@@ -1812,6 +1812,208 @@ body.modal-open {
   line-height: 1.35;
 }
 
+/* Footer */
+.site-footer {
+  background: var(--color-graphite-dark);
+  color: var(--color-chalk-bg);
+}
+
+.footer-container {
+  width: 100%;
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: 3.5rem 1.25rem;
+  display: grid;
+  grid-template-columns: 1.45fr 0.8fr 0.8fr 1.3fr;
+  gap: 2.5rem;
+}
+
+.footer-col {
+  min-width: 0;
+}
+
+.footer-logo {
+  width: 9.5rem;
+  height: auto;
+  margin-bottom: 1.25rem;
+}
+
+.footer-host,
+.address-text {
+  color: rgba(242, 240, 236, 0.72);
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+.footer-host {
+  max-width: 19rem;
+}
+
+.footer-newsletter {
+  margin-top: 2rem;
+}
+
+.footer-heading,
+.footer-newsletter h4 {
+  margin-bottom: 1rem;
+  color: var(--color-chalk-bg);
+  font-family: var(--font-display);
+  font-size: 1rem;
+}
+
+.newsletter-form {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.newsletter-form input {
+  min-width: 0;
+  width: 100%;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid rgba(242, 240, 236, 0.3);
+  border-radius: 0.25rem;
+  background: rgba(242, 240, 236, 0.08);
+  color: var(--color-chalk-bg);
+  font: inherit;
+}
+
+.newsletter-form input::placeholder {
+  color: rgba(242, 240, 236, 0.58);
+}
+
+.btn-subscribe {
+  flex-shrink: 0;
+  padding: 0.65rem 0.9rem;
+  border: 1px solid var(--color-aqua);
+  border-radius: 0.25rem;
+  background: var(--color-aqua);
+  color: #FFFFFF;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.btn-subscribe:hover,
+.btn-subscribe:focus-visible {
+  background: var(--color-teal);
+}
+
+.footer-links {
+  list-style: none;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.footer-links a,
+.legal-links a {
+  color: rgba(242, 240, 236, 0.72);
+  font-size: 0.9rem;
+}
+
+
+@media (max-width: 60rem) {
+  .footer-container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 40rem) {
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding-top: 2.75rem;
+    padding-bottom: 2.75rem;
+  }
+
+  .newsletter-form {
+    flex-wrap: wrap;
+  }
+
+  .newsletter-form input {
+    flex: 1 1 12rem;
+  }
+
+  .bottom-flex {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+}
+.footer-links a:hover,
+.footer-links a:focus-visible,
+.legal-links a:hover,
+.legal-links a:focus-visible {
+  color: var(--color-aqua);
+}
+
+.address-text {
+  margin-bottom: 1rem;
+}
+
+.map-embed-wrapper {
+  overflow: hidden;
+  border-radius: 0.375rem;
+  border: 1px solid rgba(242, 240, 236, 0.18);
+}
+
+.map-embed-wrapper iframe {
+  display: block;
+  width: 100%;
+  border: 0;
+}
+
+.footer-socials {
+  display: flex;
+  gap: 0.55rem;
+  margin-top: 1rem;
+}
+
+.social-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid rgba(242, 240, 236, 0.32);
+  border-radius: 50%;
+  color: var(--color-chalk-bg);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.social-icon:hover,
+.social-icon:focus-visible {
+  border-color: var(--color-aqua);
+  color: var(--color-aqua);
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(242, 240, 236, 0.16);
+}
+
+.footer-bottom .footer-container {
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+}
+
+.bottom-flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.bottom-flex p,
+.legal-links a {
+  font-size: 0.8rem;
+}
+
+.legal-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
 /* --- Desktop Radial Layout (Spokes radiating from ConfAI center logo) --- */
 @media (min-width: 64rem) {
   .radial-container {
