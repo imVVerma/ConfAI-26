@@ -23,9 +23,15 @@
     <header class="site-header" id="site-header">
       <div class="header-inner">
         <a class="brand" href="index.html" aria-label="ConfAI 2026 home">
-          <span class="brand-mark">ConfAI</span>
-          <span class="brand-year">2026</span>
+          <img src="confai%20logo/Lockup%20logo.png" alt="ConfAI 2026" class="brand-logo" />
         </a>
+        <div class="nav-countdown" aria-label="Countdown to ConfAI 2026" aria-live="polite">
+          <span class="nav-countdown-label">ConfAI starts in</span>
+          <span class="nav-countdown-box"><strong id="nav-countdown-days">--</strong><small>DAYS</small></span>
+          <span class="nav-countdown-box"><strong id="nav-countdown-hours">--</strong><small>HRS</small></span>
+          <span class="nav-countdown-box"><strong id="nav-countdown-minutes">--</strong><small>MINS</small></span>
+          <span class="nav-countdown-box"><strong id="nav-countdown-seconds">--</strong><small>SECS</small></span>
+        </div>
         
         <button
           class="nav-toggle"
@@ -169,36 +175,6 @@
       </section>
 
       <!-- ═══════════════════════════════════════════════
-           COUNTDOWN SECTION
-           ═══════════════════════════════════════════════ -->
-      <section class="section-countdown" id="countdown-section" aria-labelledby="countdown-heading">
-        <div class="section-inner">
-          <h2 id="countdown-heading" class="countdown-heading">Days until ConfAI 2026</h2>
-          <div class="countdown-cards" id="hero-countdown" aria-live="polite" aria-atomic="true">
-            <div class="countdown-card">
-              <span class="countdown-num" id="cd-days">--</span>
-              <span class="countdown-unit">Days</span>
-            </div>
-            <span class="countdown-sep" aria-hidden="true">:</span>
-            <div class="countdown-card">
-              <span class="countdown-num" id="cd-hours">--</span>
-              <span class="countdown-unit">Hours</span>
-            </div>
-            <span class="countdown-sep" aria-hidden="true">:</span>
-            <div class="countdown-card">
-              <span class="countdown-num" id="cd-minutes">--</span>
-              <span class="countdown-unit">Minutes</span>
-            </div>
-            <span class="countdown-sep" aria-hidden="true">:</span>
-            <div class="countdown-card">
-              <span class="countdown-num" id="cd-seconds">--</span>
-              <span class="countdown-unit">Seconds</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ═══════════════════════════════════════════════
            H2 · CONFERENCE OVERVIEW
            ═══════════════════════════════════════════════ -->
       <section class="section-overview" id="overview" aria-labelledby="overview-heading">
@@ -224,6 +200,41 @@
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section class="section-dates" id="key-dates" aria-labelledby="dates-heading">
+        <div class="section-inner">
+          <h2 id="dates-heading">Key Dates</h2>
+          <ol class="dates-list">
+            <li class="date-item">
+              <div class="date-main">
+                <div class="date-label-wrap">
+                  <span class="date-label">Call for Abstracts Deadline</span>
+                  <span class="status-badge status-closed">Closed</span>
+                </div>
+                <span class="date-value">August 10, 2026</span>
+              </div>
+            </li>
+            <li class="date-item">
+              <div class="date-main">
+                <div class="date-label-wrap">
+                  <span class="date-label">Notification of Acceptance</span>
+                  <span class="status-badge status-closed">Closed</span>
+                </div>
+                <span class="date-value">August 31, 2026</span>
+              </div>
+            </li>
+            <li class="date-item date-item--featured">
+              <div class="date-main">
+                <div class="date-label-wrap">
+                  <span class="date-label">Conference Dates</span>
+                  <span class="status-badge status-upcoming">Upcoming</span>
+                </div>
+                <span class="date-value">October 30 – November 1, 2026 <span class="date-note">(Friday–Sunday)</span></span>
+              </div>
+            </li>
+          </ol>
         </div>
       </section>
 
@@ -296,13 +307,6 @@
                 <h3 class="speaker-name"><a href="https://wsai.iitm.ac.in/~ravi/" target="_blank" rel="noopener noreferrer">Dr. Balaraman Ravindran</a></h3>
                 <p class="speaker-role">Head, Dept. of Data Science &amp; AI, IIT Madras</p>
                 <p class="speaker-affil">Ph.D. University of Massachusetts Amherst</p>
-                <a href="https://wsai.iitm.ac.in/~ravi/" target="_blank" rel="noopener noreferrer" class="speaker-email-link" aria-label="Email / profile for Dr. Balaraman Ravindran">
-                  <svg class="speaker-email-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <rect width="20" height="16" x="2" y="4" rx="2"></rect>
-                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
-                  </svg>
-                  <span>ravi@cse.iitm.ac.in</span>
-                </a>
               </div>
             </article>
 
@@ -315,13 +319,6 @@
                 <h3 class="speaker-name"><a href="https://research.google/people/106704/?&" target="_blank" rel="noopener noreferrer">Dr. Manish Gupta</a></h3>
                 <p class="speaker-role">Senior Director, Google DeepMind</p>
                 <p class="speaker-affil">Ph.D. University of Illinois Urbana-Champaign</p>
-                <a href="https://research.google/people/106704/?&" target="_blank" rel="noopener noreferrer" class="speaker-email-link" aria-label="Email / profile for Dr. Manish Gupta">
-                  <svg class="speaker-email-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <rect width="20" height="16" x="2" y="4" rx="2"></rect>
-                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
-                  </svg>
-                  <span>manishgupta@google.com</span>
-                </a>
               </div>
             </article>
 
@@ -334,13 +331,6 @@
                 <h3 class="speaker-name"><a href="https://homecse.iitd.ac.in/team/parag-singla/" target="_blank" rel="noopener noreferrer">Dr. Parag Singla</a></h3>
                 <p class="speaker-role">Professor, CSE Dept., IIT Delhi</p>
                 <p class="speaker-affil">Ph.D. University of Washington</p>
-                <a href="https://homecse.iitd.ac.in/team/parag-singla/" target="_blank" rel="noopener noreferrer" class="speaker-email-link" aria-label="Email / profile for Dr. Parag Singla">
-                  <svg class="speaker-email-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <rect width="20" height="16" x="2" y="4" rx="2"></rect>
-                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
-                  </svg>
-                  <span>parags@cse.iitd.ac.in</span>
-                </a>
               </div>
             </article>
 
@@ -353,13 +343,6 @@
                 <h3 class="speaker-name"><a href="https://www.iiit.ac.in/faculty/ponnurangam-kumaraguru/" target="_blank" rel="noopener noreferrer">Dr. Ponnurangam Kumaraguru</a></h3>
                 <p class="speaker-role">Visiting Scientist, ANRF | Professor of CS, IIIT Hyderabad</p>
                 <p class="speaker-affil">Ph.D. Carnegie Mellon University</p>
-                <a href="https://www.iiit.ac.in/faculty/ponnurangam-kumaraguru/" target="_blank" rel="noopener noreferrer" class="speaker-email-link" aria-label="Email / profile for Dr. Ponnurangam Kumaraguru">
-                  <svg class="speaker-email-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <rect width="20" height="16" x="2" y="4" rx="2"></rect>
-                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
-                  </svg>
-                  <span>pk.guru@iiit.ac.in</span>
-                </a>
               </div>
             </article>
 
@@ -372,13 +355,6 @@
                 <h3 class="speaker-name"><a href="https://en.wikipedia.org/wiki/Sanghamitra_Bandyopadhyay#Awards_and_honours" target="_blank" rel="noopener noreferrer">Dr. Sanghamitra Bandyopadhyay</a></h3>
                 <p class="speaker-role">Ex-Director, ISI Kolkata | Padmashree Awardee</p>
                 <p class="speaker-affil">Ph.D. Indian Statistical Institute</p>
-                <a href="https://en.wikipedia.org/wiki/Sanghamitra_Bandyopadhyay#Awards_and_honours" target="_blank" rel="noopener noreferrer" class="speaker-email-link" aria-label="Email / profile for Dr. Sanghamitra Bandyopadhyay">
-                  <svg class="speaker-email-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <rect width="20" height="16" x="2" y="4" rx="2"></rect>
-                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
-                  </svg>
-                  <span>sanghami@isical.ac.in</span>
-                </a>
               </div>
             </article>
 
@@ -391,13 +367,6 @@
                 <h3 class="speaker-name"><a href="https://www.ashoka.edu.in/profile/santanu-chaudhury/" target="_blank" rel="noopener noreferrer">Dr. Santanu Chaudhury</a></h3>
                 <p class="speaker-role">Dean, Vachani School of Advanced Computing, Ashoka University</p>
                 <p class="speaker-affil">Professor of CS | Ph.D. IIT Kharagpur</p>
-                <a href="https://www.ashoka.edu.in/profile/santanu-chaudhury/" target="_blank" rel="noopener noreferrer" class="speaker-email-link" aria-label="Email / profile for Dr. Santanu Chaudhury">
-                  <svg class="speaker-email-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <rect width="20" height="16" x="2" y="4" rx="2"></rect>
-                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
-                  </svg>
-                  <span>santanu.chaudhury@ashoka.edu.in</span>
-                </a>
               </div>
             </article>
           </div>
@@ -641,46 +610,6 @@
       </section>
 
       <!-- ═══════════════════════════════════════════════
-           H9 · KEY DATES
-           ═══════════════════════════════════════════════ -->
-      <section class="section-dates" id="key-dates" aria-labelledby="dates-heading">
-        <div class="section-inner">
-          <h2 id="dates-heading">Key Dates</h2>
-          <ol class="dates-list">
-            <li class="date-item">
-              <div class="date-main">
-                <div class="date-label-wrap">
-                  <span class="date-label">Call for Abstracts Deadline</span>
-                  <span class="status-badge status-closed">Closed</span>
-                </div>
-                <span class="date-value">August 10, 2026</span>
-              </div>
-            </li>
-            <li class="date-item">
-              <div class="date-main">
-                <div class="date-label-wrap">
-                  <span class="date-label">Notification of Acceptance</span>
-                  <span class="status-badge status-closed">Closed</span>
-                </div>
-                <span class="date-value">August 31, 2026</span>
-              </div>
-            </li>
-            <li class="date-item date-item--featured">
-              <div class="date-main">
-                <div class="date-label-wrap">
-                  <span class="date-label">Conference Dates</span>
-                  <span class="status-badge status-upcoming">Upcoming</span>
-                </div>
-                <span class="date-value">October 30 – November 1, 2026 <span class="date-note">(Friday–Sunday)</span></span>
-              </div>
-            </li>
-          </ol>
-        </div>
-      </section>
-
-
-
-      <!-- ═══════════════════════════════════════════════
            H11 · RELIVE CONFAI 2025
            ═══════════════════════════════════════════════ -->
       <section class="section-relive" id="relive-2025" aria-labelledby="relive-heading">
@@ -701,13 +630,10 @@
             ></iframe>
           </div>
 
-          <!-- Photo Gallery — rendered from img/gallery-2025/manifest.json by script.js -->
-          <div id="gallery-2025" class="gallery-grid" aria-label="ConfAI 2025 photo gallery" role="list">
-            <!-- Photos injected here by initGallery() in script.js -->
-            <!-- To add a real photo: drop the file into img/gallery-2025/
-                 then add one object to img/gallery-2025/manifest.json:
-                 { "file": "your-photo.jpg", "alt": "ConfAI 2025 conference photo — <short description>" }
-                 Remove the "placeholder": true field if present. -->
+          <div class="gallery-carousel" aria-label="ConfAI 2025 photo gallery">
+            <button class="gallery-control gallery-control--prev" type="button" aria-label="Previous gallery slide">&#8592;</button>
+            <div id="gallery-2025" class="gallery-track" role="region" aria-live="polite"></div>
+            <button class="gallery-control gallery-control--next" type="button" aria-label="Next gallery slide">&#8594;</button>
           </div>
         </div>
       </section>
@@ -752,43 +678,25 @@
       </div>
     </div>
 
+    <div class="modal-overlay travel-modal-overlay" id="travel-modal" aria-modal="true" role="dialog" aria-labelledby="travel-modal-title" hidden>
+      <div class="modal-content travel-modal-content" role="document">
+        <button class="modal-close" type="button" aria-label="Close travel guide">&times;</button>
+        <h3 id="travel-modal-title">How to Reach Plaksha University</h3>
+        <div class="travel-modal-body">
+          <p><strong>By Air:</strong> Shaheed Bhagat Singh Intl Airport (IXC) (~10 km / 15 mins). Pre-paid taxis, Uber, and Ola are available at arrivals.</p>
+          <p><strong>By Train:</strong> <em>SAS Nagar Mohali (SASN)</em>: ~6 km (10 mins), best for regional trains. <em>Chandigarh Junction (CDG)</em>: ~15 km (25 mins), best for express and long-distance trains.</p>
+          <p><strong>By Bus / Road:</strong> ISBT Sector 43, Chandigarh (~12 km) or Mohali Phase 8 Stand (~8 km). Reach the campus via IT City Road using cabs, autos, or local CTU buses.</p>
+        </div>
+      </div>
+    </div>
+
     <footer class="site-footer">
       <div class="footer-container">
         <div class="footer-col footer-brand">
-          <img src="confai%20logo/ConfAI%20Logo%20White.png" alt="ConfAI 2026 Logo" class="footer-logo">
+          <img src="confai%20logo/Lockup%20logo%20white.png" alt="ConfAI 2026 Logo" class="footer-logo">
           <p class="footer-host">
-            Organized by <strong>Harish and Bina Shah School of AI &amp; Computer Science</strong>, Plaksha University.
+            Organized by Harish and Bina Shah School of AI &amp; Computer Science, Plaksha University.
           </p>
-
-          <div class="footer-newsletter">
-            <h4>Stay Updated</h4>
-            <form class="newsletter-form" onsubmit="event.preventDefault();">
-              <input type="email" placeholder="Enter your email" aria-label="Email address" required>
-              <button type="submit" class="btn-subscribe">Subscribe</button>
-            </form>
-          </div>
-        </div>
-
-        <div class="footer-col">
-          <h4 class="footer-heading">Navigation</h4>
-          <ul class="footer-links">
-            <li><a href="#overview">Overview</a></li>
-            <li><a href="#speakers">Keynote Speakers</a></li>
-            <li><a href="#schedule">Schedule</a></li>
-            <li><a href="#why-attend">Why Attend</a></li>
-            <li><a href="faq.html">FAQs</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h4 class="footer-heading">For Authors</h4>
-          <ul class="footer-links">
-            <li><a href="#call-for-papers">Call for Papers</a></li>
-            <li><a href="#key-dates">Key Dates</a></li>
-            <li><a href="#submission-portal">Submission Portal</a></li>
-            <li><a href="register.html">Registration Info</a></li>
-            <li><a href="#code-of-conduct">Code of Conduct</a></li>
-          </ul>
         </div>
 
         <div class="footer-col footer-location">
@@ -797,6 +705,19 @@
             <strong>Plaksha University Campus</strong><br>
             Alpha, Sector 101, IT City, SAS Nagar, Mohali, Punjab 140306
           </p>
+          <h5 class="footer-subheading">Getting Here</h5>
+          <ul class="transit-list">
+            <li><span aria-hidden="true">&#9992;</span> Air: SBS Intl Airport (~10 km)</li>
+            <li><span aria-hidden="true">&#128651;</span> Rail: SAS Nagar (~6 km) | Chandigarh (~15 km)</li>
+            <li><span aria-hidden="true">&#128652;</span> Road: Direct via IT City Road | ISBT Sec 43 (~12 km)</li>
+          </ul>
+          <button class="travel-guide-button" type="button" data-travel-open>View Detailed Travel Guide <span aria-hidden="true">&#8594;</span></button>
+        </div>
+
+        <div class="footer-col footer-contact">
+          <h4 class="footer-heading">Contact Us</h4>
+          <a class="footer-email" href="mailto:confai@plaksha.edu.in">confai@plaksha.edu.in</a>
+          <a href="https://www.linkedin.com/school/plaksha-university/" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="ConfAI on LinkedIn"><span aria-hidden="true">in</span></a>
 
           <div class="map-embed-wrapper">
             <iframe
@@ -809,12 +730,6 @@
             </iframe>
           </div>
 
-          <div class="footer-socials" aria-label="Social media links">
-            <a href="#" aria-label="LinkedIn" class="social-icon"><span aria-hidden="true">in</span></a>
-            <a href="#" aria-label="X / Twitter" class="social-icon"><span aria-hidden="true">X</span></a>
-            <a href="#" aria-label="YouTube" class="social-icon"><span aria-hidden="true">&#9654;</span></a>
-            <a href="#" aria-label="Instagram" class="social-icon"><span aria-hidden="true">ig</span></a>
-          </div>
         </div>
       </div>
 

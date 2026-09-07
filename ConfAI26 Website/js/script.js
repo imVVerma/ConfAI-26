@@ -95,36 +95,18 @@
     }
   });
 
-  /* ── COUNTDOWN CLOCK ──────────────────────────────────────────────────────
-   * Target: October 30, 2026, 00:00:00 IST (Asia/Kolkata = UTC+5:30).
-   * IST is UTC+05:30, so midnight IST = 18:30 UTC on the previous day.
-   * Date.UTC(2026, 9, 29, 18, 30, 0)  →  Oct 29 2026 18:30:00 UTC
-   *   which equals Oct 30 2026 00:00:00 IST.
-   *
-   * Conference window: Oct 30 (start) through Nov 1 (last day), inclusive.
-   * Nov 2 00:00 IST = Oct 31 18:30 UTC + 2 days = Nov  2 18:30 UTC - 24h
-   *   → Date.UTC(2026, 10, 1, 18, 30, 0)  (Nov 1 18:30 UTC = Nov 2 00:00 IST)
-   * ─────────────────────────────────────────────────────────────────────── */
+  /* ── COUNTDOWN CLOCK ────────────────────────────────────────────────────── */
   (function initCountdown() {
-    var TARGET_START = Date.UTC(2026, 9, 29, 18, 30, 0); // Oct 30 2026 00:00 IST
-    var TARGET_END   = Date.UTC(2026, 10, 1, 18, 30, 0); // Nov 2  2026 00:00 IST
+    var TARGET_START = Date.UTC(2026, 9, 30, 4, 0, 0); // Oct 30 2026 09:30 IST
+    var navDays = document.getElementById("nav-countdown-days");
+    var navHours = document.getElementById("nav-countdown-hours");
+    var navMinutes = document.getElementById("nav-countdown-minutes");
+    var navSeconds = document.getElementById("nav-countdown-seconds");
 
-    var cdDays    = document.getElementById("cd-days");
-    var cdHours   = document.getElementById("cd-hours");
-    var cdMinutes = document.getElementById("cd-minutes");
-    var cdSeconds = document.getElementById("cd-seconds");
-    var heroCards = document.getElementById("hero-countdown");
-
-    if (!cdDays) { return; }
+    if (!navDays || !navHours || !navMinutes || !navSeconds) { return; }
 
     function pad(n) {
       return n < 10 ? "0" + n : String(n);
-    }
-
-    function showEnded(message) {
-      if (heroCards) {
-        heroCards.innerHTML = '<div class="countdown-message">' + message + '</div>';
-      }
     }
 
     function tick() {
@@ -132,11 +114,10 @@
       var diff = TARGET_START - now;
 
       if (diff <= 0) {
-        if (now < TARGET_END) {
-          showEnded("Happening now");
-        } else {
-          showEnded("Concluded");
-        }
+        navDays.textContent = "00";
+        navHours.textContent = "00";
+        navMinutes.textContent = "00";
+        navSeconds.textContent = "00";
         clearInterval(timer);
         return;
       }
@@ -144,15 +125,12 @@
       var totalSecs = Math.floor(diff / 1000);
       var days  = Math.floor(totalSecs / 86400);
       var hours = Math.floor((totalSecs % 86400) / 3600);
-      var mins  = Math.floor((totalSecs % 3600) / 60);
-      var secs  = totalSecs % 60;
-
-      if (cdDays && cdHours && cdMinutes && cdSeconds) {
-        cdDays.textContent    = String(days);
-        cdHours.textContent   = pad(hours);
-        cdMinutes.textContent = pad(mins);
-        cdSeconds.textContent = pad(secs);
-      }
+      var minutes = Math.floor((totalSecs % 3600) / 60);
+      var seconds = totalSecs % 60;
+      navDays.textContent = pad(days);
+      navHours.textContent = pad(hours);
+      navMinutes.textContent = pad(minutes);
+      navSeconds.textContent = pad(seconds);
     }
 
     // Run immediately to avoid a 1-second blank flash, then tick every second
@@ -259,6 +237,10 @@
     var photoModal = document.getElementById("photo-modal");
     if (!grid || !photoModal) { return; }
 
+    var carousel = grid.closest(".gallery-carousel");
+    var previousButton = carousel ? carousel.querySelector(".gallery-control--prev") : null;
+    var nextButton = carousel ? carousel.querySelector(".gallery-control--next") : null;
+
     var photoModalImg     = document.getElementById("photo-modal-img");
     var photoModalCaption = document.getElementById("photo-modal-caption");
     var photoModalClose   = photoModal.querySelector(".modal-close");
@@ -319,36 +301,38 @@
     });
 
     // ── Manifest fetch & render ──────────────────────────────────────────
-    fetch("img/gallery-2025/manifest.json")
-      .then(function(res) {
-        if (!res.ok) { throw new Error("Manifest not found"); }
-        return res.json();
-      })
-      .then(function(data) {
-        var photos = data.photos || [];
-        photos.forEach(function(photo, idx) {
-          var isPlaceholder = !!photo.placeholder;
-          var altText = photo.alt || ("ConfAI 2025 conference photo " + (idx + 1));
+    function renderGallery(photos) {
+      var slots = photos.slice(0, 36);
+      while (slots.length < 36) {
+        slots.push({ placeholder: true, alt: "ConfAI 2025 photo placeholder " + (slots.length + 1) });
+      }
 
-          // Outer wrapper acts as the clickable trigger
+      for (var slideIndex = 0; slideIndex < 3; slideIndex += 1) {
+        var slide = document.createElement("div");
+        slide.className = "gallery-slide";
+        slide.setAttribute("role", "group");
+        slide.setAttribute("aria-label", "Gallery slide " + (slideIndex + 1) + " of 3");
+
+        slots.slice(slideIndex * 12, slideIndex * 12 + 12).forEach(function(photo, slotIndex) {
+          var photoIndex = slideIndex * 12 + slotIndex;
+          var isPlaceholder = !!photo.placeholder;
+          var altText = photo.alt || ("ConfAI 2025 conference photo " + (photoIndex + 1));
           var btn = document.createElement("button");
           btn.className = "gallery-item" + (isPlaceholder ? " gallery-item--placeholder" : "");
           btn.setAttribute("type", "button");
-          btn.setAttribute("role", "listitem");
           btn.setAttribute("aria-label", "View enlarged: " + altText);
           if (isPlaceholder) { btn.setAttribute("data-is-placeholder", "true"); }
 
           if (isPlaceholder) {
-            // Placeholder block — neutral fill, shows photo number
             var plabel = document.createElement("span");
             plabel.className = "gallery-placeholder-label";
-            plabel.textContent = "Photo " + (idx + 1);
+            plabel.textContent = "Photo " + (photoIndex + 1);
             plabel.setAttribute("aria-hidden", "true");
             btn.appendChild(plabel);
           } else {
             var img = document.createElement("img");
-            img.src   = "img/gallery-2025/" + photo.file;
-            img.alt   = altText;
+            img.src = "img/gallery-2025/" + photo.file;
+            img.alt = altText;
             img.className = "gallery-img";
             img.loading = "lazy";
             img.decoding = "async";
@@ -356,21 +340,64 @@
           }
 
           btn.addEventListener("click", function() {
-            openPhotoModal(
-              btn,
-              isPlaceholder ? "" : "img/gallery-2025/" + photo.file,
-              altText
-            );
+            openPhotoModal(btn, isPlaceholder ? "" : "img/gallery-2025/" + photo.file, altText);
           });
-
-          grid.appendChild(btn);
+          slide.appendChild(btn);
         });
+        grid.appendChild(slide);
+      }
+
+      var currentSlide = 0;
+      var slides = grid.querySelectorAll(".gallery-slide");
+      function showSlide(nextSlide) {
+        currentSlide = (nextSlide + slides.length) % slides.length;
+        grid.style.transform = "translateX(-" + (currentSlide * 100) + "%)";
+        grid.setAttribute("aria-label", "Gallery slide " + (currentSlide + 1) + " of " + slides.length);
+      }
+
+      previousButton.addEventListener("click", function() { showSlide(currentSlide - 1); });
+      nextButton.addEventListener("click", function() { showSlide(currentSlide + 1); });
+      showSlide(0);
+    }
+
+    fetch("img/gallery-2025/manifest.json")
+      .then(function(res) {
+        if (!res.ok) { throw new Error("Manifest not found"); }
+        return res.json();
+      })
+      .then(function(data) {
+        renderGallery(data.photos || []);
       })
       .catch(function(err) {
-        // Silently degrade — if manifest fails just hide the grid
-        grid.style.display = "none";
+        grid.innerHTML = "<p class=\"gallery-error\">Gallery photos are temporarily unavailable.</p>";
         console.warn("Gallery manifest error:", err);
       });
+  })();
+
+  (function initTravelModal() {
+    var modal = document.getElementById("travel-modal");
+    var openButton = document.querySelector("[data-travel-open]");
+    if (!modal || !openButton) { return; }
+
+    var closeButton = modal.querySelector(".modal-close");
+    function closeModal() {
+      modal.setAttribute("hidden", "true");
+      document.body.classList.remove("modal-open");
+      openButton.focus();
+    }
+
+    openButton.addEventListener("click", function() {
+      modal.removeAttribute("hidden");
+      document.body.classList.add("modal-open");
+      closeButton.focus();
+    });
+    closeButton.addEventListener("click", closeModal);
+    modal.addEventListener("click", function(event) {
+      if (event.target === modal) { closeModal(); }
+    });
+    document.addEventListener("keydown", function(event) {
+      if (event.key === "Escape" && !modal.hasAttribute("hidden")) { closeModal(); }
+    });
   })();
   /* ── TRACK MODAL ────────────────────────────────────────────────────────── */
   (function initTrackModal() {
