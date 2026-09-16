@@ -11,10 +11,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Open+Sans:wght@400;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Source+Sans+3:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="css/styles.css?v=2" />
+    <link rel="stylesheet" href="css/styles.css?v=8" />
     <script src="js/script.js" defer></script>
   </head>
   <body>
@@ -23,9 +23,15 @@
     <header class="site-header" id="site-header">
       <div class="header-inner">
         <a class="brand" href="index.html" aria-label="ConfAI 2026 home">
-            <img src="confai%20logo/Lockup%20logo.png" alt="ConfAI 2026" class="brand-logo" />
+          <img src="confai%20logo/Lockup%20logo.png" alt="ConfAI 2026" class="brand-logo" />
         </a>
-          <div class="nav-countdown" aria-label="Countdown to ConfAI 2026" aria-live="polite"><span class="nav-countdown-label">ConfAI starts in</span><span class="nav-countdown-box"><strong id="nav-countdown-days">--</strong><small>DAYS</small></span><span class="nav-countdown-box"><strong id="nav-countdown-hours">--</strong><small>HRS</small></span><span class="nav-countdown-box"><strong id="nav-countdown-minutes">--</strong><small>MINS</small></span><span class="nav-countdown-box"><strong id="nav-countdown-seconds">--</strong><small>SECS</small></span></div>
+        <div class="nav-countdown" aria-label="Countdown to ConfAI 2026" aria-live="polite">
+          <span class="nav-countdown-label">ConfAI starts in</span>
+          <span class="nav-countdown-box"><strong id="nav-countdown-days">--</strong><small>DAYS</small></span>
+          <span class="nav-countdown-box"><strong id="nav-countdown-hours">--</strong><small>HRS</small></span>
+          <span class="nav-countdown-box"><strong id="nav-countdown-minutes">--</strong><small>MINS</small></span>
+          <span class="nav-countdown-box"><strong id="nav-countdown-seconds">--</strong><small>SECS</small></span>
+        </div>
 
         <button
           class="nav-toggle"
@@ -44,6 +50,7 @@
             <li><a href="index.html">Home</a></li>
             <li><a href="register.html">Register</a></li>
             <li><a href="agenda.html">Agenda</a></li>
+            <li><a href="sponsorship.html">Sponsorship</a></li>
             <li><a href="faq.html" aria-current="page">FAQ</a></li>
             <li class="has-dropdown">
               <a class="nav-more-link" href="#" aria-haspopup="true">
@@ -53,7 +60,7 @@
                 <span class="dropdown-caret" aria-hidden="true">&#9662;</span>
               </button>
               <ul class="nav-dropdown">
-                <li><a href="#">ConfAI 2025</a></li>
+                <li><a href="index.html#relive-2025">ConfAI 2025</a></li>
                 <li><a href="#">ConfAI 2023</a></li>
                 <li><a href="#">ConfAI 2022</a></li>
               </ul>
@@ -83,7 +90,7 @@
                   aria-expanded="false"
                   aria-controls="faq-panel-1"
                 >
-                  <span class="faq-question-text">What will happen to the accepted abstracts? Will it be published in an indexed proceedings?</span>
+                  <span class="faq-question-text">What happens to my accepted abstract? Will the conference proceedings be indexed?</span>
                   <span class="faq-icon" aria-hidden="true">
                     <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
                       <line x1="12" y1="5" x2="12" y2="19"></line>
@@ -100,7 +107,7 @@
                 aria-hidden="true"
               >
                 <div class="faq-answer-inner">
-                  <p>All accepted abstracts will be presented by the authors at the conference. The conference schedule, once ready, will have detailed information about the presentation time and format. The proceedings of ConfAI 2026 will be published on the conference website.</p>
+                  <p>Accepted abstracts will be presented at ConfAI 2026 in the format assigned by the organizing committee. Please note that ConfAI 2026 does not feature formal publication, listing, or journal indexing for its proceedings.</p>
                 </div>
               </div>
             </div>
@@ -115,7 +122,7 @@
                   aria-expanded="false"
                   aria-controls="faq-panel-2"
                 >
-                  <span class="faq-question-text">Can a review or summary article also be submitted, like part of their Master's/PhD theses?</span>
+                  <span class="faq-question-text">How long will an oral presentation duration be?</span>
                   <span class="faq-icon" aria-hidden="true">
                     <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
                       <line x1="12" y1="5" x2="12" y2="19"></line>
@@ -132,7 +139,7 @@
                 aria-hidden="true"
               >
                 <div class="faq-answer-inner">
-                  <p>Yes, absolutely. We welcome all kinds of abstracts in the areas of interest mentioned in the Call for Abstracts.</p>
+                  <p>The presentation duration and format will be shared along with the detailed conference schedule. The presentation duration will be 15 Minutes, including Q&amp;A</p>
                 </div>
               </div>
             </div>
@@ -147,7 +154,7 @@
                   aria-expanded="false"
                   aria-controls="faq-panel-3"
                 >
-                  <span class="faq-question-text">Do authors have to submit original research in the abstract?</span>
+                  <span class="faq-question-text">What are the poster presentation guidelines?</span>
                   <span class="faq-icon" aria-hidden="true">
                     <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
                       <line x1="12" y1="5" x2="12" y2="19"></line>
@@ -164,7 +171,7 @@
                 aria-hidden="true"
               >
                 <div class="faq-answer-inner">
-                  <p>While authors are highly encouraged to submit their ongoing research, it is not a mandatory requirement. We also welcome research that has recently been published in A* conference avenues like NeurIPS, ICLR, CVPR, CHI, etc.</p>
+                  <p>The participants are supposed to design their posters in A1 Size (<a href="https://www.bing.com/ck/a?!&amp;&amp;p=a3e4b3bcd564320c9a056f9180eea3d009a8fb31d805cb9ef6ac3c8e3c093cd4JmltdHM9MTc4ODk5ODQwMA&amp;ptn=3&amp;ver=2&amp;hsh=4&amp;fclid=117aa58f-1048-64e4-37ab-b2e0115f6511&amp;u=a1aHR0cHM6Ly93d3cucGFwZXJzaXplcy5vcmcvYS1wYXBlci1zaXplcy5odG0&amp;ntb=1" target="_blank" rel="noopener noreferrer">23.39 inches x 33.11 inches</a>) , in vertical orientation.</p>
                 </div>
               </div>
             </div>
@@ -179,7 +186,7 @@
                   aria-expanded="false"
                   aria-controls="faq-panel-4"
                 >
-                  <span class="faq-question-text">Are undergraduate students also allowed to submit abstracts?</span>
+                  <span class="faq-question-text">Can a co-author present instead of the first author?</span>
                   <span class="faq-icon" aria-hidden="true">
                     <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
                       <line x1="12" y1="5" x2="12" y2="19"></line>
@@ -196,7 +203,7 @@
                 aria-hidden="true"
               >
                 <div class="faq-answer-inner">
-                  <p>No. For ConfAI 2026, we are only soliciting abstracts from graduate students, postdocs, and early-career faculty.</p>
+                  <p>Any change in the presenting author must be communicated to and approved by the organizing committee.</p>
                 </div>
               </div>
             </div>
@@ -211,7 +218,7 @@
                   aria-expanded="false"
                   aria-controls="faq-panel-5"
                 >
-                  <span class="faq-question-text">Can non-authors also attend ConfAI?</span>
+                  <span class="faq-question-text">What financial support is provided to the presenters?</span>
                   <span class="faq-icon" aria-hidden="true">
                     <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
                       <line x1="12" y1="5" x2="12" y2="19"></line>
@@ -228,7 +235,7 @@
                 aria-hidden="true"
               >
                 <div class="faq-answer-inner">
-                  <p>Yes, registration for everyone will open soon on the conference website.</p>
+                  <p>The applicable financial support will be communicated individually to the presenters by the organizing committee.</p>
                 </div>
               </div>
             </div>
@@ -243,7 +250,7 @@
                   aria-expanded="false"
                   aria-controls="faq-panel-6"
                 >
-                  <span class="faq-question-text">Is there any registration fee to attend ConfAI?</span>
+                  <span class="faq-question-text">Can I attend ConfAI 2026 if my abstract was not selected?</span>
                   <span class="faq-icon" aria-hidden="true">
                     <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
                       <line x1="12" y1="5" x2="12" y2="19"></line>
@@ -260,7 +267,7 @@
                 aria-hidden="true"
               >
                 <div class="faq-answer-inner">
-                  <p>There is no registration fee for selected authors whose abstracts have been accepted. For everyone else, a registration fee will be charged as given on the registration page.</p>
+                  <p>Yes. Participants whose abstracts were not selected may attend the conference as delegates by completing the applicable registration process and paying the prescribed registration fee.</p>
                 </div>
               </div>
             </div>
@@ -275,7 +282,7 @@
                   aria-expanded="false"
                   aria-controls="faq-panel-7"
                 >
-                  <span class="faq-question-text">Will there be some scholarship (financial support) available for outstation attendees, even if limited in number?</span>
+                  <span class="faq-question-text">Is travel and accommodation provided for participants attending as visitors?</span>
                   <span class="faq-icon" aria-hidden="true">
                     <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
                       <line x1="12" y1="5" x2="12" y2="19"></line>
@@ -292,7 +299,7 @@
                 aria-hidden="true"
               >
                 <div class="faq-answer-inner">
-                  <p>For ConfAI 2026, financial support for travel, accommodation, and other expenses will be provided to researchers whose abstracts have been accepted for presentation at the conference. No financial support will be provided for other participants.</p>
+                  <p>No. Visitors are responsible for arranging and covering their own travel and accommodation.</p>
                 </div>
               </div>
             </div>
@@ -307,7 +314,7 @@
                   aria-expanded="false"
                   aria-controls="faq-panel-8"
                 >
-                  <span class="faq-question-text">What is the talk schedule for different speakers at ConfAI?</span>
+                  <span class="faq-question-text">Can I attend all three days of the conference?</span>
                   <span class="faq-icon" aria-hidden="true">
                     <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
                       <line x1="12" y1="5" x2="12" y2="19"></line>
@@ -324,7 +331,7 @@
                 aria-hidden="true"
               >
                 <div class="faq-answer-inner">
-                  <p>Details will soon be updated on the conference website.</p>
+                  <p>Yes. Participants are encouraged to attend the conference from 30 October to 1 November 2026.</p>
                 </div>
               </div>
             </div>
@@ -339,7 +346,7 @@
                   aria-expanded="false"
                   aria-controls="faq-panel-9"
                 >
-                  <span class="faq-question-text">Is there any special support/consideration for female participants?</span>
+                  <span class="faq-question-text">Will I receive a certificate for attending or presenting at ConfAI 2026?</span>
                   <span class="faq-icon" aria-hidden="true">
                     <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
                       <line x1="12" y1="5" x2="12" y2="19"></line>
@@ -356,10 +363,140 @@
                 aria-hidden="true"
               >
                 <div class="faq-answer-inner">
-                  <p>The organising committee may choose to provide special financial support to female participants for attending ConfAI. Please reach out at <a href="mailto:confai@plaksha.edu.in">confai@plaksha.edu.in</a></p>
+                  <p>Yes. Registered participants as well as invited attendees will receive a certificate of participation, subject to the conference attendance requirements.</p>
                 </div>
               </div>
             </div>
+
+            <!-- FAQ 10 -->
+            <div class="faq-item">
+              <h3>
+                <button
+                  type="button"
+                  class="faq-question-btn"
+                  id="faq-btn-10"
+                  aria-expanded="false"
+                  aria-controls="faq-panel-10"
+                >
+                  <span class="faq-question-text">What is the schedule and timings for the Chandigarh Tour? And who can attend?</span>
+                  <span class="faq-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                      <line x1="12" y1="5" x2="12" y2="19"></line>
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                    </svg>
+                  </span>
+                </button>
+              </h3>
+              <div
+                class="faq-answer"
+                id="faq-panel-10"
+                role="region"
+                aria-labelledby="faq-btn-10"
+                aria-hidden="true"
+              >
+                <div class="faq-answer-inner">
+                  <p>The Chandigarh tour is open to all conference attendees and presenters, taking place on Sunday, November 1, 2026, from 2:00 PM onwards to visit the prominent landmarks of the city. We highly encourage participants traveling from outside the city to join us for this guided visit to experience &ldquo;The City Beautiful.&rdquo; Further details and the full tour itinerary will be shared as we approach the conference date.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- FAQ 11 -->
+            <div class="faq-item">
+              <h3>
+                <button
+                  type="button"
+                  class="faq-question-btn"
+                  id="faq-btn-11"
+                  aria-expanded="false"
+                  aria-controls="faq-panel-11"
+                >
+                  <span class="faq-question-text">Will there be any prize for participation at ConfAI 2026?</span>
+                  <span class="faq-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                      <line x1="12" y1="5" x2="12" y2="19"></line>
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                    </svg>
+                  </span>
+                </button>
+              </h3>
+              <div
+                class="faq-answer"
+                id="faq-panel-11"
+                role="region"
+                aria-labelledby="faq-btn-11"
+                aria-hidden="true"
+              >
+                <div class="faq-answer-inner">
+                  <p>While general attendance does not carry a participation prize, there is a dedicated prize pool and awards for standout presentations in both Poster and Oral categories.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- FAQ 12 -->
+            <div class="faq-item">
+              <h3>
+                <button
+                  type="button"
+                  class="faq-question-btn"
+                  id="faq-btn-12"
+                  aria-expanded="false"
+                  aria-controls="faq-panel-12"
+                >
+                  <span class="faq-question-text">What is the difference between Networking Dinner and Gala Dinner?</span>
+                  <span class="faq-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                      <line x1="12" y1="5" x2="12" y2="19"></line>
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                    </svg>
+                  </span>
+                </button>
+              </h3>
+              <div
+                class="faq-answer"
+                id="faq-panel-12"
+                role="region"
+                aria-labelledby="faq-btn-12"
+                aria-hidden="true"
+              >
+                <div class="faq-answer-inner">
+                  <p>Networking Dinner: A formal gathering focused on facilitating academic discussions, peer interactions, and professional networking among delegates, speakers, and researchers.</p>
+                  <p style="margin-top: 0.75rem;">Gala Dinner: The flagship formal evening event of the conference, combining dinner with special cultural performances, and recognition.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- FAQ 13 -->
+            <div class="faq-item">
+              <h3>
+                <button
+                  type="button"
+                  class="faq-question-btn"
+                  id="faq-btn-13"
+                  aria-expanded="false"
+                  aria-controls="faq-panel-13"
+                >
+                  <span class="faq-question-text">If I opt for a 2-Days/ 1-Day Conference Pass , which days can I attend the conference?</span>
+                  <span class="faq-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                      <line x1="12" y1="5" x2="12" y2="19"></line>
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                    </svg>
+                  </span>
+                </button>
+              </h3>
+              <div
+                class="faq-answer"
+                id="faq-panel-13"
+                role="region"
+                aria-labelledby="faq-btn-13"
+                aria-hidden="true"
+              >
+                <div class="faq-answer-inner">
+                  <p>1-Day / 2-Day Conference Pass Attendance: You can choose to attend any 1 or 2 consecutive or alternate days of your choice (October 30, October 31, or November 1) depending on the track sessions, workshops, or presentation dates that interest you most. (The choice of dates must be declared at the time of registration.)</p>
+                </div>
+              </div>
+            </div>
+
           </div>
         </section>
       </div>

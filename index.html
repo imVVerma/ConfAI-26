@@ -14,7 +14,7 @@
       href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Source+Sans+3:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="css/styles.css?v=5" />
+    <link rel="stylesheet" href="css/styles.css?v=11" />
     <script src="js/script.js" defer></script>
   </head>
   <body>
@@ -50,6 +50,7 @@
             <li><a href="index.html" aria-current="page">Home</a></li>
             <li><a href="register.html">Register</a></li>
             <li><a href="agenda.html">Agenda</a></li>
+            <li><a href="sponsorship.html">Sponsorship</a></li>
             <li><a href="faq.html">FAQ</a></li>
             <li class="has-dropdown">
               <a class="nav-more-link" href="#" aria-haspopup="true">
@@ -59,7 +60,7 @@
                 <span class="dropdown-caret" aria-hidden="true">&#9662;</span>
               </button>
               <ul class="nav-dropdown">
-                <li><a href="#">ConfAI 2025</a></li>
+                <li><a href="#relive-2025">ConfAI 2025</a></li>
                 <li><a href="#">ConfAI 2023</a></li>
                 <li><a href="#">ConfAI 2022</a></li>
               </ul>
@@ -630,10 +631,31 @@
             ></iframe>
           </div>
 
-          <div class="gallery-carousel" aria-label="ConfAI 2025 photo gallery">
-            <button class="gallery-control gallery-control--prev" type="button" aria-label="Previous gallery slide">&#8592;</button>
-            <div id="gallery-2025" class="gallery-track" role="region" aria-live="polite"></div>
-            <button class="gallery-control gallery-control--next" type="button" aria-label="Next gallery slide">&#8594;</button>
+          <div class="gallery-carousel-wrapper">
+            <div class="gallery-carousel-header">
+              <span class="gallery-carousel-badge">Photo Highlights</span>
+              <div class="gallery-slide-counter" id="gallery-slide-counter" aria-live="polite">
+                <span id="gallery-current-slide">1</span> / <span id="gallery-total-slides">9</span>
+              </div>
+            </div>
+
+            <div class="gallery-carousel" aria-label="ConfAI 2025 photo gallery">
+              <button class="gallery-control gallery-control--prev" type="button" aria-label="Previous gallery slide">
+                <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+              </button>
+              <div class="gallery-track-viewport">
+                <div id="gallery-2025" class="gallery-track" role="region" aria-live="polite"></div>
+              </div>
+              <button class="gallery-control gallery-control--next" type="button" aria-label="Next gallery slide">
+                <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </button>
+            </div>
+
+            <div class="gallery-dots" id="gallery-dots" role="tablist" aria-label="Gallery slide indicators"></div>
           </div>
         </div>
       </section>
@@ -655,11 +677,28 @@
     <!-- ═══════════════════════════════════════════════
          PHOTO LIGHTBOX MODAL
          ═══════════════════════════════════════════════ -->
-    <div class="modal-overlay" id="photo-modal" aria-modal="true" role="dialog" aria-labelledby="photo-modal-caption" hidden>
+    <div class="modal-overlay photo-modal-overlay" id="photo-modal" aria-modal="true" role="dialog" aria-labelledby="photo-modal-caption" hidden>
       <div class="modal-content photo-modal-content" role="document">
-        <button class="modal-close" aria-label="Close photo">&times;</button>
-        <img id="photo-modal-img" src="" alt="" class="photo-modal-img">
-        <p id="photo-modal-caption" class="photo-modal-caption"></p>
+        <button class="modal-close photo-modal-close" id="photo-modal-close" aria-label="Close photo">&times;</button>
+        <div class="photo-modal-viewer">
+          <button class="photo-modal-nav photo-modal-prev" id="photo-modal-prev" aria-label="Previous photo" type="button">
+            <svg aria-hidden="true" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+          </button>
+          <div class="photo-modal-img-wrap">
+            <img id="photo-modal-img" src="" alt="" class="photo-modal-img" />
+          </div>
+          <button class="photo-modal-nav photo-modal-next" id="photo-modal-next" aria-label="Next photo" type="button">
+            <svg aria-hidden="true" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+        </div>
+        <div class="photo-modal-footer">
+          <p id="photo-modal-caption" class="photo-modal-caption"></p>
+          <span id="photo-modal-counter" class="photo-modal-counter">1 / 36</span>
+        </div>
       </div>
     </div>
 

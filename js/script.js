@@ -237,31 +237,54 @@
     var photoModal = document.getElementById("photo-modal");
     if (!grid || !photoModal) { return; }
 
-    var carousel = grid.closest(".gallery-carousel");
-    var previousButton = carousel ? carousel.querySelector(".gallery-control--prev") : null;
-    var nextButton = carousel ? carousel.querySelector(".gallery-control--next") : null;
+    var wrapper = grid.closest(".gallery-carousel-wrapper") || grid.closest(".gallery-carousel");
+    var previousButton = wrapper ? wrapper.querySelector(".gallery-control--prev") : null;
+    var nextButton = wrapper ? wrapper.querySelector(".gallery-control--next") : null;
+    var dotsContainer = document.getElementById("gallery-dots");
+    var slideCounterCurrent = document.getElementById("gallery-current-slide");
+    var slideCounterTotal = document.getElementById("gallery-total-slides");
 
-    var photoModalImg     = document.getElementById("photo-modal-img");
+    var photoModalImg = document.getElementById("photo-modal-img");
     var photoModalCaption = document.getElementById("photo-modal-caption");
-    var photoModalClose   = photoModal.querySelector(".modal-close");
-    var activeGalleryTrigger = null;
+    var photoModalCounter = document.getElementById("photo-modal-counter");
+    var photoModalPrev = document.getElementById("photo-modal-prev");
+    var photoModalNext = document.getElementById("photo-modal-next");
+    var photoModalClose = document.getElementById("photo-modal-close") || photoModal.querySelector(".modal-close");
 
-    // ── Lightbox open/close ──────────────────────────────────────────────
-    function openPhotoModal(trigger, src, alt) {
-      activeGalleryTrigger = trigger;
-      if (!trigger.getAttribute("data-is-placeholder")) {
-        photoModalImg.src = src;
-        photoModalImg.alt = alt;
-        photoModalImg.style.display = "";
-      } else {
-        photoModalImg.src = "";
-        photoModalImg.alt = "";
-        photoModalImg.style.display = "none";
+    var allPhotos = [];
+    var currentPhotoIndex = 0;
+    var activeGalleryTrigger = null;
+    var autoplayTimer = null;
+    var currentSlide = 0;
+    var totalSlides = 0;
+
+    // ── Lightbox Navigation ──────────────────────────────────────────────
+    function updatePhotoModal(index) {
+      if (!allPhotos.length) { return; }
+      currentPhotoIndex = (index + allPhotos.length) % allPhotos.length;
+      var photo = allPhotos[currentPhotoIndex];
+      var photoSrc = "img/gallery-2025/" + photo.file;
+      var altText = photo.alt || ("ConfAI 2025 Photo " + (currentPhotoIndex + 1));
+
+      photoModalImg.src = photoSrc;
+      photoModalImg.alt = altText;
+      if (photoModalCaption) {
+        photoModalCaption.textContent = altText;
       }
-      photoModalCaption.textContent = alt;
+      if (photoModalCounter) {
+        photoModalCounter.textContent = (currentPhotoIndex + 1) + " / " + allPhotos.length;
+      }
+    }
+
+    function openPhotoModal(index, trigger) {
+      activeGalleryTrigger = trigger;
+      updatePhotoModal(index);
       photoModal.removeAttribute("hidden");
       document.body.classList.add("modal-open");
-      photoModalClose.focus();
+      if (photoModalClose) {
+        photoModalClose.focus();
+      }
+      stopAutoplay();
     }
 
     function closePhotoModal() {
@@ -271,93 +294,189 @@
         activeGalleryTrigger.focus();
         activeGalleryTrigger = null;
       }
+      startAutoplay();
     }
 
     if (photoModalClose) {
       photoModalClose.addEventListener("click", closePhotoModal);
     }
+    if (photoModalPrev) {
+      photoModalPrev.addEventListener("click", function(e) {
+        e.stopPropagation();
+        updatePhotoModal(currentPhotoIndex - 1);
+      });
+    }
+    if (photoModalNext) {
+      photoModalNext.addEventListener("click", function(e) {
+        e.stopPropagation();
+        updatePhotoModal(currentPhotoIndex + 1);
+      });
+    }
 
     photoModal.addEventListener("click", function(event) {
-      if (event.target === photoModal) { closePhotoModal(); }
-    });
-
-    document.addEventListener("keydown", function(event) {
-      if (event.key === "Escape" && !photoModal.hasAttribute("hidden")) {
+      if (event.target === photoModal || event.target.classList.contains("photo-modal-viewer") || event.target.classList.contains("photo-modal-img-wrap")) {
         closePhotoModal();
       }
     });
 
-    // Focus trap inside photo modal
-    photoModal.addEventListener("keydown", function(event) {
-      if (event.key !== "Tab") { return; }
-      var focusable = photoModal.querySelectorAll('button, [href], img[tabindex], [tabindex]:not([tabindex="-1"])');
-      var first = focusable[0];
-      var last  = focusable[focusable.length - 1];
-      if (event.shiftKey) {
-        if (document.activeElement === first) { last.focus(); event.preventDefault(); }
-      } else {
-        if (document.activeElement === last) { first.focus(); event.preventDefault(); }
+    document.addEventListener("keydown", function(event) {
+      if (photoModal.hasAttribute("hidden")) { return; }
+      if (event.key === "Escape") {
+        closePhotoModal();
+      } else if (event.key === "ArrowLeft") {
+        updatePhotoModal(currentPhotoIndex - 1);
+      } else if (event.key === "ArrowRight") {
+        updatePhotoModal(currentPhotoIndex + 1);
       }
     });
 
-    // ── Manifest fetch & render ──────────────────────────────────────────
+    // ── Carousel Render & Logic ──────────────────────────────────────────
     function renderGallery(photos) {
-      var slots = photos.slice(0, 36);
-      while (slots.length < 36) {
-        slots.push({ placeholder: true, alt: "ConfAI 2025 photo placeholder " + (slots.length + 1) });
+      allPhotos = photos;
+      grid.innerHTML = "";
+      if (dotsContainer) { dotsContainer.innerHTML = ""; }
+
+      var itemsPerSlide = 4;
+      totalSlides = Math.ceil(photos.length / itemsPerSlide);
+      if (totalSlides < 1) { return; }
+
+      if (slideCounterTotal) {
+        slideCounterTotal.textContent = totalSlides;
       }
 
-      for (var slideIndex = 0; slideIndex < 3; slideIndex += 1) {
+      for (var s = 0; s < totalSlides; s += 1) {
         var slide = document.createElement("div");
         slide.className = "gallery-slide";
         slide.setAttribute("role", "group");
-        slide.setAttribute("aria-label", "Gallery slide " + (slideIndex + 1) + " of 3");
+        slide.setAttribute("aria-label", "Gallery slide " + (s + 1) + " of " + totalSlides);
 
-        slots.slice(slideIndex * 12, slideIndex * 12 + 12).forEach(function(photo, slotIndex) {
-          var photoIndex = slideIndex * 12 + slotIndex;
-          var isPlaceholder = !!photo.placeholder;
-          var altText = photo.alt || ("ConfAI 2025 conference photo " + (photoIndex + 1));
+        var slice = photos.slice(s * itemsPerSlide, s * itemsPerSlide + itemsPerSlide);
+        slice.forEach(function(photo, localIdx) {
+          var globalIdx = s * itemsPerSlide + localIdx;
+          var altText = photo.alt || ("ConfAI 2025 conference photo " + (globalIdx + 1));
+
           var btn = document.createElement("button");
-          btn.className = "gallery-item" + (isPlaceholder ? " gallery-item--placeholder" : "");
+          btn.className = "gallery-item";
           btn.setAttribute("type", "button");
-          btn.setAttribute("aria-label", "View enlarged: " + altText);
-          if (isPlaceholder) { btn.setAttribute("data-is-placeholder", "true"); }
+          btn.setAttribute("aria-label", "View photo: " + altText);
 
-          if (isPlaceholder) {
-            var plabel = document.createElement("span");
-            plabel.className = "gallery-placeholder-label";
-            plabel.textContent = "Photo " + (photoIndex + 1);
-            plabel.setAttribute("aria-hidden", "true");
-            btn.appendChild(plabel);
-          } else {
-            var img = document.createElement("img");
-            img.src = "img/gallery-2025/" + photo.file;
-            img.alt = altText;
-            img.className = "gallery-img";
-            img.loading = "lazy";
-            img.decoding = "async";
-            btn.appendChild(img);
-          }
+          var img = document.createElement("img");
+          img.src = "img/gallery-2025/" + photo.file;
+          img.alt = altText;
+          img.className = "gallery-img";
+          img.loading = globalIdx < 8 ? "eager" : "lazy";
+          img.decoding = "async";
+          btn.appendChild(img);
+
+          var overlay = document.createElement("div");
+          overlay.className = "gallery-item-overlay";
+          var caption = document.createElement("span");
+          caption.className = "gallery-item-caption";
+          caption.textContent = altText;
+          overlay.appendChild(caption);
+          btn.appendChild(overlay);
 
           btn.addEventListener("click", function() {
-            openPhotoModal(btn, isPlaceholder ? "" : "img/gallery-2025/" + photo.file, altText);
+            openPhotoModal(globalIdx, btn);
           });
+
           slide.appendChild(btn);
         });
+
         grid.appendChild(slide);
+
+        // Dot indicator
+        if (dotsContainer) {
+          var dot = document.createElement("button");
+          dot.className = "gallery-dot" + (s === 0 ? " is-active" : "");
+          dot.setAttribute("type", "button");
+          dot.setAttribute("role", "tab");
+          dot.setAttribute("aria-label", "Go to gallery slide " + (s + 1));
+          dot.setAttribute("aria-selected", s === 0 ? "true" : "false");
+          (function(targetSlide) {
+            dot.addEventListener("click", function() {
+              showSlide(targetSlide);
+            });
+          })(s);
+          dotsContainer.appendChild(dot);
+        }
       }
 
-      var currentSlide = 0;
-      var slides = grid.querySelectorAll(".gallery-slide");
       function showSlide(nextSlide) {
-        currentSlide = (nextSlide + slides.length) % slides.length;
+        currentSlide = (nextSlide + totalSlides) % totalSlides;
         grid.style.transform = "translateX(-" + (currentSlide * 100) + "%)";
-        grid.setAttribute("aria-label", "Gallery slide " + (currentSlide + 1) + " of " + slides.length);
+        if (slideCounterCurrent) {
+          slideCounterCurrent.textContent = currentSlide + 1;
+        }
+
+        if (dotsContainer) {
+          var dots = dotsContainer.querySelectorAll(".gallery-dot");
+          dots.forEach(function(d, i) {
+            if (i === currentSlide) {
+              d.classList.add("is-active");
+              d.setAttribute("aria-selected", "true");
+            } else {
+              d.classList.remove("is-active");
+              d.setAttribute("aria-selected", "false");
+            }
+          });
+        }
       }
 
-      previousButton.addEventListener("click", function() { showSlide(currentSlide - 1); });
-      nextButton.addEventListener("click", function() { showSlide(currentSlide + 1); });
+      if (previousButton) {
+        previousButton.addEventListener("click", function() {
+          showSlide(currentSlide - 1);
+        });
+      }
+      if (nextButton) {
+        nextButton.addEventListener("click", function() {
+          showSlide(currentSlide + 1);
+        });
+      }
+
+      // Touch swipe gestures
+      var touchStartX = 0;
+      var touchEndX = 0;
+      grid.addEventListener("touchstart", function(e) {
+        touchStartX = e.changedTouches[0].screenX;
+        stopAutoplay();
+      }, { passive: true });
+
+      grid.addEventListener("touchend", function(e) {
+        touchEndX = e.changedTouches[0].screenX;
+        var diff = touchEndX - touchStartX;
+        if (Math.abs(diff) > 45) {
+          if (diff < 0) {
+            showSlide(currentSlide + 1);
+          } else {
+            showSlide(currentSlide - 1);
+          }
+        }
+        startAutoplay();
+      }, { passive: true });
+
+      // Autoplay with pause-on-hover
+      function startAutoplay() {
+        stopAutoplay();
+        autoplayTimer = setInterval(function() {
+          showSlide(currentSlide + 1);
+        }, 4500);
+      }
+
+      function stopAutoplay() {
+        if (autoplayTimer) {
+          clearInterval(autoplayTimer);
+          autoplayTimer = null;
+        }
+      }
+
+      if (wrapper) {
+        wrapper.addEventListener("mouseenter", stopAutoplay);
+        wrapper.addEventListener("mouseleave", startAutoplay);
+      }
+
       showSlide(0);
+      startAutoplay();
     }
 
     fetch("img/gallery-2025/manifest.json")
@@ -506,6 +625,185 @@
         item.classList.toggle("is-open", nextState);
       });
     });
+  })();
+
+  /* ── REGISTRATION PAGE INTERACTIONS ────────────────────────────────────── */
+  (function initRegistrationPage() {
+    // 1. Pass Comparison Table Toggle
+    var tableToggleBtn = document.getElementById("toggle-pass-table-btn");
+    var tableContainer = document.getElementById("passes-comparison-table-wrap");
+
+    if (tableToggleBtn && tableContainer) {
+      tableToggleBtn.addEventListener("click", function () {
+        var isExpanded = tableToggleBtn.getAttribute("aria-expanded") === "true";
+        var nextState = !isExpanded;
+
+        tableToggleBtn.setAttribute("aria-expanded", String(nextState));
+        if (nextState) {
+          tableContainer.removeAttribute("hidden");
+          var textSpan = tableToggleBtn.querySelector(".toggle-btn-text");
+          if (textSpan) textSpan.textContent = "Hide Pass Comparison Table";
+        } else {
+          tableContainer.setAttribute("hidden", "");
+          var textSpan = tableToggleBtn.querySelector(".toggle-btn-text");
+          if (textSpan) textSpan.textContent = "View Detailed Pass Comparison Table";
+        }
+      });
+    }
+
+    // 2. Post-Payment Confirmation Modal
+    var paymentModal = document.getElementById("payment-confirm-modal");
+    var paymentModalTriggers = document.querySelectorAll("[data-payment-modal-open]");
+    var paymentModalClose = document.getElementById("payment-modal-close");
+    var paymentModalDone = document.getElementById("payment-modal-done-btn");
+    var modalToAccLink = document.getElementById("modal-to-acc-link");
+
+    function openPaymentModal() {
+      if (!paymentModal) return;
+      paymentModal.removeAttribute("hidden");
+      document.body.style.overflow = "hidden";
+      if (paymentModalClose) paymentModalClose.focus();
+    }
+
+    function closePaymentModal() {
+      if (!paymentModal) return;
+      paymentModal.setAttribute("hidden", "");
+      document.body.style.overflow = "";
+    }
+
+    paymentModalTriggers.forEach(function (trigger) {
+      trigger.addEventListener("click", function (e) {
+        e.preventDefault();
+        openPaymentModal();
+      });
+    });
+
+    if (paymentModalClose) {
+      paymentModalClose.addEventListener("click", closePaymentModal);
+    }
+    if (paymentModalDone) {
+      paymentModalDone.addEventListener("click", closePaymentModal);
+    }
+    if (modalToAccLink) {
+      modalToAccLink.addEventListener("click", function () {
+        closePaymentModal();
+      });
+    }
+
+    if (paymentModal) {
+      paymentModal.addEventListener("click", function (e) {
+        if (e.target === paymentModal) {
+          closePaymentModal();
+        }
+      });
+    }
+
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && paymentModal && !paymentModal.hasAttribute("hidden")) {
+        closePaymentModal();
+      }
+    });
+
+    // Auto-open if query param is set
+    try {
+      var urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get("status") === "success" || urlParams.get("payment") === "confirmed") {
+        openPaymentModal();
+      }
+    } catch (err) {
+      // Ignore URLSearchParams error in older environments
+    }
+
+    // 3. Accommodation Request Form
+    var accForm = document.getElementById("accommodation-request-form");
+    var statusAlert = document.getElementById("accommodation-status-alert");
+    var statusFeedbackText = document.getElementById("status-feedback-text");
+
+    if (accForm) {
+      accForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        // Clear previous validation states
+        var errorFields = accForm.querySelectorAll(".is-invalid");
+        errorFields.forEach(function (f) { f.classList.remove("is-invalid"); });
+        var errorMsgs = accForm.querySelectorAll(".form-error-msg");
+        errorMsgs.forEach(function (m) { m.textContent = ""; });
+
+        var fullname = (document.getElementById("acc-fullname").value || "").trim();
+        var email = (document.getElementById("acc-email").value || "").trim();
+        var phone = (document.getElementById("acc-phone").value || "").trim();
+        var regid = (document.getElementById("acc-regid").value || "").trim();
+        var checkin = (document.getElementById("acc-checkin").value || "").trim();
+        var checkout = (document.getElementById("acc-checkout").value || "").trim();
+        var notesEl = document.getElementById("acc-notes");
+        var notes = notesEl ? (notesEl.value || "").trim() : "";
+
+        var isValid = true;
+        var firstInvalidField = null;
+
+        function markInvalid(id, errId, msg) {
+          var input = document.getElementById(id);
+          var errSpan = document.getElementById(errId);
+          if (input) input.classList.add("is-invalid");
+          if (errSpan) errSpan.textContent = msg;
+          if (!firstInvalidField && input) firstInvalidField = input;
+          isValid = false;
+        }
+
+        if (!fullname) {
+          markInvalid("acc-fullname", "error-fullname", "Please provide your full name.");
+        }
+        if (!email || !/\S+@\S+\.\S+/.test(email)) {
+          markInvalid("acc-email", "error-email", "Please provide a valid email address.");
+        }
+        if (!phone) {
+          markInvalid("acc-phone", "error-phone", "Please provide a contact phone number.");
+        }
+        if (!regid) {
+          markInvalid("acc-regid", "error-regid", "Please provide your registration or payment ID.");
+        }
+        if (!checkin) {
+          markInvalid("acc-checkin", "error-checkin", "Please choose a check-in date.");
+        }
+        if (!checkout) {
+          markInvalid("acc-checkout", "error-checkout", "Please choose a check-out date.");
+        }
+
+        if (!isValid) {
+          if (firstInvalidField) firstInvalidField.focus();
+          return;
+        }
+
+        // Show on-screen confirmation
+        if (statusAlert) {
+          statusAlert.removeAttribute("hidden");
+          if (statusFeedbackText) {
+            statusFeedbackText.textContent = "Thank you, " + fullname + "! Your accommodation request has been recorded. Opening your email to forward to confai@plaksha.edu.in.";
+          }
+          statusAlert.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        }
+
+        // Open mailto with prefilled details
+        var emailSubject = encodeURIComponent("ConfAI 2026 Accommodation Request - " + fullname + " (" + regid + ")");
+        var emailBody = encodeURIComponent(
+          "Dear ConfAI 2026 Organizing Committee,\n\n" +
+          "I have registered for ConfAI 2026 and would like to request campus accommodation. Here are my details:\n\n" +
+          "• Full Name: " + fullname + "\n" +
+          "• Email Address: " + email + "\n" +
+          "• Phone Number: " + phone + "\n" +
+          "• Registration / Payment ID: " + regid + "\n" +
+          "• Check-in Date: " + checkin + "\n" +
+          "• Check-out Date: " + checkout + "\n" +
+          "• Notes / Requests: " + (notes || "None") + "\n\n" +
+          "Kindly confirm room availability and booking procedures.\n\n" +
+          "Best regards,\n" + fullname
+        );
+
+        setTimeout(function () {
+          window.location.href = "mailto:confai@plaksha.edu.in?subject=" + emailSubject + "&body=" + emailBody;
+        }, 800);
+      });
+    }
   })();
 
 })();
