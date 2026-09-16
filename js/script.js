@@ -138,6 +138,37 @@
     var timer = setInterval(tick, 1000);
   })();
 
+  /* ── RELIVE VIDEO YEAR SELECTOR ────────────────────────────────────────── */
+  (function initReliveVideo() {
+    var filters = document.querySelectorAll(".video-year-filter");
+    var iframe = document.querySelector(".video-wrapper iframe");
+    var heading = document.getElementById("relive-heading");
+    var wrapper = document.querySelector(".video-wrapper");
+
+    if (!iframe || !heading || !wrapper || filters.length === 0) { return; }
+
+    filters.forEach(function (filter) {
+      filter.addEventListener("click", function () {
+        var year = filter.getAttribute("data-video-year");
+        var videoUrl = filter.getAttribute("data-video-url");
+        var videoTitle = filter.getAttribute("data-video-title");
+
+        if (!year || !videoUrl || !videoTitle) { return; }
+
+        iframe.src = videoUrl;
+        iframe.title = videoTitle;
+        heading.textContent = "Relive ConfAI";
+        wrapper.setAttribute("aria-label", videoTitle);
+
+        filters.forEach(function (button) {
+          var isActive = button === filter;
+          button.classList.toggle("is-active", isActive);
+          button.setAttribute("aria-pressed", String(isActive));
+        });
+      });
+    });
+  })();
+
   /* ── SPEAKER MODAL ──────────────────────────────────────────────────────── */
   (function initSpeakerModal() {
     var triggers = document.querySelectorAll(".speaker-trigger");
@@ -412,6 +443,46 @@
     var descEl    = document.getElementById("track-modal-desc");
     var activeTrackTrigger = null;
 
+    // ── Faculty URL lookup map ───────────────────────────────────────────────
+    var CHAIR_URLS = {
+      "Alok Ranjan":              "https://plaksha.edu.in/faculty-details/alok-ranjan",
+      "Nikhil George":            "https://plaksha.edu.in/faculty-details/nikhil-george",
+      "Divyanshu Jain":           "https://plaksha.edu.in/faculty-details/divyanshu-jain",
+      "Dr. Sunita Chauhan":       "https://plaksha.edu.in/faculty-details/dr-sunita-chauhan",
+      "Dr. Sandeep Manjanna":     "https://plaksha.edu.in/faculty-details/dr-sandeep-manjanna",
+      "Dr. Monika Sharma":        "https://plaksha.edu.in/faculty-details/dr-monika-sharma",
+      "Dr. Chaitanya Lekshmi Indira": "https://plaksha.edu.in/faculty-details/dr-chaitanya-lekshmi-indira",
+      "Arshdeep Sidhu":           "https://plaksha.edu.in/faculty-details/arshdeep-sidhu",
+      "Dr. Amruta R Behera":      "https://plaksha.edu.in/faculty-details/dr-amruta-r-behera",
+      "Dr. Rucha Joshi":          "https://plaksha.edu.in/faculty-details/dr-rucha-joshi",
+      "Dr. Swagata Halder":       "https://plaksha.edu.in/faculty-details/dr-swagata-halder",
+      "Sanjeev Khosla":           "https://plaksha.edu.in/faculty-details/sanjeev-khosla",
+      "Dr. Anupam Sobti":         "https://plaksha.edu.in/faculty-details/dr-anupam-sobti",
+      "Dr. Malini Balakrishnan":  "https://plaksha.edu.in/faculty-details/dr-malini-balakrishnan",
+      "Dr. Prashanth Suresh Kumar": "https://plaksha.edu.in/faculty-details/dr-prashanth-suresh-kumar",
+      "Pankaj Pansari":           "https://plaksha.edu.in/faculty-details/pankaj-pansari",
+      "Anil Roy":                 "https://plaksha.edu.in/faculty-details/anil-roy",
+      "Praveen Kumar":            "https://plaksha.edu.in/faculty-details/praveen-kumar",
+      "Deepan Muthirayan":        "https://plaksha.edu.in/faculty-details/deepan-muthirayan",
+      "Rajesh Sharma":            "https://plaksha.edu.in/faculty-details/rajesh-sharma",
+      "Shachindra Nath":          "http://linkedin.com/in/shachindranath",
+      "Dr. Deepak Khemani":       "https://plaksha.edu.in/faculty-details/dr-deepak-khemani",
+      "Saeed Salehi":             "https://plaksha.edu.in/faculty-details/saeed-salehi",
+      "Dr. Tapas Pandit":         "https://plaksha.edu.in/faculty-details/dr-tapas-pandit",
+      "Sandilya Garimella":       "https://plaksha.edu.in/faculty-details/sandilya-garimella"
+    };
+
+    function buildChairsHTML(chairsStr) {
+      var names = chairsStr.split("|").map(function(s) { return s.trim(); }).filter(Boolean);
+      return names.map(function(name) {
+        var url = CHAIR_URLS[name];
+        if (url) {
+          return "<a href=\"" + url + "\" target=\"_blank\" rel=\"noopener noreferrer\">" + name + "</a>";
+        }
+        return name;
+      }).join(" &nbsp;|&nbsp; ");
+    }
+
     function openTrackModal(trigger) {
       activeTrackTrigger = trigger;
       var chairs = trigger.getAttribute("data-track-chairs");
@@ -420,10 +491,10 @@
       descEl.textContent   = trigger.getAttribute("data-track-desc");
 
       if (chairs) {
-        chairsEl.textContent = "Track Co-Chairs: " + chairs;
+        chairsEl.innerHTML = "Track Co-Chairs: " + buildChairsHTML(chairs);
         chairsEl.style.display = "";
       } else {
-        chairsEl.textContent = "";
+        chairsEl.innerHTML = "";
         chairsEl.style.display = "none";
       }
 
