@@ -5944,3 +5944,368 @@ body.agenda-page.sharp-theme,
     print-color-adjust: exact;
   }
 }
+
+
+
+
+
+
+
+
+
+
+/* ==========================================================================
+   CONFAI 2026 - REFINED CINEMATIC HERO & CLEAN WHITE HEADER
+   ========================================================================== */
+
+/* ── Clean White Header (Matching Original Brand Style) ─────────────────── */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--header-h, 68px);
+  z-index: 1000;
+  background: #FFFFFF !important;
+  border-bottom: 1px solid #E2E8F0 !important;
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.05);
+}
+
+.header-inner {
+  width: 100%;
+  max-width: var(--content-max, 72rem);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand-logo {
+  height: 38px;
+  width: auto;
+  object-fit: contain;
+}
+
+.site-nav a {
+  color: #1E293B !important;
+  font-family: 'Open Sans', sans-serif !important;
+  font-size: 0.92rem;
+  font-weight: 600;
+  padding: 0.5rem 0.85rem;
+  transition: color 0.15s ease;
+}
+
+.site-nav a:hover {
+  color: #007878 !important; /* Plaksha Teal */
+}
+
+.site-nav a[aria-current="page"] {
+  color: #007878 !important;
+  font-weight: 700;
+  border-bottom: 2px solid #007878;
+}
+
+.nav-toggle-bar {
+  background: #1E293B !important;
+}
+
+/* ── Full-Viewport Cinema Video Hero ────────────────────────────────────── */
+.cinema-video-hero,
+.cinema-video-hero * {
+  font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  box-sizing: border-box;
+}
+
+.cinema-video-hero {
+  position: relative;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-height: calc(100vh - var(--header-h, 68px));
+  height: calc(100vh - var(--header-h, 68px));
+  height: calc(100dvh - var(--header-h, 68px));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin: 0 !important;
+  padding: 2rem 1.5rem 5rem;
+  background: #080E18;
+  margin-top: var(--header-h, 68px) !important;
+}
+
+/* ── Background Video & 45-55% Dark Overlay ─────────────────────────────── */
+.cinema-video-container {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.cinema-video-element {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: 100%;
+  height: 100%;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  object-position: center;
+  pointer-events: none;
+}
+
+.cinema-video-scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: rgba(8, 14, 24, 0.50); /* 50% Dark Overlay for optimal readability & video visibility */
+  background: linear-gradient(180deg, rgba(8, 14, 24, 0.52) 0%, rgba(8, 14, 24, 0.46) 50%, rgba(8, 14, 24, 0.60) 100%);
+  pointer-events: none;
+}
+
+/* ── Centered Spacious Hero Content ─────────────────────────────────────── */
+.cinema-hero-content {
+  position: relative;
+  z-index: 10;
+  max-width: 960px;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.cinema-hero-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.15rem;
+}
+
+/* [CONFAI LOGO] 2026 Unified Brand Lockup */
+.cinema-brand-lockup {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 0.25rem;
+}
+
+.cinema-brand-logo-img {
+  height: clamp(44px, 6.2vw, 68px);
+  width: auto;
+  max-width: 62vw;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.7));
+}
+
+.cinema-brand-year {
+  font-family: 'Open Sans', sans-serif !important;
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-weight: 800;
+  color: #FFFFFF;
+  letter-spacing: -0.01em;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+  margin: 0;
+  padding: 0;
+  transform: translateY(-1px); /* Optical vertical center alignment with CONFAI logo */
+}
+
+/* Tagline in Plaksha Teal - Clean, Simple & Minimalist (No Glow / No Stroke) */
+.cinema-tagline {
+  font-family: 'Open Sans', sans-serif !important;
+  font-size: clamp(1.2rem, 2.5vw, 1.85rem);
+  font-weight: 600;
+  color: #00A3A3; /* Clean, crisp Plaksha Teal on dark background */
+  letter-spacing: 0.01em;
+  line-height: 1.35;
+  margin: 0;
+  text-shadow: none !important;
+  -webkit-text-stroke: 0 !important;
+  text-stroke: 0 !important;
+}
+
+/* Single Clean Horizontal Event Info Line (No Emojis) */
+.cinema-meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem 0.9rem;
+  font-size: clamp(0.96rem, 1.7vw, 1.2rem);
+  font-weight: 400;
+  color: #F1F5F9;
+  margin-top: 0.25rem;
+  text-shadow: none;
+}
+
+.cinema-meta-date,
+.cinema-meta-venue {
+  white-space: nowrap;
+}
+
+.cinema-meta-dot {
+  color: #00A3A3;
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+/* Action Buttons (Plaksha Brand Teal #007878) - Clean & Minimal */
+.cinema-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.9rem;
+  margin-top: 1rem;
+}
+
+.btn-cinema-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 2.2rem;
+  background: #007878;
+  color: #FFFFFF !important;
+  border: 1px solid #007878;
+  font-size: 0.94rem;
+  font-weight: 600;
+  border-radius: 6px;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn-cinema-primary:hover {
+  background: #006060;
+  border-color: #006060;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.btn-cinema-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 2rem;
+  background: rgba(255, 255, 255, 0.08);
+  color: #FFFFFF !important;
+  font-size: 0.94rem;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 6px;
+  text-decoration: none;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: all 0.2s ease;
+}
+
+.btn-cinema-secondary:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: #FFFFFF;
+  transform: translateY(-1px);
+}
+
+/* ── Subtle Curved Transition with Neural Network Pattern ───────────────── */
+.cinema-curve-divider {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 90px;
+  overflow: visible;
+  line-height: 0;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.neural-transition-canvas {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  pointer-events: none;
+  z-index: 6;
+}
+
+.cinema-curve-svg {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 48px;
+  z-index: 4;
+  display: block;
+}
+
+/* ── Responsive Mobile Rules ────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .cinema-video-hero {
+    padding: 1.5rem 1rem 3.5rem;
+  }
+
+  .cinema-hero-inner {
+    gap: 0.9rem;
+  }
+
+  .cinema-brand-lockup {
+    gap: 0.5rem;
+  }
+
+  .cinema-meta-row {
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .cinema-meta-dot {
+    display: none;
+  }
+
+  .cinema-meta-date,
+  .cinema-meta-venue {
+    white-space: normal;
+    text-align: center;
+  }
+
+  .cinema-actions {
+    flex-direction: column;
+    width: 100%;
+    max-width: 280px;
+    gap: 0.65rem;
+  }
+
+  .btn-cinema-primary,
+  .btn-cinema-secondary {
+    width: 100%;
+  }
+
+  .cinema-curve-divider {
+    height: 60px;
+  }
+
+  .neural-transition-canvas {
+    height: 70px;
+  }
+
+  .cinema-curve-svg {
+    height: 28px;
+  }
+}

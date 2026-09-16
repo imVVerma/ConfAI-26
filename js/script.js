@@ -1569,3 +1569,260 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 });
+
+
+/* ==========================================================================
+   CONFAI 2026 - POSTER HERO DYNAMIC BACKGROUND SLIDESHOW CONTROLLER
+   ========================================================================== */
+document.addEventListener('DOMContentLoaded', () => {
+  const slides = document.querySelectorAll('.poster-slide');
+  if (!slides.length) return;
+
+  let currentSlideIndex = 0;
+  const slideIntervalMs = 7000; // 7 seconds per slide for calm, elegant transitions
+
+  function nextSlide() {
+    slides[currentSlideIndex].classList.remove('is-active');
+    currentSlideIndex = (currentSlideIndex + 1) % slides.length;
+    slides[currentSlideIndex].classList.add('is-active');
+  }
+
+  // Start continuous smooth crossfade slideshow
+  let slideshowTimer = setInterval(nextSlide, slideIntervalMs);
+
+  // Pause on tab unfocus to conserve resources, resume on focus
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      clearInterval(slideshowTimer);
+    } else {
+      slideshowTimer = setInterval(nextSlide, slideIntervalMs);
+    }
+  });
+});
+
+
+/* ==========================================================================
+   CONFAI 2026 - TWO-LAYER HERO SLIDESHOW CONTROLLER
+   ========================================================================== */
+document.addEventListener('DOMContentLoaded', () => {
+  const photoSlides = document.querySelectorAll('.hero-photo-showcase .photo-slide');
+  if (!photoSlides.length) return;
+
+  let currentSlide = 0;
+  const slideInterval = 7500; // 7.5 seconds per slide for calm, smooth transitions
+
+  function advanceSlide() {
+    photoSlides[currentSlide].classList.remove('is-active');
+    currentSlide = (currentSlide + 1) % photoSlides.length;
+    photoSlides[currentSlide].classList.add('is-active');
+  }
+
+  let timer = setInterval(advanceSlide, slideInterval);
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      clearInterval(timer);
+    } else {
+      timer = setInterval(advanceSlide, slideInterval);
+    }
+  });
+});
+
+
+/* ==========================================================================
+   CONFAI 2026 - SINGLE FULL-WIDTH PHOTO SLIDESHOW CONTROLLER
+   ========================================================================== */
+document.addEventListener('DOMContentLoaded', () => {
+  const singleSlides = document.querySelectorAll('.hero-photo-showcase .photo-slide');
+  if (!singleSlides.length) return;
+
+  let slideIdx = 0;
+  const slideDuration = 6500; // 6.5s smooth continuous slideshow
+
+  function transitionSlide() {
+    singleSlides[slideIdx].classList.remove('is-active');
+    slideIdx = (slideIdx + 1) % singleSlides.length;
+    singleSlides[slideIdx].classList.add('is-active');
+  }
+
+  let singleSlideTimer = setInterval(transitionSlide, slideDuration);
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      clearInterval(singleSlideTimer);
+    } else {
+      singleSlideTimer = setInterval(transitionSlide, slideDuration);
+    }
+  });
+});
+
+
+/* ==========================================================================
+   CONFAI 2026 - NEURAL NETWORK TRANSITION ANIMATOR
+   ========================================================================== */
+document.addEventListener('DOMContentLoaded', function () {
+  var canvas = document.getElementById('neural-transition-canvas');
+  if (!canvas) return;
+
+  var ctx = canvas.getContext('2d');
+  if (!ctx) return;
+
+  var nodes = [];
+  var animationFrameId = null;
+  var isRunning = true;
+  var width = 0;
+  var height = 0;
+  var dpr = window.devicePixelRatio || 1;
+
+  // Plaksha Teal: RGB (0, 120, 120)
+  var TEAL_R = 0;
+  var TEAL_G = 120;
+  var TEAL_B = 120;
+
+  function resizeCanvas() {
+    var rect = canvas.getBoundingClientRect();
+    width = rect.width || window.innerWidth;
+    height = rect.height || 100;
+    dpr = window.devicePixelRatio || 1;
+
+    canvas.width = Math.floor(width * dpr);
+    canvas.height = Math.floor(height * dpr);
+    ctx.scale(dpr, dpr);
+
+    initNodes();
+  }
+
+  function initNodes() {
+    nodes = [];
+    // Number of nodes based on screen width: gentle density (approx 24-38 nodes)
+    var nodeCount = Math.max(16, Math.min(36, Math.floor(width / 42)));
+
+    for (var i = 0; i < nodeCount; i++) {
+      var x = (width / (nodeCount - 1)) * i + (Math.random() * 24 - 12);
+      // Curve equation matching the SVG shallow wave: y_curve = (height - 40) + 32 * sin(pi * x / width)
+      var normX = Math.max(0, Math.min(1, x / width));
+      var curveY = (height - 48) + Math.sin(Math.PI * normX) * 32;
+      var yOffset = (Math.random() - 0.5) * 44; // Concentrated within +/- 22px of the curve
+      var y = Math.max(8, Math.min(height - 8, curveY + yOffset));
+
+      nodes.push({
+        x: x,
+        y: y,
+        originX: x,
+        originY: y,
+        vx: (Math.random() - 0.5) * 0.12, // Very slow subtle drift
+        vy: (Math.random() - 0.5) * 0.08,
+        radius: 1.5 + Math.random() * 1.1, // 1.5px to 2.6px
+        pulsePhase: Math.random() * Math.PI * 2,
+        pulseSpeed: 0.012 + Math.random() * 0.018, // Slow, barely noticeable pulse
+        baseAlpha: 0.28 + Math.random() * 0.25 // Low opacity: 0.28 to 0.53
+      });
+    }
+  }
+
+  function render(time) {
+    if (!isRunning) return;
+
+    ctx.clearRect(0, 0, width, height);
+
+    var maxDist = 96; // Distance threshold for connection lines
+
+    // 1. Update positions & pulse phases
+    for (var i = 0; i < nodes.length; i++) {
+      var n = nodes[i];
+      n.x += n.vx;
+      n.y += n.vy;
+      n.pulsePhase += n.pulseSpeed;
+
+      // Soft spring tether back to origin to maintain distribution along curve
+      var dx = n.originX - n.x;
+      var dy = n.originY - n.y;
+      n.vx += dx * 0.0008;
+      n.vy += dy * 0.0008;
+
+      // Velocity damping
+      n.vx *= 0.985;
+      n.vy *= 0.985;
+    }
+
+    // 2. Draw Connection Lines (Thin geometric connections)
+    ctx.lineWidth = 0.75;
+    for (var a = 0; a < nodes.length; a++) {
+      var nodeA = nodes[a];
+      var pulseA = Math.sin(nodeA.pulsePhase);
+      var currentAlphaA = Math.max(0.12, Math.min(0.65, nodeA.baseAlpha + pulseA * 0.12));
+
+      for (var b = a + 1; b < nodes.length; b++) {
+        var nodeB = nodes[b];
+        var distSq = (nodeA.x - nodeB.x) * (nodeA.x - nodeB.x) + (nodeA.y - nodeB.y) * (nodeA.y - nodeB.y);
+
+        if (distSq < maxDist * maxDist) {
+          var dist = Math.sqrt(distSq);
+          var distFactor = 1 - (dist / maxDist);
+          var pulseB = Math.sin(nodeB.pulsePhase);
+          var currentAlphaB = Math.max(0.12, Math.min(0.65, nodeB.baseAlpha + pulseB * 0.12));
+          var lineAlpha = distFactor * Math.min(currentAlphaA, currentAlphaB) * 0.48;
+
+          if (lineAlpha > 0.02) {
+            ctx.beginPath();
+            ctx.strokeStyle = 'rgba(' + TEAL_R + ',' + TEAL_G + ',' + TEAL_B + ',' + lineAlpha.toFixed(3) + ')';
+            ctx.moveTo(nodeA.x, nodeA.y);
+            ctx.lineTo(nodeB.x, nodeB.y);
+            ctx.stroke();
+          }
+        }
+      }
+    }
+
+    // 3. Draw Nodes (Small subtle pulsing circles)
+    for (var k = 0; k < nodes.length; k++) {
+      var node = nodes[k];
+      var pulse = Math.sin(node.pulsePhase);
+      var nodeAlpha = Math.max(0.18, Math.min(0.65, node.baseAlpha + pulse * 0.14));
+      var drawRadius = node.radius + pulse * 0.35;
+
+      // Soft micro halo
+      ctx.beginPath();
+      ctx.arc(node.x, node.y, drawRadius + 1.8, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(' + TEAL_R + ',' + TEAL_G + ',' + TEAL_B + ',' + (nodeAlpha * 0.15).toFixed(3) + ')';
+      ctx.fill();
+
+      // Main crisp node
+      ctx.beginPath();
+      ctx.arc(node.x, node.y, Math.max(1.0, drawRadius), 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(' + TEAL_R + ',' + TEAL_G + ',' + TEAL_B + ',' + nodeAlpha.toFixed(3) + ')';
+      ctx.fill();
+    }
+
+    animationFrameId = requestAnimationFrame(render);
+  }
+
+  // Handle Reduced Motion preferences
+  var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReducedMotion) {
+    resizeCanvas();
+    // Render single static frame
+    render();
+    isRunning = false;
+    return;
+  }
+
+  window.addEventListener('resize', function () {
+    resizeCanvas();
+  }, { passive: true });
+
+  document.addEventListener('visibilitychange', function () {
+    if (document.hidden) {
+      isRunning = false;
+      if (animationFrameId) cancelAnimationFrame(animationFrameId);
+    } else {
+      if (!isRunning) {
+        isRunning = true;
+        animationFrameId = requestAnimationFrame(render);
+      }
+    }
+  });
+
+  resizeCanvas();
+  animationFrameId = requestAnimationFrame(render);
+});
