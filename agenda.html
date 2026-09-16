@@ -3,25 +3,36 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Agenda | ConfAI 2026</title>
+    <meta
+      name="description"
+      content="ConfAI 2026 Conference Timetable and Agenda. Plaksha University, Mohali (October 30 to November 01, 2026)."
+    />
+    <title>Conference Timetable | ConfAI 2026</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Source+Sans+3:wght@400;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="css/styles.css?v=2" />
+    <link rel="stylesheet" href="css/styles.css?v=6" />
     <script src="js/script.js" defer></script>
   </head>
-  <body>
+  <body class="agenda-page sharp-theme">
     <a class="skip-link" href="#main-content">Skip to content</a>
 
+    <!-- Site Navigation Header -->
     <header class="site-header" id="site-header">
       <div class="header-inner">
         <a class="brand" href="index.html" aria-label="ConfAI 2026 home">
-            <img src="confai%20logo/Lockup%20logo.png" alt="ConfAI 2026" class="brand-logo" />
+          <img src="confai%20logo/Lockup%20logo.png" alt="ConfAI 2026" class="brand-logo" />
         </a>
-          <div class="nav-countdown" aria-label="Countdown to ConfAI 2026" aria-live="polite"><span class="nav-countdown-label">ConfAI starts in</span><span class="nav-countdown-box"><strong id="nav-countdown-days">--</strong><small>DAYS</small></span><span class="nav-countdown-box"><strong id="nav-countdown-hours">--</strong><small>HRS</small></span><span class="nav-countdown-box"><strong id="nav-countdown-minutes">--</strong><small>MINS</small></span><span class="nav-countdown-box"><strong id="nav-countdown-seconds">--</strong><small>SECS</small></span></div>
+        <div class="nav-countdown" aria-label="Countdown to ConfAI 2026" aria-live="polite">
+          <span class="nav-countdown-label">ConfAI starts in</span>
+          <span class="nav-countdown-box"><strong id="nav-countdown-days">--</strong><small>DAYS</small></span>
+          <span class="nav-countdown-box"><strong id="nav-countdown-hours">--</strong><small>HRS</small></span>
+          <span class="nav-countdown-box"><strong id="nav-countdown-minutes">--</strong><small>MINS</small></span>
+          <span class="nav-countdown-box"><strong id="nav-countdown-seconds">--</strong><small>SECS</small></span>
+        </div>
 
         <button
           class="nav-toggle"
@@ -59,6 +70,530 @@
       </div>
     </header>
 
-    <main id="main-content"></main>
+    <!-- Main Content Area -->
+    <main id="main-content" class="sharp-timetable-wrapper">
+      <div class="sharp-timetable-container">
+        
+        <!-- Header Title -->
+        <div class="sharp-header-block">
+          <h1 class="sharp-main-title">Conference Schedule</h1>
+          <p class="sharp-subtitle">ConfAI 2026 | October 30 to November 01, 2026 | Plaksha University, Mohali</p>
+        </div>
+
+        <!-- Controls Toolbar (Search & Filter Tabs) -->
+        <div class="sharp-toolbar">
+          <div class="sharp-tabs-group" role="tablist" aria-label="Filter schedule by day">
+            <button type="button" class="sharp-tab-btn active" id="tab-all" data-day="all" role="tab" aria-selected="true">All Days</button>
+            <button type="button" class="sharp-tab-btn" id="tab-day1" data-day="day1" role="tab" aria-selected="false">Day 1: Oct 30</button>
+            <button type="button" class="sharp-tab-btn" id="tab-day2" data-day="day2" role="tab" aria-selected="false">Day 2: Oct 31</button>
+            <button type="button" class="sharp-tab-btn" id="tab-day3" data-day="day3" role="tab" aria-selected="false">Day 3: Nov 01</button>
+          </div>
+
+          <div class="sharp-actions-group">
+            <div class="sharp-search-box">
+              <input
+                type="text"
+                id="sharp-search-input"
+                class="sharp-search-field"
+                placeholder="Search session, speaker, topic, room..."
+                aria-label="Search conference schedule"
+              />
+              <button type="button" id="sharp-search-clear" class="sharp-clear-btn" aria-label="Clear search" style="display:none;">&times;</button>
+            </div>
+            <button type="button" class="sharp-print-btn" onclick="window.print()" aria-label="Print schedule">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+              <span>Print Schedule</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- No Results Message -->
+        <div id="sharp-no-results" class="sharp-no-results" style="display:none;">
+          <p>No sessions match your search query. Try searching for a different speaker name, session title, or track.</p>
+        </div>
+
+        <!-- Timetable Schedule Content -->
+        <div class="sharp-schedule-board" id="sharp-schedule-board">
+
+          <!-- ==================== DAY 1 ==================== -->
+          <section class="sharp-day-section" id="section-day1" data-day="day1">
+            <div class="sharp-date-banner" tabindex="0" role="button" aria-expanded="true">
+              <span>Friday, October 30, 2026 - Inauguration & Parallel Sessions</span>
+            </div>
+
+            <div class="sharp-table">
+              
+              <!-- D1-S1 -->
+              <div class="sharp-row" data-search="08:30 am to 09:30 am registration and welcome coffee auditorium foyer badge kit check-in breakfast">
+                <div class="sharp-col-time">08:30 am to 09:30 am</div>
+                <div class="sharp-col-content">
+                  <div class="sharp-session-title">Registration and Welcome Coffee</div>
+                  <div class="sharp-venue-tag">Venue: Auditorium Foyer</div>
+                  <div class="sharp-session-desc">Registration badge pickup, welcome refreshments, attendee kit distribution, and morning networking.</div>
+                </div>
+              </div>
+
+              <!-- D1-S2 -->
+              <div class="sharp-row" data-search="09:30 am to 10:00 am inauguration ceremony and welcome address auditorium opening remarks lamp lighting plaksha leadership">
+                <div class="sharp-col-time">09:30 am to 10:00 am</div>
+                <div class="sharp-col-content">
+                  <div class="sharp-session-title">Inauguration Ceremony & Welcome Address</div>
+                  <div class="sharp-venue-tag">Venue: Auditorium</div>
+                  <div class="sharp-session-desc">Opening remarks, formal lamp lighting ceremony, and welcome addresses by the General Chairs and Plaksha University Leadership.</div>
+                </div>
+              </div>
+
+              <!-- D1-S3 -->
+              <div class="sharp-row highlight-keynote" data-search="10:00 am to 10:50 am keynote address 1 dr santanu chaudhury ashoka university next frontiers agentic ai intelligent systems auditorium">
+                <div class="sharp-col-time">10:00 am to 10:50 am</div>
+                <div class="sharp-col-content">
+                  <div class="sharp-session-category">Keynote Address 1:</div>
+                  <div class="sharp-speaker-name">Dr. Santanu Chaudhury</div>
+                  <div class="sharp-speaker-affil">Dean, Vachani School of Advanced Computing, Ashoka University | Professor of CS, Ph.D. IIT Kharagpur</div>
+                  <div class="sharp-venue-tag">Venue: Auditorium</div>
+                  <div class="sharp-session-desc">Plenary keynote address exploring next frontiers in autonomous AI systems, neural reasoning, and scalable intelligent architectures.</div>
+                </div>
+              </div>
+
+              <!-- D1-S4 -->
+              <div class="sharp-row sharp-buffer-row" data-search="10:50 am to 11:00 am transition buffer move to parallel tracks classrooms">
+                <div class="sharp-col-time">10:50 am to 11:00 am</div>
+                <div class="sharp-col-content">
+                  <div class="sharp-session-title">Transition Buffer</div>
+                  <div class="sharp-session-desc">10-minute transition time for attendees to move to their respective parallel oral track classrooms.</div>
+                </div>
+              </div>
+
+              <!-- D1-S5 -->
+              <div class="sharp-row" data-search="11:00 am to 01:00 pm oral track presentations session 1 track 3a foundational ai learning representations track vlm vision language models room a3-3202 a3-3103">
+                <div class="sharp-col-time">11:00 am to 01:00 pm</div>
+                <div class="sharp-col-content">
+                  <div class="sharp-session-title">Oral Track Presentations (Session 1)</div>
+                  <div class="sharp-sub-tracks">
+                    <div class="sharp-track-item">
+                      <div class="sharp-track-heading">Presentation 1A: Track 3A - Foundational AI & Learning Representations</div>
+                      <div class="sharp-track-meta">Room: A3-3202 (Axis Building) | Track Chairs: Senior Faculty Committee</div>
+                      <div class="sharp-track-desc">Selected oral research papers focusing on machine learning theory, deep neural representations, and optimization algorithms.</div>
+                    </div>
+                    <div class="sharp-track-item">
+                      <div class="sharp-track-heading">Presentation 1B: Track VLM - Vision-Language Models & Multimodal Systems</div>
+                      <div class="sharp-track-meta">Room: A3-3103 (Axis Building) | Track Chairs: Multimodal AI Committee</div>
+                      <div class="sharp-track-desc">Presentations on vision-language integration, visual question answering, cross-modal attention, and multimodal generative architectures.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- D1-S6 -->
+              <div class="sharp-row sharp-meal-row" data-search="01:00 pm to 02:00 pm lunch break and networking axis building dining area">
+                <div class="sharp-col-time">01:00 pm to 02:00 pm</div>
+                <div class="sharp-col-content">
+                  <div class="sharp-session-title">Lunch Break & Networking</div>
+                  <div class="sharp-venue-tag">Venue: Axis Building Dining Area</div>
+                  <div class="sharp-session-desc">Buffet lunch and informal academic networking for conference attendees, speakers, and student researchers.</div>
+                </div>
+              </div>
+
+              <!-- D1-S7 -->
+              <div class="sharp-row highlight-speaker" data-search="02:00 pm to 03:00 pm invited speaker talk 1 dr animesh mukherjee iit kharagpur societal ai language technologies fairness auditorium">
+                <div class="sharp-col-time">02:00 pm to 03:00 pm</div>
+                <div class="sharp-col-content">
+                  <div class="sharp-session-category">Invited Speaker Talk 1:</div>
+                  <div class="sharp-speaker-name">Dr. Animesh Mukherjee</div>
+                  <div class="sharp-speaker-affil">Professor, Dept. of Computer Science & Engineering, IIT Kharagpur</div>
+                  <div class="sharp-venue-tag">Venue: Auditorium</div>
+                  <div class="sharp-session-desc">Invited plenary address on societal impacts of AI, language technologies, bias mitigation, and algorithmic fairness.</div>
+                </div>
+              </div>
+
+              <!-- D1-S8 -->
+              <div class="sharp-row" data-search="03:00 pm to 04:30 pm oral track presentations session 2 presentation 2a ai in the economy sajjid chinoy presentation 2b ai 4 cities enhancing resilience improving liveability room a3-3102 a3-3202">
+                <div class="sharp-col-time">03:00 pm to 04:30 pm</div>
+                <div class="sharp-col-content">
+                  <div class="sharp-session-title">Oral Track Presentations (Session 2)</div>
+                  <div class="sharp-sub-tracks">
+                    <div class="sharp-track-item">
+                      <div class="sharp-track-heading">Presentation 2A: AI in the Economy</div>
+                      <div class="sharp-speaker-inline"><strong>Invited Speaker:</strong> Sajjid Chinoy (Chief India Economist, J.P. Morgan)</div>
+                      <div class="sharp-track-meta">Room: A3-3102 (Axis Building) | Slot: 03:10 PM to 04:30 PM</div>
+                      <div class="sharp-track-desc">Oral research papers and economic perspectives on automated financial markets, macro-forecasting, and economic productivity.</div>
+                    </div>
+                    <div class="sharp-track-item">
+                      <div class="sharp-track-heading">Presentation 2B: AI 4 Cities - Enhancing Resilience, Improving Liveability</div>
+                      <div class="sharp-track-meta">Room: A3-3202 (Axis Building) | Track Chairs: Smart Cities & Urban AI Committee</div>
+                      <div class="sharp-track-desc">Research on urban computing, intelligent traffic management, smart grid resilience, and sustainable urban infrastructure.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- D1-S9 -->
+              <div class="sharp-row" data-search="04:30 pm to 05:30 pm high tea break poster presentations auditorium corridor porch student faculty research">
+                <div class="sharp-col-time">04:30 pm to 05:30 pm</div>
+                <div class="sharp-col-content">
+                  <div class="sharp-session-title">High Tea Break & Poster Presentations</div>
+                  <div class="sharp-venue-tag">Venue: Auditorium Corridor / Porch</div>
+                  <div class="sharp-session-desc">Tea and refreshments served alongside peer-reviewed research poster exhibits with live interactive demonstrations by student and faculty authors.</div>
+                </div>
+              </div>
+
+              <!-- D1-S10 -->
+              <div class="sharp-row" data-search="05:30 pm to 06:00 pm campus tour plaksha university laboratories academic quad">
+                <div class="sharp-col-time">05:30 pm to 06:00 pm</div>
+                <div class="sharp-col-content">
+                  <div class="sharp-session-title">Campus Tour</div>
+                  <div class="sharp-venue-tag">Venue: Plaksha University Campus</div>
+                  <div class="sharp-session-desc">Guided tour of cutting-edge research laboratories, makerspaces, academic facilities, and modern sustainable campus architecture.</div>
+                </div>
+              </div>
+
+              <!-- D1-S11 -->
+              <div class="sharp-row sharp-buffer-row" data-search="06:00 pm to 07:15 pm evening break and informal discussions">
+                <div class="sharp-col-time">06:00 pm to 07:15 pm</div>
+                <div class="sharp-col-content">
+                  <div class="sharp-session-title">Break</div>
+                  <div class="sharp-session-desc">Break time for conference participants to freshen up and engage in informal discussions.</div>
+                </div>
+              </div>
+
+              <!-- D1-S12 -->
+              <div class="sharp-row sharp-meal-row" data-search="07:15 pm onwards networking dinner axis building dining area">
+                <div class="sharp-col-time">07:15 pm onwards</div>
+                <div class="sharp-col-content">
+                  <div class="sharp-session-title">Networking Dinner</div>
+                  <div class="sharp-venue-tag">Venue: Axis Building Dining Area</div>
+                  <div class="sharp-session-desc">Welcome networking dinner hosted for all registered delegates, keynote dignitaries, track chairs, and attendees.</div>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+
+          <!-- ==================== DAY 2 ==================== -->
+          <section class="sharp-day-section" id="section-day2" data-day="day2">
+            <div class="sharp-date-banner" tabindex="0" role="button" aria-expanded="true">
+              <span>Saturday, October 31, 2026 - Keynotes, Parallel Tracks & Cultural Gala</span>
+            </div>
+
+            <div class="sharp-table">
+              
+              <!-- D2-S1 -->
+              <div class="sharp-row" data-search="08:30 am to 09:00 am refreshments morning coffee room a1-005">
+                <div class="sharp-col-time">08:30 am to 09:00 am</div>
+                <div class="sharp-col-content">
+                  <div class="sharp-session-title">Refreshments</div>
+                  <div class="sharp-venue-tag">Venue: Room A1-005</div>
+                  <div class="sharp-session-desc">Morning coffee, tea, and continental refreshments prior to the opening of Day 2 sessions.</div>
+                </div>
+              </div>
+
+              <!-- D2-S2 -->
+              <div class="sharp-row" data-search="09:00 am to 09:10 am day 2 opening remarks auditorium recap agenda preview">
+                <div class="sharp-col-time">09:00 am to 09:10 am</div>
+                <div class="sharp-col-content">
+                  <div class="sharp-session-title">Day 2 Opening Remarks</div>
+                  <div class="sharp-venue-tag">Venue: Auditorium</div>
+                  <div class="sharp-session-desc">Recap of Day 1 highlights and briefing on Day 2 technical sessions and plenary programs.</div>
+                </div>
+              </div>
+
+              <!-- D2-S3 -->
+              <div class="sharp-row highlight-keynote" data-search="09:10 am to 10:00 am keynote address 2 prof sanghamitra bandyopadhyay indian statistical institute isi kolkata evolutionary computation machine learning computational biology auditorium">
+                <div class="sharp-col-time">09:10 am to 10:00 am</div>
+                <div class="sharp-col-content">
+                  <div class="sharp-session-category">Keynote Address 2:</div>
+                  <div class="sharp-speaker-name">Prof. Sanghamitra Bandyopadhyay</div>
+                  <div class="sharp-speaker-affil">Director, Indian Statistical Institute (ISI), Kolkata | Shanti Swarup Bhatnagar Laureate, Padma Shri Awardee</div>
+                  <div class="sharp-venue-tag">Venue: Auditorium</div>
+                  <div class="sharp-session-desc">Keynote lecture on evolutionary computation, multi-objective machine learning paradigms, and data-driven computational biology.</div>
+                </div>
+              </div>
+
+              <!-- D2-S4 -->
+              <div class="sharp-row" data-search="10:00 am to 11:30 am oral track presentations session 3 presentation 3a ai in sensors edge intelligence presentation 3b recent advances in ai foundation models rooms 3007 3009">
+                <div class="sharp-col-time">10:00 am to 11:30 am</div>
+                <div class="sharp-col-content">
+                  <div class="sharp-session-title">Oral Track Presentations (Session 3)</div>
+                  <div class="sharp-sub-tracks">
+                    <div class="sharp-track-item">
+                      <div class="sharp-track-heading">Presentation 3A: AI in Sensors & Edge Intelligence</div>
+                      <div class="sharp-track-meta">Room: 3007 (Axis Building) | Capacity: 120</div>
+                      <div class="sharp-track-desc">Presentations on smart IoT sensor analytics, on-device AI acceleration, tinyML, and embedded intelligence systems.</div>
+                    </div>
+                    <div class="sharp-track-item">
+                      <div class="sharp-track-heading">Presentation 3B: Recent Advances in AI & Foundation Models</div>
+                      <div class="sharp-track-meta">Room: 3009 (Axis Building) | Capacity: 120</div>
+                      <div class="sharp-track-desc">Research papers covering large language models, generative modeling, diffusion processes, and alignment techniques.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- D2-S5 -->
+              <div class="sharp-row sharp-buffer-row" data-search="11:30 am to 11:45 am tea break foyer">
+                <div class="sharp-col-time">11:30 am to 11:45 am</div>
+                <div class="sharp-col-content">
+                  <div class="sharp-session-title">Tea Break</div>
+                  <div class="sharp-venue-tag">Venue: Auditorium Foyer</div>
+                  <div class="sharp-session-desc">Mid-morning tea and coffee break for session attendees.</div>
+                </div>
+              </div>
+
+              <!-- D2-S6 -->
+              <div class="sharp-row" data-search="11:45 am to 01:00 pm one-on-one mentorship session multipurpose hall career guidance research review faculty experts">
+                <div class="sharp-col-time">11:45 am to 01:00 pm</div>
+                <div class="sharp-col-content">
+                  <div class="sharp-session-title">One-on-One Mentorship Session</div>
+                  <div class="sharp-venue-tag">Venue: Multipurpose Hall</div>
+                  <div class="sharp-session-desc">Dedicated one-on-one mentoring tables pairing students, early-career researchers, and postdocs with senior faculty and industry mentors for personalized career and research feedback.</div>
+                </div>
+              </div>
+
+              <!-- D2-S7 -->
+              <div class="sharp-row" data-search="01:00 pm to 01:15 pm group photograph central quad commemorative group photo">
+                <div class="sharp-col-time">01:00 pm to 01:15 pm</div>
+                <div class="sharp-col-content">
+                  <div class="sharp-session-title">Group Photograph</div>
+                  <div class="sharp-venue-tag">Venue: Central Academic Quad</div>
+                  <div class="sharp-session-desc">Official ConfAI 2026 conference group photograph with all attendees, delegates, speakers, and organizers.</div>
+                </div>
+              </div>
+
+              <!-- D2-S8 -->
+              <div class="sharp-row sharp-meal-row" data-search="01:15 pm to 02:10 pm lunch break axis building dining area">
+                <div class="sharp-col-time">01:15 pm to 02:10 pm</div>
+                <div class="sharp-col-content">
+                  <div class="sharp-session-title">Lunch Break</div>
+                  <div class="sharp-venue-tag">Venue: Axis Building Dining Area</div>
+                  <div class="sharp-session-desc">Buffet lunch and networking intermission for conference participants.</div>
+                </div>
+              </div>
+
+              <!-- D2-S9 -->
+              <div class="sharp-row highlight-speaker" data-search="02:10 pm to 03:00 pm invited speaker talk 2 dr ponnurangam kumaraguru pk iiit hyderabad computational social systems privacy social sensing auditorium">
+                <div class="sharp-col-time">02:10 pm to 03:00 pm</div>
+                <div class="sharp-col-content">
+                  <div class="sharp-session-category">Invited Speaker Talk 2:</div>
+                  <div class="sharp-speaker-name">Dr. Ponnurangam Kumaraguru (PK)</div>
+                  <div class="sharp-speaker-affil">Professor, IIIT Delhi / IIIT Hyderabad | ACM India Outstanding Contribution Awardee</div>
+                  <div class="sharp-venue-tag">Venue: Auditorium</div>
+                  <div class="sharp-session-desc">Invited presentation examining computational social systems, social media sensing, and online security dynamics.</div>
+                </div>
+              </div>
+
+              <!-- D2-S10 -->
+              <div class="sharp-row highlight-speaker" data-search="03:00 pm to 04:00 pm invited speaker talk 3 dr manish gupta google deepmind google research india scalable ai innovations auditorium">
+                <div class="sharp-col-time">03:00 pm to 04:00 pm</div>
+                <div class="sharp-col-content">
+                  <div class="sharp-session-category">Invited Speaker Talk 3:</div>
+                  <div class="sharp-speaker-name">Dr. Manish Gupta</div>
+                  <div class="sharp-speaker-affil">Director, Google DeepMind / Google Research India | Fellow of ACM and IEEE</div>
+                  <div class="sharp-venue-tag">Venue: Auditorium</div>
+                  <div class="sharp-session-desc">Invited presentation discussing scalable AI breakthroughs, societal impact technologies, and next-generation research in emerging markets.</div>
+                </div>
+              </div>
+
+              <!-- D2-S11 -->
+              <div class="sharp-row" data-search="04:00 pm to 05:00 pm high tea break poster presentation auditorium corridor porch">
+                <div class="sharp-col-time">04:00 pm to 05:00 pm</div>
+                <div class="sharp-col-content">
+                  <div class="sharp-session-title">High Tea Break / Poster Presentation</div>
+                  <div class="sharp-venue-tag">Venue: Auditorium Corridor / Porch</div>
+                  <div class="sharp-session-desc">Afternoon tea service combined with Day 2 peer-reviewed research poster presentations and author Q&A.</div>
+                </div>
+              </div>
+
+              <!-- D2-S12 -->
+              <div class="sharp-row highlight-panel" data-search="05:00 pm to 06:15 pm panel discussion auditorium future of ai research industry society eminent panel">
+                <div class="sharp-col-time">05:00 pm to 06:15 pm</div>
+                <div class="sharp-col-content">
+                  <div class="sharp-session-category">Plenary Panel Discussion:</div>
+                  <div class="sharp-speaker-name">The Future of AI in Research, Industry and Society</div>
+                  <div class="sharp-speaker-affil">Moderated by General Chairs with Distinguished Keynote Speakers and Industry Leaders</div>
+                  <div class="sharp-venue-tag">Venue: Auditorium</div>
+                  <div class="sharp-session-desc">Interactive panel debate on safety, frontier foundational models, workforce transformation, and national AI research priorities.</div>
+                </div>
+              </div>
+
+              <!-- D2-S13 -->
+              <div class="sharp-row" data-search="06:30 pm to 07:30 pm plaksha cultural event multipurpose hall live student performances music dance">
+                <div class="sharp-col-time">06:30 pm to 07:30 pm</div>
+                <div class="sharp-col-content">
+                  <div class="sharp-session-title">Plaksha Cultural Event</div>
+                  <div class="sharp-venue-tag">Venue: Multipurpose Hall</div>
+                  <div class="sharp-session-desc">Vibrant evening cultural showcase organized by Plaksha University student clubs featuring music, classical dance, and creative performances.</div>
+                </div>
+              </div>
+
+              <!-- D2-S14 -->
+              <div class="sharp-row sharp-meal-row" data-search="07:30 pm onwards gala dinner multipurpose hall celebration banquet">
+                <div class="sharp-col-time">07:30 pm onwards</div>
+                <div class="sharp-col-content">
+                  <div class="sharp-session-title">Gala Dinner</div>
+                  <div class="sharp-venue-tag">Venue: Multipurpose Hall</div>
+                  <div class="sharp-session-desc">Official ConfAI 2026 Gala Dinner celebrating conference contributions with live banquet dining.</div>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+
+          <!-- ==================== DAY 3 ==================== -->
+          <section class="sharp-day-section" id="section-day3" data-day="day3">
+            <div class="sharp-date-banner" tabindex="0" role="button" aria-expanded="true">
+              <span>Sunday, November 01, 2026 - Keynote, Oral Tracks, Valedictory & Excursion</span>
+            </div>
+
+            <div class="sharp-table">
+              
+              <!-- D3-S1 -->
+              <div class="sharp-row" data-search="08:30 am to 09:00 am refreshments morning coffee room a1-005">
+                <div class="sharp-col-time">08:30 am to 09:00 am</div>
+                <div class="sharp-col-content">
+                  <div class="sharp-session-title">Refreshments</div>
+                  <div class="sharp-venue-tag">Venue: Room A1-005</div>
+                  <div class="sharp-session-desc">Morning refreshments and coffee ahead of Day 3 keynotes and concluding sessions.</div>
+                </div>
+              </div>
+
+              <!-- D3-S2 -->
+              <div class="sharp-row" data-search="09:00 am to 09:10 am day 3 opening remarks auditorium recap final day">
+                <div class="sharp-col-time">09:00 am to 09:10 am</div>
+                <div class="sharp-col-content">
+                  <div class="sharp-session-title">Day 3 Opening Remarks</div>
+                  <div class="sharp-venue-tag">Venue: Auditorium</div>
+                  <div class="sharp-session-desc">Welcome to Day 3, review of program milestones, and announcement of the award ceremony schedule.</div>
+                </div>
+              </div>
+
+              <!-- D3-S3 -->
+              <div class="sharp-row highlight-keynote" data-search="09:10 am to 10:00 am keynote address 4 dr balaraman ravindran iit madras wadhwani school reinforcement learning graph neural networks auditorium">
+                <div class="sharp-col-time">09:10 am to 10:00 am</div>
+                <div class="sharp-col-content">
+                  <div class="sharp-session-category">Keynote Address 3:</div>
+                  <div class="sharp-speaker-name">Dr. Balaraman Ravindran</div>
+                  <div class="sharp-speaker-affil">Professor & Head, Wadhwani School of Data Science and AI, IIT Madras | Mindtree Faculty Fellow</div>
+                  <div class="sharp-venue-tag">Venue: Auditorium</div>
+                  <div class="sharp-session-desc">Keynote lecture on reinforcement learning frameworks, graph representation learning, and autonomous decision-making systems.</div>
+                </div>
+              </div>
+
+              <!-- D3-S4 -->
+              <div class="sharp-row" data-search="10:00 am to 11:00 am oral track presentations session 4 presentation 5a vlm vision language models dr vineeth n balasubramanian iit hyderabad room 3007">
+                <div class="sharp-col-time">10:00 am to 11:00 am</div>
+                <div class="sharp-col-content">
+                  <div class="sharp-session-title">Oral Track Presentations (Session 4)</div>
+                  <div class="sharp-sub-tracks">
+                    <div class="sharp-track-item">
+                      <div class="sharp-track-heading">Presentation 5A: Vision-Language Models (VLM)</div>
+                      <div class="sharp-speaker-inline"><strong>Keynote / Track Speaker:</strong> Dr. Vineeth N Balasubramanian (Professor, IIT Hyderabad)</div>
+                      <div class="sharp-track-meta">Room: 3007 (Axis Building) | Capacity: 120</div>
+                      <div class="sharp-track-desc">Specialized technical session and peer-reviewed papers on vision-language models, multimodal alignment, and explainable vision AI.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- D3-S5 -->
+              <div class="sharp-row" data-search="11:00 am to 12:00 pm oral track presentations session 5 presentation 4a responsible and ethical ai room 3009">
+                <div class="sharp-col-time">11:00 am to 12:00 pm</div>
+                <div class="sharp-col-content">
+                  <div class="sharp-session-title">Oral Track Presentations (Session 5)</div>
+                  <div class="sharp-sub-tracks">
+                    <div class="sharp-track-item">
+                      <div class="sharp-track-heading">Presentation 4A: Responsible and Ethical AI</div>
+                      <div class="sharp-track-meta">Room: 3009 (Axis Building) | Capacity: 120</div>
+                      <div class="sharp-track-desc">Technical paper presentations on algorithmic governance, fair machine learning, robust interpretability, and AI safety protocols.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- D3-S6 -->
+              <div class="sharp-row highlight-award" data-search="12:00 pm to 12:30 pm award ceremony auditorium best paper best student poster research honors">
+                <div class="sharp-col-time">12:00 pm to 12:30 pm</div>
+                <div class="sharp-col-content">
+                  <div class="sharp-session-category">ConfAI 2026 Award Ceremony:</div>
+                  <div class="sharp-session-title" style="margin-top:2px;">Presentation of Research Awards & Commendations</div>
+                  <div class="sharp-venue-tag">Venue: Auditorium</div>
+                  <div class="sharp-session-desc">Conferring the Best Paper Award, Best Student Research Award, Best Poster Presentation Award, and reviewer acknowledgments.</div>
+                </div>
+              </div>
+
+              <!-- D3-S7 -->
+              <div class="sharp-row" data-search="12:30 pm to 01:00 pm valedictory and concluding remarks auditorium formal closing vote of thanks">
+                <div class="sharp-col-time">12:30 pm to 01:00 pm</div>
+                <div class="sharp-col-content">
+                  <div class="sharp-session-title">Valedictory & Concluding Remarks</div>
+                  <div class="sharp-venue-tag">Venue: Auditorium</div>
+                  <div class="sharp-session-desc">Closing address by Conference Chairs, expression of gratitude to organizing committees, sponsors, and participants, with an invitation to ConfAI 2027.</div>
+                </div>
+              </div>
+
+              <!-- D3-S8 -->
+              <div class="sharp-row sharp-meal-row" data-search="01:00 pm to 02:00 pm lunch dining hall first floor farewell meal">
+                <div class="sharp-col-time">01:00 pm to 02:00 pm</div>
+                <div class="sharp-col-content">
+                  <div class="sharp-session-title">Lunch</div>
+                  <div class="sharp-venue-tag">Venue: Dining Hall (First Floor)</div>
+                  <div class="sharp-session-desc">Farewell lunch for all conference attendees, guests, and organizing staff.</div>
+                </div>
+              </div>
+
+              <!-- D3-S9 -->
+              <div class="sharp-row" data-search="02:00 pm onwards chandigarh tour and departure rock garden sukhna lake sector 17 local tour">
+                <div class="sharp-col-time">02:00 pm onwards</div>
+                <div class="sharp-col-content">
+                  <div class="sharp-session-title">Chandigarh Tour & Departure</div>
+                  <div class="sharp-venue-tag">Venue: Departure from Plaksha Main Gate</div>
+                  <div class="sharp-session-desc">Organized local sightseeing excursion covering iconic Chandigarh landmarks (Rock Garden, Sukhna Lake, Sector 17 Plaza) followed by departures to airport and railway station.</div>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+        </div>
+      </div>
+    </main>
+
+    <!-- Site Footer -->
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <div class="footer-logo">
+              <span class="wm-mark">Conf</span><span class="wm-word">AI</span> <span style="font-size:0.9rem;font-weight:600;opacity:0.8;">2026</span>
+            </div>
+            <p class="footer-tagline">
+              International Conference on Artificial Intelligence - Fostering breakthroughs, multi-disciplinary collaboration, and responsible innovation.
+            </p>
+            <div class="footer-venue">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              <span>Plaksha University, Mohali, Punjab, India</span>
+            </div>
+          </div>
+          <div class="footer-nav">
+            <div class="footer-nav-col">
+              <span class="footer-nav-heading">Quick Links</span>
+              <a href="index.html">Home</a>
+              <a href="register.html">Registration</a>
+              <a href="agenda.html">Schedule & Agenda</a>
+              <a href="faq.html">FAQ</a>
+            </div>
+            <div class="footer-nav-col">
+              <span class="footer-nav-heading">Important Dates</span>
+              <a href="index.html#dates">Conference Dates</a>
+              <a href="register.html">Early Bird Deadline</a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p class="footer-copy">&copy; 2026 ConfAI & Plaksha University. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
