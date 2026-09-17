@@ -1,3 +1,13 @@
+// Safety Check: Redirect invalid/malformed hostnames back to the live GitHub Pages site
+(function () {
+  var validHosts = ["imvverma.github.io", "confai.plaksha.edu.in", "localhost", "127.0.0.1"];
+  var hostname = window.location.hostname;
+
+  if (!validHosts.includes(hostname) && !hostname.endsWith(".github.io")) {
+    window.location.href = "https://imvverma.github.io/ConfAI-26/";
+  }
+})();
+
 (function () {
   "use strict";
 
