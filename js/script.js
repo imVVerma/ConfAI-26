@@ -148,7 +148,7 @@
     var timer = setInterval(tick, 1000);
   })();
 
-  /* ── RELIVE VIDEO YEAR SELECTOR ────────────────────────────────────────── */
+    /* ── RELIVE VIDEO YEAR SELECTOR ────────────────────────────────────────── */
   (function initReliveVideo() {
     var filters = document.querySelectorAll(".video-year-filter");
     var iframe = document.querySelector(".video-wrapper iframe");
@@ -157,29 +157,62 @@
 
     if (!iframe || !heading || !wrapper || filters.length === 0) { return; }
 
+    function switchVideoToYear(targetYear) {
+      var targetBtn = null;
+      filters.forEach(function (button) {
+        if (button.getAttribute("data-video-year") === String(targetYear)) {
+          targetBtn = button;
+        }
+      });
+      if (!targetBtn) return;
+
+      var videoUrl = targetBtn.getAttribute("data-video-url");
+      var videoTitle = targetBtn.getAttribute("data-video-title");
+      if (!videoUrl || !videoTitle) return;
+
+      iframe.src = videoUrl;
+      iframe.title = videoTitle;
+      heading.textContent = "Relive ConfAI";
+      wrapper.setAttribute("aria-label", videoTitle);
+
+      filters.forEach(function (button) {
+        var isActive = button === targetBtn;
+        button.classList.toggle("is-active", isActive);
+        button.setAttribute("aria-pressed", String(isActive));
+      });
+    }
+
     filters.forEach(function (filter) {
       filter.addEventListener("click", function () {
         var year = filter.getAttribute("data-video-year");
-        var videoUrl = filter.getAttribute("data-video-url");
-        var videoTitle = filter.getAttribute("data-video-title");
-
-        if (!year || !videoUrl || !videoTitle) { return; }
-
-        iframe.src = videoUrl;
-        iframe.title = videoTitle;
-        heading.textContent = "Relive ConfAI";
-        wrapper.setAttribute("aria-label", videoTitle);
-
-        filters.forEach(function (button) {
-          var isActive = button === filter;
-          button.classList.toggle("is-active", isActive);
-          button.setAttribute("aria-pressed", String(isActive));
-        });
+        if (year) switchVideoToYear(year);
       });
     });
+
+    // Support year clicks from header nav dropdown
+    var dropdownYearLinks = document.querySelectorAll("[data-video-year]");
+    dropdownYearLinks.forEach(function (link) {
+      if (link.classList.contains("video-year-filter")) return;
+      link.addEventListener("click", function () {
+        var year = link.getAttribute("data-video-year");
+        if (year) switchVideoToYear(year);
+      });
+    });
+
+    // Check URL hash on page load (e.g. #relive-2023) or on hash change
+    function handleHash() {
+      if (window.location.hash) {
+        var hashMatch = window.location.hash.match(/relive-(\d{4})/);
+        if (hashMatch && hashMatch[1]) {
+          switchVideoToYear(hashMatch[1]);
+        }
+      }
+    }
+    handleHash();
+    window.addEventListener("hashchange", handleHash);
   })();
 
-  /* ── SPEAKER MODAL ──────────────────────────────────────────────────────── */
+/* ── SPEAKER MODAL ──────────────────────────────────────────────────────── */
   (function initSpeakerModal() {
     var triggers = document.querySelectorAll(".speaker-trigger");
     var modal = document.getElementById("speaker-modal");
@@ -265,7 +298,7 @@
    *   1. Drop the image file into  img/gallery-2025/
    *   2. Open  img/gallery-2025/manifest.json
    *   3. Add one entry to the "photos" array:
-   *        { "file": "your-filename.jpg", "alt": "ConfAI 2025  -  short description" }
+   *        { "file": "your-filename.jpg", "alt": "ConfAI 2025 — short description" }
    *   4. Save. No HTML changes needed.
    *
    * NOTE: The "placeholder": true flag is for dev only. The gallery renders
@@ -278,31 +311,54 @@
     var photoModal = document.getElementById("photo-modal");
     if (!grid || !photoModal) { return; }
 
-    var carousel = grid.closest(".gallery-carousel");
-    var previousButton = carousel ? carousel.querySelector(".gallery-control--prev") : null;
-    var nextButton = carousel ? carousel.querySelector(".gallery-control--next") : null;
+    var wrapper = grid.closest(".gallery-carousel-wrapper") || grid.closest(".gallery-carousel");
+    var previousButton = wrapper ? wrapper.querySelector(".gallery-control--prev") : null;
+    var nextButton = wrapper ? wrapper.querySelector(".gallery-control--next") : null;
+    var dotsContainer = document.getElementById("gallery-dots");
+    var slideCounterCurrent = document.getElementById("gallery-current-slide");
+    var slideCounterTotal = document.getElementById("gallery-total-slides");
 
-    var photoModalImg     = document.getElementById("photo-modal-img");
+    var photoModalImg = document.getElementById("photo-modal-img");
     var photoModalCaption = document.getElementById("photo-modal-caption");
-    var photoModalClose   = photoModal.querySelector(".modal-close");
-    var activeGalleryTrigger = null;
+    var photoModalCounter = document.getElementById("photo-modal-counter");
+    var photoModalPrev = document.getElementById("photo-modal-prev");
+    var photoModalNext = document.getElementById("photo-modal-next");
+    var photoModalClose = document.getElementById("photo-modal-close") || photoModal.querySelector(".modal-close");
 
-    // ── Lightbox open/close ──────────────────────────────────────────────
-    function openPhotoModal(trigger, src, alt) {
-      activeGalleryTrigger = trigger;
-      if (!trigger.getAttribute("data-is-placeholder")) {
-        photoModalImg.src = src;
-        photoModalImg.alt = alt;
-        photoModalImg.style.display = "";
-      } else {
-        photoModalImg.src = "";
-        photoModalImg.alt = "";
-        photoModalImg.style.display = "none";
+    var allPhotos = [];
+    var currentPhotoIndex = 0;
+    var activeGalleryTrigger = null;
+    var autoplayTimer = null;
+    var currentSlide = 0;
+    var totalSlides = 0;
+
+    // ── Lightbox Navigation ──────────────────────────────────────────────
+    function updatePhotoModal(index) {
+      if (!allPhotos.length) { return; }
+      currentPhotoIndex = (index + allPhotos.length) % allPhotos.length;
+      var photo = allPhotos[currentPhotoIndex];
+      var photoSrc = "img/gallery-2025/" + photo.file;
+      var altText = photo.alt || ("ConfAI 2025 Photo " + (currentPhotoIndex + 1));
+
+      photoModalImg.src = photoSrc;
+      photoModalImg.alt = altText;
+      if (photoModalCaption) {
+        photoModalCaption.textContent = altText;
       }
-      photoModalCaption.textContent = alt;
+      if (photoModalCounter) {
+        photoModalCounter.textContent = (currentPhotoIndex + 1) + " / " + allPhotos.length;
+      }
+    }
+
+    function openPhotoModal(index, trigger) {
+      activeGalleryTrigger = trigger;
+      updatePhotoModal(index);
       photoModal.removeAttribute("hidden");
       document.body.classList.add("modal-open");
-      photoModalClose.focus();
+      if (photoModalClose) {
+        photoModalClose.focus();
+      }
+      stopAutoplay();
     }
 
     function closePhotoModal() {
@@ -312,93 +368,189 @@
         activeGalleryTrigger.focus();
         activeGalleryTrigger = null;
       }
+      startAutoplay();
     }
 
     if (photoModalClose) {
       photoModalClose.addEventListener("click", closePhotoModal);
     }
+    if (photoModalPrev) {
+      photoModalPrev.addEventListener("click", function(e) {
+        e.stopPropagation();
+        updatePhotoModal(currentPhotoIndex - 1);
+      });
+    }
+    if (photoModalNext) {
+      photoModalNext.addEventListener("click", function(e) {
+        e.stopPropagation();
+        updatePhotoModal(currentPhotoIndex + 1);
+      });
+    }
 
     photoModal.addEventListener("click", function(event) {
-      if (event.target === photoModal) { closePhotoModal(); }
-    });
-
-    document.addEventListener("keydown", function(event) {
-      if (event.key === "Escape" && !photoModal.hasAttribute("hidden")) {
+      if (event.target === photoModal || event.target.classList.contains("photo-modal-viewer") || event.target.classList.contains("photo-modal-img-wrap")) {
         closePhotoModal();
       }
     });
 
-    // Focus trap inside photo modal
-    photoModal.addEventListener("keydown", function(event) {
-      if (event.key !== "Tab") { return; }
-      var focusable = photoModal.querySelectorAll('button, [href], img[tabindex], [tabindex]:not([tabindex="-1"])');
-      var first = focusable[0];
-      var last  = focusable[focusable.length - 1];
-      if (event.shiftKey) {
-        if (document.activeElement === first) { last.focus(); event.preventDefault(); }
-      } else {
-        if (document.activeElement === last) { first.focus(); event.preventDefault(); }
+    document.addEventListener("keydown", function(event) {
+      if (photoModal.hasAttribute("hidden")) { return; }
+      if (event.key === "Escape") {
+        closePhotoModal();
+      } else if (event.key === "ArrowLeft") {
+        updatePhotoModal(currentPhotoIndex - 1);
+      } else if (event.key === "ArrowRight") {
+        updatePhotoModal(currentPhotoIndex + 1);
       }
     });
 
-    // ── Manifest fetch & render ──────────────────────────────────────────
+    // ── Carousel Render & Logic ──────────────────────────────────────────
     function renderGallery(photos) {
-      var slots = photos.slice(0, 36);
-      while (slots.length < 36) {
-        slots.push({ placeholder: true, alt: "ConfAI 2025 photo placeholder " + (slots.length + 1) });
+      allPhotos = photos;
+      grid.innerHTML = "";
+      if (dotsContainer) { dotsContainer.innerHTML = ""; }
+
+      var itemsPerSlide = 4;
+      totalSlides = Math.ceil(photos.length / itemsPerSlide);
+      if (totalSlides < 1) { return; }
+
+      if (slideCounterTotal) {
+        slideCounterTotal.textContent = totalSlides;
       }
 
-      for (var slideIndex = 0; slideIndex < 3; slideIndex += 1) {
+      for (var s = 0; s < totalSlides; s += 1) {
         var slide = document.createElement("div");
         slide.className = "gallery-slide";
         slide.setAttribute("role", "group");
-        slide.setAttribute("aria-label", "Gallery slide " + (slideIndex + 1) + " of 3");
+        slide.setAttribute("aria-label", "Gallery slide " + (s + 1) + " of " + totalSlides);
 
-        slots.slice(slideIndex * 12, slideIndex * 12 + 12).forEach(function(photo, slotIndex) {
-          var photoIndex = slideIndex * 12 + slotIndex;
-          var isPlaceholder = !!photo.placeholder;
-          var altText = photo.alt || ("ConfAI 2025 conference photo " + (photoIndex + 1));
+        var slice = photos.slice(s * itemsPerSlide, s * itemsPerSlide + itemsPerSlide);
+        slice.forEach(function(photo, localIdx) {
+          var globalIdx = s * itemsPerSlide + localIdx;
+          var altText = photo.alt || ("ConfAI 2025 conference photo " + (globalIdx + 1));
+
           var btn = document.createElement("button");
-          btn.className = "gallery-item" + (isPlaceholder ? " gallery-item--placeholder" : "");
+          btn.className = "gallery-item";
           btn.setAttribute("type", "button");
-          btn.setAttribute("aria-label", "View enlarged: " + altText);
-          if (isPlaceholder) { btn.setAttribute("data-is-placeholder", "true"); }
+          btn.setAttribute("aria-label", "View photo: " + altText);
 
-          if (isPlaceholder) {
-            var plabel = document.createElement("span");
-            plabel.className = "gallery-placeholder-label";
-            plabel.textContent = "Photo " + (photoIndex + 1);
-            plabel.setAttribute("aria-hidden", "true");
-            btn.appendChild(plabel);
-          } else {
-            var img = document.createElement("img");
-            img.src = "img/gallery-2025/" + photo.file;
-            img.alt = altText;
-            img.className = "gallery-img";
-            img.loading = "lazy";
-            img.decoding = "async";
-            btn.appendChild(img);
-          }
+          var img = document.createElement("img");
+          img.src = "img/gallery-2025/" + photo.file;
+          img.alt = altText;
+          img.className = "gallery-img";
+          img.loading = globalIdx < 8 ? "eager" : "lazy";
+          img.decoding = "async";
+          btn.appendChild(img);
+
+          var overlay = document.createElement("div");
+          overlay.className = "gallery-item-overlay";
+          var caption = document.createElement("span");
+          caption.className = "gallery-item-caption";
+          caption.textContent = altText;
+          overlay.appendChild(caption);
+          btn.appendChild(overlay);
 
           btn.addEventListener("click", function() {
-            openPhotoModal(btn, isPlaceholder ? "" : "img/gallery-2025/" + photo.file, altText);
+            openPhotoModal(globalIdx, btn);
           });
+
           slide.appendChild(btn);
         });
+
         grid.appendChild(slide);
+
+        // Dot indicator
+        if (dotsContainer) {
+          var dot = document.createElement("button");
+          dot.className = "gallery-dot" + (s === 0 ? " is-active" : "");
+          dot.setAttribute("type", "button");
+          dot.setAttribute("role", "tab");
+          dot.setAttribute("aria-label", "Go to gallery slide " + (s + 1));
+          dot.setAttribute("aria-selected", s === 0 ? "true" : "false");
+          (function(targetSlide) {
+            dot.addEventListener("click", function() {
+              showSlide(targetSlide);
+            });
+          })(s);
+          dotsContainer.appendChild(dot);
+        }
       }
 
-      var currentSlide = 0;
-      var slides = grid.querySelectorAll(".gallery-slide");
       function showSlide(nextSlide) {
-        currentSlide = (nextSlide + slides.length) % slides.length;
+        currentSlide = (nextSlide + totalSlides) % totalSlides;
         grid.style.transform = "translateX(-" + (currentSlide * 100) + "%)";
-        grid.setAttribute("aria-label", "Gallery slide " + (currentSlide + 1) + " of " + slides.length);
+        if (slideCounterCurrent) {
+          slideCounterCurrent.textContent = currentSlide + 1;
+        }
+
+        if (dotsContainer) {
+          var dots = dotsContainer.querySelectorAll(".gallery-dot");
+          dots.forEach(function(d, i) {
+            if (i === currentSlide) {
+              d.classList.add("is-active");
+              d.setAttribute("aria-selected", "true");
+            } else {
+              d.classList.remove("is-active");
+              d.setAttribute("aria-selected", "false");
+            }
+          });
+        }
       }
 
-      previousButton.addEventListener("click", function() { showSlide(currentSlide - 1); });
-      nextButton.addEventListener("click", function() { showSlide(currentSlide + 1); });
+      if (previousButton) {
+        previousButton.addEventListener("click", function() {
+          showSlide(currentSlide - 1);
+        });
+      }
+      if (nextButton) {
+        nextButton.addEventListener("click", function() {
+          showSlide(currentSlide + 1);
+        });
+      }
+
+      // Touch swipe gestures
+      var touchStartX = 0;
+      var touchEndX = 0;
+      grid.addEventListener("touchstart", function(e) {
+        touchStartX = e.changedTouches[0].screenX;
+        stopAutoplay();
+      }, { passive: true });
+
+      grid.addEventListener("touchend", function(e) {
+        touchEndX = e.changedTouches[0].screenX;
+        var diff = touchEndX - touchStartX;
+        if (Math.abs(diff) > 45) {
+          if (diff < 0) {
+            showSlide(currentSlide + 1);
+          } else {
+            showSlide(currentSlide - 1);
+          }
+        }
+        startAutoplay();
+      }, { passive: true });
+
+      // Autoplay with pause-on-hover
+      function startAutoplay() {
+        stopAutoplay();
+        autoplayTimer = setInterval(function() {
+          showSlide(currentSlide + 1);
+        }, 4500);
+      }
+
+      function stopAutoplay() {
+        if (autoplayTimer) {
+          clearInterval(autoplayTimer);
+          autoplayTimer = null;
+        }
+      }
+
+      if (wrapper) {
+        wrapper.addEventListener("mouseenter", stopAutoplay);
+        wrapper.addEventListener("mouseleave", startAutoplay);
+      }
+
       showSlide(0);
+      startAutoplay();
     }
 
     fetch("img/gallery-2025/manifest.json")
@@ -589,7 +741,186 @@
     });
   })();
 
-  /* ── CONFAI 2026 GANTT TIMETABLE CONTROLLER & DATABASE ──────────────────── */
+  /* ── REGISTRATION PAGE INTERACTIONS ────────────────────────────────────── */
+  (function initRegistrationPage() {
+    // 1. Pass Comparison Table Toggle
+    var tableToggleBtn = document.getElementById("toggle-pass-table-btn");
+    var tableContainer = document.getElementById("passes-comparison-table-wrap");
+
+    if (tableToggleBtn && tableContainer) {
+      tableToggleBtn.addEventListener("click", function () {
+        var isExpanded = tableToggleBtn.getAttribute("aria-expanded") === "true";
+        var nextState = !isExpanded;
+
+        tableToggleBtn.setAttribute("aria-expanded", String(nextState));
+        if (nextState) {
+          tableContainer.removeAttribute("hidden");
+          var textSpan = tableToggleBtn.querySelector(".toggle-btn-text");
+          if (textSpan) textSpan.textContent = "Hide Pass Comparison Table";
+        } else {
+          tableContainer.setAttribute("hidden", "");
+          var textSpan = tableToggleBtn.querySelector(".toggle-btn-text");
+          if (textSpan) textSpan.textContent = "View Detailed Pass Comparison Table";
+        }
+      });
+    }
+
+    // 2. Post-Payment Confirmation Modal
+    var paymentModal = document.getElementById("payment-confirm-modal");
+    var paymentModalTriggers = document.querySelectorAll("[data-payment-modal-open]");
+    var paymentModalClose = document.getElementById("payment-modal-close");
+    var paymentModalDone = document.getElementById("payment-modal-done-btn");
+    var modalToAccLink = document.getElementById("modal-to-acc-link");
+
+    function openPaymentModal() {
+      if (!paymentModal) return;
+      paymentModal.removeAttribute("hidden");
+      document.body.style.overflow = "hidden";
+      if (paymentModalClose) paymentModalClose.focus();
+    }
+
+    function closePaymentModal() {
+      if (!paymentModal) return;
+      paymentModal.setAttribute("hidden", "");
+      document.body.style.overflow = "";
+    }
+
+    paymentModalTriggers.forEach(function (trigger) {
+      trigger.addEventListener("click", function (e) {
+        e.preventDefault();
+        openPaymentModal();
+      });
+    });
+
+    if (paymentModalClose) {
+      paymentModalClose.addEventListener("click", closePaymentModal);
+    }
+    if (paymentModalDone) {
+      paymentModalDone.addEventListener("click", closePaymentModal);
+    }
+    if (modalToAccLink) {
+      modalToAccLink.addEventListener("click", function () {
+        closePaymentModal();
+      });
+    }
+
+    if (paymentModal) {
+      paymentModal.addEventListener("click", function (e) {
+        if (e.target === paymentModal) {
+          closePaymentModal();
+        }
+      });
+    }
+
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && paymentModal && !paymentModal.hasAttribute("hidden")) {
+        closePaymentModal();
+      }
+    });
+
+    // Auto-open if query param is set
+    try {
+      var urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get("status") === "success" || urlParams.get("payment") === "confirmed") {
+        openPaymentModal();
+      }
+    } catch (err) {
+      // Ignore URLSearchParams error in older environments
+    }
+
+    // 3. Accommodation Request Form
+    var accForm = document.getElementById("accommodation-request-form");
+    var statusAlert = document.getElementById("accommodation-status-alert");
+    var statusFeedbackText = document.getElementById("status-feedback-text");
+
+    if (accForm) {
+      accForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        // Clear previous validation states
+        var errorFields = accForm.querySelectorAll(".is-invalid");
+        errorFields.forEach(function (f) { f.classList.remove("is-invalid"); });
+        var errorMsgs = accForm.querySelectorAll(".form-error-msg");
+        errorMsgs.forEach(function (m) { m.textContent = ""; });
+
+        var fullname = (document.getElementById("acc-fullname").value || "").trim();
+        var email = (document.getElementById("acc-email").value || "").trim();
+        var phone = (document.getElementById("acc-phone").value || "").trim();
+        var regid = (document.getElementById("acc-regid").value || "").trim();
+        var checkin = (document.getElementById("acc-checkin").value || "").trim();
+        var checkout = (document.getElementById("acc-checkout").value || "").trim();
+        var notesEl = document.getElementById("acc-notes");
+        var notes = notesEl ? (notesEl.value || "").trim() : "";
+
+        var isValid = true;
+        var firstInvalidField = null;
+
+        function markInvalid(id, errId, msg) {
+          var input = document.getElementById(id);
+          var errSpan = document.getElementById(errId);
+          if (input) input.classList.add("is-invalid");
+          if (errSpan) errSpan.textContent = msg;
+          if (!firstInvalidField && input) firstInvalidField = input;
+          isValid = false;
+        }
+
+        if (!fullname) {
+          markInvalid("acc-fullname", "error-fullname", "Please provide your full name.");
+        }
+        if (!email || !/\S+@\S+\.\S+/.test(email)) {
+          markInvalid("acc-email", "error-email", "Please provide a valid email address.");
+        }
+        if (!phone) {
+          markInvalid("acc-phone", "error-phone", "Please provide a contact phone number.");
+        }
+        if (!regid) {
+          markInvalid("acc-regid", "error-regid", "Please provide your registration or payment ID.");
+        }
+        if (!checkin) {
+          markInvalid("acc-checkin", "error-checkin", "Please choose a check-in date.");
+        }
+        if (!checkout) {
+          markInvalid("acc-checkout", "error-checkout", "Please choose a check-out date.");
+        }
+
+        if (!isValid) {
+          if (firstInvalidField) firstInvalidField.focus();
+          return;
+        }
+
+        // Show on-screen confirmation
+        if (statusAlert) {
+          statusAlert.removeAttribute("hidden");
+          if (statusFeedbackText) {
+            statusFeedbackText.textContent = "Thank you, " + fullname + "! Your accommodation request has been recorded. Opening your email to forward to confai@plaksha.edu.in.";
+          }
+          statusAlert.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        }
+
+        // Open mailto with prefilled details
+        var emailSubject = encodeURIComponent("ConfAI 2026 Accommodation Request - " + fullname + " (" + regid + ")");
+        var emailBody = encodeURIComponent(
+          "Dear ConfAI 2026 Organizing Committee,\n\n" +
+          "I have registered for ConfAI 2026 and would like to request campus accommodation. Here are my details:\n\n" +
+          "• Full Name: " + fullname + "\n" +
+          "• Email Address: " + email + "\n" +
+          "• Phone Number: " + phone + "\n" +
+          "• Registration / Payment ID: " + regid + "\n" +
+          "• Check-in Date: " + checkin + "\n" +
+          "• Check-out Date: " + checkout + "\n" +
+          "• Notes / Requests: " + (notes || "None") + "\n\n" +
+          "Kindly confirm room availability and booking procedures.\n\n" +
+          "Best regards,\n" + fullname
+        );
+
+        setTimeout(function () {
+          window.location.href = "mailto:confai@plaksha.edu.in?subject=" + emailSubject + "&body=" + emailBody;
+        }, 800);
+      });
+    }
+  })();
+
+/* ── CONFAI 2026 GANTT TIMETABLE CONTROLLER & DATABASE ──────────────────── */
   (function initGanttBoard() {
     var sessionsDb = {
       'd1-s1': {
@@ -1145,6 +1476,7 @@
 })();
 
 
+
 /* ==========================================================================
    CONFAI 2026 - SHARP TIMETABLE INTERACTIVE CONTROLLER
    ========================================================================== */
@@ -1246,4 +1578,261 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
   }
+});
+
+
+/* ==========================================================================
+   CONFAI 2026 - POSTER HERO DYNAMIC BACKGROUND SLIDESHOW CONTROLLER
+   ========================================================================== */
+document.addEventListener('DOMContentLoaded', () => {
+  const slides = document.querySelectorAll('.poster-slide');
+  if (!slides.length) return;
+
+  let currentSlideIndex = 0;
+  const slideIntervalMs = 7000; // 7 seconds per slide for calm, elegant transitions
+
+  function nextSlide() {
+    slides[currentSlideIndex].classList.remove('is-active');
+    currentSlideIndex = (currentSlideIndex + 1) % slides.length;
+    slides[currentSlideIndex].classList.add('is-active');
+  }
+
+  // Start continuous smooth crossfade slideshow
+  let slideshowTimer = setInterval(nextSlide, slideIntervalMs);
+
+  // Pause on tab unfocus to conserve resources, resume on focus
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      clearInterval(slideshowTimer);
+    } else {
+      slideshowTimer = setInterval(nextSlide, slideIntervalMs);
+    }
+  });
+});
+
+
+/* ==========================================================================
+   CONFAI 2026 - TWO-LAYER HERO SLIDESHOW CONTROLLER
+   ========================================================================== */
+document.addEventListener('DOMContentLoaded', () => {
+  const photoSlides = document.querySelectorAll('.hero-photo-showcase .photo-slide');
+  if (!photoSlides.length) return;
+
+  let currentSlide = 0;
+  const slideInterval = 7500; // 7.5 seconds per slide for calm, smooth transitions
+
+  function advanceSlide() {
+    photoSlides[currentSlide].classList.remove('is-active');
+    currentSlide = (currentSlide + 1) % photoSlides.length;
+    photoSlides[currentSlide].classList.add('is-active');
+  }
+
+  let timer = setInterval(advanceSlide, slideInterval);
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      clearInterval(timer);
+    } else {
+      timer = setInterval(advanceSlide, slideInterval);
+    }
+  });
+});
+
+
+/* ==========================================================================
+   CONFAI 2026 - SINGLE FULL-WIDTH PHOTO SLIDESHOW CONTROLLER
+   ========================================================================== */
+document.addEventListener('DOMContentLoaded', () => {
+  const singleSlides = document.querySelectorAll('.hero-photo-showcase .photo-slide');
+  if (!singleSlides.length) return;
+
+  let slideIdx = 0;
+  const slideDuration = 6500; // 6.5s smooth continuous slideshow
+
+  function transitionSlide() {
+    singleSlides[slideIdx].classList.remove('is-active');
+    slideIdx = (slideIdx + 1) % singleSlides.length;
+    singleSlides[slideIdx].classList.add('is-active');
+  }
+
+  let singleSlideTimer = setInterval(transitionSlide, slideDuration);
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      clearInterval(singleSlideTimer);
+    } else {
+      singleSlideTimer = setInterval(transitionSlide, slideDuration);
+    }
+  });
+});
+
+
+/* ==========================================================================
+   CONFAI 2026 - NEURAL NETWORK TRANSITION ANIMATOR
+   ========================================================================== */
+document.addEventListener('DOMContentLoaded', function () {
+  var canvas = document.getElementById('neural-transition-canvas');
+  if (!canvas) return;
+
+  var ctx = canvas.getContext('2d');
+  if (!ctx) return;
+
+  var nodes = [];
+  var animationFrameId = null;
+  var isRunning = true;
+  var width = 0;
+  var height = 0;
+  var dpr = window.devicePixelRatio || 1;
+
+  // Plaksha Teal: RGB (0, 120, 120)
+  var TEAL_R = 0;
+  var TEAL_G = 120;
+  var TEAL_B = 120;
+
+  function resizeCanvas() {
+    var rect = canvas.getBoundingClientRect();
+    width = rect.width || window.innerWidth;
+    height = rect.height || 100;
+    dpr = window.devicePixelRatio || 1;
+
+    canvas.width = Math.floor(width * dpr);
+    canvas.height = Math.floor(height * dpr);
+    ctx.scale(dpr, dpr);
+
+    initNodes();
+  }
+
+  function initNodes() {
+    nodes = [];
+    // Number of nodes based on screen width: gentle density (approx 24-38 nodes)
+    var nodeCount = Math.max(16, Math.min(36, Math.floor(width / 42)));
+
+    for (var i = 0; i < nodeCount; i++) {
+      var x = (width / (nodeCount - 1)) * i + (Math.random() * 24 - 12);
+      // Curve equation matching the SVG shallow wave: y_curve = (height - 40) + 32 * sin(pi * x / width)
+      var normX = Math.max(0, Math.min(1, x / width));
+      var curveY = (height - 48) + Math.sin(Math.PI * normX) * 32;
+      var yOffset = (Math.random() - 0.5) * 44; // Concentrated within +/- 22px of the curve
+      var y = Math.max(8, Math.min(height - 8, curveY + yOffset));
+
+      nodes.push({
+        x: x,
+        y: y,
+        originX: x,
+        originY: y,
+        vx: (Math.random() - 0.5) * 0.12, // Very slow subtle drift
+        vy: (Math.random() - 0.5) * 0.08,
+        radius: 1.5 + Math.random() * 1.1, // 1.5px to 2.6px
+        pulsePhase: Math.random() * Math.PI * 2,
+        pulseSpeed: 0.012 + Math.random() * 0.018, // Slow, barely noticeable pulse
+        baseAlpha: 0.28 + Math.random() * 0.25 // Low opacity: 0.28 to 0.53
+      });
+    }
+  }
+
+  function render(time) {
+    if (!isRunning) return;
+
+    ctx.clearRect(0, 0, width, height);
+
+    var maxDist = 96; // Distance threshold for connection lines
+
+    // 1. Update positions & pulse phases
+    for (var i = 0; i < nodes.length; i++) {
+      var n = nodes[i];
+      n.x += n.vx;
+      n.y += n.vy;
+      n.pulsePhase += n.pulseSpeed;
+
+      // Soft spring tether back to origin to maintain distribution along curve
+      var dx = n.originX - n.x;
+      var dy = n.originY - n.y;
+      n.vx += dx * 0.0008;
+      n.vy += dy * 0.0008;
+
+      // Velocity damping
+      n.vx *= 0.985;
+      n.vy *= 0.985;
+    }
+
+    // 2. Draw Connection Lines (Thin geometric connections)
+    ctx.lineWidth = 0.75;
+    for (var a = 0; a < nodes.length; a++) {
+      var nodeA = nodes[a];
+      var pulseA = Math.sin(nodeA.pulsePhase);
+      var currentAlphaA = Math.max(0.12, Math.min(0.65, nodeA.baseAlpha + pulseA * 0.12));
+
+      for (var b = a + 1; b < nodes.length; b++) {
+        var nodeB = nodes[b];
+        var distSq = (nodeA.x - nodeB.x) * (nodeA.x - nodeB.x) + (nodeA.y - nodeB.y) * (nodeA.y - nodeB.y);
+
+        if (distSq < maxDist * maxDist) {
+          var dist = Math.sqrt(distSq);
+          var distFactor = 1 - (dist / maxDist);
+          var pulseB = Math.sin(nodeB.pulsePhase);
+          var currentAlphaB = Math.max(0.12, Math.min(0.65, nodeB.baseAlpha + pulseB * 0.12));
+          var lineAlpha = distFactor * Math.min(currentAlphaA, currentAlphaB) * 0.48;
+
+          if (lineAlpha > 0.02) {
+            ctx.beginPath();
+            ctx.strokeStyle = 'rgba(' + TEAL_R + ',' + TEAL_G + ',' + TEAL_B + ',' + lineAlpha.toFixed(3) + ')';
+            ctx.moveTo(nodeA.x, nodeA.y);
+            ctx.lineTo(nodeB.x, nodeB.y);
+            ctx.stroke();
+          }
+        }
+      }
+    }
+
+    // 3. Draw Nodes (Small subtle pulsing circles)
+    for (var k = 0; k < nodes.length; k++) {
+      var node = nodes[k];
+      var pulse = Math.sin(node.pulsePhase);
+      var nodeAlpha = Math.max(0.18, Math.min(0.65, node.baseAlpha + pulse * 0.14));
+      var drawRadius = node.radius + pulse * 0.35;
+
+      // Soft micro halo
+      ctx.beginPath();
+      ctx.arc(node.x, node.y, drawRadius + 1.8, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(' + TEAL_R + ',' + TEAL_G + ',' + TEAL_B + ',' + (nodeAlpha * 0.15).toFixed(3) + ')';
+      ctx.fill();
+
+      // Main crisp node
+      ctx.beginPath();
+      ctx.arc(node.x, node.y, Math.max(1.0, drawRadius), 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(' + TEAL_R + ',' + TEAL_G + ',' + TEAL_B + ',' + nodeAlpha.toFixed(3) + ')';
+      ctx.fill();
+    }
+
+    animationFrameId = requestAnimationFrame(render);
+  }
+
+  // Handle Reduced Motion preferences
+  var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReducedMotion) {
+    resizeCanvas();
+    // Render single static frame
+    render();
+    isRunning = false;
+    return;
+  }
+
+  window.addEventListener('resize', function () {
+    resizeCanvas();
+  }, { passive: true });
+
+  document.addEventListener('visibilitychange', function () {
+    if (document.hidden) {
+      isRunning = false;
+      if (animationFrameId) cancelAnimationFrame(animationFrameId);
+    } else {
+      if (!isRunning) {
+        isRunning = true;
+        animationFrameId = requestAnimationFrame(render);
+      }
+    }
+  });
+
+  resizeCanvas();
+  animationFrameId = requestAnimationFrame(render);
 });

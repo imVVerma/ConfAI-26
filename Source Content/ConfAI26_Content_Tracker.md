@@ -32,10 +32,10 @@
 
 | # | Module | Content Status | Source (lines) | Assets / Links Needed | Open Items / Blockers | Build Status | Owner | Last touched |
 |---|--------|----------------|-----------------|------------------------|-------------------------|---------------|-------|----------------|
-| R1 | Registration intro text | Final | 278 | None | None | Not started | | |
-| R2 | Register CTA button | Copy/behavior known, destination not ready | 280 | Razorpay gateway **or** MS Form link | ⚠️ Blocker — "Gateway not yet created" per brief. Cannot fully build until this exists; can stub the button | Not started | | |
-| R3 | Payment slabs table (5 tiers) | Final | 282–307 | None | None | Not started | | |
-| R4 | Accommodation details | Final | 310 | None | None | Not started | | |
+| R1 | Registration intro text & Key Takeaways | Final | 278 | None | None | Built | Antigravity agent | 2026-09-16 — Minimalist header matching FAQ style, dates/venue strip, 6 Takeaway cards |
+| R2 | Register CTA button & 4-step registration flow | Final | 280 | Razorpay gateway (`https://rzp.io/rzp/pLq9OQdq`) | None — live Razorpay link wired | Built | Antigravity agent | 2026-09-16 — 4-step stepper, live Razorpay CTAs, confirmation modal trigger |
+| R3 | Payment slabs (5 tiers) & dinner notes | Final | 282–307 | None | None | Built | Antigravity agent | 2026-09-16 — 5 pricing cards + expandable comparison table + dinner notes callout |
+| R4 | Accommodation details & booking form | Final | 310 | None | None | Built | Antigravity agent | 2026-09-16 — Interactive on-page booking form with validation & mailto generation |
 
 ## Page: AGENDA
 
@@ -47,9 +47,9 @@
 
 | # | Module | Content Status | Source (lines) | Assets / Links Needed | Open Items / Blockers | Build Status | Owner | Last touched |
 |---|--------|----------------|-----------------|------------------------|-------------------------|---------------|-------|----------------|
-| S1 | "Partner With ConfAI 2026" intro paragraph | Final | 320 | None | None | Not started | | |
-| S2 | Sponsorship tiers/buckets | Not finalized | 323–325 | `ConfAI 2026 Sponsorship Deck.pptx` content | ⚠️ Blocker — brief says to confirm final slabs with Khyati Sagar before publishing | Not started | | |
-| S3 | Sponsorship inquiries contact | Final | 327 | None | None | Not started | | |
+| S1 | "Partner With ConfAI 2026" intro paragraph | Final | 320 | None | None | Built | Antigravity agent | 2026-09-16 — Intro and title built |
+| S2 | Sponsorship tiers/buckets | Final from Deck | 323–325 | `ConfAI 2026 Sponsorship Deck.pptx` | None — Extracted Platinum, Gold, Silver, and À la carte options | Built | Antigravity agent | 2026-09-16 — Built tier cards, table, and deck download |
+| S3 | Sponsorship inquiries contact | Final | 327 | None | None | Built | Antigravity agent | 2026-09-16 — Contact cards for General and Khyati Sagar |
 
 ## Page: GALLERY
 
@@ -61,7 +61,7 @@
 
 | # | Module | Content Status | Source (lines) | Assets / Links Needed | Open Items / Blockers | Build Status | Owner | Last touched |
 |---|--------|----------------|-----------------|------------------------|-------------------------|---------------|-------|----------------|
-| F1 | FAQ (8 Q&A pairs) | Final | 335–380 | None | None | Not started | | |
+| F1 | FAQ (13 Q&A pairs) | Final | 335–380 | None | None | Built | Antigravity agent | 2026-09-16 — Updated with the 13 confirmed FAQs in accordion |
 | F2 | Contact section (duplicate/consolidate with H12?) | Final text, same content as H12 | 266–271 | Same as H12 | Decide once: is Contact its own page section, or does FAQ page just reuse the Home footer contact block? | Not started | | |
 
 ## Nav items with no content yet
