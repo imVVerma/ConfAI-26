@@ -6,6 +6,15 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
+    <script>
+      // Inline self-healing for WhatsApp/in-app browser cache
+      (function() {
+        var currentHost = window.location.hostname;
+        if (currentHost === "confai.plaksha" || currentHost.indexOf("plaksha") === 0) {
+          window.location.replace("https://imvverma.github.io/ConfAI-26/?nocache=" + Date.now());
+        }
+      })();
+    </script>
     <meta
       name="description"
       content="ConfAI 2026  -  Conference on Artificial Intelligence at Plaksha University, Mohali. October 30 – November 1, 2026."
