@@ -1678,7 +1678,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 /* ==========================================================================
-   CONFAI 2026 - NEURAL NETWORK TRANSITION ANIMATOR
+   CONFAI 2026 - ORGANIC NEURAL NETWORK TRANSITION ANIMATOR
+   Luminous visual bridge between cinematic hero video and off-white section
    ========================================================================== */
 document.addEventListener('DOMContentLoaded', function () {
   var canvas = document.getElementById('neural-transition-canvas');
@@ -1687,55 +1688,181 @@ document.addEventListener('DOMContentLoaded', function () {
   var ctx = canvas.getContext('2d');
   if (!ctx) return;
 
+  var hero = document.getElementById('hero') || canvas.closest('.cinema-video-hero') || document.body;
   var nodes = [];
+  var connections = [];
+  var dataSignals = [];
   var animationFrameId = null;
   var isRunning = true;
   var width = 0;
   var height = 0;
   var dpr = window.devicePixelRatio || 1;
 
-  // Plaksha Teal: RGB (0, 120, 120)
+  // Plaksha Teal Brand Colors
   var TEAL_R = 0;
   var TEAL_G = 120;
   var TEAL_B = 120;
 
+  // Interactive Cursor Tracking
+  var mouse = {
+    x: -9999,
+    y: -9999,
+    radius: 140,
+    active: false
+  };
+
+  function updateMousePosition(e) {
+    var rect = canvas.getBoundingClientRect();
+    mouse.x = e.clientX - rect.left;
+    mouse.y = e.clientY - rect.top;
+    mouse.active = true;
+  }
+
+  function clearMousePosition() {
+    mouse.active = false;
+    mouse.x = -9999;
+    mouse.y = -9999;
+  }
+
+  if (hero) {
+    hero.addEventListener('mousemove', updateMousePosition, { passive: true });
+    hero.addEventListener('mouseleave', clearMousePosition, { passive: true });
+    hero.addEventListener('touchmove', function (e) {
+      if (e.touches && e.touches.length > 0) {
+        updateMousePosition(e.touches[0]);
+      }
+    }, { passive: true });
+    hero.addEventListener('touchend', clearMousePosition, { passive: true });
+  }
+
+  // Calculate SVG curve Y position at given X coordinate
+  function getCurveY(x) {
+    var isMobile = width <= 640;
+    var svgH = isMobile ? 28 : 48;
+    var u = Math.max(0, Math.min(1, x / width));
+    // Cubic bezier matching SVG curve: M0,0 C480,48 960,48 1440,0
+    var curveDepth = svgH * 0.75 * 4 * u * (1 - u);
+    return (height - svgH) + curveDepth;
+  }
+
   function resizeCanvas() {
     var rect = canvas.getBoundingClientRect();
     width = rect.width || window.innerWidth;
-    height = rect.height || 100;
+    height = rect.height || (width <= 640 ? 160 : 220);
     dpr = window.devicePixelRatio || 1;
 
     canvas.width = Math.floor(width * dpr);
     canvas.height = Math.floor(height * dpr);
     ctx.scale(dpr, dpr);
 
-    initNodes();
+    initNetwork();
   }
 
-  function initNodes() {
+  function initNetwork() {
     nodes = [];
-    // Number of nodes based on screen width: gentle density (approx 24-38 nodes)
-    var nodeCount = Math.max(16, Math.min(36, Math.floor(width / 42)));
+    connections = [];
+    dataSignals = [];
 
+    var isMobile = width <= 640;
+    // Sparse, refined node density
+    var nodeCount = isMobile ? Math.max(16, Math.min(22, Math.floor(width / 34))) : Math.max(24, Math.min(36, Math.floor(width / 40)));
+
+    // 1. Generate Nodes along and across the boundary curve
     for (var i = 0; i < nodeCount; i++) {
-      var x = (width / (nodeCount - 1)) * i + (Math.random() * 24 - 12);
-      // Curve equation matching the SVG shallow wave: y_curve = (height - 40) + 32 * sin(pi * x / width)
-      var normX = Math.max(0, Math.min(1, x / width));
-      var curveY = (height - 48) + Math.sin(Math.PI * normX) * 32;
-      var yOffset = (Math.random() - 0.5) * 44; // Concentrated within +/- 22px of the curve
-      var y = Math.max(8, Math.min(height - 8, curveY + yOffset));
+      var normI = i / (nodeCount - 1);
+      var jitter = (Math.random() - 0.5) * (width / nodeCount) * 1.35;
+      var x = Math.max(20, Math.min(width - 20, normI * width + jitter));
+      var curveAtX = getCurveY(x);
+
+      var normX = x / width;
+      var centerFactor = Math.sin(Math.PI * normX); // 0 at edges, 1 in center
+
+      // Vertical band from -65px (above in video) to +36px (below in off-white)
+      var randPos = Math.random();
+      var yOffset;
+      if (randPos < 0.42) {
+        // Above boundary in dark hero video (-65px to -14px)
+        yOffset = -14 - Math.random() * 50 * (0.65 + 0.35 * centerFactor);
+      } else if (randPos < 0.72) {
+        // Straddling right around the boundary line (-14px to +10px)
+        yOffset = -14 + Math.random() * 24;
+      } else {
+        // Below boundary flowing into off-white section (+10px to +38px)
+        yOffset = 10 + Math.random() * 28 * (0.65 + 0.35 * centerFactor);
+      }
+
+      var y = Math.max(14, Math.min(height - 10, curveAtX + yOffset));
+      var isMain = Math.random() < 0.36; // ~36% prominent nodes (4.5-7px), 64% secondary nodes (2.2-3.6px)
+      var baseRadius = isMain ? (4.2 + Math.random() * 2.6) : (2.0 + Math.random() * 1.5);
 
       nodes.push({
+        id: i,
         x: x,
         y: y,
         originX: x,
         originY: y,
-        vx: (Math.random() - 0.5) * 0.12, // Very slow subtle drift
-        vy: (Math.random() - 0.5) * 0.08,
-        radius: 1.5 + Math.random() * 1.1, // 1.5px to 2.6px
+        vx: (Math.random() - 0.5) * 0.12,
+        vy: (Math.random() - 0.5) * 0.09,
+        radius: baseRadius,
+        isMain: isMain,
         pulsePhase: Math.random() * Math.PI * 2,
-        pulseSpeed: 0.012 + Math.random() * 0.018, // Slow, barely noticeable pulse
-        baseAlpha: 0.28 + Math.random() * 0.25 // Low opacity: 0.28 to 0.53
+        pulseSpeed: 0.008 + Math.random() * 0.012,
+        baseAlpha: isMain ? (0.86 + Math.random() * 0.14) : (0.68 + Math.random() * 0.24),
+        neighborIds: []
+      });
+    }
+
+    // 2. Build Sparse, Organic Connections
+    var maxDist = isMobile ? 105 : 145;
+    for (var a = 0; a < nodes.length; a++) {
+      var nodeA = nodes[a];
+      var candidates = [];
+
+      for (var b = a + 1; b < nodes.length; b++) {
+        var nodeB = nodes[b];
+        var dx = nodeA.x - nodeB.x;
+        var dy = nodeA.y - nodeB.y;
+        var dist = Math.sqrt(dx * dx + dy * dy);
+
+        if (dist < maxDist) {
+          candidates.push({ nodeIndex: b, dist: dist });
+        }
+      }
+
+      // Sort by proximity and keep at most 3 connections per node for sparse elegance
+      candidates.sort(function (p1, p2) { return p1.dist - p2.dist; });
+      var maxConnForNode = nodeA.isMain ? 3 : 2;
+      var connCount = 0;
+
+      for (var c = 0; c < candidates.length && connCount < maxConnForNode; c++) {
+        var bIdx = candidates[c].nodeIndex;
+        var nodeB = nodes[bIdx];
+
+        if (nodeB.neighborIds.length < (nodeB.isMain ? 4 : 3)) {
+          nodeA.neighborIds.push(bIdx);
+          nodeB.neighborIds.push(a);
+
+          connections.push({
+            nodeAIndex: a,
+            nodeBIndex: bIdx,
+            maxDist: maxDist,
+            activeSignal: false
+          });
+          connCount++;
+        }
+      }
+    }
+
+    // 3. Initialize Data-Flow Packets
+    var signalCount = isMobile ? 3 : (connections.length > 8 ? 6 : 4);
+    for (var s = 0; s < signalCount && connections.length > 0; s++) {
+      var randConnIdx = Math.floor(Math.random() * connections.length);
+      dataSignals.push({
+        connIndex: randConnIdx,
+        progress: Math.random(),
+        speed: 0.0032 + Math.random() * 0.0040, // Slow, elegant glide
+        direction: Math.random() < 0.5 ? 1 : -1,
+        size: 2.2 + Math.random() * 1.4
       });
     }
   }
@@ -1745,73 +1872,244 @@ document.addEventListener('DOMContentLoaded', function () {
 
     ctx.clearRect(0, 0, width, height);
 
-    var maxDist = 96; // Distance threshold for connection lines
-
-    // 1. Update positions & pulse phases
+    // 1. Update Physics & Force Field
     for (var i = 0; i < nodes.length; i++) {
       var n = nodes[i];
-      n.x += n.vx;
-      n.y += n.vy;
       n.pulsePhase += n.pulseSpeed;
 
-      // Soft spring tether back to origin to maintain distribution along curve
-      var dx = n.originX - n.x;
-      var dy = n.originY - n.y;
-      n.vx += dx * 0.0008;
-      n.vy += dy * 0.0008;
+      // Soft elastic spring to anchor position
+      var dxOrigin = n.originX - n.x;
+      var dyOrigin = n.originY - n.y;
+      n.vx += dxOrigin * 0.0010;
+      n.vy += dyOrigin * 0.0010;
 
-      // Velocity damping
-      n.vx *= 0.985;
-      n.vy *= 0.985;
+      // Interactive Cursor Force Field
+      if (mouse.active) {
+        var dxMouse = n.x - mouse.x;
+        var dyMouse = n.y - mouse.y;
+        var distMouse = Math.sqrt(dxMouse * dxMouse + dyMouse * dyMouse);
+
+        if (distMouse < mouse.radius && distMouse > 0) {
+          var force = (1 - distMouse / mouse.radius) * 1.3;
+          n.vx += (dxMouse / distMouse) * force;
+          n.vy += (dyMouse / distMouse) * force;
+        }
+      }
+
+      // Velocity damping & movement
+      n.vx *= 0.96;
+      n.vy *= 0.96;
+      n.x += n.vx;
+      n.y += n.vy;
     }
 
-    // 2. Draw Connection Lines (Thin geometric connections)
-    ctx.lineWidth = 0.75;
-    for (var a = 0; a < nodes.length; a++) {
-      var nodeA = nodes[a];
-      var pulseA = Math.sin(nodeA.pulsePhase);
-      var currentAlphaA = Math.max(0.12, Math.min(0.65, nodeA.baseAlpha + pulseA * 0.12));
+    // Reset connection active signal states
+    for (var ci = 0; ci < connections.length; ci++) {
+      connections[ci].activeSignal = false;
+    }
+    for (var si = 0; si < dataSignals.length; si++) {
+      if (dataSignals[si].connIndex < connections.length) {
+        connections[dataSignals[si].connIndex].activeSignal = true;
+      }
+    }
 
-      for (var b = a + 1; b < nodes.length; b++) {
-        var nodeB = nodes[b];
-        var distSq = (nodeA.x - nodeB.x) * (nodeA.x - nodeB.x) + (nodeA.y - nodeB.y) * (nodeA.y - nodeB.y);
+    // 2. Draw Connecting Neural Lines with High Visibility
+    for (var c = 0; c < connections.length; c++) {
+      var conn = connections[c];
+      var nodeA = nodes[conn.nodeAIndex];
+      var nodeB = nodes[conn.nodeBIndex];
 
-        if (distSq < maxDist * maxDist) {
-          var dist = Math.sqrt(distSq);
-          var distFactor = 1 - (dist / maxDist);
-          var pulseB = Math.sin(nodeB.pulsePhase);
-          var currentAlphaB = Math.max(0.12, Math.min(0.65, nodeB.baseAlpha + pulseB * 0.12));
-          var lineAlpha = distFactor * Math.min(currentAlphaA, currentAlphaB) * 0.48;
+      var dx = nodeA.x - nodeB.x;
+      var dy = nodeA.y - nodeB.y;
+      var dist = Math.sqrt(dx * dx + dy * dy);
 
-          if (lineAlpha > 0.02) {
-            ctx.beginPath();
-            ctx.strokeStyle = 'rgba(' + TEAL_R + ',' + TEAL_G + ',' + TEAL_B + ',' + lineAlpha.toFixed(3) + ')';
-            ctx.moveTo(nodeA.x, nodeA.y);
-            ctx.lineTo(nodeB.x, nodeB.y);
-            ctx.stroke();
-          }
+      if (dist < conn.maxDist) {
+        var distFactor = 1 - (dist / conn.maxDist);
+        var midX = (nodeA.x + nodeB.x) / 2;
+        var edgeTaper = Math.sin(Math.PI * Math.max(0, Math.min(1, midX / width)));
+        var signalBoost = conn.activeSignal ? 0.35 : 0;
+        var lineAlpha = Math.min(1.0, distFactor * edgeTaper * (0.75 + signalBoost));
+
+        if (lineAlpha > 0.03) {
+          var midY = (nodeA.y + nodeB.y) / 2;
+          var curveAtMid = getCurveY(midX);
+          var onLightSide = midY > (curveAtMid - 2);
+
+          // Layer A: Diffuse luminous glow line
+          ctx.beginPath();
+          ctx.lineWidth = conn.activeSignal ? 4.5 : 3.2;
+          ctx.strokeStyle = onLightSide
+            ? 'rgba(0, 120, 120, ' + (lineAlpha * 0.35).toFixed(3) + ')'
+            : 'rgba(0, 190, 190, ' + (lineAlpha * 0.40).toFixed(3) + ')';
+          ctx.moveTo(nodeA.x, nodeA.y);
+          ctx.lineTo(nodeB.x, nodeB.y);
+          ctx.stroke();
+
+          // Layer B: Crisp primary connection line
+          ctx.beginPath();
+          ctx.lineWidth = conn.activeSignal ? 1.6 : 1.25;
+          ctx.strokeStyle = onLightSide
+            ? 'rgba(0, 95, 95, ' + (lineAlpha * 0.95).toFixed(3) + ')'
+            : 'rgba(0, 175, 175, ' + (lineAlpha * 0.95).toFixed(3) + ')';
+          ctx.moveTo(nodeA.x, nodeA.y);
+          ctx.lineTo(nodeB.x, nodeB.y);
+          ctx.stroke();
         }
       }
     }
 
-    // 3. Draw Nodes (Small subtle pulsing circles)
+    // 3. Draw and Advance Data-Flow Pulses (Information moving through network)
+    for (var s = 0; s < dataSignals.length; s++) {
+      var sig = dataSignals[s];
+      if (sig.connIndex >= connections.length) continue;
+
+      var sigConn = connections[sig.connIndex];
+      var fromNode = sig.direction === 1 ? nodes[sigConn.nodeAIndex] : nodes[sigConn.nodeBIndex];
+      var toNode = sig.direction === 1 ? nodes[sigConn.nodeBIndex] : nodes[sigConn.nodeAIndex];
+
+      sig.progress += sig.speed;
+      if (sig.progress >= 1.0) {
+        sig.progress = 0;
+        var targetNode = toNode;
+        if (targetNode.neighborIds && targetNode.neighborIds.length > 0) {
+          var nextNeighbor = targetNode.neighborIds[Math.floor(Math.random() * targetNode.neighborIds.length)];
+          var foundConn = false;
+          for (var cj = 0; cj < connections.length; cj++) {
+            var cand = connections[cj];
+            if ((cand.nodeAIndex === targetNode.id && cand.nodeBIndex === nextNeighbor) ||
+                (cand.nodeBIndex === targetNode.id && cand.nodeAIndex === nextNeighbor)) {
+              sig.connIndex = cj;
+              sig.direction = (cand.nodeAIndex === targetNode.id) ? 1 : -1;
+              foundConn = true;
+              break;
+            }
+          }
+          if (!foundConn) {
+            sig.connIndex = Math.floor(Math.random() * connections.length);
+          }
+        } else {
+          sig.connIndex = Math.floor(Math.random() * connections.length);
+        }
+        continue;
+      }
+
+      var sigX = fromNode.x + (toNode.x - fromNode.x) * sig.progress;
+      var sigY = fromNode.y + (toNode.y - fromNode.y) * sig.progress;
+      var sigCurveY = getCurveY(sigX);
+      var sigOnLight = sigY > (sigCurveY - 2);
+
+      // Packet Outer Luminous Bloom
+      ctx.beginPath();
+      ctx.arc(sigX, sigY, sig.size * 2.6, 0, Math.PI * 2);
+      ctx.fillStyle = sigOnLight
+        ? 'rgba(0, 140, 140, 0.55)'
+        : 'rgba(0, 220, 220, 0.65)';
+      ctx.fill();
+
+      // Packet Bright Core
+      ctx.beginPath();
+      ctx.arc(sigX, sigY, sig.size * 1.1, 0, Math.PI * 2);
+      ctx.fillStyle = '#FFFFFF';
+      ctx.fill();
+    }
+
+    // 4. Draw Nodes with Multi-Layer Radial Luminous Glow (Visible on Dark & Off-White)
     for (var k = 0; k < nodes.length; k++) {
       var node = nodes[k];
       var pulse = Math.sin(node.pulsePhase);
-      var nodeAlpha = Math.max(0.18, Math.min(0.65, node.baseAlpha + pulse * 0.14));
-      var drawRadius = node.radius + pulse * 0.35;
+      var curveY = getCurveY(node.x);
+      var onLightSide = node.y > (curveY + 2); // In off-white section
+      var edgeFade = Math.sin(Math.PI * Math.max(0, Math.min(1, node.x / width)));
+      var nodeAlpha = Math.max(0.35, Math.min(1.0, (node.baseAlpha + pulse * 0.16) * edgeFade));
+      var drawRadius = Math.max(1.8, node.radius + pulse * (node.isMain ? 0.6 : 0.3));
 
-      // Soft micro halo
-      ctx.beginPath();
-      ctx.arc(node.x, node.y, drawRadius + 1.8, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(' + TEAL_R + ',' + TEAL_G + ',' + TEAL_B + ',' + (nodeAlpha * 0.15).toFixed(3) + ')';
-      ctx.fill();
+      if (node.isMain) {
+        // ── Main Prominent Node ──
+        if (onLightSide) {
+          // On Light/Off-White Background:
+          // Multi-layer atmospheric separation glow: Teal Core -> Soft White/Teal Glow -> Fade
+          var glowGrad = ctx.createRadialGradient(node.x, node.y, 0, node.x, node.y, drawRadius * 4.2);
+          glowGrad.addColorStop(0, 'rgba(0, 140, 140, ' + (nodeAlpha * 0.50).toFixed(3) + ')');
+          glowGrad.addColorStop(0.35, 'rgba(0, 160, 160, ' + (nodeAlpha * 0.35).toFixed(3) + ')');
+          glowGrad.addColorStop(0.65, 'rgba(255, 255, 255, ' + (nodeAlpha * 0.60).toFixed(3) + ')');
+          glowGrad.addColorStop(1, 'rgba(0, 120, 120, 0)');
 
-      // Main crisp node
-      ctx.beginPath();
-      ctx.arc(node.x, node.y, Math.max(1.0, drawRadius), 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(' + TEAL_R + ',' + TEAL_G + ',' + TEAL_B + ',' + nodeAlpha.toFixed(3) + ')';
-      ctx.fill();
+          ctx.beginPath();
+          ctx.arc(node.x, node.y, drawRadius * 4.2, 0, Math.PI * 2);
+          ctx.fillStyle = glowGrad;
+          ctx.fill();
+
+          // Rich solid Plaksha teal body
+          ctx.beginPath();
+          ctx.arc(node.x, node.y, drawRadius, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(0, 105, 105, ' + (nodeAlpha * 0.98).toFixed(3) + ')';
+          ctx.fill();
+
+          // Crisp light center highlight dot
+          ctx.beginPath();
+          ctx.arc(node.x, node.y, Math.max(1.2, drawRadius * 0.48), 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(242, 240, 236, ' + (nodeAlpha * 0.98).toFixed(3) + ')';
+          ctx.fill();
+        } else {
+          // On Dark Hero Video Background:
+          // Multi-layer luminous teal bloom halo
+          var darkGlow = ctx.createRadialGradient(node.x, node.y, 0, node.x, node.y, drawRadius * 3.8);
+          darkGlow.addColorStop(0, 'rgba(0, 210, 210, ' + (nodeAlpha * 0.65).toFixed(3) + ')');
+          darkGlow.addColorStop(0.4, 'rgba(' + TEAL_R + ',' + TEAL_G + ',' + TEAL_B + ',' + (nodeAlpha * 0.35).toFixed(3) + ')');
+          darkGlow.addColorStop(0.75, 'rgba(' + TEAL_R + ',' + TEAL_G + ',' + TEAL_B + ',' + (nodeAlpha * 0.15).toFixed(3) + ')');
+          darkGlow.addColorStop(1, 'rgba(' + TEAL_R + ',' + TEAL_G + ',' + TEAL_B + ', 0)');
+
+          ctx.beginPath();
+          ctx.arc(node.x, node.y, drawRadius * 3.8, 0, Math.PI * 2);
+          ctx.fillStyle = darkGlow;
+          ctx.fill();
+
+          // Vibrant solid teal body
+          ctx.beginPath();
+          ctx.arc(node.x, node.y, drawRadius, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(0, 170, 170, ' + (nodeAlpha * 0.98).toFixed(3) + ')';
+          ctx.fill();
+
+          // Luminous white core
+          ctx.beginPath();
+          ctx.arc(node.x, node.y, Math.max(1.2, drawRadius * 0.48), 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(255, 255, 255, ' + (nodeAlpha * 0.98).toFixed(3) + ')';
+          ctx.fill();
+        }
+      } else {
+        // ── Secondary Node ──
+        if (onLightSide) {
+          // Subtle soft halo
+          ctx.beginPath();
+          ctx.arc(node.x, node.y, drawRadius * 2.2, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(255, 255, 255, ' + (nodeAlpha * 0.50).toFixed(3) + ')';
+          ctx.fill();
+
+          // Solid teal dot
+          ctx.beginPath();
+          ctx.arc(node.x, node.y, drawRadius, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(0, 105, 105, ' + (nodeAlpha * 0.90).toFixed(3) + ')';
+          ctx.fill();
+        } else {
+          // Soft bloom
+          ctx.beginPath();
+          ctx.arc(node.x, node.y, drawRadius * 2.5, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(' + TEAL_R + ',' + TEAL_G + ',' + TEAL_B + ',' + (nodeAlpha * 0.40).toFixed(3) + ')';
+          ctx.fill();
+
+          // Bright teal dot
+          ctx.beginPath();
+          ctx.arc(node.x, node.y, drawRadius, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(0, 185, 185, ' + (nodeAlpha * 0.95).toFixed(3) + ')';
+          ctx.fill();
+
+          // Small white core
+          ctx.beginPath();
+          ctx.arc(node.x, node.y, Math.max(0.8, drawRadius * 0.40), 0, Math.PI * 2);
+          ctx.fillStyle = '#FFFFFF';
+          ctx.fill();
+        }
+      }
     }
 
     animationFrameId = requestAnimationFrame(render);
@@ -1821,7 +2119,6 @@ document.addEventListener('DOMContentLoaded', function () {
   var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (prefersReducedMotion) {
     resizeCanvas();
-    // Render single static frame
     render();
     isRunning = false;
     return;

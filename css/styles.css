@@ -17,13 +17,14 @@
   --color-graphite: #333333;
   --color-graphite-dark: #000000;
 
-  --font-display: 'Merriweather', serif;
+  --font-display: 'Newsreader', serif;
   --font-sans: 'Open Sans', sans-serif;
 
   --header-h: 4.25rem;
+  --header-max: 90rem; /* 1440px */
   --radius: 0.5rem;
   --transition: 0.22s ease;
-  --content-max: 72rem;
+  --content-max: 82.5rem; /* 1320px */
 }
 
 
@@ -124,9 +125,9 @@ body.nav-open .site-header {
 
 .header-inner {
   width: 100%;
-  max-width: var(--content-max);
+  max-width: var(--header-max, 90rem);
   margin: 0 auto;
-  padding: 0 1.25rem;
+  padding: 0 2.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -772,9 +773,9 @@ body.nav-open .site-header {
 ──────────────────────────────────────────────────────────── */
 .section-inner {
   width: 100%;
-  max-width: var(--content-max);
+  max-width: var(--content-max, 82.5rem);
   margin: 0 auto;
-  padding: 0 1.25rem;
+  padding: 0 2rem;
 }
 
 .section-overview,
@@ -5973,9 +5974,9 @@ body.agenda-page.sharp-theme,
 
 .header-inner {
   width: 100%;
-  max-width: var(--content-max, 72rem);
+  max-width: var(--header-max, 90rem);
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 2.5rem;
   height: 100%;
   display: flex;
   align-items: center;
@@ -6124,7 +6125,7 @@ body.agenda-page.sharp-theme,
   transform: translateY(-1px); /* Optical vertical center alignment with CONFAI logo */
 }
 
-/* Tagline in Plaksha Teal - Clean, Simple & Minimalist (No Glow / No Stroke) */
+/* Tagline in Plaksha Teal - Clean, Simple & Minimalist */
 .cinema-tagline {
   font-family: 'Open Sans', sans-serif !important;
   font-size: clamp(1.2rem, 2.5vw, 1.85rem);
@@ -6222,26 +6223,27 @@ body.agenda-page.sharp-theme,
   transform: translateY(-1px);
 }
 
-/* ── Subtle Curved Transition with Neural Network Pattern ───────────────── */
+/* ── Neural Network Particle Canvas & Subtle Curved Transition ──────────── */
 .cinema-curve-divider {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
   width: 100%;
-  height: 90px;
+  height: 220px;
   overflow: visible;
   line-height: 0;
   z-index: 5;
   pointer-events: none;
 }
 
+.hero-neural-canvas,
 .neural-transition-canvas {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 100px;
+  height: 220px;
   pointer-events: none;
   z-index: 6;
 }
@@ -6256,7 +6258,256 @@ body.agenda-page.sharp-theme,
   display: block;
 }
 
+/* ── Unified Wider Content Container (1320px) ───────────────────────────── */
+.section-inner {
+  width: 100%;
+  max-width: var(--content-max, 82.5rem);
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* ── High-Impact Section Headings (Open Sans ExtraBold Uppercase) ─────────── */
+.section-overview h2,
+.section-why-attend h2,
+.section-speakers h2,
+.section-audience h2,
+.section-program h2,
+.section-dates h2,
+.section-tracks-diagram h2,
+.section-relive h2,
+.stats-title {
+  font-family: var(--font-sans, 'Open Sans', sans-serif) !important;
+  font-size: clamp(1.65rem, 1.2rem + 1.6vw, 2.55rem);
+  font-weight: 800;
+  text-transform: uppercase !important;
+  letter-spacing: -0.01em;
+  color: var(--color-graphite-dark, #000000);
+  line-height: 1.15;
+  margin: 0 0 1.15rem;
+  position: relative;
+  padding-bottom: 0.45rem;
+  display: inline-block;
+  border-bottom: none !important;
+}
+
+.section-overview h2::after,
+.section-why-attend h2::after,
+.section-speakers h2::after,
+.section-audience h2::after,
+.section-program h2::after,
+.section-dates h2::after,
+.section-tracks-diagram h2::after,
+.section-relive h2::after,
+.stats-title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 3.5rem;
+  height: 3px;
+  background: var(--color-teal);
+  border-radius: 2px;
+}
+
+/* ── "By the Numbers" Section Typography & Grid ─────────────────────────── */
+.section-stats {
+  padding: 1.85rem 0 1.5rem;
+  background-color: var(--color-chalk-bg, #F2F0EC);
+  border-bottom: 1px solid var(--color-chalk-line, #DBD9D5);
+}
+
+.stats-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  width: 100%;
+  align-items: flex-start;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 0.5rem;
+}
+
+.stat-value {
+  font-family: var(--font-sans, 'Open Sans', sans-serif);
+  font-size: clamp(2.25rem, 3.8vw, 3.15rem);
+  font-weight: 800;
+  color: var(--color-teal);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.35rem;
+}
+
+.stat-label {
+  font-family: var(--font-sans, 'Open Sans', sans-serif);
+  font-size: clamp(0.78rem, 1.1vw, 0.88rem);
+  font-weight: 600;
+  color: #334155;
+  line-height: 1.3;
+  margin: 0;
+}
+
+/* ── Conference Overview (2-Column Balanced Layout) ─────────────────────── */
+.overview-layout {
+  display: grid;
+  grid-template-columns: 1.32fr 0.68fr;
+  gap: 2.75rem;
+  align-items: start;
+}
+
+.section-overview p {
+  font-family: var(--font-sans);
+  font-size: clamp(1.02rem, 1.4vw, 1.14rem);
+  color: #1E293B;
+  max-width: 65ch;
+  line-height: 1.65;
+  margin: 0;
+  font-weight: 400;
+}
+
+.overview-highlights {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.overview-highlight-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 0.75rem 1.1rem;
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 120, 120, 0.28);
+  border-radius: 6px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
+  transition: transform var(--transition), border-color var(--transition);
+}
+
+.overview-highlight-item:hover {
+  transform: translateY(-1px);
+  border-color: var(--color-teal);
+}
+
+.overview-highlight-value {
+  font-family: var(--font-display, 'Newsreader', serif);
+  font-size: 1.18rem;
+  font-weight: 600;
+  color: #0F172A;
+  line-height: 1.2;
+}
+
+.overview-highlight-label {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-teal);
+}
+
+/* ── Compact Section Vertical Rhythm ────────────────────────────────────── */
+.section-overview {
+  padding: 2rem 0 2.25rem;
+}
+
+.section-why-attend,
+.section-speakers,
+.section-audience,
+.section-program,
+.section-dates,
+.section-tracks-diagram,
+.section-relive {
+  padding: 2.75rem 0;
+}
+
+/* ── Keynote Speakers & Why Attend Grids ─────────────────────────────────── */
+.speakers-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem 1.5rem;
+}
+
+@media (min-width: 36rem) {
+  .speakers-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem 1.5rem;
+  }
+}
+
+@media (min-width: 58rem) {
+  .speakers-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem 2rem;
+  }
+}
+
+.speaker-photo-wrap {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 4.8;
+  background-color: #e5e5e5;
+  overflow: hidden;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.speaker-photo-wrap:hover .speaker-photo {
+  opacity: 0.94;
+  transform: scale(1.025);
+}
+
+.why-attend-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+@media (min-width: 48rem) {
+  .why-attend-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+}
+
+.why-attend-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  margin-bottom: 1rem;
+  border-radius: 0.75rem;
+  background: rgba(0, 120, 120, 0.08);
+  color: var(--color-teal);
+}
+
 /* ── Responsive Mobile Rules ────────────────────────────────────────────── */
+@media (max-width: 48rem) {
+  .header-inner {
+    padding: 0 1.25rem;
+  }
+
+  .section-inner {
+    padding: 0 1.25rem;
+  }
+
+  .stats-strip {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem 1rem;
+  }
+
+  .overview-layout {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
 @media (max-width: 640px) {
   .cinema-video-hero {
     padding: 1.5rem 1rem 3.5rem;
@@ -6298,11 +6549,12 @@ body.agenda-page.sharp-theme,
   }
 
   .cinema-curve-divider {
-    height: 60px;
+    height: 160px;
   }
 
+  .hero-neural-canvas,
   .neural-transition-canvas {
-    height: 70px;
+    height: 160px;
   }
 
   .cinema-curve-svg {
