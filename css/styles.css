@@ -6,7 +6,7 @@
   padding: 0;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Open+Sans:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap');
 
 :root {
   --color-teal: #007878;
@@ -17,7 +17,7 @@
   --color-graphite: #333333;
   --color-graphite-dark: #000000;
 
-  --font-display: 'Newsreader', serif;
+  --font-display: 'Open Sans', sans-serif;
   --font-sans: 'Open Sans', sans-serif;
 
   --header-h: 4.25rem;
@@ -1031,7 +1031,7 @@ body.nav-open .site-header {
 }
 
 .speaker-name {
-  font-family: var(--font-display, 'Merriweather', serif);
+  font-family: var(--font-display, 'Open Sans', sans-serif);
   font-size: 1.35rem;
   font-weight: 600;
   color: #003366;
@@ -1806,27 +1806,36 @@ body.modal-open {
    H8 · CONFERENCE TRACKS & RADIAL DIAGRAM
 ──────────────────────────────────────────────────────────── */
 .section-tracks-diagram {
-  padding: 2.75rem 0 3.25rem;
+  padding: 3.5rem 0 4rem;
   background-color: var(--color-chalk-bg);
   position: relative;
 }
 
+.section-tracks-diagram h2 {
+  text-align: center;
+  font-family: var(--font-display, 'Open Sans', sans-serif);
+  font-size: clamp(2rem, 3.5vw, 2.75rem);
+  font-weight: 700;
+  color: #0F172A;
+  margin-bottom: 0.5rem;
+}
+
+/* Base Responsive Grid (Mobile & Tablet < 960px) */
 .radial-container {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr;
   gap: 0.85rem;
   width: 100%;
-  max-width: 36rem;
-  margin: 1.5rem auto 0;
+  max-width: 32rem;
+  margin: 1.75rem auto 0;
 }
 
 .radial-spokes {
   display: none;
 }
 
-/* Center Hub  -  ConfAI Logo */
+/* Center Hub — ConfAI Logo */
 .radial-hub {
   display: flex;
   flex-direction: column;
@@ -1838,21 +1847,23 @@ body.modal-open {
   height: 6.25rem;
   border-radius: 50%;
   border: 2px solid var(--color-teal, #007878);
-  box-shadow: 0 0 0 4px rgba(0, 120, 120, 0.12), 0 4px 16px rgba(0, 120, 120, 0.15);
+  box-shadow: 0 0 0 4px rgba(0, 120, 120, 0.12), 0 6px 18px rgba(0, 120, 120, 0.16);
   z-index: 10;
   line-height: 1.15;
   user-select: none;
-  margin-bottom: 0.5rem;
+  grid-column: 1 / -1;
+  justify-self: center;
+  margin-bottom: 1rem;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .radial-hub:hover {
-  transform: scale(1.04);
-  box-shadow: 0 0 0 5px rgba(0, 120, 120, 0.18), 0 6px 20px rgba(0, 120, 120, 0.22);
+  transform: scale(1.05);
+  box-shadow: 0 0 0 6px rgba(0, 120, 120, 0.18), 0 8px 24px rgba(0, 120, 120, 0.22);
 }
 
 .radial-hub-mark {
-  font-family: var(--font-display, 'Newsreader', serif);
+  font-family: var(--font-display, 'Open Sans', sans-serif);
   font-size: 1.35rem;
   font-weight: 700;
   color: #0F172A;
@@ -1871,29 +1882,32 @@ body.modal-open {
 
 .radial-track {
   width: 100%;
+  min-width: 0;
 }
 
+/* 280px uniform card button */
 .track-node {
   all: unset;
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.85rem;
   cursor: pointer;
   text-align: left;
-  padding: 0.65rem 0.9rem;
+  padding: 0.75rem 1rem;
   background: #FFFFFF;
   border: 1px solid rgba(0, 120, 120, 0.22);
-  border-radius: 6px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+  border-radius: 8px;
+  box-shadow: 0 3px 12px rgba(15, 23, 42, 0.05);
   transition: background-color 0.25s ease, border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
   width: 100%;
   box-sizing: border-box;
+  min-height: 52px;
 }
 
 .track-node:hover {
   background-color: #FFFFFF;
   border-color: var(--color-teal, #007878);
-  box-shadow: 0 4px 12px rgba(0, 120, 120, 0.12);
+  box-shadow: 0 6px 20px rgba(0, 120, 120, 0.16);
   transform: translateY(-2px);
 }
 
@@ -1902,38 +1916,93 @@ body.modal-open {
   outline-offset: 3px;
 }
 
+/* Circular Number Badge */
 .track-num {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 1.65rem;
-  height: 1.65rem;
+  width: 1.85rem;
+  height: 1.85rem;
+  min-width: 1.85rem;
+  min-height: 1.85rem;
   background: #0F172A;
   color: #FFFFFF;
   border-radius: 50%;
   font-family: var(--font-sans, 'Open Sans', sans-serif);
   font-weight: 700;
-  font-size: 0.78rem;
+  font-size: 0.82rem;
   flex-shrink: 0;
-  transition: background-color 0.25s ease, transform 0.25s ease;
+  transition: background-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .track-node:hover .track-num {
   background-color: var(--color-teal, #007878);
   transform: scale(1.08);
+  box-shadow: 0 0 0 3px rgba(0, 120, 120, 0.20);
+}
+
+/* Track Info Text Container */
+.track-info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  flex: 1;
 }
 
 .track-name {
   font-family: var(--font-sans, 'Open Sans', sans-serif);
-  font-size: 0.85rem;
+  font-size: 0.88rem;
   font-weight: 600;
   color: #1E293B;
-  line-height: 1.3;
+  line-height: 1.32;
   transition: color 0.25s ease;
 }
 
 .track-node:hover .track-name {
   color: var(--color-teal, #007878);
+}
+
+/* Micro-interaction Hint */
+.track-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-family: var(--font-sans, 'Open Sans', sans-serif);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--color-teal, #007878);
+  opacity: 0;
+  height: 0;
+  margin-top: 0;
+  transform: translateX(-4px);
+  transition: opacity 0.2s ease, transform 0.2s ease, height 0.2s ease, margin-top 0.2s ease;
+  overflow: hidden;
+}
+
+.track-node:hover .track-hint {
+  opacity: 1;
+  height: 1rem;
+  margin-top: 0.2rem;
+  transform: translateX(0);
+}
+
+/* Tablet 2-column view */
+@media (min-width: 40rem) and (max-width: 59.99rem) {
+  .radial-container {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 46rem;
+    gap: 1rem;
+  }
+}
+
+/* Mobile/Tablet hint visibility */
+@media (max-width: 59.99rem) {
+  .track-hint {
+    opacity: 0.85;
+    height: auto;
+    margin-top: 0.15rem;
+    transform: none;
+  }
 }
 
 /* Footer */
@@ -2144,11 +2213,11 @@ body.modal-open {
 }
 
 /* --- Desktop Radial Layout (Spokes radiating from ConfAI center logo) --- */
-@media (min-width: 58rem) {
+@media (min-width: 60rem) {
   .radial-container {
-    height: 520px;
-    max-width: 980px;
-    margin: 1.5rem auto 0;
+    height: 580px;
+    max-width: 1100px;
+    margin: 2rem auto 0;
     position: relative;
     display: block;
   }
@@ -2159,10 +2228,15 @@ body.modal-open {
     left: 50%;
     transform: translate(-50%, -50%);
     margin-bottom: 0;
+    width: 6.5rem;
+    height: 6.5rem;
+    border-width: 2.5px;
+    z-index: 10;
   }
 
   .radial-hub:hover {
-    transform: translate(-50%, -50%) scale(1.04);
+    transform: translate(-50%, -50%) scale(1.05);
+    box-shadow: 0 0 0 6px rgba(0, 120, 120, 0.20), 0 10px 28px rgba(0, 120, 120, 0.24);
   }
 
   .radial-spokes {
@@ -2185,88 +2259,87 @@ body.modal-open {
   .radial-spoke-node {
     fill: var(--color-teal, #007878);
     opacity: 0.75;
-    transition: opacity 0.25s ease;
+    transition: opacity 0.25s ease, fill 0.25s ease, r 0.25s ease;
   }
 
+  /* Exactly 280px uniform width */
   .radial-track {
     position: absolute;
-    width: 290px;
-    max-width: 290px;
+    width: 280px;
+    min-width: 280px;
+    max-width: 280px;
     z-index: 2;
   }
 
   .track-node {
-    display: flex;
-    align-items: center;
-    gap: 0.65rem;
-    padding: 0.55rem 0.85rem;
-    background: #FFFFFF;
-    border: 1px solid rgba(0, 120, 120, 0.28);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
-    border-radius: 8px;
     width: 100%;
+    min-height: 52px;
+    padding: 0.65rem 0.95rem;
+    background: #FFFFFF;
+    border: 1px solid rgba(0, 120, 120, 0.22);
+    box-shadow: 0 3px 12px rgba(15, 23, 42, 0.05);
+    border-radius: 8px;
     box-sizing: border-box;
-    min-height: 48px;
   }
 
   .track-node:hover {
     background: #FFFFFF;
     border-color: var(--color-teal, #007878);
-    box-shadow: 0 4px 12px rgba(0, 120, 120, 0.14);
+    box-shadow: 0 6px 20px rgba(0, 120, 120, 0.16);
     transform: translateY(-2px);
   }
 
-  /* 8 True Radial Clockwise Positions */
+  /* 8 Radial Clockwise Positions */
   /* Track 1: 12 o'clock (Top Center) */
   .track-pos-1 {
-    top: 10px;
+    top: 15px;
     left: 50%;
     transform: translateX(-50%);
   }
 
   /* Track 2: ~1:30 (Top Right) */
   .track-pos-2 {
-    top: 55px;
-    right: 25px;
+    top: 65px;
+    right: 30px;
   }
 
-  /* Track 3: 3 o'clock (Right) */
+  /* Track 3: 3 o'clock (Right Center) */
   .track-pos-3 {
     top: 50%;
-    right: 0px;
+    right: 15px;
     transform: translateY(-50%);
   }
 
   /* Track 4: ~4:30 (Bottom Right) */
   .track-pos-4 {
-    bottom: 55px;
-    right: 25px;
+    bottom: 65px;
+    right: 30px;
   }
 
   /* Track 5: 6 o'clock (Bottom Center) */
   .track-pos-5 {
-    bottom: 10px;
+    bottom: 15px;
     left: 50%;
     transform: translateX(-50%);
   }
 
   /* Track 6: ~7:30 (Bottom Left) */
   .track-pos-6 {
-    bottom: 55px;
-    left: 25px;
+    bottom: 65px;
+    left: 30px;
   }
 
-  /* Track 7: 9 o'clock (Left) */
+  /* Track 7: 9 o'clock (Left Center) */
   .track-pos-7 {
     top: 50%;
-    left: 0px;
+    left: 15px;
     transform: translateY(-50%);
   }
 
   /* Track 8: ~10:30 (Top Left) */
   .track-pos-8 {
-    top: 55px;
-    left: 25px;
+    top: 65px;
+    left: 30px;
   }
 
   /* Connector Highlights on Track Hover */
@@ -2279,21 +2352,56 @@ body.modal-open {
   .radial-container:has(.track-pos-7:hover) #radial-spoke-7,
   .radial-container:has(.track-pos-8:hover) #radial-spoke-8 {
     stroke: var(--color-teal, #007878);
-    stroke-width: 2px;
-    stroke-opacity: 0.95;
+    stroke-width: 2.25px;
+    stroke-opacity: 1;
+  }
+
+  .radial-container:has(.track-pos-1:hover) #radial-hub-node-1,
+  .radial-container:has(.track-pos-1:hover) #radial-card-node-1,
+  .radial-container:has(.track-pos-2:hover) #radial-hub-node-2,
+  .radial-container:has(.track-pos-2:hover) #radial-card-node-2,
+  .radial-container:has(.track-pos-3:hover) #radial-hub-node-3,
+  .radial-container:has(.track-pos-3:hover) #radial-card-node-3,
+  .radial-container:has(.track-pos-4:hover) #radial-hub-node-4,
+  .radial-container:has(.track-pos-4:hover) #radial-card-node-4,
+  .radial-container:has(.track-pos-5:hover) #radial-hub-node-5,
+  .radial-container:has(.track-pos-5:hover) #radial-card-node-5,
+  .radial-container:has(.track-pos-6:hover) #radial-hub-node-6,
+  .radial-container:has(.track-pos-6:hover) #radial-card-node-6,
+  .radial-container:has(.track-pos-7:hover) #radial-hub-node-7,
+  .radial-container:has(.track-pos-7:hover) #radial-card-node-7,
+  .radial-container:has(.track-pos-8:hover) #radial-hub-node-8,
+  .radial-container:has(.track-pos-8:hover) #radial-card-node-8 {
+    opacity: 1;
+    fill: var(--color-teal, #007878);
+  }
+
+  /* Center Hub Hover: Subtle glow across entire mindmap network */
+  .radial-container:has(.radial-hub:hover) .radial-spoke {
+    stroke: var(--color-teal, #007878);
+    stroke-opacity: 0.65;
+    stroke-width: 1.75px;
+  }
+
+  .radial-container:has(.radial-hub:hover) .radial-spoke-node {
+    opacity: 1;
+  }
+
+  .radial-container:has(.radial-hub:hover) .track-node {
+    border-color: rgba(0, 120, 120, 0.45);
   }
 
   /* Staggered Scroll-Triggered Reveal Animation */
   .radial-container.has-animation .radial-hub {
     opacity: 0;
-    transform: translate(-50%, -50%) scale(0.92);
+    transform: translate(-50%, -50%) scale(0.88);
     transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .radial-container.has-animation .radial-spoke {
-    stroke-dasharray: 260;
-    stroke-dashoffset: 260;
-    transition: stroke-dashoffset 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.15s, stroke 0.25s ease, stroke-width 0.25s ease;
+    stroke-dasharray: 280;
+    stroke-dashoffset: 280;
+    transition: stroke-dashoffset 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.15s, stroke 0.25s ease, stroke-width 0.25s ease;
   }
 
   .radial-container.has-animation .radial-spoke-node {
@@ -2303,47 +2411,47 @@ body.modal-open {
 
   .radial-container.has-animation .radial-track {
     opacity: 0;
-    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1), transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .radial-container.has-animation .track-pos-1 {
-    transform: translateX(-50%) translateY(-6px);
-    transition-delay: 0.20s;
+    transform: translateX(-50%) translateY(-8px);
+    transition-delay: 0.18s;
   }
 
   .radial-container.has-animation .track-pos-2 {
-    transform: translateY(-4px);
-    transition-delay: 0.27s;
+    transform: translateY(-6px) translateX(6px);
+    transition-delay: 0.25s;
   }
 
   .radial-container.has-animation .track-pos-3 {
-    transform: translateY(calc(-50% - 4px));
-    transition-delay: 0.34s;
+    transform: translateY(-50%) translateX(8px);
+    transition-delay: 0.32s;
   }
 
   .radial-container.has-animation .track-pos-4 {
-    transform: translateY(4px);
-    transition-delay: 0.41s;
+    transform: translateY(6px) translateX(6px);
+    transition-delay: 0.39s;
   }
 
   .radial-container.has-animation .track-pos-5 {
-    transform: translateX(-50%) translateY(6px);
-    transition-delay: 0.48s;
+    transform: translateX(-50%) translateY(8px);
+    transition-delay: 0.46s;
   }
 
   .radial-container.has-animation .track-pos-6 {
-    transform: translateY(4px);
-    transition-delay: 0.55s;
+    transform: translateY(6px) translateX(-6px);
+    transition-delay: 0.53s;
   }
 
   .radial-container.has-animation .track-pos-7 {
-    transform: translateY(calc(-50% + 4px));
-    transition-delay: 0.62s;
+    transform: translateY(-50%) translateX(-8px);
+    transition-delay: 0.60s;
   }
 
   .radial-container.has-animation .track-pos-8 {
-    transform: translateY(-4px);
-    transition-delay: 0.69s;
+    transform: translateY(-6px) translateX(-6px);
+    transition-delay: 0.67s;
   }
 
   .radial-container.is-animated .radial-hub {
@@ -2356,7 +2464,7 @@ body.modal-open {
   }
 
   .radial-container.is-animated .radial-spoke-node {
-    opacity: 0.75;
+    opacity: 0.85;
   }
 
   .radial-container.is-animated .track-pos-1 {
@@ -2366,7 +2474,7 @@ body.modal-open {
 
   .radial-container.is-animated .track-pos-2 {
     opacity: 1;
-    transform: translateY(0);
+    transform: translate(0, 0);
   }
 
   .radial-container.is-animated .track-pos-3 {
@@ -2376,7 +2484,7 @@ body.modal-open {
 
   .radial-container.is-animated .track-pos-4 {
     opacity: 1;
-    transform: translateY(0);
+    transform: translate(0, 0);
   }
 
   .radial-container.is-animated .track-pos-5 {
@@ -2386,7 +2494,7 @@ body.modal-open {
 
   .radial-container.is-animated .track-pos-6 {
     opacity: 1;
-    transform: translateY(0);
+    transform: translate(0, 0);
   }
 
   .radial-container.is-animated .track-pos-7 {
@@ -2396,12 +2504,11 @@ body.modal-open {
 
   .radial-container.is-animated .track-pos-8 {
     opacity: 1;
-    transform: translateY(0);
+    transform: translate(0, 0);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-
   .radial-container.has-animation .radial-hub,
   .radial-container.has-animation .radial-spoke,
   .radial-container.has-animation .radial-spoke-node,
@@ -2999,10 +3106,10 @@ body.modal-open {
   font-size: 0.86rem;
 }
 
-.transit-list span {
-  display: inline-block;
-  width: 1.35rem;
-  color: var(--color-aqua);
+.transit-list strong {
+  color: #FFFFFF;
+  font-weight: 600;
+  margin-right: 0.25rem;
 }
 
 .travel-guide-button {
@@ -3378,7 +3485,7 @@ p {
 }
 
 .page-heading-block h1 {
-  font-family: var(--font-display, 'Merriweather', serif);
+  font-family: var(--font-display, 'Open Sans', sans-serif);
   font-size: clamp(2rem, 5vw, 2.75rem);
   color: var(--color-graphite-dark);
   line-height: 1.2;
@@ -3580,7 +3687,7 @@ p {
 }
 
 .register-hero h1 {
-  font-family: var(--font-display, 'Merriweather', serif);
+  font-family: var(--font-display, 'Open Sans', sans-serif);
   font-size: clamp(2.2rem, 5vw, 3.25rem);
   font-weight: 700;
   color: var(--color-graphite-dark);
@@ -3590,7 +3697,7 @@ p {
 }
 
 .register-subtitle {
-  font-family: var(--font-display, 'Merriweather', serif);
+  font-family: var(--font-display, 'Open Sans', sans-serif);
   font-size: clamp(1.35rem, 3vw, 1.85rem);
   font-weight: 700;
   color: var(--color-teal);
@@ -3752,7 +3859,7 @@ p {
 }
 
 .section-title {
-  font-family: var(--font-display, 'Merriweather', serif);
+  font-family: var(--font-display, 'Open Sans', sans-serif);
   font-size: clamp(1.75rem, 3.5vw, 2.35rem);
   font-weight: 700;
   color: var(--color-graphite-dark);
@@ -3822,7 +3929,7 @@ p {
 }
 
 .takeaway-title {
-  font-family: var(--font-display, 'Merriweather', serif);
+  font-family: var(--font-display, 'Open Sans', sans-serif);
   font-size: 1.15rem;
   font-weight: 700;
   color: var(--color-graphite-dark);
@@ -3906,7 +4013,7 @@ p {
 }
 
 .step-title {
-  font-family: var(--font-display, 'Merriweather', serif);
+  font-family: var(--font-display, 'Open Sans', sans-serif);
   font-size: 1.2rem;
   font-weight: 700;
   color: var(--color-graphite-dark);
@@ -3978,7 +4085,7 @@ p {
 }
 
 .passes-group-title h3 {
-  font-family: var(--font-display, 'Merriweather', serif);
+  font-family: var(--font-display, 'Open Sans', sans-serif);
   font-size: 1.4rem;
   font-weight: 700;
   color: var(--color-graphite-dark);
@@ -4075,7 +4182,7 @@ p {
 }
 
 .pass-name {
-  font-family: var(--font-display, 'Merriweather', serif);
+  font-family: var(--font-display, 'Open Sans', sans-serif);
   font-size: 1.3rem;
   font-weight: 700;
   color: var(--color-graphite-dark);
@@ -4091,14 +4198,14 @@ p {
 }
 
 .price-currency {
-  font-family: var(--font-display, 'Merriweather', serif);
+  font-family: var(--font-display, 'Open Sans', sans-serif);
   font-size: 1.6rem;
   font-weight: 700;
   color: var(--color-teal);
 }
 
 .price-amount {
-  font-family: var(--font-display, 'Merriweather', serif);
+  font-family: var(--font-display, 'Open Sans', sans-serif);
   font-size: 2.6rem;
   font-weight: 700;
   color: var(--color-graphite-dark);
@@ -4308,7 +4415,7 @@ p {
 
 .td-category strong {
   display: block;
-  font-family: var(--font-display, 'Merriweather', serif);
+  font-family: var(--font-display, 'Open Sans', sans-serif);
   font-size: 1.05rem;
   color: var(--color-graphite-dark);
   margin-bottom: 0.25rem;
@@ -4338,7 +4445,7 @@ p {
 }
 
 .table-price {
-  font-family: var(--font-display, 'Merriweather', serif);
+  font-family: var(--font-display, 'Open Sans', sans-serif);
   font-size: 1.3rem;
   font-weight: 700;
   color: var(--color-teal);
@@ -4403,7 +4510,7 @@ p {
 }
 
 .accommodation-banner-text h3 {
-  font-family: var(--font-display, 'Merriweather', serif);
+  font-family: var(--font-display, 'Open Sans', sans-serif);
   font-size: 1.35rem;
   font-weight: 700;
   color: var(--color-graphite-dark);
@@ -4481,7 +4588,7 @@ p {
 }
 
 .accommodation-info-box h3 {
-  font-family: var(--font-display, 'Merriweather', serif);
+  font-family: var(--font-display, 'Open Sans', sans-serif);
   font-size: 1.35rem;
   font-weight: 700;
   color: var(--color-graphite-dark);
@@ -4706,7 +4813,7 @@ p {
 }
 
 .payment-modal-header h3 {
-  font-family: var(--font-display, 'Merriweather', serif);
+  font-family: var(--font-display, 'Open Sans', sans-serif);
   font-size: 1.65rem;
   font-weight: 700;
   color: var(--color-graphite-dark);
@@ -4721,7 +4828,7 @@ p {
 }
 
 .plaksha-welcome-quote p {
-  font-family: var(--font-display, 'Merriweather', serif);
+  font-family: var(--font-display, 'Open Sans', sans-serif);
   font-size: 1.05rem;
   font-style: italic;
   line-height: 1.6;
@@ -4786,7 +4893,7 @@ p {
 }
 
 .sponsorship-subtitle {
-  font-family: var(--font-display, 'Merriweather', serif);
+  font-family: var(--font-display, 'Open Sans', sans-serif);
   font-size: clamp(1.35rem, 3vw, 1.85rem);
   font-weight: 700;
   color: var(--color-teal);
@@ -4827,7 +4934,7 @@ p {
 }
 
 .deck-box-content h3 {
-  font-family: var(--font-display, 'Merriweather', serif);
+  font-family: var(--font-display, 'Open Sans', sans-serif);
   font-size: 1.25rem;
   font-weight: 700;
   color: var(--color-graphite-dark);
@@ -4935,7 +5042,7 @@ p {
 }
 
 .tier-name {
-  font-family: var(--font-display, 'Merriweather', serif);
+  font-family: var(--font-display, 'Open Sans', sans-serif);
   font-size: 1.35rem;
   font-weight: 700;
   color: var(--color-graphite-dark);
@@ -5056,7 +5163,7 @@ p {
 }
 
 .alacarte-header h3 {
-  font-family: var(--font-display, 'Merriweather', serif);
+  font-family: var(--font-display, 'Open Sans', sans-serif);
   font-size: 1.15rem;
   font-weight: 700;
   color: var(--color-graphite-dark);
@@ -5064,7 +5171,7 @@ p {
 }
 
 .alacarte-amount {
-  font-family: var(--font-display, 'Merriweather', serif);
+  font-family: var(--font-display, 'Open Sans', sans-serif);
   font-size: 1.25rem;
   font-weight: 700;
   color: var(--color-teal);
@@ -5118,7 +5225,7 @@ p {
 }
 
 .contact-card-highlight h3 {
-  font-family: var(--font-display, 'Merriweather', serif);
+  font-family: var(--font-display, 'Open Sans', sans-serif);
   font-size: 1.15rem;
   font-weight: 700;
   color: var(--color-graphite-dark);
@@ -5921,12 +6028,11 @@ body.agenda-page.sharp-theme,
 .sharp-theme,
 .sharp-theme * {
   font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif !important;
-  border-radius: 0 !important;
   box-sizing: border-box;
 }
 
 .sharp-timetable-wrapper {
-  background: #FFFFFF;
+  background: var(--color-chalk-bg);
   min-height: calc(100vh - var(--header-h, 68px));
   padding-top: calc(var(--header-h, 68px) + 2rem);
   padding-bottom: 5rem;
@@ -5971,20 +6077,23 @@ body.agenda-page.sharp-theme,
   gap: 1rem;
   margin-bottom: 2.5rem;
   padding-bottom: 1.25rem;
-  border-bottom: 1px solid #E2E8F0;
+  border-bottom: 1px solid var(--color-chalk-line);
 }
 
 .sharp-tabs-group {
   display: flex;
   flex-wrap: wrap;
   gap: 0;
-  border: 1px solid #CBD5E1;
+  border: 1px solid rgba(0, 120, 120, 0.25);
+  border-radius: 6px;
+  overflow: hidden;
+  background: #FFFFFF;
 }
 
 .sharp-tab-btn {
-  background: #F8FAFC;
+  background: #FFFFFF;
   border: none;
-  border-right: 1px solid #CBD5E1;
+  border-right: 1px solid rgba(0, 120, 120, 0.15);
   padding: 0.55rem 1.15rem;
   font-size: 0.88rem;
   font-weight: 700;
@@ -5999,12 +6108,12 @@ body.agenda-page.sharp-theme,
 }
 
 .sharp-tab-btn:hover {
-  background: #E2E8F0;
-  color: #0F172A;
+  background: rgba(0, 120, 120, 0.06);
+  color: var(--color-teal);
 }
 
 .sharp-tab-btn.active {
-  background: #2C8A9C;
+  background: var(--color-teal);
   color: #FFFFFF;
 }
 
@@ -6027,7 +6136,8 @@ body.agenda-page.sharp-theme,
   width: 100%;
   padding: 0.55rem 2rem 0.55rem 0.85rem;
   background: #FFFFFF;
-  border: 1px solid #CBD5E1;
+  border: 1px solid rgba(0, 120, 120, 0.25);
+  border-radius: 6px;
   font-size: 0.88rem;
   color: #0F172A;
   outline: none;
@@ -6035,8 +6145,8 @@ body.agenda-page.sharp-theme,
 }
 
 .sharp-search-field:focus {
-  border-color: #2C8A9C;
-  box-shadow: 0 0 0 1px #2C8A9C;
+  border-color: var(--color-teal);
+  box-shadow: 0 0 0 1px var(--color-teal);
 }
 
 .sharp-clear-btn {
@@ -6057,9 +6167,10 @@ body.agenda-page.sharp-theme,
   align-items: center;
   gap: 0.45rem;
   padding: 0.55rem 1rem;
-  background: #0F172A;
+  background: var(--color-teal);
   color: #FFFFFF;
-  border: 1px solid #0F172A;
+  border: 1px solid var(--color-teal);
+  border-radius: 6px;
   font-size: 0.86rem;
   font-weight: 700;
   cursor: pointer;
@@ -6068,8 +6179,8 @@ body.agenda-page.sharp-theme,
 }
 
 .sharp-print-btn:hover {
-  background: #334155;
-  border-color: #334155;
+  background: var(--color-navy);
+  border-color: var(--color-navy);
 }
 
 /* ── No Results Notice ──────────────────────────────────────────────────── */
@@ -6086,6 +6197,10 @@ body.agenda-page.sharp-theme,
 /* ── Day Section & Date Banner ──────────────────────────────────────────── */
 .sharp-day-section {
   margin-bottom: 3.5rem;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 120, 120, 0.22);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
 }
 
 .sharp-day-section.is-hidden {
@@ -6093,15 +6208,15 @@ body.agenda-page.sharp-theme,
 }
 
 .sharp-date-banner {
-  background: #2C8A9C;
+  background: var(--color-teal);
   color: #FFFFFF;
   text-align: center;
-  padding: 0.65rem 1rem;
-  font-size: 0.92rem;
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
   font-weight: 700;
   letter-spacing: 0.02em;
   user-select: none;
-  border: 1px solid #237A8B;
+  border: none;
 }
 
 .sharp-date-banner span {
@@ -6110,9 +6225,7 @@ body.agenda-page.sharp-theme,
 
 /* ── 2-Column Schedule Table (Sharp Image Replica) ───────────────────────── */
 .sharp-table {
-  border-left: 1px solid #CBD5E1;
-  border-right: 1px solid #CBD5E1;
-  border-bottom: 1px solid #CBD5E1;
+  border: none;
   background: #FFFFFF;
 }
 
@@ -6166,7 +6279,7 @@ body.agenda-page.sharp-theme,
 .sharp-session-category {
   font-size: 0.92rem;
   font-weight: 800;
-  color: #2C8A9C;
+  color: var(--color-teal);
   letter-spacing: 0.01em;
 }
 
@@ -6243,7 +6356,7 @@ body.agenda-page.sharp-theme,
 
 /* Row Type Highlights */
 .highlight-keynote {
-  border-left: 3px solid #2C8A9C;
+  border-left: 3px solid var(--color-teal);
 }
 
 .highlight-speaker {
@@ -6334,7 +6447,7 @@ body.agenda-page.sharp-theme,
   }
 
   .sharp-date-banner {
-    background: #2C8A9C !important;
+    background: var(--color-teal) !important;
     color: #FFFFFF !important;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
@@ -6810,7 +6923,7 @@ body.agenda-page.sharp-theme,
 }
 
 .overview-highlight-value {
-  font-family: var(--font-display, 'Newsreader', serif);
+  font-family: var(--font-display, 'Open Sans', sans-serif);
   font-size: 1.18rem;
   font-weight: 600;
   color: #0F172A;
@@ -6943,7 +7056,7 @@ body.agenda-page.sharp-theme,
 }
 
 .speaker-name {
-  font-family: var(--font-display, 'Newsreader', serif);
+  font-family: var(--font-display, 'Open Sans', sans-serif);
   font-size: 1.05rem;
   font-weight: 600;
   color: #0F172A;

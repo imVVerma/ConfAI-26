@@ -2370,14 +2370,15 @@ document.addEventListener('DOMContentLoaded', function () {
     var cx = (hRect.left - cRect.left) + hRect.width / 2;
     var cy = (hRect.top - cRect.top) + hRect.height / 2;
     var hubRadius = hRect.width / 2;
-    var GAP = 20; // 16-24px clean gap before track box
+    var GAP = 3; // Crisp 3px clearance at the card perimeter
 
     svg.setAttribute('viewBox', '0 0 ' + Math.round(cRect.width) + ' ' + Math.round(cRect.height));
 
     for (var i = 1; i <= 8; i++) {
       var track = tracksContainer.querySelector('.track-pos-' + i);
       var spoke = document.getElementById('radial-spoke-' + i);
-      var node = svg.querySelectorAll('.radial-spoke-node')[i - 1];
+      var hubNode = document.getElementById('radial-hub-node-' + i);
+      var cardNode = document.getElementById('radial-card-node-' + i);
       if (!track || !spoke) continue;
 
       var btn = track.querySelector('.track-node') || track;
@@ -2393,45 +2394,79 @@ document.addEventListener('DOMContentLoaded', function () {
       var cos = Math.cos(angle);
       var sin = Math.sin(angle);
 
-      // Start line at hub perimeter
-      var x1 = cx + hubRadius * cos;
-      var y1 = cy + hubRadius * sin;
+      // Start line precisely at hub perimeter circle
+      var x1 = cx + (hubRadius + 1) * cos;
+      var y1 = cy + (hubRadius + 1) * sin;
 
-      // Find intersection with expanded track bounding box [bxMin - GAP, bxMax + GAP] x [byMin - GAP, byMax + GAP]
-      var tMin = Infinity;
-      if (Math.abs(cos) > 0.0001) {
-        var targetX = cos > 0 ? (bxMin - GAP) : (bxMax + GAP);
-        var tx = (targetX - cx) / cos;
-        if (tx > 0) tMin = Math.min(tMin, tx);
-      }
-      if (Math.abs(sin) > 0.0001) {
-        var targetY = sin > 0 ? (byMin - GAP) : (byMax + GAP);
-        var ty = (targetY - cy) / sin;
-        if (ty > 0) tMin = Math.min(tMin, ty);
+      // Mathematical ray-AABB intersection with expanded card boundary [boxL, boxR] x [boxT, boxB]
+      var boxL = bxMin - GAP;
+      var boxR = bxMax + GAP;
+      var boxT = byMin - GAP;
+      var boxB = byMax + GAP;
+
+      var candidates = [];
+      if (Math.abs(cos) > 1e-6) {
+        var targetX = cos > 0 ? boxL : boxR;
+        var tX = (targetX - cx) / cos;
+        if (tX > hubRadius) {
+          var yHit = cy + tX * sin;
+          if (yHit >= boxT - 1 && yHit <= boxB + 1) {
+            candidates.push({ t: tX, x: targetX, y: yHit });
+          }
+        }
       }
 
-      if (tMin === Infinity || tMin <= hubRadius) {
-        tMin = Math.sqrt((bx - cx) * (bx - cx) + (by - cy) * (by - cy)) - 40;
+      if (Math.abs(sin) > 1e-6) {
+        var targetY = sin > 0 ? boxT : boxB;
+        var tY = (targetY - cy) / sin;
+        if (tY > hubRadius) {
+          var xHit = cx + tY * cos;
+          if (xHit >= boxL - 1 && xHit <= boxR + 1) {
+            candidates.push({ t: tY, x: xHit, y: targetY });
+          }
+        }
       }
 
-      var x2 = cx + tMin * cos;
-      var y2 = cy + tMin * sin;
+      var x2, y2;
+      if (candidates.length > 0) {
+        candidates.sort(function (a, b) { return a.t - b.t; });
+        x2 = candidates[0].x;
+        y2 = candidates[0].y;
+      } else {
+        x2 = bx;
+        y2 = by;
+      }
 
       spoke.setAttribute('x1', x1.toFixed(1));
       spoke.setAttribute('y1', y1.toFixed(1));
       spoke.setAttribute('x2', x2.toFixed(1));
       spoke.setAttribute('y2', y2.toFixed(1));
 
-      if (node) {
-        node.setAttribute('cx', x1.toFixed(1));
-        node.setAttribute('cy', y1.toFixed(1));
+      if (hubNode) {
+        hubNode.setAttribute('cx', x1.toFixed(1));
+        hubNode.setAttribute('cy', y1.toFixed(1));
+      }
+
+      if (cardNode) {
+        cardNode.setAttribute('cx', x2.toFixed(1));
+        cardNode.setAttribute('cy', y2.toFixed(1));
       }
     }
   }
 
-  // Initial calculation + resize listener
+  // Initial calculation + resize listener with debounce
+  var resizeTimeout;
+  function handleResize() {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(updateRadialSpokes, 25);
+  }
+
   updateRadialSpokes();
-  window.addEventListener('resize', updateRadialSpokes, { passive: true });
+  window.addEventListener('resize', handleResize, { passive: true });
+  window.addEventListener('load', updateRadialSpokes);
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(updateRadialSpokes);
+  }
 
   var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -2455,24 +2490,78 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  // Interactive connector highlight fallback/enhancement
+  // Interactive connector highlight
   var trackButtons = tracksContainer.querySelectorAll('.track-node');
   trackButtons.forEach(function (btn) {
     var num = btn.getAttribute('data-track-num');
     var spoke = document.getElementById('radial-spoke-' + num);
-    if (!spoke) return;
+    var hubNode = document.getElementById('radial-hub-node-' + num);
+    var cardNode = document.getElementById('radial-card-node-' + num);
 
     btn.addEventListener('mouseenter', function () {
-      spoke.style.stroke = 'var(--color-teal, #007878)';
-      spoke.style.strokeWidth = '2px';
-      spoke.style.strokeOpacity = '0.95';
+      if (spoke) {
+        spoke.style.stroke = 'var(--color-teal, #007878)';
+        spoke.style.strokeWidth = '2.25px';
+        spoke.style.strokeOpacity = '1';
+      }
+      if (hubNode) {
+        hubNode.style.opacity = '1';
+        hubNode.setAttribute('r', '3.5');
+      }
+      if (cardNode) {
+        cardNode.style.opacity = '1';
+        cardNode.setAttribute('r', '3.5');
+      }
     });
 
     btn.addEventListener('mouseleave', function () {
-      spoke.style.stroke = '';
-      spoke.style.strokeWidth = '';
-      spoke.style.strokeOpacity = '';
+      if (spoke) {
+        spoke.style.stroke = '';
+        spoke.style.strokeWidth = '';
+        spoke.style.strokeOpacity = '';
+      }
+      if (hubNode) {
+        hubNode.style.opacity = '';
+        hubNode.setAttribute('r', '3');
+      }
+      if (cardNode) {
+        cardNode.style.opacity = '';
+        cardNode.setAttribute('r', '2.5');
+      }
     });
   });
+
+  // Center Hub hover: network illumination
+  if (hub) {
+    hub.addEventListener('mouseenter', function () {
+      for (var k = 1; k <= 8; k++) {
+        var spk = document.getElementById('radial-spoke-' + k);
+        var hn = document.getElementById('radial-hub-node-' + k);
+        var cn = document.getElementById('radial-card-node-' + k);
+        if (spk) {
+          spk.style.stroke = 'var(--color-teal, #007878)';
+          spk.style.strokeOpacity = '0.65';
+          spk.style.strokeWidth = '1.75px';
+        }
+        if (hn) hn.style.opacity = '1';
+        if (cn) cn.style.opacity = '1';
+      }
+    });
+
+    hub.addEventListener('mouseleave', function () {
+      for (var k = 1; k <= 8; k++) {
+        var spk = document.getElementById('radial-spoke-' + k);
+        var hn = document.getElementById('radial-hub-node-' + k);
+        var cn = document.getElementById('radial-card-node-' + k);
+        if (spk) {
+          spk.style.stroke = '';
+          spk.style.strokeOpacity = '';
+          spk.style.strokeWidth = '';
+        }
+        if (hn) hn.style.opacity = '';
+        if (cn) cn.style.opacity = '';
+      }
+    });
+  }
 });
 

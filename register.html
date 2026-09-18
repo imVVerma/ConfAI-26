@@ -11,11 +11,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Source+Sans+3:wght@400;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="css/styles.css?v=13" />
-    <script src="js/script.js?v=13" defer></script>
+    <link rel="stylesheet" href="css/styles.css?v=1.0.9" />
+    <script src="js/script.js?v=1.0.9" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to content</a>
@@ -440,96 +440,6 @@
             </a>
           </div>
 
-          <!-- Comparison Table Toggle -->
-          <div class="table-toggle-wrapper">
-            <button
-              type="button"
-              class="btn btn-outline-table"
-              id="toggle-pass-table-btn"
-              aria-expanded="false"
-              aria-controls="passes-comparison-table-wrap"
-            >
-              <span class="toggle-btn-text">View Detailed Pass Comparison Table</span>
-              <svg class="table-toggle-chevron" aria-hidden="true" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="6 9 12 15 18 9"></polyline>
-              </svg>
-            </button>
-          </div>
-
-          <div
-            class="passes-table-container"
-            id="passes-comparison-table-wrap"
-            hidden
-          >
-            <div class="passes-table-scroller">
-              <table class="passes-table" aria-label="Conference and Dinner Passes">
-                <thead>
-                  <tr>
-                    <th scope="col" class="th-category">Pass Category</th>
-                    <th scope="col" class="th-included">What’s Included</th>
-                    <th scope="col" class="th-amount">Amount (₹)</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row" class="td-category">
-                      <strong>3 Days Conference Pass</strong>
-                    </th>
-                    <td class="td-included">
-                      Access to all conference sessions, eight tracks, and keynote presentations across 30 October–1 November 2026. Includes breakfast, lunch, and refreshments throughout the three days.
-                    </td>
-                    <td class="td-amount">
-                      <span class="table-price">2500</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row" class="td-category">
-                      <strong>2 Days Conference Pass</strong>
-                    </th>
-                    <td class="td-included">
-                      Access to all conference sessions, eight tracks, and keynote presentations on any two selected days. Includes breakfast, lunch, and refreshments on the selected days.
-                    </td>
-                    <td class="td-amount">
-                      <span class="table-price">2000</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row" class="td-category">
-                      <strong>1 Day Conference Pass</strong>
-                    </th>
-                    <td class="td-included">
-                      Access to all conference sessions, eight tracks, and keynote presentations on one selected day. Includes breakfast, lunch, and refreshments on the selected day.
-                    </td>
-                    <td class="td-amount">
-                      <span class="table-price">1000</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row" class="td-category">
-                      <strong>Single Dinner Pass- NetworkingDinner</strong>
-                    </th>
-                    <td class="td-included">
-                      Access to the Networking Dinner, including dinner and an opportunity to network and interact with speakers, researchers, and fellow conference participants.
-                    </td>
-                    <td class="td-amount">
-                      <span class="table-price">1000</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row" class="td-category">
-                      <strong>Single Dinner Pass - Gala Dinner</strong>
-                    </th>
-                    <td class="td-included">
-                      Access to the Gala Dinner, including dinner, networking opportunities with speakers and fellow participants, and access to the cultural programme and evening activities.
-                    </td>
-                    <td class="td-amount">
-                      <span class="table-price">1000</span>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
         </section>
       </div>
     </main>
@@ -572,73 +482,5 @@
         </div>
       </div>
     </div>
-
-    <!-- TRAVEL GUIDE MODAL (FOOTER SUPPORT) -->
-    <div class="modal-overlay travel-modal-overlay" id="travel-modal" aria-modal="true" role="dialog" aria-labelledby="travel-modal-title" hidden>
-      <div class="modal-content travel-modal-content" role="document">
-        <button class="modal-close" type="button" aria-label="Close travel guide">&times;</button>
-        <h3 id="travel-modal-title">How to Reach Plaksha University</h3>
-        <div class="travel-modal-body">
-          <p><strong>By Air:</strong> Chandigarh International Airport (IXC) (~10 km / 15 mins). Pre-paid taxis, Uber, and Ola are available at arrivals.</p>
-          <p><strong>By Train:</strong> Chandigarh Railway Stn. (CDG): ~15 km (25 mins), best for express and long-distance trains.</p>
-          <p><strong>By Bus / Road:</strong> ISBT Sector 43, Chandigarh (~12 km) or Mohali Phase 8 Stand (~8 km). Reach the campus via IT City Road using cabs, autos, or local CTU buses.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- SITE FOOTER -->
-    <footer class="site-footer">
-      <div class="footer-container">
-        <div class="footer-col footer-brand">
-          <img src="confai%20logo/Lockup%20logo%20white.png" alt="ConfAI 2026 Logo" class="footer-logo" />
-          <p class="footer-host">
-            Organized by Harish and Bina Shah School of AI &amp; Computer Science, Plaksha University.
-          </p>
-        </div>
-
-        <div class="footer-col footer-location">
-          <h4 class="footer-heading">Venue &amp; Location</h4>
-          <p class="address-text">
-            <strong>Plaksha University Campus</strong><br />
-            Alpha, Sector 101, IT City, SAS Nagar, Mohali, Punjab 140306
-          </p>
-          <h5 class="footer-subheading">Getting Here</h5>
-          <ul class="transit-list">
-            <li><span aria-hidden="true">&#9992;</span> Air: Chandigarh International Airport (IXC) (~10 km)</li>
-            <li><span aria-hidden="true">&#128651;</span> Rail: Chandigarh Railway Stn. (CDG) (~15 km)</li>
-            <li><span aria-hidden="true">&#128652;</span> Road: Direct via IT City Road | ISBT Sec 43 (~12 km)</li>
-          </ul>
-          <button class="travel-guide-button" type="button" data-travel-open>View Detailed Travel Guide <span aria-hidden="true">&#8594;</span></button>
-        </div>
-
-        <div class="footer-col footer-contact">
-          <h4 class="footer-heading">Contact Us</h4>
-          <a class="footer-email" href="mailto:confai@plaksha.edu.in">confai@plaksha.edu.in</a>
-          <a href="https://www.linkedin.com/school/plaksha-university/" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="ConfAI on LinkedIn"><span aria-hidden="true">in</span></a>
-
-          <div class="map-embed-wrapper">
-            <iframe
-              title="Plaksha University Location"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3433.045610815124!2d76.7214!3d30.6331!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390feb3202167d4f%3A0x6a21e42dd7485317!2sPlaksha%20University!5e0!3m2!1sen!2sin!4v1700000000000"
-              width="100%"
-              height="120"
-              loading="lazy"
-              allowfullscreen>
-            </iframe>
-          </div>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <div class="footer-container bottom-flex">
-          <p>&copy; 2026 ConfAI. All rights reserved.</p>
-          <div class="legal-links">
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms &amp; Conditions</a>
-            <a href="#">Contact Us</a>
-          </div>
-        </div>
-      </div>
-    </footer>
   </body>
 </html>

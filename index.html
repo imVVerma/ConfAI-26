@@ -22,10 +22,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Source+Sans+3:wght@400;500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap"
     rel="stylesheet" />
-  <link rel="stylesheet" href="css/styles.css?v=1.0.7" />
-  <script src="js/script.js?v=1.0.7" defer></script>
+  <link rel="stylesheet" href="css/styles.css?v=1.0.9" />
+  <script src="js/script.js?v=1.0.9" defer></script>
 </head>
 
 <body>
@@ -753,44 +753,52 @@
 
           <div class="radial-container" id="radial-tracks-container" role="list" aria-label="8 conference tracks">
             <!-- Radial Spokes radiating towards the 8 tracks -->
-            <svg class="radial-spokes" viewBox="0 0 1000 560" preserveAspectRatio="none" aria-hidden="true">
+            <svg class="radial-spokes" viewBox="0 0 1100 580" preserveAspectRatio="none" aria-hidden="true">
               <g class="spoke-lines">
                 <!-- Track 1 (12 o'clock) -->
-                <line id="radial-spoke-1" class="radial-spoke" x1="500" y1="230" x2="500" y2="80" />
-                <circle class="radial-spoke-node" cx="500" cy="230" r="2.5" />
+                <line id="radial-spoke-1" class="radial-spoke" x1="550" y1="235" x2="550" y2="85" />
+                <circle id="radial-hub-node-1" class="radial-spoke-node hub-node" cx="550" cy="235" r="3" />
+                <circle id="radial-card-node-1" class="radial-spoke-node card-node" cx="550" cy="85" r="2.5" />
 
                 <!-- Track 2 (~1:30) -->
-                <line id="radial-spoke-2" class="radial-spoke" x1="536" y1="246" x2="668" y2="122" />
-                <circle class="radial-spoke-node" cx="536" cy="246" r="2.5" />
+                <line id="radial-spoke-2" class="radial-spoke" x1="590" y1="250" x2="775" y2="120" />
+                <circle id="radial-hub-node-2" class="radial-spoke-node hub-node" cx="590" cy="250" r="3" />
+                <circle id="radial-card-node-2" class="radial-spoke-node card-node" cx="775" cy="120" r="2.5" />
 
                 <!-- Track 3 (3 o'clock) -->
-                <line id="radial-spoke-3" class="radial-spoke" x1="550" y1="280" x2="680" y2="280" />
-                <circle class="radial-spoke-node" cx="550" cy="280" r="2.5" />
+                <line id="radial-spoke-3" class="radial-spoke" x1="605" y1="290" x2="800" y2="290" />
+                <circle id="radial-hub-node-3" class="radial-spoke-node hub-node" cx="605" cy="290" r="3" />
+                <circle id="radial-card-node-3" class="radial-spoke-node card-node" cx="800" cy="290" r="2.5" />
 
                 <!-- Track 4 (~4:30) -->
-                <line id="radial-spoke-4" class="radial-spoke" x1="537" y1="313" x2="667" y2="429" />
-                <circle class="radial-spoke-node" cx="537" cy="313" r="2.5" />
+                <line id="radial-spoke-4" class="radial-spoke" x1="590" y1="330" x2="775" y2="460" />
+                <circle id="radial-hub-node-4" class="radial-spoke-node hub-node" cx="590" cy="330" r="3" />
+                <circle id="radial-card-node-4" class="radial-spoke-node card-node" cx="775" cy="460" r="2.5" />
 
                 <!-- Track 5 (6 o'clock) -->
-                <line id="radial-spoke-5" class="radial-spoke" x1="500" y1="330" x2="500" y2="464" />
-                <circle class="radial-spoke-node" cx="500" cy="330" r="2.5" />
+                <line id="radial-spoke-5" class="radial-spoke" x1="550" y1="345" x2="550" y2="495" />
+                <circle id="radial-hub-node-5" class="radial-spoke-node hub-node" cx="550" cy="345" r="3" />
+                <circle id="radial-card-node-5" class="radial-spoke-node card-node" cx="550" cy="495" r="2.5" />
 
                 <!-- Track 6 (~7:30) -->
-                <line id="radial-spoke-6" class="radial-spoke" x1="463" y1="313" x2="333" y2="429" />
-                <circle class="radial-spoke-node" cx="463" cy="313" r="2.5" />
+                <line id="radial-spoke-6" class="radial-spoke" x1="510" y1="330" x2="325" y2="460" />
+                <circle id="radial-hub-node-6" class="radial-spoke-node hub-node" cx="510" cy="330" r="3" />
+                <circle id="radial-card-node-6" class="radial-spoke-node card-node" cx="325" cy="460" r="2.5" />
 
                 <!-- Track 7 (9 o'clock) -->
-                <line id="radial-spoke-7" class="radial-spoke" x1="450" y1="280" x2="320" y2="280" />
-                <circle class="radial-spoke-node" cx="450" cy="280" r="2.5" />
+                <line id="radial-spoke-7" class="radial-spoke" x1="495" y1="290" x2="300" y2="290" />
+                <circle id="radial-hub-node-7" class="radial-spoke-node hub-node" cx="495" cy="290" r="3" />
+                <circle id="radial-card-node-7" class="radial-spoke-node card-node" cx="300" cy="290" r="2.5" />
 
                 <!-- Track 8 (~10:30) -->
-                <line id="radial-spoke-8" class="radial-spoke" x1="464" y1="246" x2="332" y2="122" />
-                <circle class="radial-spoke-node" cx="464" cy="246" r="2.5" />
+                <line id="radial-spoke-8" class="radial-spoke" x1="510" y1="250" x2="325" y2="120" />
+                <circle id="radial-hub-node-8" class="radial-spoke-node hub-node" cx="510" cy="250" r="3" />
+                <circle id="radial-card-node-8" class="radial-spoke-node card-node" cx="325" cy="120" r="2.5" />
               </g>
             </svg>
 
             <!-- Center Hub  -  ConfAI Logo -->
-            <div class="radial-hub" aria-hidden="true">
+            <div class="radial-hub" aria-label="ConfAI 2026">
               <span class="radial-hub-mark">ConfAI</span>
               <span class="radial-hub-year">2026</span>
             </div>
@@ -804,7 +812,10 @@
                 data-track-desc="This session focuses on artificial intelligence as a transformative force across three interlocking pillars of modern economies: labor markets, financial systems, and governance structures. On the labor side, we invite work on automation and job displacement, AI-augmented productivity, reskilling and workforce transitions, monitoring and evaluation, and the distributional effects of AI adoption. In finance, topics of interest include algorithmic trading and market microstructure, AI-driven credit scoring and lending, fraud detection, robo-advisory systems, and the use of large language models in financial forecasting and regulatory compliance. In the domain of governance, we seek contributions on AI in public administration and policy design, algorithmic accountability and auditing, AI regulation frameworks , and the role of AI in macroeconomic policymaking and central banking. Finally, in urban and public systems, we welcome work on smart city infrastructure, AI-driven traffic and mobility optimization, land use modeling, and the equitable allocation of public resources across communities."
                 aria-haspopup="dialog">
                 <span class="track-num">1</span>
-                <span class="track-name">AI in the Economy</span>
+                <span class="track-info">
+                  <span class="track-name">AI in the Economy</span>
+                  <span class="track-hint">View details <span aria-hidden="true">&rarr;</span></span>
+                </span>
               </button>
             </div>
 
@@ -817,7 +828,10 @@
                 data-track-desc="This session aims to explore how AI technologies can be designed and deployed to deliver tailored healthcare solutions while ensuring fair and inclusive access. It will examine the role of AI in precision medicine, early disease detection, and adaptive care pathways, alongside application in expanding healthcare reach through low-cost diagnostics, telemedicine, and language-inclusive tools. Key challenges will be addressed, including algorithmic bias, data underrepresentation, the digital divide, and the risk of exacerbating existing health disparities."
                 aria-haspopup="dialog">
                 <span class="track-num">2</span>
-                <span class="track-name">AI in Healthcare</span>
+                <span class="track-info">
+                  <span class="track-name">AI in Healthcare</span>
+                  <span class="track-hint">View details <span aria-hidden="true">&rarr;</span></span>
+                </span>
               </button>
             </div>
 
@@ -830,7 +844,10 @@
                 data-track-desc="Ours is a data driven society. Our life and lifestyle- are overwhelmingly impacted by data supported intelligent systems, be it products or services. A vast portion of these data is emanating from various sensors, appropriate for that event. Sensing technologies are evolving rapidly, generating vast streams of data that require real-time processing, intelligent pattern recognition, and robust decision-making. The specially curated session on &quot;AI in Sensing&quot; of ConfAI invites all researchers, academicians, developers, practitioners, thought leaders, policy makers and overall users of this rapidly growing field which is inventing itself since AI models, tools and techniques are being used to develop the next generation of solutions, physical sensors, hardware systems, and domain-specific analytical engines. Unlike general computer science conferences, this venue explicitly focuses on intelligent application domains, sensor hardware-software co-design, and deployment physics. We welcome contributions from researchers engineering sensors, data acquisition boards, and intelligent transducer networks to make predictions and support real-time decision systems. No matter if it was published earlier, do submit your work. We aim for a highly intense discussion, debate and direction for and of AI in Sensing. Some of the targeted tracks are (but not all): accessibility, clean water, cognitive load assessment, critical infrastructure, Edge AI hardware system, education, entertainment industry, environment, food security, gaming, green energy, haptics, industry 5.0, life on poles, PolSAR image, quantum materials towards circular electronics, quantum sensors, rehabilitation, sanitation, satellite technology, security &amp; surveillance, smart agriculture, sports, underwater world, wearables."
                 aria-haspopup="dialog">
                 <span class="track-num">3</span>
-                <span class="track-name">AI in Sensors</span>
+                <span class="track-info">
+                  <span class="track-name">AI in Sensors</span>
+                  <span class="track-hint">View details <span aria-hidden="true">&rarr;</span></span>
+                </span>
               </button>
             </div>
 
@@ -843,7 +860,10 @@
                 data-track-desc="Reasoning is central to intelligence, problem solving, and decision making. Frontier foundation models like VLMs have been able to achieve significant improvements in performance across benchmarks that involve texts and visual data. Notwithstanding, it is critical to know what the model truly understands and does not, when a model might fail and why a model fails. Evaluating the reasoning capabilities of a model directly addresses such questions. The proposed workshop aims to span several topics ranging from benchmarking reasoning, fine-tuning and inference time scaling for reasoning, techniques for probing and analysis, and training and architectures for reasoning. The workshop aims to bring in researchers and expert to share their work and shed light on the recent advances and to create a platform for fostering discussions and collaborations to advance benchmarking and reasoning capabilities of VLMs."
                 aria-haspopup="dialog">
                 <span class="track-num">4</span>
-                <span class="track-name">Reasoning in Vision Language Models</span>
+                <span class="track-info">
+                  <span class="track-name">Reasoning in Vision Language Models</span>
+                  <span class="track-hint">View details <span aria-hidden="true">&rarr;</span></span>
+                </span>
               </button>
             </div>
 
@@ -856,7 +876,10 @@
                 data-track-desc="Tier-2 and Tier-3 Indian cities are undergoing rapid expansion and population growth. They are also being impacted by extreme weather events caused by climate change. These have intensified challenges around urban infrastructure leading to erratic power and water supply, inadequate solid waste and wastewater management, urban flooding, traffic congestion etc., thus directly impacting liveability. Traditional infrastructure and planning approaches are unable to keep pace with this complex, fragmented and rapid urban development. In this context, AI offers a powerful approach for predictive urban management through real-time, data-driven insights, that can enable cities to anticipate water and energy demand, optimize waste and wastewater management systems, and overall, enable better quality of living. The impact of AI also depends on how well it is embedded into governance and decision-making processes that can help urban local bodies make informed, timely decisions. Thus, scalable, low-cost digital tools are required, along with suitable data-sharing frameworks, enhanced institutional capacity, and citizen engagement."
                 aria-haspopup="dialog">
                 <span class="track-num">5</span>
-                <span class="track-name">AI4Cities: Enhancing Resilience, Improving Liveability</span>
+                <span class="track-info">
+                  <span class="track-name">AI4Cities: Enhancing Resilience, Improving Liveability</span>
+                  <span class="track-hint">View details <span aria-hidden="true">&rarr;</span></span>
+                </span>
               </button>
             </div>
 
@@ -869,7 +892,10 @@
                 data-track-desc="Artificial intelligence is reshaping institutions, economies, and social relations at a pace that has outrun existing governance structures. This session examines the ethical, legal, and sociotechnical dimensions of responsible AI, bringing together interdisciplinary perspectives from computer science, law, philosophy, political science, and sociology. We explore how foundational ethical theories inform practical governance models, including structures for accountability, transparency, and stakeholder participation. Central concerns include algorithmic fairness, epistemic risks, power concentration, and the design of cross-jurisdictional regulatory frameworks — particularly for generative and agentic AI systems. The session also engages with the growing recognition that adherence to emerging AI standards must translate into meaningful real-world behavior, not mere compliance. We invite contributions that treat responsible AI not as a technical problem alone, but as a fundamentally human and political one."
                 aria-haspopup="dialog">
                 <span class="track-num">6</span>
-                <span class="track-name">Responsible and Ethical AI</span>
+                <span class="track-info">
+                  <span class="track-name">Responsible and Ethical AI</span>
+                  <span class="track-hint">View details <span aria-hidden="true">&rarr;</span></span>
+                </span>
               </button>
             </div>
 
@@ -882,7 +908,10 @@
                 data-track-desc="The interaction of various logics and different AI tools is two-way: logic is used and can, in fact, help design an AI tool; an AI tool can, in turn, be trained for solving some logical problems (which could have more mathematical flavor). Logic has always played a role in AI—starting with theorem proving, model checking, event calculus, reasoning with ontologies on the web, and epistemic reasoning in multi-agent systems. Also, logic can provide rigorous guarantees needed for data privacy and the protection of sensitive information. Thus, logic is not only an important outcome of a successfully designed AI device but also a cornerstone tool in any AI development. This track welcomes all submissions related to AI and logic."
                 aria-haspopup="dialog">
                 <span class="track-num">7</span>
-                <span class="track-name">AI and Logic: Relations and Applications</span>
+                <span class="track-info">
+                  <span class="track-name">AI and Logic: Relations and Applications</span>
+                  <span class="track-hint">View details <span aria-hidden="true">&rarr;</span></span>
+                </span>
               </button>
             </div>
 
@@ -895,7 +924,10 @@
                 data-track-desc="Submissions are not limited to the tracks given above. Work pertaining to the theme of the conference is welcome. It could include ongoing research and previously published work."
                 aria-haspopup="dialog">
                 <span class="track-num">8</span>
-                <span class="track-name">Recent Advances in AI</span>
+                <span class="track-info">
+                  <span class="track-name">Recent Advances in AI</span>
+                  <span class="track-hint">View details <span aria-hidden="true">&rarr;</span></span>
+                </span>
               </button>
             </div>
           </div>
@@ -1063,9 +1095,9 @@
         </p>
         <h5 class="footer-subheading">Getting Here</h5>
         <ul class="transit-list">
-          <li><span aria-hidden="true">&#9992;</span> Air: Chandigarh International Airport (IXC) (~10 km)</li>
-          <li><span aria-hidden="true">&#128651;</span> Rail: Chandigarh Railway Stn. (CDG) (~15 km)</li>
-          <li><span aria-hidden="true">&#128652;</span> Road: Direct via IT City Road | ISBT Sec 43 (~12 km)</li>
+          <li><strong>Air:</strong> Chandigarh International Airport (IXC) (~10 km)</li>
+          <li><strong>Rail:</strong> Chandigarh Railway Stn. (CDG) (~15 km)</li>
+          <li><strong>Road:</strong> Direct via IT City Road | ISBT Sec 43 (~12 km)</li>
         </ul>
         <button class="travel-guide-button" type="button" data-travel-open>View Detailed Travel Guide <span
             aria-hidden="true">&#8594;</span></button>
@@ -1087,16 +1119,6 @@
       </div>
     </div>
 
-    <div class="footer-bottom">
-      <div class="footer-container bottom-flex">
-        <p>&copy; 2026 ConfAI. All rights reserved.</p>
-        <div class="legal-links">
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms &amp; Conditions</a>
-          <a href="#">Contact Us</a>
-        </div>
-      </div>
-    </div>
   </footer>
 </body>
 
