@@ -1167,21 +1167,34 @@ body.nav-open .site-header {
 
 @media (min-width: 64rem) {
   .audience-list {
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
+}
 
-  .audience-item {
-    grid-column: span 2;
-  }
+.audience-card .fellowship-note {
+  font-size: 0.88rem;
+  color: #00796b;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}
 
-  /* Center the 4th and 5th items in the 3-col grid */
-  .audience-item:nth-child(4) {
-    grid-column: 2 / span 2;
-  }
+.phd-apply-btn {
+  display: inline-block;
+  background-color: #00796b;
+  color: #ffffff;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+  margin-top: auto;
+  align-self: flex-start;
+}
 
-  .audience-item:nth-child(5) {
-    grid-column: 4 / span 2;
-  }
+.phd-apply-btn:hover {
+  background-color: #004d40;
+  color: #ffffff;
 }
 
 /* ─────────────────────────────────────────────────────────
