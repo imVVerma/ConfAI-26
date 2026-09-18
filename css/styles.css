@@ -6097,7 +6097,7 @@ body.agenda-page.sharp-theme,
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.75rem;
+  gap: 0;
   margin-bottom: 0.25rem;
 }
 
@@ -6112,17 +6112,16 @@ body.agenda-page.sharp-theme,
 
 .cinema-brand-year {
   font-family: 'Open Sans', sans-serif !important;
-  font-size: clamp(2.2rem, 5vw, 3.8rem);
-  font-weight: 800;
+  font-size: clamp(3.4375rem, 7.75vw, 5.3125rem);
+  font-weight: 700;
   color: #FFFFFF;
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
   line-height: 1;
   display: inline-flex;
   align-items: center;
   text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
-  margin: 0;
+  margin: 0 0 0 0.9rem;
   padding: 0;
-  transform: translateY(-1px); /* Optical vertical center alignment with CONFAI logo */
 }
 
 /* Tagline in Plaksha Teal - Clean, Simple & Minimalist */
@@ -6518,7 +6517,7 @@ body.agenda-page.sharp-theme,
   }
 
   .cinema-brand-lockup {
-    gap: 0.5rem;
+    gap: 0.25rem;
   }
 
   .cinema-meta-row {
@@ -6561,3 +6560,99 @@ body.agenda-page.sharp-theme,
     height: 28px;
   }
 }
+
+/* ═══════════════════════════════════════════════
+   TECHNICAL PROGRAMME COMMITTEE
+   ═══════════════════════════════════════════════ */
+.section-tpc {
+  padding: 4rem 0;
+}
+
+.tpc-intro {
+  max-width: 48rem;
+  margin: 0 auto 2.5rem;
+  text-align: center;
+  color: var(--color-graphite);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.tpc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 1.25rem;
+  margin-top: 0;
+}
+
+.tpc-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  text-decoration: none;
+  color: var(--color-graphite);
+  border-radius: var(--radius);
+  padding: 1.1rem 0.75rem 0.9rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+
+.tpc-card:hover {
+  transform: translateY(-4px);
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(0, 80, 120, 0.10);
+  color: var(--color-teal);
+}
+
+/* Avatar wrapper — always shows the placeholder circle via background */
+.tpc-avatar-wrap {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: #dde5e6;
+  border: 2px solid var(--color-chalk-line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-bottom: 0.8rem;
+  flex-shrink: 0;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tpc-card:hover .tpc-avatar-wrap {
+  border-color: var(--color-teal);
+  box-shadow: 0 0 0 3px rgba(0, 120, 120, 0.15);
+}
+
+.tpc-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+}
+
+.tpc-name {
+  font-size: 0.81rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: inherit;
+  transition: color 0.2s ease;
+}
+
+@media (max-width: 48rem) {
+  .tpc-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.85rem;
+  }
+
+  .tpc-avatar-wrap {
+    width: 72px;
+    height: 72px;
+  }
+
+  .tpc-name {
+    font-size: 0.78rem;
+  }
+}
+
