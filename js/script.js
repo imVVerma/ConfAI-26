@@ -2056,296 +2056,291 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-/* ==========================================================================
-   CONFAI 2026 - SPEAKERS SECTION SIDE NEURAL-NETWORK FRAMING
-   Fine, subtle neural network framing the far left and right edges of speakers
-   ========================================================================== */
+/* ══════════════════════════════════════════════════════════════════════════
+   CONFAI 2026 - SECTION SIDE NEURAL-NETWORK FRAMING
+   Fine, subtle neural network framing the far left and right edges
+   (Speakers & Technical Programme Committee sections)
+   ══════════════════════════════════════════════════════════════════════════ */
 document.addEventListener('DOMContentLoaded', function () {
-  var canvas = document.getElementById('speakers-neural-canvas');
-  if (!canvas) return;
+  function setupSectionSideNeural(canvasId, sectionSelector) {
+    var canvas = document.getElementById(canvasId);
+    if (!canvas) return;
 
-  var ctx = canvas.getContext('2d');
-  if (!ctx) return;
+    var ctx = canvas.getContext('2d');
+    if (!ctx) return;
 
-  var section = canvas.closest('.section-speakers');
-  if (!section) return;
+    var section = canvas.closest(sectionSelector);
+    if (!section) return;
 
-  var nodes = [];
-  var connections = [];
-  var dataSignals = [];
-  var animationFrameId = null;
-  var isRunning = false;
-  var width = 0;
-  var height = 0;
-  var dpr = window.devicePixelRatio || 1;
+    var nodes = [];
+    var connections = [];
+    var dataSignals = [];
+    var animationFrameId = null;
+    var isRunning = false;
+    var width = 0;
+    var height = 0;
+    var dpr = window.devicePixelRatio || 1;
 
-  var TEAL_R = 0;
-  var TEAL_G = 120;
-  var TEAL_B = 120;
+    var TEAL_R = 0;
+    var TEAL_G = 120;
+    var TEAL_B = 120;
 
-  function resizeCanvas() {
-    var rect = section.getBoundingClientRect();
-    width = rect.width || window.innerWidth;
-    height = rect.height || 500;
-    dpr = window.devicePixelRatio || 1;
+    function resizeCanvas() {
+      var rect = section.getBoundingClientRect();
+      width = rect.width || window.innerWidth;
+      height = rect.height || 500;
+      dpr = window.devicePixelRatio || 1;
 
-    canvas.width = Math.floor(width * dpr);
-    canvas.height = Math.floor(height * dpr);
-    ctx.scale(dpr, dpr);
+      canvas.width = Math.floor(width * dpr);
+      canvas.height = Math.floor(height * dpr);
+      ctx.scale(dpr, dpr);
 
-    initSideNetwork();
-  }
-
-  function initSideNetwork() {
-    nodes = [];
-    connections = [];
-    dataSignals = [];
-
-    if (width < 768) {
-      // On mobile, keep completely clear or very minimal
-      return;
+      initSideNetwork();
     }
 
-    var contentMax = 1320;
-    var containerWidth = Math.min(width - 48, contentMax);
-    var sideGutter = Math.max(0, (width - containerWidth) / 2);
-    var sideBandWidth = Math.max(90, sideGutter + 40);
+    function initSideNetwork() {
+      nodes = [];
+      connections = [];
+      dataSignals = [];
 
-    var nodesPerSide = width >= 1200 ? 12 : 8;
+      if (width < 768) {
+        // On mobile, keep completely clear or very minimal
+        return;
+      }
 
-    // Helper to add nodes to a specific vertical side band
-    function createSideCluster(isLeft) {
-      var startIdx = nodes.length;
-      var minX = isLeft ? 16 : (width - sideBandWidth + 12);
-      var maxX = isLeft ? (sideBandWidth - 12) : (width - 16);
+      var contentMax = 1320;
+      var containerWidth = Math.min(width - 48, contentMax);
+      var sideGutter = Math.max(0, (width - containerWidth) / 2);
+      var sideBandWidth = Math.max(90, sideGutter + 40);
 
-      for (var i = 0; i < nodesPerSide; i++) {
-        var normY = (i + 0.5) / nodesPerSide;
-        var y = normY * height + (Math.random() - 0.5) * (height / nodesPerSide) * 0.8;
-        y = Math.max(25, Math.min(height - 25, y));
+      var nodesPerSide = width >= 1200 ? 12 : 8;
 
-        var x = minX + Math.random() * (maxX - minX);
-        var isMain = Math.random() < 0.35;
-        var radius = isMain ? (2.2 + Math.random() * 1.2) : (1.2 + Math.random() * 0.8);
+      function createSideCluster(isLeft) {
+        var startIdx = nodes.length;
+        var minX = isLeft ? 16 : (width - sideBandWidth + 12);
+        var maxX = isLeft ? (sideBandWidth - 12) : (width - 16);
 
-        nodes.push({
-          id: nodes.length,
-          isLeft: isLeft,
-          x: x,
-          y: y,
-          originX: x,
-          originY: y,
-          vx: (Math.random() - 0.5) * 0.08,
-          vy: (Math.random() - 0.5) * 0.08,
-          radius: radius,
-          isMain: isMain,
-          pulsePhase: Math.random() * Math.PI * 2,
-          pulseSpeed: 0.007 + Math.random() * 0.010,
-          baseAlpha: isMain ? (0.65 + Math.random() * 0.25) : (0.40 + Math.random() * 0.25),
-          neighborIds: []
+        for (var i = 0; i < nodesPerSide; i++) {
+          var normY = (i + 0.5) / nodesPerSide;
+          var y = normY * height + (Math.random() - 0.5) * (height / nodesPerSide) * 0.8;
+          y = Math.max(25, Math.min(height - 25, y));
+
+          var x = minX + Math.random() * (maxX - minX);
+          var isMain = Math.random() < 0.35;
+          var radius = isMain ? (2.2 + Math.random() * 1.2) : (1.2 + Math.random() * 0.8);
+
+          nodes.push({
+            id: nodes.length,
+            isLeft: isLeft,
+            x: x,
+            y: y,
+            originX: x,
+            originY: y,
+            vx: (Math.random() - 0.5) * 0.08,
+            vy: (Math.random() - 0.5) * 0.08,
+            radius: radius,
+            isMain: isMain,
+            pulsePhase: Math.random() * Math.PI * 2,
+            pulseSpeed: 0.007 + Math.random() * 0.010,
+            baseAlpha: isMain ? (0.65 + Math.random() * 0.25) : (0.40 + Math.random() * 0.25),
+            neighborIds: []
+          });
+        }
+
+        var maxDist = 140;
+        for (var a = startIdx; a < nodes.length; a++) {
+          var nodeA = nodes[a];
+          var count = 0;
+          for (var b = a + 1; b < nodes.length; b++) {
+            var nodeB = nodes[b];
+            var dx = nodeA.x - nodeB.x;
+            var dy = nodeA.y - nodeB.y;
+            var dist = Math.sqrt(dx * dx + dy * dy);
+
+            if (dist < maxDist && count < 3 && nodeB.neighborIds.length < 3) {
+              nodeA.neighborIds.push(b);
+              nodeB.neighborIds.push(a);
+              connections.push({
+                nodeAIndex: a,
+                nodeBIndex: b,
+                maxDist: maxDist
+              });
+              count++;
+            }
+          }
+        }
+      }
+
+      createSideCluster(true);
+      createSideCluster(false);
+
+      var signalCount = connections.length > 8 ? 4 : 2;
+      for (var s = 0; s < signalCount; s++) {
+        dataSignals.push({
+          connIndex: Math.floor(Math.random() * connections.length),
+          progress: Math.random(),
+          speed: 0.0028 + Math.random() * 0.0035,
+          direction: Math.random() < 0.5 ? 1 : -1,
+          size: 1.4 + Math.random() * 0.8
         });
       }
+    }
 
-      // Connect nodes within the same side cluster only (never across center cards!)
-      var maxDist = 140;
-      for (var a = startIdx; a < nodes.length; a++) {
-        var nodeA = nodes[a];
-        var count = 0;
-        for (var b = a + 1; b < nodes.length; b++) {
-          var nodeB = nodes[b];
-          var dx = nodeA.x - nodeB.x;
-          var dy = nodeA.y - nodeB.y;
-          var dist = Math.sqrt(dx * dx + dy * dy);
+    function renderSideNetwork() {
+      if (!isRunning) return;
 
-          if (dist < maxDist && count < 3 && nodeB.neighborIds.length < 3) {
-            nodeA.neighborIds.push(b);
-            nodeB.neighborIds.push(a);
-            connections.push({
-              nodeAIndex: a,
-              nodeBIndex: b,
-              maxDist: maxDist
-            });
-            count++;
+      ctx.clearRect(0, 0, width, height);
+
+      if (nodes.length === 0) {
+        animationFrameId = requestAnimationFrame(renderSideNetwork);
+        return;
+      }
+
+      for (var i = 0; i < nodes.length; i++) {
+        var n = nodes[i];
+        n.pulsePhase += n.pulseSpeed;
+
+        var dx = n.originX - n.x;
+        var dy = n.originY - n.y;
+        n.vx += dx * 0.0008;
+        n.vy += dy * 0.0008;
+        n.vx *= 0.97;
+        n.vy *= 0.97;
+        n.x += n.vx;
+        n.y += n.vy;
+      }
+
+      for (var c = 0; c < connections.length; c++) {
+        var conn = connections[c];
+        var nodeA = nodes[conn.nodeAIndex];
+        var nodeB = nodes[conn.nodeBIndex];
+
+        var dx = nodeA.x - nodeB.x;
+        var dy = nodeA.y - nodeB.y;
+        var dist = Math.sqrt(dx * dx + dy * dy);
+
+        if (dist < conn.maxDist) {
+          var distFactor = 1 - (dist / conn.maxDist);
+          var midY = (nodeA.y + nodeB.y) / 2;
+          var vertFade = Math.sin(Math.PI * Math.max(0.05, Math.min(0.95, midY / height)));
+          var lineAlpha = distFactor * vertFade * 0.45;
+
+          if (lineAlpha > 0.02) {
+            ctx.beginPath();
+            ctx.lineWidth = 0.75;
+            ctx.strokeStyle = 'rgba(' + TEAL_R + ',' + TEAL_G + ',' + TEAL_B + ',' + lineAlpha.toFixed(3) + ')';
+            ctx.moveTo(nodeA.x, nodeA.y);
+            ctx.lineTo(nodeB.x, nodeB.y);
+            ctx.stroke();
           }
         }
       }
-    }
 
-    createSideCluster(true);  // Left side frame
-    createSideCluster(false); // Right side frame
+      for (var s = 0; s < dataSignals.length; s++) {
+        var sig = dataSignals[s];
+        if (sig.connIndex >= connections.length) continue;
 
-    // Create subtle data packets for side lines
-    var signalCount = connections.length > 8 ? 4 : 2;
-    for (var s = 0; s < signalCount; s++) {
-      dataSignals.push({
-        connIndex: Math.floor(Math.random() * connections.length),
-        progress: Math.random(),
-        speed: 0.0028 + Math.random() * 0.0035,
-        direction: Math.random() < 0.5 ? 1 : -1,
-        size: 1.4 + Math.random() * 0.8
-      });
-    }
-  }
+        var sigConn = connections[sig.connIndex];
+        var fromNode = sig.direction === 1 ? nodes[sigConn.nodeAIndex] : nodes[sigConn.nodeBIndex];
+        var toNode = sig.direction === 1 ? nodes[sigConn.nodeBIndex] : nodes[sigConn.nodeAIndex];
 
-  function renderSideNetwork() {
-    if (!isRunning) return;
+        sig.progress += sig.speed;
+        if (sig.progress >= 1.0) {
+          sig.progress = 0;
+          sig.connIndex = Math.floor(Math.random() * connections.length);
+          continue;
+        }
 
-    ctx.clearRect(0, 0, width, height);
+        var sigX = fromNode.x + (toNode.x - fromNode.x) * sig.progress;
+        var sigY = fromNode.y + (toNode.y - fromNode.y) * sig.progress;
 
-    if (nodes.length === 0) {
+        ctx.beginPath();
+        ctx.arc(sigX, sigY, sig.size * 2.0, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(0, 160, 160, 0.40)';
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.arc(sigX, sigY, sig.size * 0.8, 0, Math.PI * 2);
+        ctx.fillStyle = '#FFFFFF';
+        ctx.fill();
+      }
+
+      // 4. Draw Small Fine Nodes
+      for (var k = 0; k < nodes.length; k++) {
+        var node = nodes[k];
+        var pulse = Math.sin(node.pulsePhase);
+        var vertFade = Math.sin(Math.PI * Math.max(0.05, Math.min(0.95, node.y / height)));
+        var nodeAlpha = Math.max(0.15, Math.min(0.85, (node.baseAlpha + pulse * 0.15) * vertFade));
+        var drawRadius = Math.max(1.0, node.radius + pulse * 0.3);
+
+        if (node.isMain) {
+          ctx.beginPath();
+          ctx.arc(node.x, node.y, drawRadius * 2.5, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(' + TEAL_R + ',' + TEAL_G + ',' + TEAL_B + ',' + (nodeAlpha * 0.28).toFixed(3) + ')';
+          ctx.fill();
+
+          ctx.beginPath();
+          ctx.arc(node.x, node.y, drawRadius, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(' + TEAL_R + ',' + TEAL_G + ',' + TEAL_B + ',' + nodeAlpha.toFixed(3) + ')';
+          ctx.fill();
+
+          ctx.beginPath();
+          ctx.arc(node.x, node.y, Math.max(0.7, drawRadius * 0.42), 0, Math.PI * 2);
+          ctx.fillStyle = '#FFFFFF';
+          ctx.fill();
+        } else {
+          ctx.beginPath();
+          ctx.arc(node.x, node.y, drawRadius, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(' + TEAL_R + ',' + TEAL_G + ',' + TEAL_B + ',' + (nodeAlpha * 0.85).toFixed(3) + ')';
+          ctx.fill();
+        }
+      }
+
       animationFrameId = requestAnimationFrame(renderSideNetwork);
+    }
+
+    if ('IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            canvas.classList.add('is-visible');
+            if (!isRunning) {
+              isRunning = true;
+              resizeCanvas();
+              animationFrameId = requestAnimationFrame(renderSideNetwork);
+            }
+          } else {
+            if (isRunning) {
+              isRunning = false;
+              if (animationFrameId) cancelAnimationFrame(animationFrameId);
+            }
+          }
+        });
+      }, { threshold: 0.1 });
+
+      observer.observe(section);
+    } else {
+      canvas.classList.add('is-visible');
+      isRunning = true;
+      resizeCanvas();
+      animationFrameId = requestAnimationFrame(renderSideNetwork);
+    }
+
+    var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) {
+      resizeCanvas();
+      renderSideNetwork();
+      isRunning = false;
       return;
     }
 
-    // 1. Update Physics
-    for (var i = 0; i < nodes.length; i++) {
-      var n = nodes[i];
-      n.pulsePhase += n.pulseSpeed;
-
-      var dx = n.originX - n.x;
-      var dy = n.originY - n.y;
-      n.vx += dx * 0.0008;
-      n.vy += dy * 0.0008;
-      n.vx *= 0.97;
-      n.vy *= 0.97;
-      n.x += n.vx;
-      n.y += n.vy;
-    }
-
-    // 2. Draw Fine Connecting Lines
-    for (var c = 0; c < connections.length; c++) {
-      var conn = connections[c];
-      var nodeA = nodes[conn.nodeAIndex];
-      var nodeB = nodes[conn.nodeBIndex];
-
-      var dx = nodeA.x - nodeB.x;
-      var dy = nodeA.y - nodeB.y;
-      var dist = Math.sqrt(dx * dx + dy * dy);
-
-      if (dist < conn.maxDist) {
-        var distFactor = 1 - (dist / conn.maxDist);
-        var midY = (nodeA.y + nodeB.y) / 2;
-        var vertFade = Math.sin(Math.PI * Math.max(0.05, Math.min(0.95, midY / height)));
-        var lineAlpha = distFactor * vertFade * 0.45;
-
-        if (lineAlpha > 0.02) {
-          ctx.beginPath();
-          ctx.lineWidth = 0.75;
-          ctx.strokeStyle = 'rgba(' + TEAL_R + ',' + TEAL_G + ',' + TEAL_B + ',' + lineAlpha.toFixed(3) + ')';
-          ctx.moveTo(nodeA.x, nodeA.y);
-          ctx.lineTo(nodeB.x, nodeB.y);
-          ctx.stroke();
-        }
-      }
-    }
-
-    // 3. Draw Data Signals
-    for (var s = 0; s < dataSignals.length; s++) {
-      var sig = dataSignals[s];
-      if (sig.connIndex >= connections.length) continue;
-
-      var sigConn = connections[sig.connIndex];
-      var fromNode = sig.direction === 1 ? nodes[sigConn.nodeAIndex] : nodes[sigConn.nodeBIndex];
-      var toNode = sig.direction === 1 ? nodes[sigConn.nodeBIndex] : nodes[sigConn.nodeAIndex];
-
-      sig.progress += sig.speed;
-      if (sig.progress >= 1.0) {
-        sig.progress = 0;
-        sig.connIndex = Math.floor(Math.random() * connections.length);
-        continue;
-      }
-
-      var sigX = fromNode.x + (toNode.x - fromNode.x) * sig.progress;
-      var sigY = fromNode.y + (toNode.y - fromNode.y) * sig.progress;
-
-      ctx.beginPath();
-      ctx.arc(sigX, sigY, sig.size * 2.0, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(0, 160, 160, 0.40)';
-      ctx.fill();
-
-      ctx.beginPath();
-      ctx.arc(sigX, sigY, sig.size * 0.8, 0, Math.PI * 2);
-      ctx.fillStyle = '#FFFFFF';
-      ctx.fill();
-    }
-
-    // 4. Draw Small Fine Nodes
-    for (var k = 0; k < nodes.length; k++) {
-      var node = nodes[k];
-      var pulse = Math.sin(node.pulsePhase);
-      var vertFade = Math.sin(Math.PI * Math.max(0.05, Math.min(0.95, node.y / height)));
-      var nodeAlpha = Math.max(0.15, Math.min(0.85, (node.baseAlpha + pulse * 0.15) * vertFade));
-      var drawRadius = Math.max(1.0, node.radius + pulse * 0.3);
-
-      if (node.isMain) {
-        // Soft halo
-        ctx.beginPath();
-        ctx.arc(node.x, node.y, drawRadius * 2.5, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(' + TEAL_R + ',' + TEAL_G + ',' + TEAL_B + ',' + (nodeAlpha * 0.28).toFixed(3) + ')';
-        ctx.fill();
-
-        // Main teal node
-        ctx.beginPath();
-        ctx.arc(node.x, node.y, drawRadius, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(' + TEAL_R + ',' + TEAL_G + ',' + TEAL_B + ',' + nodeAlpha.toFixed(3) + ')';
-        ctx.fill();
-
-        // Center bright dot
-        ctx.beginPath();
-        ctx.arc(node.x, node.y, Math.max(0.7, drawRadius * 0.42), 0, Math.PI * 2);
-        ctx.fillStyle = '#FFFFFF';
-        ctx.fill();
-      } else {
-        // Simple fine node
-        ctx.beginPath();
-        ctx.arc(node.x, node.y, drawRadius, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(' + TEAL_R + ',' + TEAL_G + ',' + TEAL_B + ',' + (nodeAlpha * 0.85).toFixed(3) + ')';
-        ctx.fill();
-      }
-    }
-
-    animationFrameId = requestAnimationFrame(renderSideNetwork);
+    window.addEventListener('resize', function () {
+      if (isRunning) resizeCanvas();
+    }, { passive: true });
   }
 
-  // Scroll-triggered Reveal with IntersectionObserver
-  if ('IntersectionObserver' in window) {
-    var observer = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          canvas.classList.add('is-visible');
-          if (!isRunning) {
-            isRunning = true;
-            resizeCanvas();
-            animationFrameId = requestAnimationFrame(renderSideNetwork);
-          }
-        } else {
-          if (isRunning) {
-            isRunning = false;
-            if (animationFrameId) cancelAnimationFrame(animationFrameId);
-          }
-        }
-      });
-    }, { threshold: 0.1 });
-
-    observer.observe(section);
-  } else {
-    canvas.classList.add('is-visible');
-    isRunning = true;
-    resizeCanvas();
-    animationFrameId = requestAnimationFrame(renderSideNetwork);
-  }
-
-  var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (prefersReducedMotion) {
-    resizeCanvas();
-    renderSideNetwork();
-    isRunning = false;
-    return;
-  }
-
-  window.addEventListener('resize', function () {
-    if (isRunning) resizeCanvas();
-  }, { passive: true });
+  setupSectionSideNeural('speakers-neural-canvas', '.section-speakers');
+  setupSectionSideNeural('tpc-neural-canvas', '.section-tpc');
 });
 
 /* ══════════════════════════════════════════════════════════════════════════
