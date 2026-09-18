@@ -23,11 +23,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Source+Sans+3:wght@400;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Source+Sans+3:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="css/styles.css?v=1.0.1" />
-    <script src="js/script.js?v=1.0.1" defer></script>
+    <link rel="stylesheet" href="css/styles.css?v=1.0.7" />
+    <script src="js/script.js?v=1.0.7" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to content</a>
@@ -126,7 +126,7 @@
 
         <!-- Subtle Curved Transition with Neural Network Pattern Flowing into Page Below -->
         <div class="cinema-curve-divider" aria-hidden="true">
-          <canvas id="neural-transition-canvas" class="neural-transition-canvas"></canvas>
+          <canvas id="neural-transition-canvas" class="hero-neural-canvas neural-transition-canvas"></canvas>
           <svg viewBox="0 0 1440 48" fill="none" preserveAspectRatio="none" class="cinema-curve-svg">
             <path d="M0,0 C480,48 960,48 1440,0 L1440,48 L0,48 Z" fill="#F2F0EC"></path>
           </svg>
@@ -134,51 +134,29 @@
       </section>
 
       <!-- ═══════════════════════════════════════════════
-           KEY NUMBERS (CONTINUOUS TICKER)
+           KEY NUMBERS
            ═══════════════════════════════════════════════ -->
       <section class="section-stats" id="key-numbers" aria-labelledby="stats-heading">
         <div class="section-inner">
           <div class="stats-header">
             <h2 id="stats-heading" class="stats-title">ConfAI 2026 By the Numbers</h2>
           </div>
-          <div class="stats-ticker-viewport" tabindex="0" aria-label="Key conference statistics ticker, moving left to right. Pause on hover or focus.">
-            <div class="stats-ticker-track">
-              <ul class="stats-list" aria-hidden="false">
-                <li class="stat-item">
-                  <span class="stat-value">5+</span>
-                  <span class="stat-label">Keynote Speakers</span>
-                </li>
-                <li class="stat-item">
-                  <span class="stat-value">25+</span>
-                  <span class="stat-label">Oral Presenters</span>
-                </li>
-                <li class="stat-item">
-                  <span class="stat-value">75+</span>
-                  <span class="stat-label">Poster Presenters</span>
-                </li>
-                <li class="stat-item">
-                  <span class="stat-value">500+</span>
-                  <span class="stat-label">Attendees</span>
-                </li>
-              </ul>
-              <ul class="stats-list stats-list-duplicate" aria-hidden="true">
-                <li class="stat-item">
-                  <span class="stat-value">5+</span>
-                  <span class="stat-label">Keynote Speakers</span>
-                </li>
-                <li class="stat-item">
-                  <span class="stat-value">25+</span>
-                  <span class="stat-label">Oral Presenters</span>
-                </li>
-                <li class="stat-item">
-                  <span class="stat-value">75+</span>
-                  <span class="stat-label">Poster Presenters</span>
-                </li>
-                <li class="stat-item">
-                  <span class="stat-value">500+</span>
-                  <span class="stat-label">Attendees</span>
-                </li>
-              </ul>
+          <div class="stats-strip">
+            <div class="stat-item">
+              <span class="stat-value">5+</span>
+              <p class="stat-label">Keynote Speakers</p>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value">25+</span>
+              <p class="stat-label">Oral Presenters</p>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value">75+</span>
+              <p class="stat-label">Poster Presenters</p>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value">500+</span>
+              <p class="stat-label">Attendees</p>
             </div>
           </div>
         </div>
@@ -474,6 +452,230 @@
               <p>Dedicated interactive sessions and informal meetups throughout the 3-day conference.</p>
             </div>
           </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════
+           TECHNICAL PROGRAMME COMMITTEE
+           ═══════════════════════════════════════════════ -->
+      <section class="section-tpc" id="tpc" aria-labelledby="tpc-heading">
+        <div class="section-inner">
+          <h2 id="tpc-heading">Technical Programme Committee</h2>
+          <p class="tpc-intro">
+            ConfAI 2026 is shaped by a dedicated committee of faculty from Plaksha University spanning AI, robotics, data science, systems, and interdisciplinary research.
+          </p>
+
+          <div class="tpc-grid" role="list">
+
+            <!-- Alok Ranjan -->
+            <a class="tpc-card" href="https://plaksha.edu.in/faculty-details/alok-ranjan" target="_blank" rel="noopener noreferrer" role="listitem">
+              <span class="tpc-avatar-wrap">
+                <img class="tpc-avatar" src="img/tpc/alok-ranjan.jpg" alt="Alok Ranjan" loading="lazy" onerror="this.onerror=null;this.style.display='none';" />
+              </span>
+              <span class="tpc-name">Alok Ranjan</span>
+            </a>
+
+            <!-- Amruta R Behera (Dr.) -->
+            <a class="tpc-card" href="https://plaksha.edu.in/faculty-details/dr-amruta-r-behera" target="_blank" rel="noopener noreferrer" role="listitem">
+              <span class="tpc-avatar-wrap">
+                <img class="tpc-avatar" src="img/tpc/amruta-r-behera.jpg" alt="Dr. Amruta R Behera" loading="lazy" onerror="this.onerror=null;this.style.display='none';" />
+              </span>
+              <span class="tpc-name">Amruta R Behera (Dr.)</span>
+            </a>
+
+            <!-- Anil Roy -->
+            <a class="tpc-card" href="https://plaksha.edu.in/faculty-details/anil-roy" target="_blank" rel="noopener noreferrer" role="listitem">
+              <span class="tpc-avatar-wrap">
+                <img class="tpc-avatar" src="img/tpc/anil-roy.jpg" alt="Anil Roy" loading="lazy" onerror="this.onerror=null;this.style.display='none';" />
+              </span>
+              <span class="tpc-name">Anil Roy</span>
+            </a>
+
+            <!-- Anupam Sobti (Dr.) -->
+            <a class="tpc-card" href="https://plaksha.edu.in/faculty-details/dr-anupam-sobti" target="_blank" rel="noopener noreferrer" role="listitem">
+              <span class="tpc-avatar-wrap">
+                <img class="tpc-avatar" src="img/tpc/anupam-sobti.jpg" alt="Dr. Anupam Sobti" loading="lazy" onerror="this.onerror=null;this.style.display='none';" />
+              </span>
+              <span class="tpc-name">Anupam Sobti (Dr.)</span>
+            </a>
+
+            <!-- Appan Rakaraddi -->
+            <a class="tpc-card" href="https://plaksha.edu.in/faculty" target="_blank" rel="noopener noreferrer" role="listitem">
+              <span class="tpc-avatar-wrap">
+                <img class="tpc-avatar" src="img/tpc/appan-rakaraddi.jpg" alt="Appan Rakaraddi" loading="lazy" onerror="this.onerror=null;this.style.display='none';" />
+              </span>
+              <span class="tpc-name">Appan Rakaraddi</span>
+            </a>
+
+            <!-- Arshdeep Sidhu -->
+            <a class="tpc-card" href="https://plaksha.edu.in/faculty-details/arshdeep-sidhu" target="_blank" rel="noopener noreferrer" role="listitem">
+              <span class="tpc-avatar-wrap">
+                <img class="tpc-avatar" src="img/tpc/arshdeep-sidhu.jpg" alt="Arshdeep Sidhu" loading="lazy" onerror="this.onerror=null;this.style.display='none';" />
+              </span>
+              <span class="tpc-name">Arshdeep Sidhu</span>
+            </a>
+
+            <!-- Chaitanya Lekshmi Indira (Dr.) -->
+            <a class="tpc-card" href="https://plaksha.edu.in/faculty-details/dr-chaitanya-lekshmi-indira" target="_blank" rel="noopener noreferrer" role="listitem">
+              <span class="tpc-avatar-wrap">
+                <img class="tpc-avatar" src="img/tpc/chaitanya-lekshmi-indira.jpg" alt="Dr. Chaitanya Lekshmi Indira" loading="lazy" onerror="this.onerror=null;this.style.display='none';" />
+              </span>
+              <span class="tpc-name">Chaitanya Lekshmi Indira (Dr.)</span>
+            </a>
+
+            <!-- Deepak Khemani (Dr.) -->
+            <a class="tpc-card" href="https://plaksha.edu.in/faculty-details/dr-deepak-khemani" target="_blank" rel="noopener noreferrer" role="listitem">
+              <span class="tpc-avatar-wrap">
+                <img class="tpc-avatar" src="img/tpc/deepak-khemani.jpg" alt="Dr. Deepak Khemani" loading="lazy" onerror="this.onerror=null;this.style.display='none';" />
+              </span>
+              <span class="tpc-name">Deepak Khemani (Dr.)</span>
+            </a>
+
+            <!-- Deepan Muthirayan -->
+            <a class="tpc-card" href="https://plaksha.edu.in/faculty-details/deepan-muthirayan" target="_blank" rel="noopener noreferrer" role="listitem">
+              <span class="tpc-avatar-wrap">
+                <img class="tpc-avatar" src="img/tpc/deepan-muthirayan.jpg" alt="Deepan Muthirayan" loading="lazy" onerror="this.onerror=null;this.style.display='none';" />
+              </span>
+              <span class="tpc-name">Deepan Muthirayan</span>
+            </a>
+
+            <!-- Divyanshu Jain -->
+            <a class="tpc-card" href="https://plaksha.edu.in/faculty-details/divyanshu-jain" target="_blank" rel="noopener noreferrer" role="listitem">
+              <span class="tpc-avatar-wrap">
+                <img class="tpc-avatar" src="img/tpc/divyanshu-jain.jpg" alt="Divyanshu Jain" loading="lazy" onerror="this.onerror=null;this.style.display='none';" />
+              </span>
+              <span class="tpc-name">Divyanshu Jain</span>
+            </a>
+
+            <!-- Malini Balakrishnan (Dr.) -->
+            <a class="tpc-card" href="https://plaksha.edu.in/faculty-details/dr-malini-balakrishnan" target="_blank" rel="noopener noreferrer" role="listitem">
+              <span class="tpc-avatar-wrap">
+                <img class="tpc-avatar" src="img/tpc/malini-balakrishnan.jpg" alt="Dr. Malini Balakrishnan" loading="lazy" onerror="this.onerror=null;this.style.display='none';" />
+              </span>
+              <span class="tpc-name">Malini Balakrishnan (Dr.)</span>
+            </a>
+
+            <!-- Monika Sharma (Dr.) -->
+            <a class="tpc-card" href="https://plaksha.edu.in/faculty-details/dr-monika-sharma" target="_blank" rel="noopener noreferrer" role="listitem">
+              <span class="tpc-avatar-wrap">
+                <img class="tpc-avatar" src="img/tpc/monika-sharma.jpg" alt="Dr. Monika Sharma" loading="lazy" onerror="this.onerror=null;this.style.display='none';" />
+              </span>
+              <span class="tpc-name">Monika Sharma (Dr.)</span>
+            </a>
+
+            <!-- Nikhil George -->
+            <a class="tpc-card" href="https://plaksha.edu.in/faculty-details/nikhil-george" target="_blank" rel="noopener noreferrer" role="listitem">
+              <span class="tpc-avatar-wrap">
+                <img class="tpc-avatar" src="img/tpc/nikhil-george.jpg" alt="Nikhil George" loading="lazy" onerror="this.onerror=null;this.style.display='none';" />
+              </span>
+              <span class="tpc-name">Nikhil George</span>
+            </a>
+
+            <!-- Pankaj Pansari -->
+            <a class="tpc-card" href="https://plaksha.edu.in/faculty-details/pankaj-pansari" target="_blank" rel="noopener noreferrer" role="listitem">
+              <span class="tpc-avatar-wrap">
+                <img class="tpc-avatar" src="img/tpc/pankaj-pansari.jpg" alt="Pankaj Pansari" loading="lazy" onerror="this.onerror=null;this.style.display='none';" />
+              </span>
+              <span class="tpc-name">Pankaj Pansari</span>
+            </a>
+
+            <!-- Prashanth Suresh Kumar (Dr.) -->
+            <a class="tpc-card" href="https://plaksha.edu.in/faculty-details/dr-prashanth-suresh-kumar" target="_blank" rel="noopener noreferrer" role="listitem">
+              <span class="tpc-avatar-wrap">
+                <img class="tpc-avatar" src="img/tpc/prashanth-suresh-kumar.jpg" alt="Dr. Prashanth Suresh Kumar" loading="lazy" onerror="this.onerror=null;this.style.display='none';" />
+              </span>
+              <span class="tpc-name">Prashanth Suresh Kumar (Dr.)</span>
+            </a>
+
+            <!-- Praveen Kumar -->
+            <a class="tpc-card" href="https://plaksha.edu.in/faculty-details/praveen-kumar" target="_blank" rel="noopener noreferrer" role="listitem">
+              <span class="tpc-avatar-wrap">
+                <img class="tpc-avatar" src="img/tpc/praveen-kumar.jpg" alt="Praveen Kumar" loading="lazy" onerror="this.onerror=null;this.style.display='none';" />
+              </span>
+              <span class="tpc-name">Praveen Kumar</span>
+            </a>
+
+            <!-- Rajesh Sharma -->
+            <a class="tpc-card" href="https://plaksha.edu.in/faculty-details/rajesh-sharma" target="_blank" rel="noopener noreferrer" role="listitem">
+              <span class="tpc-avatar-wrap">
+                <img class="tpc-avatar" src="img/tpc/rajesh-sharma.jpg" alt="Rajesh Sharma" loading="lazy" onerror="this.onerror=null;this.style.display='none';" />
+              </span>
+              <span class="tpc-name">Rajesh Sharma</span>
+            </a>
+
+            <!-- Rucha Joshi (Dr.) -->
+            <a class="tpc-card" href="https://plaksha.edu.in/faculty-details/dr-rucha-joshi" target="_blank" rel="noopener noreferrer" role="listitem">
+              <span class="tpc-avatar-wrap">
+                <img class="tpc-avatar" src="img/tpc/rucha-joshi.jpg" alt="Dr. Rucha Joshi" loading="lazy" onerror="this.onerror=null;this.style.display='none';" />
+              </span>
+              <span class="tpc-name">Rucha Joshi (Dr.)</span>
+            </a>
+
+            <!-- Saeed Salehi -->
+            <a class="tpc-card" href="https://plaksha.edu.in/faculty-details/saeed-salehi" target="_blank" rel="noopener noreferrer" role="listitem">
+              <span class="tpc-avatar-wrap">
+                <img class="tpc-avatar" src="img/tpc/saeed-salehi.jpg" alt="Saeed Salehi" loading="lazy" onerror="this.onerror=null;this.style.display='none';" />
+              </span>
+              <span class="tpc-name">Saeed Salehi</span>
+            </a>
+
+            <!-- Sandeep Manjanna (Dr.) -->
+            <a class="tpc-card" href="https://plaksha.edu.in/faculty-details/dr-sandeep-manjanna" target="_blank" rel="noopener noreferrer" role="listitem">
+              <span class="tpc-avatar-wrap">
+                <img class="tpc-avatar" src="img/tpc/sandeep-manjanna.jpg" alt="Dr. Sandeep Manjanna" loading="lazy" onerror="this.onerror=null;this.style.display='none';" />
+              </span>
+              <span class="tpc-name">Sandeep Manjanna (Dr.)</span>
+            </a>
+
+            <!-- Sandilya Garimella -->
+            <a class="tpc-card" href="https://plaksha.edu.in/faculty-details/sandilya-garimella" target="_blank" rel="noopener noreferrer" role="listitem">
+              <span class="tpc-avatar-wrap">
+                <img class="tpc-avatar" src="img/tpc/sandilya-garimella.jpg" alt="Sandilya Garimella" loading="lazy" onerror="this.onerror=null;this.style.display='none';" />
+              </span>
+              <span class="tpc-name">Sandilya Garimella</span>
+            </a>
+
+            <!-- Sanjeev Khosla -->
+            <a class="tpc-card" href="https://plaksha.edu.in/faculty-details/sanjeev-khosla" target="_blank" rel="noopener noreferrer" role="listitem">
+              <span class="tpc-avatar-wrap">
+                <img class="tpc-avatar" src="img/tpc/sanjeev-khosla.jpg" alt="Sanjeev Khosla" loading="lazy" onerror="this.onerror=null;this.style.display='none';" />
+              </span>
+              <span class="tpc-name">Sanjeev Khosla</span>
+            </a>
+
+            <!-- Shachindra Nath (Dr.) -->
+            <a class="tpc-card" href="http://linkedin.com/in/shachindranath" target="_blank" rel="noopener noreferrer" role="listitem">
+              <span class="tpc-avatar-wrap">
+                <img class="tpc-avatar" src="img/tpc/shachindra-nath.jpg" alt="Dr. Shachindra Nath" loading="lazy" onerror="this.onerror=null;this.style.display='none';" />
+              </span>
+              <span class="tpc-name">Shachindra Nath (Dr.)</span>
+            </a>
+
+            <!-- Sunita Chauhan (Dr.) -->
+            <a class="tpc-card" href="https://plaksha.edu.in/faculty-details/dr-sunita-chauhan" target="_blank" rel="noopener noreferrer" role="listitem">
+              <span class="tpc-avatar-wrap">
+                <img class="tpc-avatar" src="img/tpc/sunita-chauhan.jpg" alt="Dr. Sunita Chauhan" loading="lazy" onerror="this.onerror=null;this.style.display='none';" />
+              </span>
+              <span class="tpc-name">Sunita Chauhan (Dr.)</span>
+            </a>
+
+            <!-- Swagata Halder (Dr.) -->
+            <a class="tpc-card" href="https://plaksha.edu.in/faculty-details/dr-swagata-halder" target="_blank" rel="noopener noreferrer" role="listitem">
+              <span class="tpc-avatar-wrap">
+                <img class="tpc-avatar" src="img/tpc/swagata-halder.jpg" alt="Dr. Swagata Halder" loading="lazy" onerror="this.onerror=null;this.style.display='none';" />
+              </span>
+              <span class="tpc-name">Swagata Halder (Dr.)</span>
+            </a>
+
+            <!-- Tapas Pandit (Dr.) -->
+            <a class="tpc-card" href="https://plaksha.edu.in/faculty-details/dr-tapas-pandit" target="_blank" rel="noopener noreferrer" role="listitem">
+              <span class="tpc-avatar-wrap">
+                <img class="tpc-avatar" src="img/tpc/tapas-pandit.jpg" alt="Dr. Tapas Pandit" loading="lazy" onerror="this.onerror=null;this.style.display='none';" />
+              </span>
+              <span class="tpc-name">Tapas Pandit (Dr.)</span>
+            </a>
+
+          </div><!-- /tpc-grid -->
         </div>
       </section>
 
