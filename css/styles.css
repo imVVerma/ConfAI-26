@@ -6538,6 +6538,18 @@ body.agenda-page.sharp-theme,
   text-stroke: 0 !important;
 }
 
+.hero-organizer {
+  width: min(100%, 760px);
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
+  margin-top: 0.5rem;
+  margin-bottom: 0.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.45);
+  text-align: center;
+}
+
 /* Single Clean Horizontal Event Info Line (No Emojis) */
 .cinema-meta-row {
   display: flex;
@@ -6557,6 +6569,10 @@ body.agenda-page.sharp-theme,
   white-space: nowrap;
 }
 
+.cinema-meta-date {
+  font-weight: 700;
+}
+
 .cinema-meta-dot {
   color: #00A3A3;
   font-size: 1.1rem;
@@ -6570,7 +6586,7 @@ body.agenda-page.sharp-theme,
   align-items: center;
   justify-content: center;
   gap: 0.9rem;
-  margin-top: 1rem;
+  margin-top: 1.25rem;
 }
 
 .btn-cinema-primary {
