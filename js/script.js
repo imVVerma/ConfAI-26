@@ -340,6 +340,11 @@
       var photoSrc = "img/gallery-2025/" + photo.file;
       var altText = photo.alt || ("ConfAI 2025 Photo " + (currentPhotoIndex + 1));
 
+      photoModalImg.onerror = function() {
+        this.onerror = null;
+        this.style.display = "none";
+      };
+      photoModalImg.style.display = "";
       photoModalImg.src = photoSrc;
       photoModalImg.alt = altText;
       if (photoModalCaption) {
@@ -440,6 +445,11 @@
           img.className = "gallery-img";
           img.loading = globalIdx < 8 ? "eager" : "lazy";
           img.decoding = "async";
+          img.onerror = function() {
+            this.onerror = null;
+            this.style.display = "none";
+            btn.classList.add("gallery-item--broken");
+          };
           btn.appendChild(img);
 
           var overlay = document.createElement("div");
