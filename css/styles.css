@@ -2144,11 +2144,11 @@ body.modal-open {
 }
 
 /* --- Desktop Radial Layout (Spokes radiating from ConfAI center logo) --- */
-@media (min-width: 58rem) {
+@media (min-width: 64rem) {
   .radial-container {
-    height: 520px;
-    max-width: 980px;
-    margin: 1.5rem auto 0;
+    height: 560px;
+    max-width: 1060px;
+    margin: 2rem auto 0;
     position: relative;
     display: block;
   }
@@ -2188,18 +2188,19 @@ body.modal-open {
     transition: opacity 0.25s ease;
   }
 
+  /* ALL TRACK BOXES — EXACTLY SAME 300px WIDTH */
   .radial-track {
     position: absolute;
-    width: 290px;
-    max-width: 290px;
+    width: 300px;
+    max-width: 300px;
     z-index: 2;
   }
 
   .track-node {
     display: flex;
     align-items: center;
-    gap: 0.65rem;
-    padding: 0.55rem 0.85rem;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
     background: #FFFFFF;
     border: 1px solid rgba(0, 120, 120, 0.28);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
@@ -2207,6 +2208,8 @@ body.modal-open {
     width: 100%;
     box-sizing: border-box;
     min-height: 48px;
+    height: auto;
+    transition: background-color 0.25s ease, border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
   }
 
   .track-node:hover {
@@ -2219,54 +2222,54 @@ body.modal-open {
   /* 8 True Radial Clockwise Positions */
   /* Track 1: 12 o'clock (Top Center) */
   .track-pos-1 {
-    top: 10px;
+    top: 0;
     left: 50%;
     transform: translateX(-50%);
   }
 
-  /* Track 2: ~1:30 (Top Right) */
+  /* Track 2: 1:30 (Top Right) */
   .track-pos-2 {
-    top: 55px;
-    right: 25px;
+    top: 60px;
+    right: 40px;
   }
 
-  /* Track 3: 3 o'clock (Right) */
+  /* Track 3: 3 o'clock (Direct Right) */
   .track-pos-3 {
     top: 50%;
     right: 0px;
     transform: translateY(-50%);
   }
 
-  /* Track 4: ~4:30 (Bottom Right) */
+  /* Track 4: 4:30 (Bottom Right) */
   .track-pos-4 {
-    bottom: 55px;
-    right: 25px;
+    bottom: 60px;
+    right: 40px;
   }
 
   /* Track 5: 6 o'clock (Bottom Center) */
   .track-pos-5 {
-    bottom: 10px;
+    bottom: 0;
     left: 50%;
     transform: translateX(-50%);
   }
 
-  /* Track 6: ~7:30 (Bottom Left) */
+  /* Track 6: 7:30 (Bottom Left) */
   .track-pos-6 {
-    bottom: 55px;
-    left: 25px;
+    bottom: 60px;
+    left: 40px;
   }
 
-  /* Track 7: 9 o'clock (Left) */
+  /* Track 7: 9 o'clock (Direct Left) */
   .track-pos-7 {
     top: 50%;
     left: 0px;
     transform: translateY(-50%);
   }
 
-  /* Track 8: ~10:30 (Top Left) */
+  /* Track 8: 10:30 (Top Left) */
   .track-pos-8 {
-    top: 55px;
-    left: 25px;
+    top: 60px;
+    left: 40px;
   }
 
   /* Connector Highlights on Track Hover */
@@ -2400,6 +2403,124 @@ body.modal-open {
   }
 }
 
+/* --- Tablet Radial Layout --- */
+@media (min-width: 48rem) and (max-width: 63.99rem) {
+  .radial-container {
+    height: 500px;
+    max-width: 740px;
+    margin: 1.5rem auto 0;
+    position: relative;
+    display: block;
+  }
+
+  .radial-hub {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-bottom: 0;
+  }
+
+  .radial-hub:hover {
+    transform: translate(-50%, -50%) scale(1.04);
+  }
+
+  .radial-spokes {
+    display: block;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .radial-spoke {
+    stroke: rgba(100, 116, 139, 0.35);
+    stroke-width: 1.25px;
+    stroke-linecap: round;
+  }
+
+  .radial-spoke-node {
+    fill: var(--color-teal, #007878);
+    opacity: 0.75;
+  }
+
+  .radial-track {
+    position: absolute;
+    width: 220px;
+    max-width: 220px;
+    z-index: 2;
+  }
+
+  .track-node {
+    padding: 0.55rem 0.75rem;
+    min-height: 44px;
+    height: auto;
+  }
+
+  .track-name {
+    font-size: 0.78rem;
+  }
+
+  .track-pos-1 {
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .track-pos-2 {
+    top: 50px;
+    right: 15px;
+  }
+
+  .track-pos-3 {
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+  }
+
+  .track-pos-4 {
+    bottom: 50px;
+    right: 15px;
+  }
+
+  .track-pos-5 {
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .track-pos-6 {
+    bottom: 50px;
+    left: 15px;
+  }
+
+  .track-pos-7 {
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+  }
+
+  .track-pos-8 {
+    top: 50px;
+    left: 15px;
+  }
+
+  .radial-container:has(.track-pos-1:hover) #radial-spoke-1,
+  .radial-container:has(.track-pos-2:hover) #radial-spoke-2,
+  .radial-container:has(.track-pos-3:hover) #radial-spoke-3,
+  .radial-container:has(.track-pos-4:hover) #radial-spoke-4,
+  .radial-container:has(.track-pos-5:hover) #radial-spoke-5,
+  .radial-container:has(.track-pos-6:hover) #radial-spoke-6,
+  .radial-container:has(.track-pos-7:hover) #radial-spoke-7,
+  .radial-container:has(.track-pos-8:hover) #radial-spoke-8 {
+    stroke: var(--color-teal, #007878);
+    stroke-width: 2px;
+    stroke-opacity: 0.95;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
 
   .radial-container.has-animation .radial-hub,
@@ -2494,64 +2615,86 @@ body.modal-open {
    H11 · RELIVE CONFAI 2025 & GALLERY
 ──────────────────────────────────────────────────────────── */
 .section-relive {
-  padding: 4rem 0;
+  padding: 3.5rem 0 4.25rem;
   background-color: var(--color-chalk-bg);
   border-top: 1px solid var(--color-chalk-line);
   scroll-margin-top: var(--header-h);
 }
 
-.video-wrapper {
-  position: relative;
-  padding-bottom: 56.25%;
-  /* 16:9 ratio */
-  height: 0;
-  overflow: hidden;
-  max-width: 54rem;
-  margin: 2rem auto 3rem;
-  border-radius: 8px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
-  background: #000;
-}
-
 .video-year-filters {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.65rem;
-  margin: 1.5rem 0 1rem;
+  align-items: center;
+  gap: 0.85rem;
+  margin: 1.75rem 0 1.5rem;
 }
 
 .video-year-filter {
-  padding: 0.55rem 1rem;
-  border: 1px solid var(--color-teal);
+  padding: 12px 28px;
+  border: 1.5px solid var(--color-teal, #007878);
   border-radius: 999px;
-  background: transparent;
-  color: var(--color-teal);
-  font: inherit;
-  font-size: 0.9rem;
-  font-weight: 700;
+  background: #FFFFFF;
+  color: var(--color-teal, #007878);
+  font-family: var(--font-sans, 'Open Sans', sans-serif);
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
   text-align: center;
   cursor: pointer;
-  transition: background-color var(--transition), color var(--transition), transform var(--transition);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.video-year-filter span {
-  font-weight: 600;
-}
-
-.video-year-filter:hover,
-.video-year-filter:focus-visible,
-.video-year-filter.is-active {
-  background: #005C5C;
+.video-year-filter:hover {
+  background: #006060;
   color: #FFFFFF;
+  border-color: #006060;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 120, 120, 0.20);
 }
 
 .video-year-filter:focus-visible {
-  outline: 2px solid var(--color-aqua);
-  outline-offset: 2px;
+  outline: 2px solid var(--color-teal, #007878);
+  outline-offset: 3px;
+}
+
+.video-year-filter.is-active {
+  background: var(--color-teal, #007878);
+  color: #FFFFFF;
+  border-color: var(--color-teal, #007878);
+  box-shadow: 0 4px 14px rgba(0, 120, 120, 0.25);
 }
 
 .video-year-filter:active {
-  transform: translateY(1px);
+  transform: translateY(0);
+}
+
+@media (max-width: 36rem) {
+  .video-year-filter {
+    padding: 10px 22px;
+    font-size: 0.95rem;
+  }
+}
+
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 1240px;
+  aspect-ratio: 16 / 9;
+  height: auto;
+  overflow: hidden;
+  margin: 1.75rem auto 3.5rem;
+  border-radius: 12px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.14), 0 2px 8px rgba(0, 0, 0, 0.06);
+  background: #000000;
+  border: 1px solid rgba(0, 120, 120, 0.15);
+}
+
+@supports not (aspect-ratio: 16 / 9) {
+  .video-wrapper {
+    padding-bottom: 56.25%;
+    height: 0;
+  }
 }
 
 .video-wrapper iframe {
@@ -2561,6 +2704,7 @@ body.modal-open {
   width: 100%;
   height: 100%;
   border: 0;
+  border-radius: 12px;
 }
 
 .gallery-grid {
@@ -6690,6 +6834,7 @@ body.agenda-page.sharp-theme,
 .section-dates h2,
 .section-tracks-diagram h2,
 .section-relive h2,
+.section-tpc h2,
 .stats-title {
   font-family: var(--font-sans, 'Open Sans', sans-serif) !important;
   font-size: clamp(1.65rem, 1.2rem + 1.6vw, 2.55rem);
@@ -6713,6 +6858,7 @@ body.agenda-page.sharp-theme,
 .section-dates h2::after,
 .section-tracks-diagram h2::after,
 .section-relive h2::after,
+.section-tpc h2::after,
 .stats-title::after {
   content: "";
   position: absolute;
@@ -6837,7 +6983,8 @@ body.agenda-page.sharp-theme,
 .section-program,
 .section-dates,
 .section-tracks-diagram,
-.section-relive {
+.section-relive,
+.section-tpc {
   padding: 2.75rem 0;
 }
 
@@ -6871,8 +7018,8 @@ body.agenda-page.sharp-theme,
 .speakers-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1.15rem 1rem;
-  max-width: 58rem;
+  gap: 1.25rem 1.15rem;
+  max-width: 64.5rem;
   margin-left: auto;
   margin-right: auto;
 }
@@ -6880,14 +7027,14 @@ body.agenda-page.sharp-theme,
 @media (min-width: 36rem) {
   .speakers-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 1.15rem 1rem;
+    gap: 1.25rem 1.15rem;
   }
 }
 
 @media (min-width: 58rem) {
   .speakers-grid {
     grid-template-columns: repeat(3, 1fr);
-    gap: 1.25rem 1.15rem;
+    gap: 1.35rem 1.25rem;
   }
 }
 
@@ -7086,26 +7233,79 @@ body.agenda-page.sharp-theme,
 }
 
 /* ═══════════════════════════════════════════════
-   TECHNICAL PROGRAMME COMMITTEE
+   TECHNICAL PROGRAMME COMMITTEE (TPC)
+   Unified ConfAI Editorial Faculty Directory
    ═══════════════════════════════════════════════ */
 .section-tpc {
-  padding: 4rem 0;
+  position: relative;
+  overflow: hidden;
+  background-color: var(--color-cream, #FAFAF7);
+  padding: 3.25rem 0 4.25rem;
+}
+
+.tpc-neural-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+.tpc-neural-canvas.is-visible {
+  opacity: 1;
+}
+
+.section-tpc .section-inner {
+  position: relative;
+  z-index: 2;
 }
 
 .tpc-intro {
-  max-width: 48rem;
-  margin: 0 auto 2.5rem;
-  text-align: center;
-  color: var(--color-graphite);
-  font-size: 1rem;
-  line-height: 1.7;
+  max-width: 50rem;
+  margin: 0 0 2.75rem;
+  text-align: left;
+  font-family: var(--font-sans, 'Open Sans', sans-serif);
+  font-size: 1.125rem;
+  font-weight: 400;
+  color: #334155;
+  line-height: 1.6;
 }
 
 .tpc-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-  gap: 1.25rem;
-  margin-top: 0;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 1.5rem;
+  row-gap: 2.75rem;
+  width: 100%;
+  margin: 0 auto;
+}
+
+@media (min-width: 38rem) {
+  .tpc-grid {
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 1.75rem;
+    row-gap: 3rem;
+  }
+}
+
+@media (min-width: 52rem) {
+  .tpc-grid {
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 2rem;
+    row-gap: 3.25rem;
+  }
+}
+
+@media (min-width: 68rem) {
+  .tpc-grid {
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 2rem;
+    row-gap: 3.25rem;
+  }
 }
 
 .tpc-card {
@@ -7114,69 +7314,100 @@ body.agenda-page.sharp-theme,
   align-items: center;
   text-align: center;
   text-decoration: none;
-  color: var(--color-graphite);
-  border-radius: var(--radius);
-  padding: 1.1rem 0.75rem 0.9rem;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: none;
+  transition: transform 0.25s ease;
 }
 
 .tpc-card:hover {
-  transform: translateY(-4px);
-  background: #fff;
-  box-shadow: 0 8px 24px rgba(0, 80, 120, 0.10);
-  color: var(--color-teal);
+  transform: translateY(-3px);
+  background: transparent;
+  box-shadow: none;
 }
 
-/* Avatar wrapper — always shows the placeholder circle via background */
+/* Portrait Circles: 104px desktop, clean thin teal border, subtle white inner ring */
 .tpc-avatar-wrap {
-  width: 90px;
-  height: 90px;
+  width: 104px;
+  height: 104px;
   border-radius: 50%;
-  background: #dde5e6;
-  border: 2px solid var(--color-chalk-line);
+  background-color: #F4F6F6;
+  border: 1px solid rgba(0, 120, 120, 0.40);
+  box-shadow: inset 0 0 0 2px #FFFFFF, 0 2px 6px rgba(0, 0, 0, 0.04);
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  margin-bottom: 0.8rem;
+  margin: 0 auto 0.85rem;
   flex-shrink: 0;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .tpc-card:hover .tpc-avatar-wrap {
-  border-color: var(--color-teal);
-  box-shadow: 0 0 0 3px rgba(0, 120, 120, 0.15);
+  border-color: var(--color-teal, #007878);
+  box-shadow: inset 0 0 0 2px #FFFFFF, 0 4px 12px rgba(0, 120, 120, 0.18);
 }
 
 .tpc-avatar {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: top center;
   border-radius: 50%;
   display: block;
+  transition: transform 0.25s ease;
+}
+
+.tpc-card:hover .tpc-avatar {
+  transform: scale(1.03);
 }
 
 .tpc-name {
-  font-size: 0.81rem;
+  font-family: var(--font-sans, 'Open Sans', sans-serif);
+  font-size: 1.02rem;
   font-weight: 600;
+  color: #0F172A;
+  line-height: 1.25;
+  margin: 0 0 0.25rem;
+  max-width: 190px;
+  transition: color 0.25s ease;
+}
+
+.tpc-card:hover .tpc-name {
+  color: var(--color-teal, #007878);
+}
+
+.tpc-role {
+  font-family: var(--font-sans, 'Open Sans', sans-serif);
+  font-size: 0.82rem;
+  font-weight: 400;
+  color: #64748B;
   line-height: 1.35;
-  color: inherit;
-  transition: color 0.2s ease;
+  margin: 0;
+  max-width: 180px;
 }
 
 @media (max-width: 48rem) {
-  .tpc-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.85rem;
-  }
-
   .tpc-avatar-wrap {
-    width: 72px;
-    height: 72px;
+    width: 88px;
+    height: 88px;
+    margin-bottom: 0.65rem;
   }
 
   .tpc-name {
+    font-size: 0.94rem;
+  }
+
+  .tpc-role {
     font-size: 0.78rem;
   }
+
+  .tpc-intro {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
 }
+
 
