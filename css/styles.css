@@ -7534,4 +7534,203 @@ body.agenda-page.sharp-theme,
   }
 }
 
+/* ── Sticky Announcement Ticker Bar (Home Page) ─────────────────────────── */
+:root {
+  --ticker-h: 38px;
+}
+
+.site-header.site-header--with-ticker {
+  height: calc(var(--header-h, 68px) + var(--ticker-h, 38px)) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
+  padding: 0 !important;
+  overflow: visible;
+}
+
+.site-header.site-header--with-ticker .header-inner {
+  height: var(--header-h, 68px) !important;
+  flex-shrink: 0;
+}
+
+.announcement-ticker-bar {
+  width: 100%;
+  height: var(--ticker-h, 38px);
+  flex-shrink: 0;
+  background: linear-gradient(90deg, #071322 0%, #0d1e35 50%, #071322 100%);
+  border-top: 1px solid rgba(226, 232, 240, 0.18);
+  border-bottom: 1px solid rgba(0, 160, 180, 0.35);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  user-select: none;
+  z-index: 10;
+  line-height: normal;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Edge fade gradients for polished entry/exit */
+.announcement-ticker-bar::before,
+.announcement-ticker-bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 48px;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.announcement-ticker-bar::before {
+  left: 0;
+  background: linear-gradient(to right, #071322 15%, transparent);
+}
+
+.announcement-ticker-bar::after {
+  right: 0;
+  background: linear-gradient(to left, #071322 15%, transparent);
+}
+
+.ticker-track {
+  display: flex;
+  width: max-content;
+  align-items: center;
+  will-change: transform;
+  animation: tickerMarquee 42s linear infinite;
+}
+
+.ticker-content {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.ticker-item {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 0.815rem;
+  font-weight: 500;
+  color: #F1F5F9;
+  letter-spacing: 0.012em;
+  padding: 0 2rem;
+  text-decoration: none !important;
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+
+.ticker-item:hover .ticker-text {
+  color: #FFFFFF;
+}
+
+.ticker-text {
+  color: #F1F5F9;
+}
+
+.ticker-link {
+  color: #00E5FF !important;
+  font-weight: 700 !important;
+  text-decoration: underline !important;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1.5px;
+  margin-left: 0.35rem;
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.ticker-link:hover {
+  color: #FFFFFF !important;
+  background: rgba(0, 229, 255, 0.18);
+  text-shadow: 0 0 10px rgba(0, 229, 255, 0.7);
+  text-decoration-color: #FFFFFF !important;
+}
+
+.ticker-link:focus-visible {
+  outline: 2px solid #00E5FF;
+  outline-offset: 2px;
+  background: rgba(0, 229, 255, 0.22);
+}
+
+.ticker-sep {
+  color: #00A0B4;
+  opacity: 0.75;
+  font-size: 0.55rem;
+  margin-left: 2.25rem;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Pause animation on hover or focus */
+.announcement-ticker-bar:hover .ticker-track,
+.announcement-ticker-bar:focus-within .ticker-track {
+  animation-play-state: paused;
+}
+
+@keyframes tickerMarquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Flush hero section margin on pages with ticker banner */
+.site-header--with-ticker ~ main .cinema-video-hero {
+  margin-top: calc(var(--header-h, 68px) + var(--ticker-h, 38px)) !important;
+  min-height: calc(100vh - (var(--header-h, 68px) + var(--ticker-h, 38px))) !important;
+  height: calc(100vh - (var(--header-h, 68px) + var(--ticker-h, 38px))) !important;
+  height: calc(100dvh - (var(--header-h, 68px) + var(--ticker-h, 38px))) !important;
+}
+
+/* Anchor offset for scroll targets */
+.site-header--with-ticker ~ main [id] {
+  scroll-margin-top: calc(var(--header-h, 68px) + var(--ticker-h, 38px) + 1.25rem);
+}
+
+/* Specific scroll margin & focus highlight for PhD Aspirants card */
+#phd-aspirants {
+  scroll-margin-top: calc(var(--header-h, 68px) + var(--ticker-h, 38px) + 2rem);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+#phd-aspirants:target,
+#phd-aspirants.is-highlighted {
+  border-color: #007878 !important;
+  box-shadow: 0 0 0 3px rgba(0, 120, 120, 0.3), 0 8px 25px rgba(0, 120, 120, 0.18) !important;
+  transform: translateY(-4px);
+}
+
+/* Mobile navigation drawer position when ticker is present */
+@media (max-width: 899px) {
+  .site-header--with-ticker .site-nav {
+    top: calc(var(--header-h, 68px) + var(--ticker-h, 38px)) !important;
+    max-height: calc(100vh - (var(--header-h, 68px) + var(--ticker-h, 38px))) !important;
+  }
+}
+
+@media (max-width: 640px) {
+  :root {
+    --ticker-h: 36px;
+  }
+
+  .ticker-item {
+    font-size: 0.76rem;
+    padding: 0 1.25rem;
+  }
+
+  .ticker-sep {
+    margin-left: 1.5rem;
+  }
+}
+
+
+
 

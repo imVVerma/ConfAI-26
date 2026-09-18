@@ -2560,3 +2560,28 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 });
 
+/* ── Announcement Ticker Banner Click-to-Card Handler ──────────────────────── */
+document.addEventListener('DOMContentLoaded', function () {
+  var tickerLinks = document.querySelectorAll('.ticker-item, .announcement-ticker-bar a[href="#phd-aspirants"]');
+  var phdCard = document.getElementById('phd-aspirants');
+
+  if (phdCard && tickerLinks.length) {
+    tickerLinks.forEach(function (link) {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        phdCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        phdCard.classList.add('is-highlighted');
+        setTimeout(function () {
+          phdCard.classList.remove('is-highlighted');
+        }, 2500);
+        if (history.pushState) {
+          history.pushState(null, null, '#phd-aspirants');
+        } else {
+          location.hash = '#phd-aspirants';
+        }
+      });
+    });
+  }
+});
+
+
