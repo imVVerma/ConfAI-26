@@ -2143,3 +2143,425 @@ document.addEventListener('DOMContentLoaded', function () {
   resizeCanvas();
   animationFrameId = requestAnimationFrame(render);
 });
+
+
+/* ==========================================================================
+   CONFAI 2026 - SPEAKERS SECTION SIDE NEURAL-NETWORK FRAMING
+   Fine, subtle neural network framing the far left and right edges of speakers
+   ========================================================================== */
+document.addEventListener('DOMContentLoaded', function () {
+  var canvas = document.getElementById('speakers-neural-canvas');
+  if (!canvas) return;
+
+  var ctx = canvas.getContext('2d');
+  if (!ctx) return;
+
+  var section = canvas.closest('.section-speakers');
+  if (!section) return;
+
+  var nodes = [];
+  var connections = [];
+  var dataSignals = [];
+  var animationFrameId = null;
+  var isRunning = false;
+  var width = 0;
+  var height = 0;
+  var dpr = window.devicePixelRatio || 1;
+
+  var TEAL_R = 0;
+  var TEAL_G = 120;
+  var TEAL_B = 120;
+
+  function resizeCanvas() {
+    var rect = section.getBoundingClientRect();
+    width = rect.width || window.innerWidth;
+    height = rect.height || 500;
+    dpr = window.devicePixelRatio || 1;
+
+    canvas.width = Math.floor(width * dpr);
+    canvas.height = Math.floor(height * dpr);
+    ctx.scale(dpr, dpr);
+
+    initSideNetwork();
+  }
+
+  function initSideNetwork() {
+    nodes = [];
+    connections = [];
+    dataSignals = [];
+
+    if (width < 768) {
+      // On mobile, keep completely clear or very minimal
+      return;
+    }
+
+    var contentMax = 1320;
+    var containerWidth = Math.min(width - 48, contentMax);
+    var sideGutter = Math.max(0, (width - containerWidth) / 2);
+    var sideBandWidth = Math.max(90, sideGutter + 40);
+
+    var nodesPerSide = width >= 1200 ? 12 : 8;
+
+    // Helper to add nodes to a specific vertical side band
+    function createSideCluster(isLeft) {
+      var startIdx = nodes.length;
+      var minX = isLeft ? 16 : (width - sideBandWidth + 12);
+      var maxX = isLeft ? (sideBandWidth - 12) : (width - 16);
+
+      for (var i = 0; i < nodesPerSide; i++) {
+        var normY = (i + 0.5) / nodesPerSide;
+        var y = normY * height + (Math.random() - 0.5) * (height / nodesPerSide) * 0.8;
+        y = Math.max(25, Math.min(height - 25, y));
+
+        var x = minX + Math.random() * (maxX - minX);
+        var isMain = Math.random() < 0.35;
+        var radius = isMain ? (2.2 + Math.random() * 1.2) : (1.2 + Math.random() * 0.8);
+
+        nodes.push({
+          id: nodes.length,
+          isLeft: isLeft,
+          x: x,
+          y: y,
+          originX: x,
+          originY: y,
+          vx: (Math.random() - 0.5) * 0.08,
+          vy: (Math.random() - 0.5) * 0.08,
+          radius: radius,
+          isMain: isMain,
+          pulsePhase: Math.random() * Math.PI * 2,
+          pulseSpeed: 0.007 + Math.random() * 0.010,
+          baseAlpha: isMain ? (0.65 + Math.random() * 0.25) : (0.40 + Math.random() * 0.25),
+          neighborIds: []
+        });
+      }
+
+      // Connect nodes within the same side cluster only (never across center cards!)
+      var maxDist = 140;
+      for (var a = startIdx; a < nodes.length; a++) {
+        var nodeA = nodes[a];
+        var count = 0;
+        for (var b = a + 1; b < nodes.length; b++) {
+          var nodeB = nodes[b];
+          var dx = nodeA.x - nodeB.x;
+          var dy = nodeA.y - nodeB.y;
+          var dist = Math.sqrt(dx * dx + dy * dy);
+
+          if (dist < maxDist && count < 3 && nodeB.neighborIds.length < 3) {
+            nodeA.neighborIds.push(b);
+            nodeB.neighborIds.push(a);
+            connections.push({
+              nodeAIndex: a,
+              nodeBIndex: b,
+              maxDist: maxDist
+            });
+            count++;
+          }
+        }
+      }
+    }
+
+    createSideCluster(true);  // Left side frame
+    createSideCluster(false); // Right side frame
+
+    // Create subtle data packets for side lines
+    var signalCount = connections.length > 8 ? 4 : 2;
+    for (var s = 0; s < signalCount; s++) {
+      dataSignals.push({
+        connIndex: Math.floor(Math.random() * connections.length),
+        progress: Math.random(),
+        speed: 0.0028 + Math.random() * 0.0035,
+        direction: Math.random() < 0.5 ? 1 : -1,
+        size: 1.4 + Math.random() * 0.8
+      });
+    }
+  }
+
+  function renderSideNetwork() {
+    if (!isRunning) return;
+
+    ctx.clearRect(0, 0, width, height);
+
+    if (nodes.length === 0) {
+      animationFrameId = requestAnimationFrame(renderSideNetwork);
+      return;
+    }
+
+    // 1. Update Physics
+    for (var i = 0; i < nodes.length; i++) {
+      var n = nodes[i];
+      n.pulsePhase += n.pulseSpeed;
+
+      var dx = n.originX - n.x;
+      var dy = n.originY - n.y;
+      n.vx += dx * 0.0008;
+      n.vy += dy * 0.0008;
+      n.vx *= 0.97;
+      n.vy *= 0.97;
+      n.x += n.vx;
+      n.y += n.vy;
+    }
+
+    // 2. Draw Fine Connecting Lines
+    for (var c = 0; c < connections.length; c++) {
+      var conn = connections[c];
+      var nodeA = nodes[conn.nodeAIndex];
+      var nodeB = nodes[conn.nodeBIndex];
+
+      var dx = nodeA.x - nodeB.x;
+      var dy = nodeA.y - nodeB.y;
+      var dist = Math.sqrt(dx * dx + dy * dy);
+
+      if (dist < conn.maxDist) {
+        var distFactor = 1 - (dist / conn.maxDist);
+        var midY = (nodeA.y + nodeB.y) / 2;
+        var vertFade = Math.sin(Math.PI * Math.max(0.05, Math.min(0.95, midY / height)));
+        var lineAlpha = distFactor * vertFade * 0.45;
+
+        if (lineAlpha > 0.02) {
+          ctx.beginPath();
+          ctx.lineWidth = 0.75;
+          ctx.strokeStyle = 'rgba(' + TEAL_R + ',' + TEAL_G + ',' + TEAL_B + ',' + lineAlpha.toFixed(3) + ')';
+          ctx.moveTo(nodeA.x, nodeA.y);
+          ctx.lineTo(nodeB.x, nodeB.y);
+          ctx.stroke();
+        }
+      }
+    }
+
+    // 3. Draw Data Signals
+    for (var s = 0; s < dataSignals.length; s++) {
+      var sig = dataSignals[s];
+      if (sig.connIndex >= connections.length) continue;
+
+      var sigConn = connections[sig.connIndex];
+      var fromNode = sig.direction === 1 ? nodes[sigConn.nodeAIndex] : nodes[sigConn.nodeBIndex];
+      var toNode = sig.direction === 1 ? nodes[sigConn.nodeBIndex] : nodes[sigConn.nodeAIndex];
+
+      sig.progress += sig.speed;
+      if (sig.progress >= 1.0) {
+        sig.progress = 0;
+        sig.connIndex = Math.floor(Math.random() * connections.length);
+        continue;
+      }
+
+      var sigX = fromNode.x + (toNode.x - fromNode.x) * sig.progress;
+      var sigY = fromNode.y + (toNode.y - fromNode.y) * sig.progress;
+
+      ctx.beginPath();
+      ctx.arc(sigX, sigY, sig.size * 2.0, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(0, 160, 160, 0.40)';
+      ctx.fill();
+
+      ctx.beginPath();
+      ctx.arc(sigX, sigY, sig.size * 0.8, 0, Math.PI * 2);
+      ctx.fillStyle = '#FFFFFF';
+      ctx.fill();
+    }
+
+    // 4. Draw Small Fine Nodes
+    for (var k = 0; k < nodes.length; k++) {
+      var node = nodes[k];
+      var pulse = Math.sin(node.pulsePhase);
+      var vertFade = Math.sin(Math.PI * Math.max(0.05, Math.min(0.95, node.y / height)));
+      var nodeAlpha = Math.max(0.15, Math.min(0.85, (node.baseAlpha + pulse * 0.15) * vertFade));
+      var drawRadius = Math.max(1.0, node.radius + pulse * 0.3);
+
+      if (node.isMain) {
+        // Soft halo
+        ctx.beginPath();
+        ctx.arc(node.x, node.y, drawRadius * 2.5, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(' + TEAL_R + ',' + TEAL_G + ',' + TEAL_B + ',' + (nodeAlpha * 0.28).toFixed(3) + ')';
+        ctx.fill();
+
+        // Main teal node
+        ctx.beginPath();
+        ctx.arc(node.x, node.y, drawRadius, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(' + TEAL_R + ',' + TEAL_G + ',' + TEAL_B + ',' + nodeAlpha.toFixed(3) + ')';
+        ctx.fill();
+
+        // Center bright dot
+        ctx.beginPath();
+        ctx.arc(node.x, node.y, Math.max(0.7, drawRadius * 0.42), 0, Math.PI * 2);
+        ctx.fillStyle = '#FFFFFF';
+        ctx.fill();
+      } else {
+        // Simple fine node
+        ctx.beginPath();
+        ctx.arc(node.x, node.y, drawRadius, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(' + TEAL_R + ',' + TEAL_G + ',' + TEAL_B + ',' + (nodeAlpha * 0.85).toFixed(3) + ')';
+        ctx.fill();
+      }
+    }
+
+    animationFrameId = requestAnimationFrame(renderSideNetwork);
+  }
+
+  // Scroll-triggered Reveal with IntersectionObserver
+  if ('IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          canvas.classList.add('is-visible');
+          if (!isRunning) {
+            isRunning = true;
+            resizeCanvas();
+            animationFrameId = requestAnimationFrame(renderSideNetwork);
+          }
+        } else {
+          if (isRunning) {
+            isRunning = false;
+            if (animationFrameId) cancelAnimationFrame(animationFrameId);
+          }
+        }
+      });
+    }, { threshold: 0.1 });
+
+    observer.observe(section);
+  } else {
+    canvas.classList.add('is-visible');
+    isRunning = true;
+    resizeCanvas();
+    animationFrameId = requestAnimationFrame(renderSideNetwork);
+  }
+
+  var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReducedMotion) {
+    resizeCanvas();
+    renderSideNetwork();
+    isRunning = false;
+    return;
+  }
+
+  window.addEventListener('resize', function () {
+    if (isRunning) resizeCanvas();
+  }, { passive: true });
+});
+
+/* ══════════════════════════════════════════════════════════════════════════
+   Conference Tracks Radial Diagram Scroll-Trigger & Precision Connectors
+   ══════════════════════════════════════════════════════════════════════════ */
+document.addEventListener('DOMContentLoaded', function () {
+  var tracksContainer = document.getElementById('radial-tracks-container');
+  var section = document.getElementById('tracks-diagram');
+  if (!tracksContainer || !section) return;
+
+  var svg = tracksContainer.querySelector('.radial-spokes');
+  var hub = tracksContainer.querySelector('.radial-hub');
+
+  function updateRadialSpokes() {
+    if (!tracksContainer || !svg || !hub) return;
+    if (window.getComputedStyle(svg).display === 'none') return;
+
+    var cRect = tracksContainer.getBoundingClientRect();
+    var hRect = hub.getBoundingClientRect();
+    if (cRect.width === 0 || hRect.width === 0) return;
+
+    var cx = (hRect.left - cRect.left) + hRect.width / 2;
+    var cy = (hRect.top - cRect.top) + hRect.height / 2;
+    var hubRadius = hRect.width / 2;
+    var GAP = 20; // 16-24px clean gap before track box
+
+    svg.setAttribute('viewBox', '0 0 ' + Math.round(cRect.width) + ' ' + Math.round(cRect.height));
+
+    for (var i = 1; i <= 8; i++) {
+      var track = tracksContainer.querySelector('.track-pos-' + i);
+      var spoke = document.getElementById('radial-spoke-' + i);
+      var node = svg.querySelectorAll('.radial-spoke-node')[i - 1];
+      if (!track || !spoke) continue;
+
+      var btn = track.querySelector('.track-node') || track;
+      var bRect = btn.getBoundingClientRect();
+      var bxMin = bRect.left - cRect.left;
+      var bxMax = bRect.right - cRect.left;
+      var byMin = bRect.top - cRect.top;
+      var byMax = bRect.bottom - cRect.top;
+      var bx = (bxMin + bxMax) / 2;
+      var by = (byMin + byMax) / 2;
+
+      var angle = Math.atan2(by - cy, bx - cx);
+      var cos = Math.cos(angle);
+      var sin = Math.sin(angle);
+
+      // Start line at hub perimeter
+      var x1 = cx + hubRadius * cos;
+      var y1 = cy + hubRadius * sin;
+
+      // Find intersection with expanded track bounding box [bxMin - GAP, bxMax + GAP] x [byMin - GAP, byMax + GAP]
+      var tMin = Infinity;
+      if (Math.abs(cos) > 0.0001) {
+        var targetX = cos > 0 ? (bxMin - GAP) : (bxMax + GAP);
+        var tx = (targetX - cx) / cos;
+        if (tx > 0) tMin = Math.min(tMin, tx);
+      }
+      if (Math.abs(sin) > 0.0001) {
+        var targetY = sin > 0 ? (byMin - GAP) : (byMax + GAP);
+        var ty = (targetY - cy) / sin;
+        if (ty > 0) tMin = Math.min(tMin, ty);
+      }
+
+      if (tMin === Infinity || tMin <= hubRadius) {
+        tMin = Math.sqrt((bx - cx) * (bx - cx) + (by - cy) * (by - cy)) - 40;
+      }
+
+      var x2 = cx + tMin * cos;
+      var y2 = cy + tMin * sin;
+
+      spoke.setAttribute('x1', x1.toFixed(1));
+      spoke.setAttribute('y1', y1.toFixed(1));
+      spoke.setAttribute('x2', x2.toFixed(1));
+      spoke.setAttribute('y2', y2.toFixed(1));
+
+      if (node) {
+        node.setAttribute('cx', x1.toFixed(1));
+        node.setAttribute('cy', y1.toFixed(1));
+      }
+    }
+  }
+
+  // Initial calculation + resize listener
+  updateRadialSpokes();
+  window.addEventListener('resize', updateRadialSpokes, { passive: true });
+
+  var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (!prefersReducedMotion) {
+    tracksContainer.classList.add('has-animation');
+
+    if ('IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(function (entries, obs) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            updateRadialSpokes();
+            tracksContainer.classList.add('is-animated');
+            obs.unobserve(section);
+          }
+        });
+      }, { threshold: 0.15 });
+
+      observer.observe(section);
+    } else {
+      tracksContainer.classList.add('is-animated');
+    }
+  }
+
+  // Interactive connector highlight fallback/enhancement
+  var trackButtons = tracksContainer.querySelectorAll('.track-node');
+  trackButtons.forEach(function (btn) {
+    var num = btn.getAttribute('data-track-num');
+    var spoke = document.getElementById('radial-spoke-' + num);
+    if (!spoke) return;
+
+    btn.addEventListener('mouseenter', function () {
+      spoke.style.stroke = 'var(--color-teal, #007878)';
+      spoke.style.strokeWidth = '2px';
+      spoke.style.strokeOpacity = '0.95';
+    });
+
+    btn.addEventListener('mouseleave', function () {
+      spoke.style.stroke = '';
+      spoke.style.strokeWidth = '';
+      spoke.style.strokeOpacity = '';
+    });
+  });
+});
+
