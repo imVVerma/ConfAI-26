@@ -17,8 +17,8 @@
   --color-graphite: #333333;
   --color-graphite-dark: #000000;
 
-  --font-display: 'Open Sans', sans-serif;
-  --font-sans: 'Open Sans', sans-serif;
+  --font-display: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  --font-sans: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
 
   --header-h: 4.25rem;
   --header-max: 90rem;
@@ -27,6 +27,11 @@
   --transition: 0.22s ease;
   --content-max: 82.5rem;
   /* 1320px */
+}
+
+/* Universal Open Sans Typography Enforcement */
+html, body, button, input, select, textarea, h1, h2, h3, h4, h5, h6, p, span, a, li, blockquote, div {
+  font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
 }
 
 
@@ -1742,12 +1747,28 @@ body.modal-open {
   width: 100vw;
   height: 100vh;
   background-color: rgba(22, 28, 26, 0.85);
-  /* Uses var(--color-chalk-bg) with opacity */
   z-index: 1000;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1rem;
+  padding: 1.25rem;
+  animation: overlayFadeIn 0.2s ease forwards;
+}
+
+@keyframes overlayFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.97) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
 }
 
 .modal-overlay[hidden] {
@@ -1756,14 +1777,19 @@ body.modal-open {
 
 .modal-content {
   background-color: var(--color-chalk-bg);
-  padding: 2.5rem;
-  max-width: 30rem;
+  padding: 1.6rem 1.85rem;
+  max-width: 36rem;
   width: 100%;
+  max-height: min(85vh, 620px);
+  overflow-y: auto;
+  border-radius: 16px;
   position: relative;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+  animation: modalFadeIn 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .modal-close {
@@ -2671,8 +2697,11 @@ body.modal-open {
 ──────────────────────────────────────────────────────────── */
 .track-modal-content {
   text-align: left;
-  max-width: 38rem;
-  padding: 2.5rem;
+  max-width: 36rem;
+  padding: 1.6rem 1.85rem;
+  border-radius: 16px;
+  max-height: min(85vh, 620px);
+  overflow-y: auto;
 }
 
 .track-modal-header {
@@ -5349,8 +5378,103 @@ p {
 
 @media (min-width: 48rem) {
   .sponsorship-contacts-container {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   }
+}
+
+/* Sponsorship Deadline Callout Banner */
+.sponsorship-deadline-card {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  background: rgba(0, 120, 120, 0.06);
+  border: 1px solid rgba(0, 120, 120, 0.22);
+  border-left: 4px solid var(--color-teal);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  margin: 2rem 0;
+}
+
+.sponsorship-deadline-icon {
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  background: var(--color-teal);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.sponsorship-deadline-content {
+  font-size: 0.98rem;
+  color: var(--color-graphite-dark);
+  line-height: 1.5;
+}
+
+.sponsorship-deadline-content strong {
+  color: var(--color-teal);
+  font-weight: 700;
+}
+
+/* Why Partner Section Grid */
+.why-partner-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+@media (min-width: 48rem) {
+  .why-partner-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.why-partner-card {
+  background: #ffffff;
+  border: 1px solid var(--color-chalk-line);
+  border-radius: 12px;
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.why-partner-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--color-teal);
+  box-shadow: 0 8px 24px rgba(0, 120, 120, 0.1);
+}
+
+.why-partner-num {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--color-teal);
+  line-height: 1;
+  margin-bottom: 0.75rem;
+}
+
+.why-partner-card h3 {
+  font-family: var(--font-display, 'Open Sans', sans-serif);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-graphite-dark);
+  margin-bottom: 0.75rem;
+  line-height: 1.35;
+}
+
+.why-partner-card p {
+  font-size: 0.9rem;
+  color: var(--color-graphite);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.why-partner-card p + p {
+  margin-top: 0.75rem;
 }
 
 .contact-card-highlight {
@@ -7183,7 +7307,7 @@ body.agenda-page.sharp-theme,
 .speaker-photo-wrap {
   display: block;
   width: 100%;
-  aspect-ratio: 1 / 0.80;
+  aspect-ratio: 1 / 1;
   background-color: #E2E8F0;
   overflow: hidden;
   text-decoration: none;
@@ -7196,10 +7320,14 @@ body.agenda-page.sharp-theme,
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: top center;
+  object-position: center 20%;
   display: block;
   border-radius: 0;
   transition: transform 0.25s ease;
+}
+
+.speaker-photo[src*="singla"] {
+  object-position: center center;
 }
 
 .speaker-photo-wrap:hover .speaker-photo {
@@ -7729,6 +7857,134 @@ body.agenda-page.sharp-theme,
   .ticker-sep {
     margin-left: 1.5rem;
   }
+}
+
+/* ─────────────────────────────────────────────────────────
+   GLOBAL SUBTLE SMOOTH ANIMATIONS & UNIFORM POLISH
+──────────────────────────────────────────────────────────── */
+@keyframes gentleFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page-main,
+.sharp-timetable-wrapper,
+.section-stats,
+.section-why-attend,
+.section-speakers,
+.section-tpc,
+.section-tracks-diagram,
+.section-dates {
+  animation: gentleFadeIn 0.32s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Subtle micro-interactions: smooth 2px lift on interactive cards */
+.speaker-card,
+.tpc-card,
+.stat-item,
+.date-item,
+.faq-item,
+.sponsorship-card,
+.alacarte-card,
+.sharp-row,
+.contact-card-highlight,
+.meta-item {
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.22s ease, border-color 0.2s ease, background-color 0.2s ease, color 0.18s ease;
+}
+
+.speaker-card:hover,
+.sponsorship-card:hover,
+.alacarte-card:hover,
+.contact-card-highlight:hover {
+  transform: translateY(-2px);
+}
+
+.btn,
+.btn-primary,
+.btn-action-primary,
+.btn-outline,
+.sharp-tab-btn,
+.faq-question-btn,
+.nav-cta {
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Agenda Lunch Row Without Timings */
+.sharp-row.sharp-lunch-row {
+  grid-template-columns: 1fr !important;
+  background: rgba(0, 120, 120, 0.05);
+  border-left: 3px solid var(--color-teal);
+  text-align: center;
+}
+
+.sharp-row.sharp-lunch-row .sharp-col-time {
+  display: none !important;
+}
+
+.sharp-row.sharp-lunch-row .sharp-col-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem 1.25rem;
+}
+
+.sharp-row.sharp-lunch-row .sharp-session-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-teal);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+/* Parallel track presentation cards in agenda */
+.sharp-sub-tracks-parallel {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 0.6rem;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .sharp-sub-tracks-parallel {
+    grid-template-columns: 1fr;
+  }
+}
+
+.sharp-track-subbox {
+  background: #FFFFFF;
+  border: 1px solid var(--color-chalk-line, #DBD9D5);
+  border-radius: 8px;
+  padding: 0.85rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.sharp-track-subbox:hover {
+  border-color: var(--color-teal, #007878);
+  box-shadow: 0 2px 8px rgba(0, 120, 120, 0.08);
+}
+
+.sharp-track-subbox-title {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #0F172A;
+  line-height: 1.3;
+}
+
+.sharp-track-subbox-detail {
+  font-size: 0.82rem;
+  color: #475569;
+  line-height: 1.45;
 }
 
 
