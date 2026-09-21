@@ -2562,7 +2562,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 /* ── Announcement Ticker Banner Click-to-Card Handler ──────────────────────── */
 document.addEventListener('DOMContentLoaded', function () {
-  var tickerLinks = document.querySelectorAll('.ticker-item, .announcement-ticker-bar a[href="#phd-aspirants"]');
+  var tickerLinks = document.querySelectorAll('.announcement-ticker-bar a[href^="#"]');
   var phdCard = document.getElementById('phd-aspirants');
 
   if (phdCard && tickerLinks.length) {
