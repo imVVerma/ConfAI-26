@@ -7101,10 +7101,10 @@ body.agenda-page.sharp-theme,
 
 .cinema-curve-svg {
   position: absolute;
-  bottom: 90px;
+  bottom: 0;
   left: 0;
   width: 100%;
-  height: 48px;
+  height: 138px;
   z-index: 4;
   display: block;
 }
@@ -7525,8 +7525,8 @@ body.agenda-page.sharp-theme,
   }
 
   .cinema-curve-svg {
-    bottom: 60px;
-    height: 28px;
+    bottom: 0;
+    height: 88px;
   }
 }
 
