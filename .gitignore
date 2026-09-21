@@ -1,1 +1,9 @@
 .DS_Store
+
+# Large presentation/spreadsheet files
+*.pptx
+*.xlsx
+*.zip
+
+# Local system & untracked notes
+er.name
