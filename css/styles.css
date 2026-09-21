@@ -6860,7 +6860,7 @@ body.agenda-page.sharp-theme,
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
+  overflow: visible;
   margin: 0 !important;
   padding: 2rem 1.5rem 5rem;
   background: #080E18;
@@ -7077,11 +7077,11 @@ body.agenda-page.sharp-theme,
 /* ── Neural Network Particle Canvas & Subtle Curved Transition ──────────── */
 .cinema-curve-divider {
   position: absolute;
-  bottom: 0;
+  bottom: -90px;
   left: 0;
   right: 0;
   width: 100%;
-  height: 220px;
+  height: 310px;
   overflow: visible;
   line-height: 0;
   z-index: 5;
@@ -7091,17 +7091,17 @@ body.agenda-page.sharp-theme,
 .hero-neural-canvas,
 .neural-transition-canvas {
   position: absolute;
-  bottom: 0;
+  top: 0;
   left: 0;
   width: 100%;
-  height: 220px;
+  height: 100%;
   pointer-events: none;
   z-index: 6;
 }
 
 .cinema-curve-svg {
   position: absolute;
-  bottom: 0;
+  bottom: 90px;
   left: 0;
   width: 100%;
   height: 48px;
@@ -7520,15 +7520,12 @@ body.agenda-page.sharp-theme,
   }
 
   .cinema-curve-divider {
-    height: 160px;
-  }
-
-  .hero-neural-canvas,
-  .neural-transition-canvas {
-    height: 160px;
+    bottom: -60px;
+    height: 220px;
   }
 
   .cinema-curve-svg {
+    bottom: 60px;
     height: 28px;
   }
 }
@@ -7809,32 +7806,32 @@ body.agenda-page.sharp-theme,
 }
 
 .ticker-link {
-  background: #007878 !important;
-  color: #FFFFFF !important;
+  background: none !important;
+  color: #00E5FF !important;
   font-weight: 700 !important;
-  text-decoration: none !important;
-  margin-left: 0.35rem;
-  padding: 0.12rem 0.55rem;
-  border-radius: 4px;
-  transition: all 0.2s ease;
-  display: inline-flex;
-  align-items: center;
+  text-decoration: underline !important;
+  text-underline-offset: 3px;
+  margin-left: 0.25rem;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  transition: color 0.18s ease;
+  display: inline !important;
   cursor: pointer;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
 }
 
 .ticker-link:hover {
-  background: #005078 !important;
+  background: none !important;
   color: #FFFFFF !important;
-  transform: translateY(-1px);
-  box-shadow: 0 2px 8px rgba(0, 120, 120, 0.45);
-  text-decoration: none !important;
+  text-decoration: underline !important;
+  transform: none !important;
+  box-shadow: none !important;
 }
 
 .ticker-link:focus-visible {
-  outline: 2px solid #FFFFFF;
+  outline: 2px solid #00E5FF;
   outline-offset: 2px;
-  background: #005078;
+  background: none !important;
 }
 
 .ticker-sep {

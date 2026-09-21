@@ -1650,16 +1650,18 @@ document.addEventListener('DOMContentLoaded', function () {
   function getCurveY(x) {
     var isMobile = width <= 640;
     var svgH = isMobile ? 28 : 48;
+    var bottomOffset = isMobile ? 60 : 90;
     var u = Math.max(0, Math.min(1, x / width));
     // Cubic bezier matching SVG curve: M0,0 C480,48 960,48 1440,0
     var curveDepth = svgH * 0.75 * 4 * u * (1 - u);
-    return (height - svgH) + curveDepth;
+    return (height - bottomOffset - svgH) + curveDepth;
   }
 
   function resizeCanvas() {
     var rect = canvas.getBoundingClientRect();
     width = rect.width || window.innerWidth;
-    height = rect.height || (width <= 640 ? 160 : 220);
+    var isMobile = width <= 640;
+    height = rect.height || (isMobile ? 220 : 310);
     dpr = window.devicePixelRatio || 1;
 
     canvas.width = Math.floor(width * dpr);
@@ -1676,9 +1678,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     var isMobile = width <= 640;
     // Sparse, refined node density
-    var nodeCount = isMobile ? Math.max(16, Math.min(22, Math.floor(width / 34))) : Math.max(24, Math.min(36, Math.floor(width / 40)));
+    var nodeCount = isMobile ? Math.max(16, Math.min(22, Math.floor(width / 34))) : Math.max(22, Math.min(34, Math.floor(width / 44)));
 
-    // 1. Generate Nodes along and across the boundary curve
+    // 1. Generate Nodes flowing organically across and below the boundary curve
     for (var i = 0; i < nodeCount; i++) {
       var normI = i / (nodeCount - 1);
       var jitter = (Math.random() - 0.5) * (width / nodeCount) * 1.35;
@@ -1688,23 +1690,24 @@ document.addEventListener('DOMContentLoaded', function () {
       var normX = x / width;
       var centerFactor = Math.sin(Math.PI * normX); // 0 at edges, 1 in center
 
-      // Vertical band from -65px (above in video) to +36px (below in off-white)
+      // Vertical distribution smoothly spanning both sides of the curve without bounding
       var randPos = Math.random();
       var yOffset;
       if (randPos < 0.42) {
-        // Above boundary in dark hero video (-65px to -14px)
-        yOffset = -14 - Math.random() * 50 * (0.65 + 0.35 * centerFactor);
-      } else if (randPos < 0.72) {
-        // Straddling right around the boundary line (-14px to +10px)
-        yOffset = -14 + Math.random() * 24;
+        // Above curve in dark hero video (-95px to -16px)
+        yOffset = -16 - Math.random() * 75 * (0.65 + 0.35 * centerFactor);
+      } else if (randPos < 0.70) {
+        // Straddling right across the boundary line (-16px to +16px)
+        yOffset = -16 + Math.random() * 32;
       } else {
-        // Below boundary flowing into off-white section (+10px to +38px)
-        yOffset = 10 + Math.random() * 28 * (0.65 + 0.35 * centerFactor);
+        // Flowing below boundary into off-white section (+16px to +72px)
+        yOffset = 16 + Math.random() * 56 * (0.65 + 0.35 * centerFactor);
       }
 
-      var y = Math.max(14, Math.min(height - 10, curveAtX + yOffset));
-      var isMain = Math.random() < 0.36; // ~36% prominent nodes (4.5-7px), 64% secondary nodes (2.2-3.6px)
-      var baseRadius = isMain ? (4.2 + Math.random() * 2.6) : (2.0 + Math.random() * 1.5);
+      var y = Math.max(16, Math.min(height - 16, curveAtX + yOffset));
+      var isMain = Math.random() < 0.32;
+      // Refined micro-nodes: delicate, sleek dots
+      var baseRadius = isMain ? (2.2 + Math.random() * 0.8) : (1.1 + Math.random() * 0.6);
 
       nodes.push({
         id: i,
@@ -1712,19 +1715,19 @@ document.addEventListener('DOMContentLoaded', function () {
         y: y,
         originX: x,
         originY: y,
-        vx: (Math.random() - 0.5) * 0.12,
-        vy: (Math.random() - 0.5) * 0.09,
+        vx: (Math.random() - 0.5) * 0.08,
+        vy: (Math.random() - 0.5) * 0.06,
         radius: baseRadius,
         isMain: isMain,
         pulsePhase: Math.random() * Math.PI * 2,
-        pulseSpeed: 0.008 + Math.random() * 0.012,
-        baseAlpha: isMain ? (0.86 + Math.random() * 0.14) : (0.68 + Math.random() * 0.24),
+        pulseSpeed: 0.007 + Math.random() * 0.010,
+        baseAlpha: isMain ? (0.75 + Math.random() * 0.20) : (0.55 + Math.random() * 0.25),
         neighborIds: []
       });
     }
 
     // 2. Build Sparse, Organic Connections
-    var maxDist = isMobile ? 105 : 145;
+    var maxDist = isMobile ? 85 : 125;
     for (var a = 0; a < nodes.length; a++) {
       var nodeA = nodes[a];
       var candidates = [];
@@ -1765,15 +1768,15 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // 3. Initialize Data-Flow Packets
-    var signalCount = isMobile ? 3 : (connections.length > 8 ? 6 : 4);
+    var signalCount = isMobile ? 2 : (connections.length > 8 ? 4 : 3);
     for (var s = 0; s < signalCount && connections.length > 0; s++) {
       var randConnIdx = Math.floor(Math.random() * connections.length);
       dataSignals.push({
         connIndex: randConnIdx,
         progress: Math.random(),
-        speed: 0.0032 + Math.random() * 0.0040, // Slow, elegant glide
+        speed: 0.0028 + Math.random() * 0.0035,
         direction: Math.random() < 0.5 ? 1 : -1,
-        size: 2.2 + Math.random() * 1.4
+        size: 1.1 + Math.random() * 0.5
       });
     }
   }
@@ -1824,7 +1827,7 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     }
 
-    // 2. Draw Connecting Neural Lines with High Visibility
+    // 2. Draw Connecting Neural Lines with Delicate, Clean Strokes
     for (var c = 0; c < connections.length; c++) {
       var conn = connections[c];
       var nodeA = nodes[conn.nodeAIndex];
@@ -1839,29 +1842,31 @@ document.addEventListener('DOMContentLoaded', function () {
         var midX = (nodeA.x + nodeB.x) / 2;
         var edgeTaper = Math.sin(Math.PI * Math.max(0, Math.min(1, midX / width)));
         var signalBoost = conn.activeSignal ? 0.35 : 0;
-        var lineAlpha = Math.min(1.0, distFactor * edgeTaper * (0.75 + signalBoost));
+        var lineAlpha = Math.min(1.0, distFactor * edgeTaper * (0.65 + signalBoost));
 
         if (lineAlpha > 0.03) {
           var midY = (nodeA.y + nodeB.y) / 2;
           var curveAtMid = getCurveY(midX);
-          var onLightSide = midY > (curveAtMid - 2);
+          var onLightSide = midY > curveAtMid;
 
-          // Layer A: Diffuse luminous glow line
-          ctx.beginPath();
-          ctx.lineWidth = conn.activeSignal ? 4.5 : 3.2;
-          ctx.strokeStyle = onLightSide
-            ? 'rgba(0, 120, 120, ' + (lineAlpha * 0.35).toFixed(3) + ')'
-            : 'rgba(0, 190, 190, ' + (lineAlpha * 0.40).toFixed(3) + ')';
-          ctx.moveTo(nodeA.x, nodeA.y);
-          ctx.lineTo(nodeB.x, nodeB.y);
-          ctx.stroke();
+          // If active signal, draw subtle outer glow line
+          if (conn.activeSignal) {
+            ctx.beginPath();
+            ctx.lineWidth = 2.0;
+            ctx.strokeStyle = onLightSide
+              ? 'rgba(0, 120, 120, ' + (lineAlpha * 0.22).toFixed(3) + ')'
+              : 'rgba(0, 210, 210, ' + (lineAlpha * 0.28).toFixed(3) + ')';
+            ctx.moveTo(nodeA.x, nodeA.y);
+            ctx.lineTo(nodeB.x, nodeB.y);
+            ctx.stroke();
+          }
 
-          // Layer B: Crisp primary connection line
+          // Crisp delicate connection line
           ctx.beginPath();
-          ctx.lineWidth = conn.activeSignal ? 1.6 : 1.25;
+          ctx.lineWidth = conn.activeSignal ? 1.2 : 0.8;
           ctx.strokeStyle = onLightSide
-            ? 'rgba(0, 95, 95, ' + (lineAlpha * 0.95).toFixed(3) + ')'
-            : 'rgba(0, 175, 175, ' + (lineAlpha * 0.95).toFixed(3) + ')';
+            ? 'rgba(0, 105, 105, ' + (lineAlpha * 0.40).toFixed(3) + ')'
+            : 'rgba(0, 200, 200, ' + (lineAlpha * 0.50).toFixed(3) + ')';
           ctx.moveTo(nodeA.x, nodeA.y);
           ctx.lineTo(nodeB.x, nodeB.y);
           ctx.stroke();
@@ -1869,7 +1874,7 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     }
 
-    // 3. Draw and Advance Data-Flow Pulses (Information moving through network)
+    // 3. Draw and Advance Data-Flow Pulses
     for (var s = 0; s < dataSignals.length; s++) {
       var sig = dataSignals[s];
       if (sig.connIndex >= connections.length) continue;
@@ -1907,117 +1912,91 @@ document.addEventListener('DOMContentLoaded', function () {
       var sigX = fromNode.x + (toNode.x - fromNode.x) * sig.progress;
       var sigY = fromNode.y + (toNode.y - fromNode.y) * sig.progress;
       var sigCurveY = getCurveY(sigX);
-      var sigOnLight = sigY > (sigCurveY - 2);
+      var sigOnLight = sigY > sigCurveY;
 
-      // Packet Outer Luminous Bloom
+      // Packet Outer Soft Glow
       ctx.beginPath();
-      ctx.arc(sigX, sigY, sig.size * 2.6, 0, Math.PI * 2);
+      ctx.arc(sigX, sigY, sig.size * 2.0, 0, Math.PI * 2);
       ctx.fillStyle = sigOnLight
-        ? 'rgba(0, 140, 140, 0.55)'
-        : 'rgba(0, 220, 220, 0.65)';
+        ? 'rgba(0, 140, 140, 0.35)'
+        : 'rgba(0, 220, 220, 0.45)';
       ctx.fill();
 
       // Packet Bright Core
       ctx.beginPath();
-      ctx.arc(sigX, sigY, sig.size * 1.1, 0, Math.PI * 2);
-      ctx.fillStyle = '#FFFFFF';
+      ctx.arc(sigX, sigY, sig.size * 0.85, 0, Math.PI * 2);
+      ctx.fillStyle = sigOnLight ? '#007878' : '#FFFFFF';
       ctx.fill();
     }
 
-    // 4. Draw Nodes with Multi-Layer Radial Luminous Glow (Visible on Dark & Off-White)
+    // 4. Draw Nodes with Sleek, Minimalist Micro-Aesthetic (No Oversized Concentric Rings)
     for (var k = 0; k < nodes.length; k++) {
       var node = nodes[k];
       var pulse = Math.sin(node.pulsePhase);
       var curveY = getCurveY(node.x);
-      var onLightSide = node.y > (curveY + 2); // In off-white section
+      var diffY = node.y - curveY;
+      var onLightSide = diffY > 0;
       var edgeFade = Math.sin(Math.PI * Math.max(0, Math.min(1, node.x / width)));
-      var nodeAlpha = Math.max(0.35, Math.min(1.0, (node.baseAlpha + pulse * 0.16) * edgeFade));
-      var drawRadius = Math.max(1.8, node.radius + pulse * (node.isMain ? 0.6 : 0.3));
 
-      if (node.isMain) {
-        // ── Main Prominent Node ──
-        if (onLightSide) {
-          // On Light/Off-White Background:
-          // Multi-layer atmospheric separation glow: Teal Core -> Soft White/Teal Glow -> Fade
-          var glowGrad = ctx.createRadialGradient(node.x, node.y, 0, node.x, node.y, drawRadius * 4.2);
-          glowGrad.addColorStop(0, 'rgba(0, 140, 140, ' + (nodeAlpha * 0.50).toFixed(3) + ')');
-          glowGrad.addColorStop(0.35, 'rgba(0, 160, 160, ' + (nodeAlpha * 0.35).toFixed(3) + ')');
-          glowGrad.addColorStop(0.65, 'rgba(255, 255, 255, ' + (nodeAlpha * 0.60).toFixed(3) + ')');
-          glowGrad.addColorStop(1, 'rgba(0, 120, 120, 0)');
+      // Gently fade out nodes as they flow deeper into the numbers section
+      var verticalFade = 1.0;
+      if (diffY > 15) {
+        verticalFade = Math.max(0.12, Math.min(1.0, 1.0 - (diffY - 15) / 80));
+      }
 
+      var nodeAlpha = Math.max(0.20, Math.min(0.95, (node.baseAlpha + pulse * 0.12) * edgeFade * verticalFade));
+      var drawRadius = Math.max(1.1, node.radius + pulse * (node.isMain ? 0.35 : 0.20));
+
+      if (onLightSide) {
+        // ── In Off-White Numbers Section (Clean, subtle teal micro-node) ──
+        if (node.isMain) {
+          // Soft subtle teal aura (no white rings)
+          var aura = ctx.createRadialGradient(node.x, node.y, 0, node.x, node.y, drawRadius * 2.2);
+          aura.addColorStop(0, 'rgba(0, 130, 130, ' + (nodeAlpha * 0.18).toFixed(3) + ')');
+          aura.addColorStop(1, 'rgba(0, 130, 130, 0)');
           ctx.beginPath();
-          ctx.arc(node.x, node.y, drawRadius * 4.2, 0, Math.PI * 2);
-          ctx.fillStyle = glowGrad;
+          ctx.arc(node.x, node.y, drawRadius * 2.2, 0, Math.PI * 2);
+          ctx.fillStyle = aura;
           ctx.fill();
+        }
 
-          // Rich solid Plaksha teal body
-          ctx.beginPath();
-          ctx.arc(node.x, node.y, drawRadius, 0, Math.PI * 2);
-          ctx.fillStyle = 'rgba(0, 105, 105, ' + (nodeAlpha * 0.98).toFixed(3) + ')';
-          ctx.fill();
+        // Crisp solid teal body
+        ctx.beginPath();
+        ctx.arc(node.x, node.y, drawRadius, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(0, 105, 105, ' + (nodeAlpha * 0.88).toFixed(3) + ')';
+        ctx.fill();
 
-          // Crisp light center highlight dot
+        // Subtle micro center dot for main nodes
+        if (node.isMain) {
           ctx.beginPath();
-          ctx.arc(node.x, node.y, Math.max(1.2, drawRadius * 0.48), 0, Math.PI * 2);
-          ctx.fillStyle = 'rgba(242, 240, 236, ' + (nodeAlpha * 0.98).toFixed(3) + ')';
-          ctx.fill();
-        } else {
-          // On Dark Hero Video Background:
-          // Multi-layer luminous teal bloom halo
-          var darkGlow = ctx.createRadialGradient(node.x, node.y, 0, node.x, node.y, drawRadius * 3.8);
-          darkGlow.addColorStop(0, 'rgba(0, 210, 210, ' + (nodeAlpha * 0.65).toFixed(3) + ')');
-          darkGlow.addColorStop(0.4, 'rgba(' + TEAL_R + ',' + TEAL_G + ',' + TEAL_B + ',' + (nodeAlpha * 0.35).toFixed(3) + ')');
-          darkGlow.addColorStop(0.75, 'rgba(' + TEAL_R + ',' + TEAL_G + ',' + TEAL_B + ',' + (nodeAlpha * 0.15).toFixed(3) + ')');
-          darkGlow.addColorStop(1, 'rgba(' + TEAL_R + ',' + TEAL_G + ',' + TEAL_B + ', 0)');
-
-          ctx.beginPath();
-          ctx.arc(node.x, node.y, drawRadius * 3.8, 0, Math.PI * 2);
-          ctx.fillStyle = darkGlow;
-          ctx.fill();
-
-          // Vibrant solid teal body
-          ctx.beginPath();
-          ctx.arc(node.x, node.y, drawRadius, 0, Math.PI * 2);
-          ctx.fillStyle = 'rgba(0, 170, 170, ' + (nodeAlpha * 0.98).toFixed(3) + ')';
-          ctx.fill();
-
-          // Luminous white core
-          ctx.beginPath();
-          ctx.arc(node.x, node.y, Math.max(1.2, drawRadius * 0.48), 0, Math.PI * 2);
-          ctx.fillStyle = 'rgba(255, 255, 255, ' + (nodeAlpha * 0.98).toFixed(3) + ')';
+          ctx.arc(node.x, node.y, Math.max(0.7, drawRadius * 0.40), 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(242, 240, 236, ' + (nodeAlpha * 0.95).toFixed(3) + ')';
           ctx.fill();
         }
       } else {
-        // ── Secondary Node ──
-        if (onLightSide) {
-          // Subtle soft halo
+        // ── In Dark Hero Video Background (Luminous cyan/teal micro-node) ──
+        if (node.isMain) {
+          // Single subtle bloom (no oversized rings)
+          var bloom = ctx.createRadialGradient(node.x, node.y, 0, node.x, node.y, drawRadius * 2.2);
+          bloom.addColorStop(0, 'rgba(0, 220, 220, ' + (nodeAlpha * 0.35).toFixed(3) + ')');
+          bloom.addColorStop(1, 'rgba(0, 160, 160, 0)');
           ctx.beginPath();
           ctx.arc(node.x, node.y, drawRadius * 2.2, 0, Math.PI * 2);
-          ctx.fillStyle = 'rgba(255, 255, 255, ' + (nodeAlpha * 0.50).toFixed(3) + ')';
+          ctx.fillStyle = bloom;
           ctx.fill();
+        }
 
-          // Solid teal dot
-          ctx.beginPath();
-          ctx.arc(node.x, node.y, drawRadius, 0, Math.PI * 2);
-          ctx.fillStyle = 'rgba(0, 105, 105, ' + (nodeAlpha * 0.90).toFixed(3) + ')';
-          ctx.fill();
-        } else {
-          // Soft bloom
-          ctx.beginPath();
-          ctx.arc(node.x, node.y, drawRadius * 2.5, 0, Math.PI * 2);
-          ctx.fillStyle = 'rgba(' + TEAL_R + ',' + TEAL_G + ',' + TEAL_B + ',' + (nodeAlpha * 0.40).toFixed(3) + ')';
-          ctx.fill();
+        // Vibrant cyan/teal body
+        ctx.beginPath();
+        ctx.arc(node.x, node.y, drawRadius, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(0, 195, 195, ' + (nodeAlpha * 0.95).toFixed(3) + ')';
+        ctx.fill();
 
-          // Bright teal dot
+        // Small white pinpoint
+        if (node.isMain) {
           ctx.beginPath();
-          ctx.arc(node.x, node.y, drawRadius, 0, Math.PI * 2);
-          ctx.fillStyle = 'rgba(0, 185, 185, ' + (nodeAlpha * 0.95).toFixed(3) + ')';
-          ctx.fill();
-
-          // Small white core
-          ctx.beginPath();
-          ctx.arc(node.x, node.y, Math.max(0.8, drawRadius * 0.40), 0, Math.PI * 2);
-          ctx.fillStyle = '#FFFFFF';
+          ctx.arc(node.x, node.y, Math.max(0.7, drawRadius * 0.42), 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(255, 255, 255, ' + (nodeAlpha * 0.95).toFixed(3) + ')';
           ctx.fill();
         }
       }
