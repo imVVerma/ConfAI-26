@@ -1150,7 +1150,7 @@
         badgeClass: 'tag-green',
         time: '09:10 AM - 10:00 AM (50 mins)',
         venue: 'Auditorium',
-        title: 'Keynote Address 4',
+        title: 'Keynote Address 3',
         speaker: 'Dr. Balaraman Ravindran',
         affiliation: 'Head, Dept. of Data Science & AI, IIT Madras | Ph.D. University of Massachusetts Amherst',
         desc: 'Plenary keynote on reinforcement learning, graph neural representations, and scalable AI frameworks.'

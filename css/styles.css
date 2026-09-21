@@ -7981,6 +7981,13 @@ body.agenda-page.sharp-theme,
   line-height: 1.3;
 }
 
+.sharp-poster-tracks {
+  font-size: 0.86rem;
+  color: #475569;
+  margin-top: 0.25rem;
+  line-height: 1.45;
+}
+
 .sharp-track-subbox-detail {
   font-size: 0.82rem;
   color: #475569;
