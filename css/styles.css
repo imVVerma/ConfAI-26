@@ -1008,7 +1008,7 @@ body.nav-open .site-header {
   display: block;
   width: 100%;
   aspect-ratio: 1 / 1;
-  background-color: #e5e5e5;
+  background-color: transparent;
   overflow: hidden;
   text-decoration: none;
   cursor: pointer;
@@ -7290,30 +7290,31 @@ body.agenda-page.sharp-theme,
 .speaker-card {
   display: flex;
   flex-direction: column;
-  background: #FFFFFF;
+  background: transparent;
   border: none;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-  transition: transform var(--transition), box-shadow var(--transition);
+  border-radius: 0;
+  overflow: visible;
+  box-shadow: none;
+  transition: transform var(--transition);
   height: 100%;
 }
 
 .speaker-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: none;
 }
 
 .speaker-photo-wrap {
   display: block;
   width: 100%;
   aspect-ratio: 1 / 1;
-  background-color: #E2E8F0;
+  background: transparent !important;
+  background-color: transparent !important;
   overflow: hidden;
   text-decoration: none;
   cursor: pointer;
   border: none;
-  border-radius: 0;
+  border-radius: 8px;
 }
 
 .speaker-photo {
@@ -7322,7 +7323,8 @@ body.agenda-page.sharp-theme,
   object-fit: cover;
   object-position: center 20%;
   display: block;
-  border-radius: 0;
+  background: transparent !important;
+  border-radius: 8px;
   transition: transform 0.25s ease;
 }
 
@@ -7337,7 +7339,11 @@ body.agenda-page.sharp-theme,
 .speaker-info {
   display: flex;
   flex-direction: column;
-  padding: 0.65rem 0.8rem 0.75rem;
+  background: #FFFFFF;
+  border-radius: 8px;
+  padding: 0.85rem 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  margin-top: 0.65rem;
   flex-grow: 1;
 }
 
