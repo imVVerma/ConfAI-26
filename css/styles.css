@@ -618,13 +618,13 @@ body.nav-open .site-header {
 
 .btn-primary {
   background: #FFFFFF;
-  color: #005C5C;
+  color: var(--color-teal, #007878);
 }
 
 .btn-primary:hover,
 .btn-primary:focus-visible {
   background: #FFFFFF;
-  color: #005C5C;
+  color: var(--color-teal, #007878);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
   transform: translateY(-2px);
 }
@@ -1044,7 +1044,7 @@ body.nav-open .site-header {
   font-family: var(--font-display, 'Open Sans', sans-serif);
   font-size: 1.35rem;
   font-weight: 600;
-  color: #003366;
+  color: var(--color-navy, #005078);
   line-height: 1.3;
   margin-bottom: 0.4rem;
 }
@@ -1183,14 +1183,14 @@ body.nav-open .site-header {
 
 .audience-card .fellowship-note {
   font-size: 0.88rem;
-  color: #00796b;
+  color: var(--color-teal, #007878);
   margin-top: 0.5rem;
   margin-bottom: 1rem;
 }
 
 .phd-apply-btn {
   display: inline-block;
-  background-color: #00796b;
+  background-color: var(--color-teal, #007878);
   color: #ffffff;
   padding: 0.5rem 1rem;
   border-radius: 6px;
@@ -1203,7 +1203,7 @@ body.nav-open .site-header {
 }
 
 .phd-apply-btn:hover {
-  background-color: #004d40;
+  background-color: var(--color-navy, #005078);
   color: #ffffff;
 }
 
@@ -1389,8 +1389,8 @@ body.nav-open .site-header {
 }
 
 .status-upcoming {
-  background: rgba(0, 92, 92, 0.12);
-  color: #005C5C;
+  background: rgba(0, 120, 120, 0.12);
+  color: var(--color-teal, #007878);
 }
 
 .date-value {
@@ -4009,7 +4009,7 @@ p {
 .btn-outline-hero:focus-visible {
   background: rgba(0, 120, 120, 0.08);
   border-color: var(--color-teal);
-  color: #005555;
+  color: var(--color-teal, #007878);
   transform: translateY(-2px);
 }
 
@@ -6652,7 +6652,7 @@ body.agenda-page.sharp-theme,
 .sharp-track-meta {
   font-size: 0.82rem;
   font-weight: 600;
-  color: #0369A1;
+  color: var(--color-navy, #005078);
 }
 
 .sharp-track-desc {
@@ -6914,33 +6914,34 @@ body.agenda-page.sharp-theme,
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0;
+  gap: clamp(1.2rem, 2.4vw, 2.25rem);
   margin-bottom: 0.25rem;
 }
 
 .cinema-brand-logo-img {
   height: clamp(44px, 6.2vw, 68px);
   width: auto;
-  max-width: 62vw;
+  max-width: 58vw;
   object-fit: contain;
   display: block;
   filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.7));
+  flex-shrink: 0;
+}
+
+.cinema-brand-year-svg {
+  height: clamp(44px, 6.2vw, 68px);
+  width: auto;
+  display: block;
+  flex-shrink: 0;
+  filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.7));
+  margin: 0;
+  padding: 0;
 }
 
 .cinema-brand-year {
   font-family: 'Open Sans', sans-serif !important;
-  font-size: clamp(3.4375rem, 7.75vw, 5.3125rem);
   font-weight: 700;
   color: #FFFFFF;
-  letter-spacing: 0;
-  line-height: 1;
-  display: inline-flex;
-  align-items: center;
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
-  margin: 0 0 0 0.9rem;
-  padding: 0;
-  transform: translateY(-1px);
-  /* Optical vertical center alignment with CONFAI logo */
 }
 
 /* Tagline in Plaksha Teal - Clean, Simple & Minimalist */
@@ -7446,7 +7447,7 @@ body.agenda-page.sharp-theme,
   }
 
   .cinema-brand-lockup {
-    gap: 0.25rem;
+    gap: clamp(0.75rem, 3.5vw, 1.25rem);
   }
 
   .cinema-meta-row {
@@ -7691,9 +7692,9 @@ body.agenda-page.sharp-theme,
   width: 100%;
   height: var(--ticker-h, 38px);
   flex-shrink: 0;
-  background: linear-gradient(90deg, #004646 0%, #005078 50%, #004646 100%);
-  border-top: 1px solid rgba(226, 232, 240, 0.18);
-  border-bottom: 1px solid var(--color-teal, #007878);
+  background: #005078;
+  border-top: 1px solid rgba(226, 232, 240, 0.22);
+  border-bottom: 2px solid var(--color-teal, #007878);
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
   overflow: hidden;
   position: relative;
@@ -7719,12 +7720,12 @@ body.agenda-page.sharp-theme,
 
 .announcement-ticker-bar::before {
   left: 0;
-  background: linear-gradient(to right, #004646 15%, transparent);
+  background: linear-gradient(to right, #005078 15%, transparent);
 }
 
 .announcement-ticker-bar::after {
   right: 0;
-  background: linear-gradient(to left, #004646 15%, transparent);
+  background: linear-gradient(to left, #005078 15%, transparent);
 }
 
 .ticker-track {
@@ -7765,36 +7766,37 @@ body.agenda-page.sharp-theme,
 }
 
 .ticker-link {
-  color: #78C58C !important;
+  background: #007878 !important;
+  color: #FFFFFF !important;
   font-weight: 700 !important;
-  text-decoration: underline !important;
-  text-underline-offset: 3px;
-  text-decoration-thickness: 1.5px;
+  text-decoration: none !important;
   margin-left: 0.35rem;
-  padding: 0.15rem 0.45rem;
+  padding: 0.12rem 0.55rem;
   border-radius: 4px;
   transition: all 0.2s ease;
   display: inline-flex;
   align-items: center;
   cursor: pointer;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
 }
 
 .ticker-link:hover {
+  background: #005078 !important;
   color: #FFFFFF !important;
-  background: rgba(120, 197, 140, 0.22);
-  text-shadow: 0 0 10px rgba(120, 197, 140, 0.6);
-  text-decoration-color: #FFFFFF !important;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 120, 120, 0.45);
+  text-decoration: none !important;
 }
 
 .ticker-link:focus-visible {
-  outline: 2px solid #78C58C;
+  outline: 2px solid #FFFFFF;
   outline-offset: 2px;
-  background: rgba(120, 197, 140, 0.25);
+  background: #005078;
 }
 
 .ticker-sep {
-  color: #78C58C;
-  opacity: 0.85;
+  color: #007878;
+  opacity: 0.95;
   font-size: 0.55rem;
   margin-left: 2.25rem;
   display: inline-flex;

@@ -120,7 +120,7 @@
     }
 
     function tick() {
-      var now  = Date.now();
+      var now = Date.now();
       var diff = TARGET_START - now;
 
       if (diff <= 0) {
@@ -133,7 +133,7 @@
       }
 
       var totalSecs = Math.floor(diff / 1000);
-      var days  = Math.floor(totalSecs / 86400);
+      var days = Math.floor(totalSecs / 86400);
       var hours = Math.floor((totalSecs % 86400) / 3600);
       var minutes = Math.floor((totalSecs % 3600) / 60);
       var seconds = totalSecs % 60;
@@ -148,7 +148,7 @@
     var timer = setInterval(tick, 1000);
   })();
 
-    /* ── RELIVE VIDEO YEAR SELECTOR ────────────────────────────────────────── */
+  /* ── RELIVE VIDEO YEAR SELECTOR ────────────────────────────────────────── */
   (function initReliveVideo() {
     var filters = document.querySelectorAll(".video-year-filter");
     var iframe = document.querySelector(".video-wrapper iframe");
@@ -212,7 +212,7 @@
     window.addEventListener("hashchange", handleHash);
   })();
 
-/* ── SPEAKER MODAL ──────────────────────────────────────────────────────── */
+  /* ── SPEAKER MODAL ──────────────────────────────────────────────────────── */
   (function initSpeakerModal() {
     var triggers = document.querySelectorAll(".speaker-trigger");
     var modal = document.getElementById("speaker-modal");
@@ -235,7 +235,7 @@
 
       modal.removeAttribute("hidden");
       document.body.classList.add("modal-open");
-      
+
       closeBtn.focus();
     }
 
@@ -248,28 +248,28 @@
       }
     }
 
-    triggers.forEach(function(trigger) {
-      trigger.addEventListener("click", function() {
+    triggers.forEach(function (trigger) {
+      trigger.addEventListener("click", function () {
         openModal(trigger);
       });
     });
 
     closeBtn.addEventListener("click", closeModal);
 
-    modal.addEventListener("click", function(event) {
+    modal.addEventListener("click", function (event) {
       if (event.target === modal) {
         closeModal();
       }
     });
 
-    document.addEventListener("keydown", function(event) {
+    document.addEventListener("keydown", function (event) {
       if (event.key === "Escape" && !modal.hasAttribute("hidden")) {
         closeModal();
       }
     });
-    
+
     // Focus trap inside modal
-    modal.addEventListener("keydown", function(event) {
+    modal.addEventListener("keydown", function (event) {
       if (event.key === "Tab") {
         var focusable = modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
         var first = focusable[0];
@@ -340,7 +340,7 @@
       var photoSrc = "img/gallery-2025/" + photo.file;
       var altText = photo.alt || ("ConfAI 2025 Photo " + (currentPhotoIndex + 1));
 
-      photoModalImg.onerror = function() {
+      photoModalImg.onerror = function () {
         this.onerror = null;
         this.style.display = "none";
       };
@@ -380,25 +380,25 @@
       photoModalClose.addEventListener("click", closePhotoModal);
     }
     if (photoModalPrev) {
-      photoModalPrev.addEventListener("click", function(e) {
+      photoModalPrev.addEventListener("click", function (e) {
         e.stopPropagation();
         updatePhotoModal(currentPhotoIndex - 1);
       });
     }
     if (photoModalNext) {
-      photoModalNext.addEventListener("click", function(e) {
+      photoModalNext.addEventListener("click", function (e) {
         e.stopPropagation();
         updatePhotoModal(currentPhotoIndex + 1);
       });
     }
 
-    photoModal.addEventListener("click", function(event) {
+    photoModal.addEventListener("click", function (event) {
       if (event.target === photoModal || event.target.classList.contains("photo-modal-viewer") || event.target.classList.contains("photo-modal-img-wrap")) {
         closePhotoModal();
       }
     });
 
-    document.addEventListener("keydown", function(event) {
+    document.addEventListener("keydown", function (event) {
       if (photoModal.hasAttribute("hidden")) { return; }
       if (event.key === "Escape") {
         closePhotoModal();
@@ -430,7 +430,7 @@
         slide.setAttribute("aria-label", "Gallery slide " + (s + 1) + " of " + totalSlides);
 
         var slice = photos.slice(s * itemsPerSlide, s * itemsPerSlide + itemsPerSlide);
-        slice.forEach(function(photo, localIdx) {
+        slice.forEach(function (photo, localIdx) {
           var globalIdx = s * itemsPerSlide + localIdx;
           var altText = photo.alt || ("ConfAI 2025 conference photo " + (globalIdx + 1));
 
@@ -445,7 +445,7 @@
           img.className = "gallery-img";
           img.loading = globalIdx < 8 ? "eager" : "lazy";
           img.decoding = "async";
-          img.onerror = function() {
+          img.onerror = function () {
             this.onerror = null;
             this.style.display = "none";
             btn.classList.add("gallery-item--broken");
@@ -460,7 +460,7 @@
           overlay.appendChild(caption);
           btn.appendChild(overlay);
 
-          btn.addEventListener("click", function() {
+          btn.addEventListener("click", function () {
             openPhotoModal(globalIdx, btn);
           });
 
@@ -477,8 +477,8 @@
           dot.setAttribute("role", "tab");
           dot.setAttribute("aria-label", "Go to gallery slide " + (s + 1));
           dot.setAttribute("aria-selected", s === 0 ? "true" : "false");
-          (function(targetSlide) {
-            dot.addEventListener("click", function() {
+          (function (targetSlide) {
+            dot.addEventListener("click", function () {
               showSlide(targetSlide);
             });
           })(s);
@@ -495,7 +495,7 @@
 
         if (dotsContainer) {
           var dots = dotsContainer.querySelectorAll(".gallery-dot");
-          dots.forEach(function(d, i) {
+          dots.forEach(function (d, i) {
             if (i === currentSlide) {
               d.classList.add("is-active");
               d.setAttribute("aria-selected", "true");
@@ -508,12 +508,12 @@
       }
 
       if (previousButton) {
-        previousButton.addEventListener("click", function() {
+        previousButton.addEventListener("click", function () {
           showSlide(currentSlide - 1);
         });
       }
       if (nextButton) {
-        nextButton.addEventListener("click", function() {
+        nextButton.addEventListener("click", function () {
           showSlide(currentSlide + 1);
         });
       }
@@ -521,12 +521,12 @@
       // Touch swipe gestures
       var touchStartX = 0;
       var touchEndX = 0;
-      grid.addEventListener("touchstart", function(e) {
+      grid.addEventListener("touchstart", function (e) {
         touchStartX = e.changedTouches[0].screenX;
         stopAutoplay();
       }, { passive: true });
 
-      grid.addEventListener("touchend", function(e) {
+      grid.addEventListener("touchend", function (e) {
         touchEndX = e.changedTouches[0].screenX;
         var diff = touchEndX - touchStartX;
         if (Math.abs(diff) > 45) {
@@ -542,7 +542,7 @@
       // Autoplay with pause-on-hover
       function startAutoplay() {
         stopAutoplay();
-        autoplayTimer = setInterval(function() {
+        autoplayTimer = setInterval(function () {
           showSlide(currentSlide + 1);
         }, 4500);
       }
@@ -564,14 +564,14 @@
     }
 
     fetch("img/gallery-2025/manifest.json")
-      .then(function(res) {
+      .then(function (res) {
         if (!res.ok) { throw new Error("Manifest not found"); }
         return res.json();
       })
-      .then(function(data) {
+      .then(function (data) {
         renderGallery(data.photos || []);
       })
-      .catch(function(err) {
+      .catch(function (err) {
         grid.innerHTML = "<p class=\"gallery-error\">Gallery photos are temporarily unavailable.</p>";
         console.warn("Gallery manifest error:", err);
       });
@@ -589,64 +589,64 @@
       openButton.focus();
     }
 
-    openButton.addEventListener("click", function() {
+    openButton.addEventListener("click", function () {
       modal.removeAttribute("hidden");
       document.body.classList.add("modal-open");
       closeButton.focus();
     });
     closeButton.addEventListener("click", closeModal);
-    modal.addEventListener("click", function(event) {
+    modal.addEventListener("click", function (event) {
       if (event.target === modal) { closeModal(); }
     });
-    document.addEventListener("keydown", function(event) {
+    document.addEventListener("keydown", function (event) {
       if (event.key === "Escape" && !modal.hasAttribute("hidden")) { closeModal(); }
     });
   })();
   /* ── TRACK MODAL ────────────────────────────────────────────────────────── */
   (function initTrackModal() {
     var triggers = document.querySelectorAll(".track-node");
-    var modal    = document.getElementById("track-modal");
+    var modal = document.getElementById("track-modal");
     if (!modal || triggers.length === 0) { return; }
 
-    var closeBtn  = modal.querySelector(".modal-close");
-    var numEl     = document.getElementById("track-modal-num");
-    var nameEl    = document.getElementById("track-modal-name");
-    var chairsEl  = document.getElementById("track-modal-chairs");
-    var descEl    = document.getElementById("track-modal-desc");
+    var closeBtn = modal.querySelector(".modal-close");
+    var numEl = document.getElementById("track-modal-num");
+    var nameEl = document.getElementById("track-modal-name");
+    var chairsEl = document.getElementById("track-modal-chairs");
+    var descEl = document.getElementById("track-modal-desc");
     var activeTrackTrigger = null;
 
     // ── Faculty URL lookup map ───────────────────────────────────────────────
     var CHAIR_URLS = {
-      "Alok Ranjan":              "https://plaksha.edu.in/faculty-details/alok-ranjan",
-      "Nikhil George":            "https://plaksha.edu.in/faculty-details/nikhil-george",
-      "Divyanshu Jain":           "https://plaksha.edu.in/faculty-details/divyanshu-jain",
-      "Dr. Sunita Chauhan":       "https://plaksha.edu.in/faculty-details/dr-sunita-chauhan",
-      "Dr. Sandeep Manjanna":     "https://plaksha.edu.in/faculty-details/dr-sandeep-manjanna",
-      "Dr. Monika Sharma":        "https://plaksha.edu.in/faculty-details/dr-monika-sharma",
+      "Alok Ranjan": "https://plaksha.edu.in/faculty-details/alok-ranjan",
+      "Nikhil George": "https://plaksha.edu.in/faculty-details/nikhil-george",
+      "Divyanshu Jain": "https://plaksha.edu.in/faculty-details/divyanshu-jain",
+      "Dr. Sunita Chauhan": "https://plaksha.edu.in/faculty-details/dr-sunita-chauhan",
+      "Dr. Sandeep Manjanna": "https://plaksha.edu.in/faculty-details/dr-sandeep-manjanna",
+      "Dr. Monika Sharma": "https://plaksha.edu.in/faculty-details/dr-monika-sharma",
       "Dr. Chaitanya Lekshmi Indira": "https://plaksha.edu.in/faculty-details/dr-chaitanya-lekshmi-indira",
-      "Arshdeep Sidhu":           "https://plaksha.edu.in/faculty-details/arshdeep-sidhu",
-      "Dr. Amruta R Behera":      "https://plaksha.edu.in/faculty-details/dr-amruta-r-behera",
-      "Dr. Rucha Joshi":          "https://plaksha.edu.in/faculty-details/dr-rucha-joshi",
-      "Dr. Swagata Halder":       "https://plaksha.edu.in/faculty-details/dr-swagata-halder",
-      "Sanjeev Khosla":           "https://plaksha.edu.in/faculty-details/sanjeev-khosla",
-      "Dr. Anupam Sobti":         "https://plaksha.edu.in/faculty-details/dr-anupam-sobti",
-      "Dr. Malini Balakrishnan":  "https://plaksha.edu.in/faculty-details/dr-malini-balakrishnan",
+      "Arshdeep Sidhu": "https://plaksha.edu.in/faculty-details/arshdeep-sidhu",
+      "Dr. Amruta R Behera": "https://plaksha.edu.in/faculty-details/dr-amruta-r-behera",
+      "Dr. Rucha Joshi": "https://plaksha.edu.in/faculty-details/dr-rucha-joshi",
+      "Dr. Swagata Halder": "https://plaksha.edu.in/faculty-details/dr-swagata-halder",
+      "Sanjeev Khosla": "https://plaksha.edu.in/faculty-details/sanjeev-khosla",
+      "Dr. Anupam Sobti": "https://plaksha.edu.in/faculty-details/dr-anupam-sobti",
+      "Dr. Malini Balakrishnan": "https://plaksha.edu.in/faculty-details/dr-malini-balakrishnan",
       "Dr. Prashanth Suresh Kumar": "https://plaksha.edu.in/faculty-details/dr-prashanth-suresh-kumar",
-      "Pankaj Pansari":           "https://plaksha.edu.in/faculty-details/pankaj-pansari",
-      "Anil Roy":                 "https://plaksha.edu.in/faculty-details/anil-roy",
-      "Praveen Kumar":            "https://plaksha.edu.in/faculty-details/praveen-kumar",
-      "Deepan Muthirayan":        "https://plaksha.edu.in/faculty-details/deepan-muthirayan",
-      "Rajesh Sharma":            "https://plaksha.edu.in/faculty-details/rajesh-sharma",
-      "Shachindra Nath":          "http://linkedin.com/in/shachindranath",
-      "Dr. Deepak Khemani":       "https://plaksha.edu.in/faculty-details/dr-deepak-khemani",
-      "Saeed Salehi":             "https://plaksha.edu.in/faculty-details/saeed-salehi",
-      "Dr. Tapas Pandit":         "https://plaksha.edu.in/faculty-details/dr-tapas-pandit",
-      "Sandilya Garimella":       "https://plaksha.edu.in/faculty-details/sandilya-garimella"
+      "Pankaj Pansari": "https://plaksha.edu.in/faculty-details/pankaj-pansari",
+      "Anil Roy": "https://plaksha.edu.in/faculty-details/anil-roy",
+      "Praveen Kumar": "https://plaksha.edu.in/faculty-details/praveen-kumar",
+      "Deepan Muthirayan": "https://plaksha.edu.in/faculty-details/deepan-muthirayan",
+      "Rajesh Sharma": "https://plaksha.edu.in/faculty-details/rajesh-sharma",
+      "Shachindra Nath": "http://linkedin.com/in/shachindranath",
+      "Dr. Deepak Khemani": "https://plaksha.edu.in/faculty-details/dr-deepak-khemani",
+      "Saeed Salehi": "https://plaksha.edu.in/faculty-details/saeed-salehi",
+      "Dr. Tapas Pandit": "https://plaksha.edu.in/faculty-details/dr-tapas-pandit",
+      "Sandilya Garimella": "https://plaksha.edu.in/faculty-details/sandilya-garimella"
     };
 
     function buildChairsHTML(chairsStr) {
-      var names = chairsStr.split("|").map(function(s) { return s.trim(); }).filter(Boolean);
-      return names.map(function(name) {
+      var names = chairsStr.split("|").map(function (s) { return s.trim(); }).filter(Boolean);
+      return names.map(function (name) {
         var url = CHAIR_URLS[name];
         if (url) {
           return "<a href=\"" + url + "\" target=\"_blank\" rel=\"noopener noreferrer\">" + name + "</a>";
@@ -658,9 +658,9 @@
     function openTrackModal(trigger) {
       activeTrackTrigger = trigger;
       var chairs = trigger.getAttribute("data-track-chairs");
-      numEl.textContent    = "Track " + trigger.getAttribute("data-track-num");
-      nameEl.textContent   = trigger.getAttribute("data-track-name");
-      descEl.textContent   = trigger.getAttribute("data-track-desc");
+      numEl.textContent = "Track " + trigger.getAttribute("data-track-num");
+      nameEl.textContent = trigger.getAttribute("data-track-name");
+      descEl.textContent = trigger.getAttribute("data-track-desc");
 
       if (chairs) {
         chairsEl.innerHTML = "Track Co-Chairs: " + buildChairsHTML(chairs);
@@ -684,28 +684,28 @@
       }
     }
 
-    triggers.forEach(function(trigger) {
-      trigger.addEventListener("click", function() { openTrackModal(trigger); });
+    triggers.forEach(function (trigger) {
+      trigger.addEventListener("click", function () { openTrackModal(trigger); });
     });
 
     closeBtn.addEventListener("click", closeTrackModal);
 
-    modal.addEventListener("click", function(event) {
+    modal.addEventListener("click", function (event) {
       if (event.target === modal) { closeTrackModal(); }
     });
 
-    document.addEventListener("keydown", function(event) {
+    document.addEventListener("keydown", function (event) {
       if (event.key === "Escape" && !modal.hasAttribute("hidden")) {
         closeTrackModal();
       }
     });
 
     // Focus trap inside modal
-    modal.addEventListener("keydown", function(event) {
+    modal.addEventListener("keydown", function (event) {
       if (event.key !== "Tab") { return; }
       var focusable = modal.querySelectorAll('button, [href], [tabindex]:not([tabindex="-1"])');
       var first = focusable[0];
-      var last  = focusable[focusable.length - 1];
+      var last = focusable[focusable.length - 1];
       if (event.shiftKey) {
         if (document.activeElement === first) { last.focus(); event.preventDefault(); }
       } else {
@@ -841,7 +841,7 @@
     // Accommodation is handled externally via Google Forms link
   })();
 
-/* ── CONFAI 2026 GANTT TIMETABLE CONTROLLER & DATABASE ──────────────────── */
+  /* ── CONFAI 2026 GANTT TIMETABLE CONTROLLER & DATABASE ──────────────────── */
   (function initGanttBoard() {
     var sessionsDb = {
       'd1-s1': {
@@ -1209,7 +1209,7 @@
       'd3-s9': {
         category: 'Local Excursion & Departure',
         badgeClass: 'tag-pink',
-        time: '02:00 PM Onwards',
+        time: '02:00 PM - 06:00 PM',
         venue: 'Departure for Local Tour',
         title: 'Chandigarh Tour & Departure',
         desc: 'Guided tour of Chandigarh landmarks (Rock Garden, Sukhna Lake, Capitol Complex) followed by airport/railway station drop-offs.'
@@ -1425,7 +1425,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
       btn.classList.add('active');
       btn.setAttribute('aria-selected', 'true');
-      
+
       currentDay = btn.getAttribute('data-day');
       applyFilters();
     });
@@ -1472,7 +1472,7 @@ document.addEventListener('DOMContentLoaded', () => {
       rows.forEach((row) => {
         const searchData = (row.getAttribute('data-search') || '').toLowerCase();
         const rowText = row.textContent.toLowerCase();
-        
+
         const matchesQuery = !query || searchData.includes(query) || rowText.includes(query);
 
         if (matchesQuery) {
@@ -1888,7 +1888,7 @@ document.addEventListener('DOMContentLoaded', function () {
           for (var cj = 0; cj < connections.length; cj++) {
             var cand = connections[cj];
             if ((cand.nodeAIndex === targetNode.id && cand.nodeBIndex === nextNeighbor) ||
-                (cand.nodeBIndex === targetNode.id && cand.nodeAIndex === nextNeighbor)) {
+              (cand.nodeBIndex === targetNode.id && cand.nodeAIndex === nextNeighbor)) {
               sig.connIndex = cj;
               sig.direction = (cand.nodeAIndex === targetNode.id) ? 1 : -1;
               foundConn = true;
