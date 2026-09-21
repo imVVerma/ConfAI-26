@@ -3250,9 +3250,9 @@ body.modal-open {
 
 /* Institutional Disclaimer Bar */
 .footer-disclaimer {
-  background: #070707;
+  background: #050505;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 1.5rem 0;
+  padding: 0.85rem 0 1rem;
   width: 100%;
 }
 
@@ -3263,9 +3263,9 @@ body.modal-open {
 }
 
 .footer-disclaimer-inner p {
-  font-size: 0.78rem;
-  line-height: 1.6;
-  color: rgba(242, 240, 236, 0.58);
+  font-size: 0.68rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.42);
   margin: 0;
   text-align: left;
 }
