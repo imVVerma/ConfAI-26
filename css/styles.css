@@ -6511,6 +6511,7 @@ body.agenda-page.sharp-theme,
 .sharp-row {
   display: grid;
   grid-template-columns: 210px 1fr;
+  border-left: 4px solid transparent;
   border-bottom: 1px solid #E2E8F0;
   transition: background-color 0.12s ease;
 }
@@ -6635,19 +6636,19 @@ body.agenda-page.sharp-theme,
 
 /* Row Type Highlights */
 .highlight-keynote {
-  border-left: 3px solid var(--color-teal);
+  border-left-color: var(--color-teal);
 }
 
 .highlight-speaker {
-  border-left: 3px solid #0284C7;
+  border-left-color: #0284C7;
 }
 
 .highlight-panel {
-  border-left: 3px solid #7C3AED;
+  border-left-color: #7C3AED;
 }
 
 .highlight-award {
-  border-left: 3px solid #D97706;
+  border-left-color: #D97706;
 }
 
 .sharp-buffer-row {
