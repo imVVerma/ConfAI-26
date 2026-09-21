@@ -3266,11 +3266,12 @@ body.modal-open {
 
 .footer-disclaimer-inner p,
 .page-disclaimer-inner p {
-  font-size: 0.68rem;
-  line-height: 1.55;
+  font-size: 0.58rem;
+  line-height: 1.45;
   color: #64748B;
   margin: 0;
   text-align: left;
+  letter-spacing: 0.01em;
 }
 
 /* Light text when inside dark footer on index.html */
@@ -3281,7 +3282,7 @@ body.modal-open {
 
 .site-footer .footer-disclaimer-inner p,
 .site-footer .page-disclaimer-inner p {
-  color: rgba(255, 255, 255, 0.45);
+  color: rgba(255, 255, 255, 0.4);
 }
 
 .site-footer .footer-container {
