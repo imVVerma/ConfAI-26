@@ -2562,26 +2562,43 @@ document.addEventListener('DOMContentLoaded', function () {
 
 /* ── Announcement Ticker Banner Click-to-Card Handler ──────────────────────── */
 document.addEventListener('DOMContentLoaded', function () {
-  var tickerLinks = document.querySelectorAll('.ticker-item, .announcement-ticker-bar a[href^="#"]');
+  var tickerBar = document.querySelector('.announcement-ticker-bar');
   var phdCard = document.getElementById('phd-aspirants');
 
-  if (phdCard && tickerLinks.length) {
-    tickerLinks.forEach(function (link) {
-      link.addEventListener('click', function (e) {
-        e.preventDefault();
-        phdCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        phdCard.classList.add('is-highlighted');
-        setTimeout(function () {
-          phdCard.classList.remove('is-highlighted');
-        }, 2500);
-        if (history.pushState) {
-          history.pushState(null, null, '#phd-aspirants');
-        } else {
-          location.hash = '#phd-aspirants';
-        }
-      });
-    });
+  if (!tickerBar || !phdCard) return;
+
+  function scrollToPhdCard(e) {
+    // If the click is on or inside the 'here' button, let it navigate to external link
+    if (e.target.closest('.ticker-link')) {
+      return;
+    }
+    e.preventDefault();
+    phdCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    phdCard.classList.add('is-highlighted');
+    setTimeout(function () {
+      phdCard.classList.remove('is-highlighted');
+    }, 2500);
+    if (history.pushState) {
+      history.pushState(null, null, '#phd-aspirants');
+    } else {
+      location.hash = '#phd-aspirants';
+    }
   }
+
+  tickerBar.addEventListener('click', scrollToPhdCard);
+
+  // Keyboard accessibility: Enter or Space on .ticker-item
+  var tickerItems = tickerBar.querySelectorAll('.ticker-item[tabindex="0"]');
+  tickerItems.forEach(function (item) {
+    item.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        if (!e.target.closest('.ticker-link')) {
+          e.preventDefault();
+          scrollToPhdCard(e);
+        }
+      }
+    });
+  });
 });
 
 

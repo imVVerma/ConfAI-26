@@ -7059,12 +7059,39 @@ body.agenda-page.sharp-theme,
   transform: translateY(-1px);
 }
 
-/* ── Removed Curve Divider Above Section Stats ──────────── */
-.cinema-curve-divider,
-.cinema-curve-svg,
+/* ── Neural Network Particle Canvas & Subtle Curved Transition ──────────── */
+.cinema-curve-divider {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 220px;
+  overflow: visible;
+  line-height: 0;
+  z-index: 5;
+  pointer-events: none;
+}
+
 .hero-neural-canvas,
 .neural-transition-canvas {
-  display: none !important;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 220px;
+  pointer-events: none;
+  z-index: 6;
+}
+
+.cinema-curve-svg {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 48px;
+  z-index: 4;
+  display: block;
 }
 
 /* ── Unified Wider Content Container (1320px) ───────────────────────────── */
@@ -7122,7 +7149,7 @@ body.agenda-page.sharp-theme,
 
 /* ── "By the Numbers" Section Typography & Grid ─────────────────────────── */
 .section-stats {
-  padding: 1.85rem 0 1.5rem;
+  padding: 2.35rem 0 1.5rem;
   background-color: var(--color-chalk-bg, #F2F0EC);
   border-bottom: 1px solid var(--color-chalk-line, #DBD9D5);
 }
@@ -7701,6 +7728,7 @@ body.agenda-page.sharp-theme,
   display: flex;
   align-items: center;
   user-select: none;
+  cursor: pointer;
   z-index: 10;
   line-height: normal;
   -webkit-font-smoothing: antialiased;
