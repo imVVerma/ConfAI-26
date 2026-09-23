@@ -4573,18 +4573,19 @@ p {
   border: 1px solid var(--color-chalk-line);
   border-radius: 12px;
   background: #FFFFFF;
-  overflow: hidden;
+  overflow: visible;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
 }
 
 .passes-table-scroller {
   position: relative;
+  width: 100%;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
 }
 
-.passes-table-scroller::after {
-  content: "";
+.passes-table-fade {
   position: absolute;
   top: 0;
   right: 0;
@@ -4594,23 +4595,52 @@ p {
   pointer-events: none;
   opacity: 1;
   transition: opacity var(--transition);
+  z-index: 2;
 }
 
-.passes-table-scroller.is-scrolled-end::after {
+.passes-table-scroller.is-scrolled-end .passes-table-fade {
   opacity: 0;
 }
 
-@media (max-width: 47.9375rem) {
-  .passes-table-scroller::after {
-    opacity: 1;
-  }
-}
-
 .passes-table {
-  width: 100%;
+  width: max-content;
+  min-width: 48rem;
   border-collapse: collapse;
   text-align: left;
-  min-width: 48rem;
+}
+
+@media (max-width: 47.9375rem) {
+  .sponsorship-table-wrapper {
+    overflow-x: auto;
+    position: relative;
+    width: 100%;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .sponsorship-table {
+    border-collapse: separate;
+    border-spacing: 0;
+    min-width: 600px;
+  }
+
+  .sponsorship-table th:first-child,
+  .sponsorship-table td:first-child {
+    position: sticky;
+    left: 0;
+    z-index: 2;
+    background-color: #FFFFFF;
+    box-shadow: 3px 0 6px -2px rgba(0, 0, 0, 0.12);
+    min-width: 130px;
+    max-width: 150px;
+    white-space: normal;
+    word-break: break-word;
+  }
+
+  .sponsorship-table th,
+  .sponsorship-table td {
+    padding: 10px 12px;
+    font-size: 0.85rem;
+  }
 }
 
 .passes-table th,
@@ -5202,6 +5232,64 @@ p {
 @media (min-width: 68rem) {
   .sponsorship-cards-grid {
     grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ==========================================================================
+   MOBILE SPONSORSHIP UI ENHANCEMENTS (< 768px)
+   ========================================================================== */
+@media (max-width: 768px) {
+
+  /* 1. Hide the horizontal scrolling comparison table on mobile */
+  .sponsorship-table-container {
+    display: none !important;
+  }
+
+  /* 2. Optimize the Sponsorship Buckets Grid for mobile vertical stacking */
+  .sponsorship-cards-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 0 0.5rem;
+  }
+
+  /* 3. Polish individual tier cards for mobile readability */
+  .sponsorship-card {
+    width: 100%;
+    margin-bottom: 0;
+    padding: 1.5rem 1.25rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  }
+
+  /* Clean up list spacing in tier cards */
+  .sponsorship-card .tier-benefits {
+    padding-left: 0;
+    margin: 1.25rem 0;
+  }
+
+  .sponsorship-card .tier-benefits li {
+    font-size: 0.925rem;
+    line-height: 1.5;
+    padding: 0.4rem 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  /* Make CTA buttons prominent on mobile */
+  .sponsorship-card .tier-cta .btn {
+    width: 100%;
+    text-align: center;
+    padding: 0.75rem 1rem;
+    font-weight: 600;
+  }
+}
+
+/* Ensure the full detailed table remains visible on laptop/desktop screens */
+@media (min-width: 769px) {
+  .sponsorship-table-container {
+    display: block;
   }
 }
 
@@ -8054,6 +8142,78 @@ body.agenda-page.sharp-theme,
   line-height: 1.45;
 }
 
+/* ==========================================================================
+   MOBILE SPONSORSHIP TABLE: STACKED ROW CARDS (< 768px)
+   ========================================================================== */
+@media (max-width: 768px) {
+  /* 1. Force table elements to stack vertically */
+  .sponsorship-table,
+  .sponsorship-table thead,
+  .sponsorship-table tbody,
+  .sponsorship-table th,
+  .sponsorship-table td,
+  .sponsorship-table tr {
+    display: block;
+    width: 100%;
+  }
 
+  /* 2. Hide the desktop table header row */
+  .sponsorship-table thead {
+    display: none;
+  }
 
+  /* 3. Style each row as a distinct deliverable card */
+  .sponsorship-table tbody tr {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    margin-bottom: 1.25rem;
+    padding: 1rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  }
 
+  /* 4. Style the Feature/Deliverable Title at the top of each card */
+  .sponsorship-table tr th[scope="row"] {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #0f172a;
+    border-bottom: 2px solid #f1f5f9;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
+    text-align: left;
+    background: transparent;
+  }
+
+  /* 5. Convert table cells into key-value flex rows */
+  .sponsorship-table td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+    font-size: 0.9rem;
+    border-bottom: 1px dashed #f1f5f9;
+  }
+
+  .sponsorship-table td:last-child {
+    border-bottom: none;
+  }
+
+  /* 6. Inject Tier Labels dynamically before the values */
+  .sponsorship-table td:nth-of-type(1)::before {
+    content: "Platinum:";
+    font-weight: 600;
+    color: #007a78;
+  }
+
+  .sponsorship-table td:nth-of-type(2)::before {
+    content: "Gold:";
+    font-weight: 600;
+    color: #d97706;
+  }
+
+  .sponsorship-table td:nth-of-type(3)::before {
+    content: "Silver:";
+    font-weight: 600;
+    color: #64748b;
+  }
+}
