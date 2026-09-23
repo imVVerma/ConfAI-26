@@ -941,7 +941,7 @@
         badgeClass: 'tag-lavender',
         time: '03:10 PM - 04:40 PM (90 mins)',
         venue: 'Room: A3 - 3102',
-        title: 'Track Presentations: AI 4 cities: Enhancing Resilience, Improving Liveability',
+        title: 'Track Presentations: AI for Cities: Enhancing Resilience, Improving Liveability',
         speaker: 'Dr. Nipun Batra (Track Keynote)',
         affiliation: 'Associate Professor of Computer Science, IIT Gandhinagar',
         chairs: 'Dr. Anupam Sobti, Dr. Malini Balakrishnan, Dr. Prashanth Suresh Kumar, Dr. Pankaj Pansari',
@@ -957,7 +957,7 @@
         time: '04:40 PM - 05:40 PM (60 mins)',
         venue: 'Corridor & Foyer Area',
         title: 'High Tea Break / Poster Presentation',
-        desc: 'Interactive research posters and discussions with authors across 4 tracks: 1) AI in Healthcare, 2) AI and Logic, 3) AI in the Economy, 4) AI 4 Cities.'
+        desc: 'Interactive research posters and discussions with authors across 4 tracks: Track 1: AI in Healthcare, Track 2: AI and Logic, Track 3: AI in the Economy, Track 4: AI in Sensors.'
       },
       'd1-s11': {
         category: 'Campus Experience',
@@ -1015,9 +1015,9 @@
         badgeClass: 'tag-lavender',
         time: '10:10 AM - 11:40 AM (90 mins)',
         venue: 'Room: A3 - 3007',
-        title: 'Track Presentations: AI in Sensors',
+        title: 'Track Presentations: AI for Cities: Enhancing Resilience, Improving Liveability',
         chairs: 'Dr. Anil Roy, Dr. Praveen Kumar, Dr. Sandilya Garimella',
-        desc: 'Intelligent transducers, sensor hardware-software co-design, edge AI systems, quantum sensors, environmental monitoring, and wearable devices.',
+        desc: 'Predictive urban management through real-time AI, smart mobility optimization, urban flooding forecasting, and municipal resource planning.',
         schedule: [
           { time: '10:00 AM - 10:30 AM', event: 'Track Keynote Presentation' },
           { time: '10:30 AM - 11:30 AM', event: 'Track Oral Paper Presentations' }
@@ -1093,7 +1093,7 @@
         time: '04:00 PM - 05:00 PM (60 mins)',
         venue: 'Auditorium corridor/porch',
         title: 'High Tea Break / Poster Presentation',
-        desc: 'Poster presentations across 4 tracks: 1) AI in Sensors, 2) Recent Advances in AI, 3) VLM, 4) Responsible and Ethical AI.'
+        desc: 'Poster presentations across 4 tracks: Track 1: AI for Cities, Track 2: Recent Advances in AI, Track 3: VLM, Track 4: Responsible and Ethical AI.'
       },
       'd2-s12': {
         category: 'Plenary Panel',
