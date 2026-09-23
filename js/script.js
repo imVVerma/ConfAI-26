@@ -2596,4 +2596,34 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
+document.addEventListener('DOMContentLoaded', function () {
+  var scrollContainers = document.querySelectorAll('.passes-table-scroller');
+
+  if (!scrollContainers.length) return;
+
+  function updateScrollState(container) {
+    var needsScroll = container.scrollWidth > container.clientWidth + 1;
+    if (!needsScroll) {
+      container.classList.add('is-scrolled-end');
+      return;
+    }
+
+    var atEnd = container.scrollLeft + container.clientWidth >= container.scrollWidth - 2;
+    container.classList.toggle('is-scrolled-end', atEnd);
+  }
+
+  scrollContainers.forEach(function (container) {
+    updateScrollState(container);
+    container.addEventListener('scroll', function () {
+      updateScrollState(container);
+    }, { passive: true });
+  });
+
+  window.addEventListener('resize', function () {
+    scrollContainers.forEach(function (container) {
+      updateScrollState(container);
+    });
+  });
+});
+
 

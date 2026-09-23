@@ -4578,8 +4578,32 @@ p {
 }
 
 .passes-table-scroller {
+  position: relative;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
+}
+
+.passes-table-scroller::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 2.5rem;
+  height: 100%;
+  background: linear-gradient(to left, rgba(14, 28, 36, 0.12), rgba(14, 28, 36, 0));
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity var(--transition);
+}
+
+.passes-table-scroller.is-scrolled-end::after {
+  opacity: 0;
+}
+
+@media (max-width: 47.9375rem) {
+  .passes-table-scroller::after {
+    opacity: 1;
+  }
 }
 
 .passes-table {
