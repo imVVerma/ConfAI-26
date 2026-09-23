@@ -162,7 +162,7 @@
 
       iframe.src = videoUrl;
       iframe.title = videoTitle;
-      heading.textContent = "Relive ConfAI";
+      heading.textContent = "ConfAI Through the Years";
       wrapper.setAttribute("aria-label", videoTitle);
 
       filters.forEach(function (button) {
