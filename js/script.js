@@ -608,36 +608,62 @@
     // ── Faculty URL lookup map ───────────────────────────────────────────────
     var CHAIR_URLS = {
       "Alok Ranjan": "https://plaksha.edu.in/faculty-details/alok-ranjan",
+      "Dr. Alok Ranjan": "https://plaksha.edu.in/faculty-details/alok-ranjan",
       "Nikhil George": "https://plaksha.edu.in/faculty-details/nikhil-george",
+      "Dr. Nikhil George": "https://plaksha.edu.in/faculty-details/nikhil-george",
       "Divyanshu Jain": "https://plaksha.edu.in/faculty-details/divyanshu-jain",
+      "Dr. Divyanshu Jain": "https://plaksha.edu.in/faculty-details/divyanshu-jain",
+      "Sunita Chauhan": "https://plaksha.edu.in/faculty-details/dr-sunita-chauhan",
       "Dr. Sunita Chauhan": "https://plaksha.edu.in/faculty-details/dr-sunita-chauhan",
+      "Sandeep Manjanna": "https://plaksha.edu.in/faculty-details/dr-sandeep-manjanna",
       "Dr. Sandeep Manjanna": "https://plaksha.edu.in/faculty-details/dr-sandeep-manjanna",
+      "Monika Sharma": "https://plaksha.edu.in/faculty-details/dr-monika-sharma",
       "Dr. Monika Sharma": "https://plaksha.edu.in/faculty-details/dr-monika-sharma",
+      "Chaitanya Lekshmi Indira": "https://plaksha.edu.in/faculty-details/dr-chaitanya-lekshmi-indira",
       "Dr. Chaitanya Lekshmi Indira": "https://plaksha.edu.in/faculty-details/dr-chaitanya-lekshmi-indira",
       "Arshdeep Sidhu": "https://plaksha.edu.in/faculty-details/arshdeep-sidhu",
+      "Dr. Arshdeep Sidhu": "https://plaksha.edu.in/faculty-details/arshdeep-sidhu",
+      "Amruta R Behera": "https://plaksha.edu.in/faculty-details/dr-amruta-r-behera",
       "Dr. Amruta R Behera": "https://plaksha.edu.in/faculty-details/dr-amruta-r-behera",
+      "Rucha Joshi": "https://plaksha.edu.in/faculty-details/dr-rucha-joshi",
       "Dr. Rucha Joshi": "https://plaksha.edu.in/faculty-details/dr-rucha-joshi",
+      "Swagata Halder": "https://plaksha.edu.in/faculty-details/dr-swagata-halder",
       "Dr. Swagata Halder": "https://plaksha.edu.in/faculty-details/dr-swagata-halder",
       "Sanjeev Khosla": "https://plaksha.edu.in/faculty-details/sanjeev-khosla",
+      "Dr. Sanjeev Khosla": "https://plaksha.edu.in/faculty-details/sanjeev-khosla",
+      "Anupam Sobti": "https://plaksha.edu.in/faculty-details/dr-anupam-sobti",
       "Dr. Anupam Sobti": "https://plaksha.edu.in/faculty-details/dr-anupam-sobti",
+      "Malini Balakrishnan": "https://plaksha.edu.in/faculty-details/dr-malini-balakrishnan",
       "Dr. Malini Balakrishnan": "https://plaksha.edu.in/faculty-details/dr-malini-balakrishnan",
+      "Prashanth Suresh Kumar": "https://plaksha.edu.in/faculty-details/dr-prashanth-suresh-kumar",
       "Dr. Prashanth Suresh Kumar": "https://plaksha.edu.in/faculty-details/dr-prashanth-suresh-kumar",
       "Pankaj Pansari": "https://plaksha.edu.in/faculty-details/pankaj-pansari",
+      "Dr. Pankaj Pansari": "https://plaksha.edu.in/faculty-details/pankaj-pansari",
       "Anil Roy": "https://plaksha.edu.in/faculty-details/anil-roy",
+      "Dr. Anil Roy": "https://plaksha.edu.in/faculty-details/anil-roy",
       "Praveen Kumar": "https://plaksha.edu.in/faculty-details/praveen-kumar",
+      "Dr. Praveen Kumar": "https://plaksha.edu.in/faculty-details/praveen-kumar",
       "Deepan Muthirayan": "https://plaksha.edu.in/faculty-details/deepan-muthirayan",
+      "Dr. Deepan Muthirayan": "https://plaksha.edu.in/faculty-details/deepan-muthirayan",
       "Rajesh Sharma": "https://plaksha.edu.in/faculty-details/rajesh-sharma",
+      "Dr. Rajesh Sharma": "https://plaksha.edu.in/faculty-details/rajesh-sharma",
       "Shachindra Nath": "http://linkedin.com/in/shachindranath",
+      "Dr. Shachindra Nath": "http://linkedin.com/in/shachindranath",
+      "Deepak Khemani": "https://plaksha.edu.in/faculty-details/dr-deepak-khemani",
       "Dr. Deepak Khemani": "https://plaksha.edu.in/faculty-details/dr-deepak-khemani",
       "Saeed Salehi": "https://plaksha.edu.in/faculty-details/saeed-salehi",
+      "Dr. Saeed Salehi": "https://plaksha.edu.in/faculty-details/saeed-salehi",
+      "Tapas Pandit": "https://plaksha.edu.in/faculty-details/dr-tapas-pandit",
       "Dr. Tapas Pandit": "https://plaksha.edu.in/faculty-details/dr-tapas-pandit",
-      "Sandilya Garimella": "https://plaksha.edu.in/faculty-details/sandilya-garimella"
+      "Sandilya Garimella": "https://plaksha.edu.in/faculty-details/sandilya-garimella",
+      "Dr. Sandilya Garimella": "https://plaksha.edu.in/faculty-details/sandilya-garimella"
     };
 
     function buildChairsHTML(chairsStr) {
       var names = chairsStr.split("|").map(function (s) { return s.trim(); }).filter(Boolean);
       return names.map(function (name) {
-        var url = CHAIR_URLS[name];
+        var cleanName = name.replace(/^Dr\.\s*/, "");
+        var url = CHAIR_URLS[name] || CHAIR_URLS[cleanName] || CHAIR_URLS["Dr. " + cleanName];
         if (url) {
           return "<a href=\"" + url + "\" target=\"_blank\" rel=\"noopener noreferrer\">" + name + "</a>";
         }
@@ -957,7 +983,7 @@
         time: '04:40 PM - 05:40 PM (60 mins)',
         venue: 'Corridor & Foyer Area',
         title: 'High Tea Break / Poster Presentation',
-        desc: 'Interactive research posters and discussions with authors across 4 tracks: Track 1: AI in Healthcare, Track 2: AI and Logic, Track 3: AI in the Economy, Track 4: AI in Sensors.'
+        desc: 'Interactive research posters and discussions with authors across 4 tracks: Track 1: AI in Healthcare, Track 2: AI and Logic, Track 3: AI in the Economy, Track 4: AI 4 Cities.'
       },
       'd1-s11': {
         category: 'Campus Experience',
@@ -1015,9 +1041,9 @@
         badgeClass: 'tag-lavender',
         time: '10:10 AM - 11:40 AM (90 mins)',
         venue: 'Room: A3 - 3007',
-        title: 'Track Presentations: AI for Cities: Enhancing Resilience, Improving Liveability',
+        title: 'Track Presentations: AI in Sensors',
         chairs: 'Dr. Anil Roy, Dr. Praveen Kumar, Dr. Sandilya Garimella',
-        desc: 'Predictive urban management through real-time AI, smart mobility optimization, urban flooding forecasting, and municipal resource planning.',
+        desc: 'Intelligent transducers, sensor hardware-software co-design, edge AI systems, quantum sensors, environmental monitoring, and wearable devices.',
         schedule: [
           { time: '10:00 AM - 10:30 AM', event: 'Track Keynote Presentation' },
           { time: '10:30 AM - 11:30 AM', event: 'Track Oral Paper Presentations' }
@@ -1093,7 +1119,7 @@
         time: '04:00 PM - 05:00 PM (60 mins)',
         venue: 'Auditorium corridor/porch',
         title: 'High Tea Break / Poster Presentation',
-        desc: 'Poster presentations across 4 tracks: Track 1: AI for Cities, Track 2: Recent Advances in AI, Track 3: VLM, Track 4: Responsible and Ethical AI.'
+        desc: 'Poster presentations across 4 tracks: Track 1: AI in Sensors, Track 2: Recent Advances in AI, Track 3: VLM, Track 4: Responsible and Ethical AI.'
       },
       'd2-s12': {
         category: 'Plenary Panel',

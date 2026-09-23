@@ -1849,206 +1849,158 @@ body.modal-open {
 }
 
 /* ─────────────────────────────────────────────────────────
-   H8 · CONFERENCE TRACKS & RADIAL DIAGRAM
+   H8 · CONFERENCE TRACKS (Column-Wise Grid)
 ──────────────────────────────────────────────────────────── */
 .section-tracks-diagram {
-  padding: 3.5rem 0 4rem;
-  background-color: var(--color-chalk-bg);
+  padding: 3.5rem 0 4.5rem;
+  background-color: var(--color-chalk-bg, #F2F0EC);
   position: relative;
 }
 
-.section-tracks-diagram h2 {
-  text-align: center;
-  font-family: var(--font-display, 'Open Sans', sans-serif);
-  font-size: clamp(2rem, 3.5vw, 2.75rem);
-  font-weight: 700;
-  color: #0F172A;
-  margin-bottom: 0.5rem;
-}
-
-/* Base Responsive Grid (Mobile & Tablet < 960px) */
-.radial-container {
-  position: relative;
+.tracks-column-grid {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 0.85rem;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.35rem 1.15rem;
   width: 100%;
-  max-width: 32rem;
-  margin: 1.75rem auto 0;
+  margin-top: 2rem;
 }
 
-.radial-spokes {
-  display: none;
-}
-
-/* Center Hub — ConfAI Logo */
-.radial-hub {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  background-color: #FFFFFF;
-  width: 6.25rem;
-  height: 6.25rem;
-  border-radius: 50%;
-  border: 2px solid var(--color-teal, #007878);
-  box-shadow: 0 0 0 4px rgba(0, 120, 120, 0.12), 0 6px 18px rgba(0, 120, 120, 0.16);
-  z-index: 10;
-  line-height: 1.15;
-  user-select: none;
-  grid-column: 1 / -1;
-  justify-self: center;
-  margin-bottom: 1rem;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.radial-hub:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 0 6px rgba(0, 120, 120, 0.18), 0 8px 24px rgba(0, 120, 120, 0.22);
-}
-
-.radial-hub-mark {
-  font-family: var(--font-display, 'Open Sans', sans-serif);
-  font-size: 1.35rem;
-  font-weight: 700;
-  color: #0F172A;
-  letter-spacing: -0.01em;
-  line-height: 1;
-}
-
-.radial-hub-year {
-  font-family: var(--font-sans, 'Open Sans', sans-serif);
-  font-size: 0.78rem;
-  font-weight: 700;
-  color: var(--color-teal, #007878);
-  letter-spacing: 0.08em;
-  margin-top: 0.2rem;
-}
-
-.radial-track {
-  width: 100%;
-  min-width: 0;
-}
-
-/* 280px uniform card button */
-.track-node {
-  all: unset;
-  display: flex;
-  align-items: center;
-  gap: 0.85rem;
-  cursor: pointer;
-  text-align: left;
-  padding: 0.75rem 1rem;
-  background: #FFFFFF;
-  border: 1px solid rgba(0, 120, 120, 0.22);
-  border-radius: 8px;
-  box-shadow: 0 3px 12px rgba(15, 23, 42, 0.05);
-  transition: background-color 0.25s ease, border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
-  width: 100%;
-  box-sizing: border-box;
-  min-height: 52px;
-}
-
-.track-node:hover {
-  background-color: #FFFFFF;
-  border-color: var(--color-teal, #007878);
-  box-shadow: 0 6px 20px rgba(0, 120, 120, 0.16);
-  transform: translateY(-2px);
-}
-
-.track-node:focus-visible {
-  outline: 2px solid var(--color-teal, #007878);
-  outline-offset: 3px;
-}
-
-/* Circular Number Badge */
-.track-num {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 1.85rem;
-  height: 1.85rem;
-  min-width: 1.85rem;
-  min-height: 1.85rem;
-  background: #0F172A;
-  color: #FFFFFF;
-  border-radius: 50%;
-  font-family: var(--font-sans, 'Open Sans', sans-serif);
-  font-weight: 700;
-  font-size: 0.82rem;
-  flex-shrink: 0;
-  transition: background-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.track-node:hover .track-num {
-  background-color: var(--color-teal, #007878);
-  transform: scale(1.08);
-  box-shadow: 0 0 0 3px rgba(0, 120, 120, 0.20);
-}
-
-/* Track Info Text Container */
-.track-info {
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-  flex: 1;
-}
-
-.track-name {
-  font-family: var(--font-sans, 'Open Sans', sans-serif);
-  font-size: 0.88rem;
-  font-weight: 600;
-  color: #1E293B;
-  line-height: 1.32;
-  transition: color 0.25s ease;
-}
-
-.track-node:hover .track-name {
-  color: var(--color-teal, #007878);
-}
-
-/* Micro-interaction Hint */
-.track-hint {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.25rem;
-  font-family: var(--font-sans, 'Open Sans', sans-serif);
-  font-size: 0.72rem;
-  font-weight: 600;
-  color: var(--color-teal, #007878);
-  opacity: 0;
-  height: 0;
-  margin-top: 0;
-  transform: translateX(-4px);
-  transition: opacity 0.2s ease, transform 0.2s ease, height 0.2s ease, margin-top 0.2s ease;
-  overflow: hidden;
-}
-
-.track-node:hover .track-hint {
-  opacity: 1;
-  height: 1rem;
-  margin-top: 0.2rem;
-  transform: translateX(0);
-}
-
-/* Tablet 2-column view */
-@media (min-width: 40rem) and (max-width: 59.99rem) {
-  .radial-container {
+@media (max-width: 64rem) {
+  .tracks-column-grid {
     grid-template-columns: repeat(2, 1fr);
-    max-width: 46rem;
+    gap: 1.25rem;
+  }
+}
+
+@media (max-width: 38rem) {
+  .tracks-column-grid {
+    grid-template-columns: 1fr;
     gap: 1rem;
   }
 }
 
-/* Mobile/Tablet hint visibility */
-@media (max-width: 59.99rem) {
-  .track-hint {
-    opacity: 0.85;
-    height: auto;
-    margin-top: 0.15rem;
-    transform: none;
-  }
+.track-grid-item {
+  display: flex;
+  height: 100%;
+}
+
+.track-card-btn {
+  all: unset;
+  display: flex;
+  flex-direction: column;
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  padding: 1.4rem 1.25rem 1.25rem;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+  transition: transform 0.22s cubic-bezier(0.2, 0, 0, 1), 
+              box-shadow 0.22s cubic-bezier(0.2, 0, 0, 1), 
+              border-color 0.22s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.track-card-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-teal, #007878), var(--color-aqua, #00A3A3));
+  opacity: 0;
+  transition: opacity 0.22s ease;
+}
+
+.track-card-btn:hover {
+  transform: translateY(-4px);
+  border-color: rgba(0, 120, 120, 0.4);
+  box-shadow: 0 10px 24px rgba(0, 120, 120, 0.12), 0 2px 6px rgba(15, 23, 42, 0.04);
+}
+
+.track-card-btn:hover::before {
+  opacity: 1;
+}
+
+.track-card-btn:focus-visible {
+  outline: 2px solid var(--color-teal, #007878);
+  outline-offset: 3px;
+}
+
+.track-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.track-badge {
+  display: inline-block;
+  font-family: var(--font-sans, 'Open Sans', sans-serif);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-teal, #007878);
+  background: rgba(0, 120, 120, 0.08);
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+}
+
+.track-card-title {
+  font-family: var(--font-sans, 'Open Sans', sans-serif);
+  font-size: 1.08rem;
+  font-weight: 700;
+  color: #0F172A;
+  line-height: 1.35;
+  margin: 0 0 0.65rem 0;
+  transition: color 0.2s ease;
+}
+
+.track-card-btn:hover .track-card-title {
+  color: var(--color-teal, #007878);
+}
+
+.track-card-desc {
+  font-family: var(--font-sans, 'Open Sans', sans-serif);
+  font-size: 0.86rem;
+  color: #475569;
+  line-height: 1.5;
+  margin: 0 0 1.25rem 0;
+  flex: 1;
+}
+
+.track-card-footer {
+  margin-top: auto;
+  padding-top: 0.75rem;
+  border-top: 1px solid #F1F5F9;
+}
+
+.track-card-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--font-sans, 'Open Sans', sans-serif);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-teal, #007878);
+  transition: gap 0.2s ease;
+}
+
+.track-card-btn:hover .track-card-action {
+  gap: 0.55rem;
+}
+
+.track-arrow {
+  transition: transform 0.2s ease;
+}
+
+.track-card-btn:hover .track-arrow {
+  transform: translateX(2px);
 }
 
 /* Footer */
@@ -2317,7 +2269,7 @@ body.modal-open {
     z-index: 2;
   }
 
-  .track-node {
+  .radial-track .track-node {
     width: 100%;
     min-height: 52px;
     padding: 0.65rem 0.95rem;
@@ -2329,7 +2281,7 @@ body.modal-open {
     transition: background-color 0.25s ease, border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
   }
 
-  .track-node:hover {
+  .radial-track .track-node:hover {
     background: #FFFFFF;
     border-color: var(--color-teal, #007878);
     box-shadow: 0 6px 20px rgba(0, 120, 120, 0.16);
@@ -7166,9 +7118,16 @@ body.agenda-page.sharp-theme,
 
 /* ── "By the Numbers" Section Typography & Grid ─────────────────────────── */
 .section-stats {
-  padding: 2.35rem 0 1.5rem;
+  padding: 6.25rem 0 2rem;
   background-color: var(--color-chalk-bg, #F2F0EC);
   border-bottom: 1px solid var(--color-chalk-line, #DBD9D5);
+  position: relative;
+  z-index: 7;
+}
+
+.section-stats .section-inner {
+  position: relative;
+  z-index: 10;
 }
 
 .stats-strip {
