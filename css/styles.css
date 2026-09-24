@@ -5240,9 +5240,11 @@ p {
    ========================================================================== */
 @media (max-width: 768px) {
 
-  /* 1. Hide the horizontal scrolling comparison table on mobile */
+  /* 1. Mobile Sponsorship Table Container */
   .sponsorship-table-container {
-    display: none !important;
+    display: block !important;
+    position: relative;
+    margin-top: 1.5rem;
   }
 
   /* 2. Optimize the Sponsorship Buckets Grid for mobile vertical stacking */
@@ -5400,6 +5402,17 @@ p {
 
 .sponsorship-table-container {
   margin-top: 1.5rem;
+  position: relative;
+}
+
+.sponsorship-table-container .th-benefit {
+  width: 34%;
+  text-align: left;
+}
+
+.sponsorship-table-container .th-tier {
+  width: 22%;
+  text-align: center;
 }
 
 .sponsorship-table-container .passes-table th:not(:first-child),
@@ -8143,77 +8156,101 @@ body.agenda-page.sharp-theme,
 }
 
 /* ==========================================================================
-   MOBILE SPONSORSHIP TABLE: STACKED ROW CARDS (< 768px)
+   MOBILE SPONSORSHIP TABLE: STICKY COLUMN & HORIZONTAL SWIPE (< 768px)
    ========================================================================== */
+.table-scroll-hint {
+  display: none;
+}
+
 @media (max-width: 768px) {
-  /* 1. Force table elements to stack vertically */
-  .sponsorship-table,
-  .sponsorship-table thead,
-  .sponsorship-table tbody,
-  .sponsorship-table th,
-  .sponsorship-table td,
-  .sponsorship-table tr {
-    display: block;
+  .table-scroll-hint {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--color-teal, #007878);
+    background: rgba(0, 120, 120, 0.08);
+    border: 1px solid rgba(0, 120, 120, 0.2);
+    border-radius: 20px;
+    padding: 0.35rem 0.85rem;
+    margin-bottom: 0.85rem;
+  }
+
+  .table-scroll-hint .scroll-hint-icon {
+    font-size: 0.95rem;
+    font-weight: 700;
+  }
+
+  .sponsorship-table-container {
+    display: block !important;
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--color-chalk-line, #E2E8F0);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+  }
+
+  .sponsorship-table-container .passes-table-scroller {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
     width: 100%;
   }
 
-  /* 2. Hide the desktop table header row */
-  .sponsorship-table thead {
-    display: none;
+  .sponsorship-table-container .passes-table {
+    min-width: 580px;
+    width: max-content;
+    border-collapse: separate;
+    border-spacing: 0;
   }
 
-  /* 3. Style each row as a distinct deliverable card */
-  .sponsorship-table tbody tr {
-    background: #ffffff;
-    border: 1px solid #e2e8f0;
-    border-radius: 10px;
-    margin-bottom: 1.25rem;
-    padding: 1rem;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  .sponsorship-table-container .passes-table th,
+  .sponsorship-table-container .passes-table td {
+    padding: 0.85rem 0.8rem;
+    font-size: 0.85rem;
+    border-bottom: 1px solid var(--color-chalk-line, #E2E8F0);
   }
 
-  /* 4. Style the Feature/Deliverable Title at the top of each card */
-  .sponsorship-table tr th[scope="row"] {
-    font-size: 1rem;
-    font-weight: 700;
-    color: #0f172a;
-    border-bottom: 2px solid #f1f5f9;
-    padding-bottom: 0.5rem;
-    margin-bottom: 0.75rem;
+  .sponsorship-table-container .passes-table thead th {
+    font-size: 0.78rem;
+    padding: 0.85rem 0.65rem;
+    line-height: 1.35;
+    background: #FAF9F6;
+  }
+
+  .sponsorship-table-container .passes-table thead th.th-tier,
+  .sponsorship-table-container .passes-table td:not(:first-child) {
+    min-width: 135px;
+    width: 135px;
+    text-align: center;
+  }
+
+  .sponsorship-table-container .passes-table thead th:first-child,
+  .sponsorship-table-container .passes-table tbody th {
+    position: sticky;
+    left: 0;
+    z-index: 2;
+    background: #FFFFFF;
+    min-width: 145px;
+    max-width: 155px;
+    width: 150px;
+    box-shadow: 3px 0 8px -2px rgba(0, 0, 0, 0.1);
+    white-space: normal;
+    word-break: break-word;
+    font-size: 0.84rem;
+    line-height: 1.35;
     text-align: left;
-    background: transparent;
   }
 
-  /* 5. Convert table cells into key-value flex rows */
-  .sponsorship-table td {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.5rem 0;
-    font-size: 0.9rem;
-    border-bottom: 1px dashed #f1f5f9;
+  .sponsorship-table-container .passes-table thead th:first-child {
+    background: #FAF9F6;
+    z-index: 3;
   }
 
-  .sponsorship-table td:last-child {
-    border-bottom: none;
-  }
-
-  /* 6. Inject Tier Labels dynamically before the values */
-  .sponsorship-table td:nth-of-type(1)::before {
-    content: "Platinum:";
-    font-weight: 600;
-    color: #007a78;
-  }
-
-  .sponsorship-table td:nth-of-type(2)::before {
-    content: "Gold:";
-    font-weight: 600;
-    color: #d97706;
-  }
-
-  .sponsorship-table td:nth-of-type(3)::before {
-    content: "Silver:";
-    font-weight: 600;
-    color: #64748b;
+  .sponsorship-table-container .passes-table tbody tr:hover th,
+  .sponsorship-table-container .passes-table tbody tr:hover td {
+    background: #F8FAFC;
   }
 }
+

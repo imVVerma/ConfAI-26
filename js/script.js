@@ -656,14 +656,23 @@
       "Tapas Pandit": "https://plaksha.edu.in/faculty-details/dr-tapas-pandit",
       "Dr. Tapas Pandit": "https://plaksha.edu.in/faculty-details/dr-tapas-pandit",
       "Sandilya Garimella": "https://plaksha.edu.in/faculty-details/sandilya-garimella",
-      "Dr. Sandilya Garimella": "https://plaksha.edu.in/faculty-details/sandilya-garimella"
+      "Dr. Sandilya Garimella": "https://plaksha.edu.in/faculty-details/sandilya-garimella",
+      "Ankur Nahar": "https://plaksha.edu.in/faculty-details/ankur-nahar",
+      "Prof. Ankur Nahar": "https://plaksha.edu.in/faculty-details/ankur-nahar",
+      "Dr. Ankur Nahar": "https://plaksha.edu.in/faculty-details/ankur-nahar",
+      "Srijita Chakraburty": "https://plaksha.edu.in/faculty-details/srijita-chakraburty",
+      "Prof. Srijita Chakraburty": "https://plaksha.edu.in/faculty-details/srijita-chakraburty",
+      "Dr. Srijita Chakraburty": "https://plaksha.edu.in/faculty-details/srijita-chakraburty",
+      "Sushant Vijayan": "https://plaksha.edu.in/faculty-details/sushant-vijayan",
+      "Prof. Sushant Vijayan": "https://plaksha.edu.in/faculty-details/sushant-vijayan",
+      "Dr. Sushant Vijayan": "https://plaksha.edu.in/faculty-details/sushant-vijayan"
     };
 
     function buildChairsHTML(chairsStr) {
       var names = chairsStr.split("|").map(function (s) { return s.trim(); }).filter(Boolean);
       return names.map(function (name) {
-        var cleanName = name.replace(/^Dr\.\s*/, "");
-        var url = CHAIR_URLS[name] || CHAIR_URLS[cleanName] || CHAIR_URLS["Dr. " + cleanName];
+        var cleanName = name.replace(/^(?:Dr\.|Prof\.)\s*/, "");
+        var url = CHAIR_URLS[name] || CHAIR_URLS[cleanName] || CHAIR_URLS["Prof. " + cleanName] || CHAIR_URLS["Dr. " + cleanName];
         if (url) {
           return "<a href=\"" + url + "\" target=\"_blank\" rel=\"noopener noreferrer\">" + name + "</a>";
         }
@@ -881,10 +890,10 @@
         badgeClass: 'tag-green',
         time: '10:00 AM - 10:50 AM (50 mins)',
         venue: 'Auditorium',
-        title: 'Keynote Address 1',
-        speaker: 'Dr. Santanu Chaudhury',
-        affiliation: 'Dean, Vachani School of Advanced Computing, Ashoka University | Professor of CS, Ph.D. IIT Kharagpur',
-        desc: 'Plenary keynote address focusing on fundamental frontiers in artificial intelligence, learning representations, and intelligent systems.'
+        title: 'Plenary Keynote | Dr. Parag Singla',
+        speaker: 'Dr. Parag Singla',
+        affiliation: 'Professor, Department of Computer Science & Engineering, IIT Delhi | Ph.D. University of Washington',
+        desc: 'Plenary keynote exploring statistical relational AI, neuro-symbolic reasoning, and scalable probabilistic models.'
       },
       'd1-s4': {
         category: 'Refreshment Break',
@@ -900,7 +909,7 @@
         time: '11:15 AM - 12:45 PM (90 mins)',
         venue: 'Room: A3 - 3202',
         title: 'Track Presentations: AI In Healthcare',
-        chairs: 'Dr. Sunita Chauhan, Dr. Sandeep Manjanna, Dr. Monika Sharma, Dr. Chaitanya Lekshmi Indira, Dr. Appan Rakaraddi, Dr. Arshdeep Sidhu, Dr. Amruta R Behera, Dr. Rucha Joshi, Dr. Swagata Halder, Dr. Sanjeev Khosla',
+        chairs: 'Dr. Sunita Chauhan, Dr. Sandeep Manjanna, Dr. Monika Sharma',
         desc: 'Exploring how AI technologies deliver tailored healthcare solutions, precision diagnostics, adaptive care pathways, and language-inclusive clinical tools.',
         schedule: [
           { time: '11:15 AM - 11:45 AM', event: 'Track Keynote Presentation' },
@@ -937,14 +946,14 @@
         desc: 'Buffet lunch in the First Floor Dining Hall with dedicated discussion tables.'
       },
       'd1-s8': {
-        category: 'Invited Talk',
+        category: 'Plenary Keynote',
         badgeClass: 'tag-green',
         time: '02:10 PM - 03:00 PM (50 mins)',
         venue: 'Auditorium',
-        title: 'Invited Speaker Talk 1',
-        speaker: 'Dr. Parag Singla',
-        affiliation: 'Professor, Department of Computer Science & Engineering, IIT Delhi | Ph.D. University of Washington',
-        desc: 'Invited talk exploring statistical relational AI, neuro-symbolic reasoning, and scalable probabilistic models.',
+        title: 'Plenary Keynote | Dr. Santanu Chaudhury',
+        speaker: 'Dr. Santanu Chaudhury',
+        affiliation: 'Dean, Vachani School of Advanced Computing, Ashoka University | Professor of CS, Ph.D. IIT Kharagpur',
+        desc: 'Plenary keynote address focusing on fundamental frontiers in artificial intelligence, learning representations, and intelligent systems.',
         buffer: 'The 10-minute gap is retained as a transition/buffer.'
       },
       'd1-s9a': {
@@ -966,14 +975,12 @@
         category: 'Oral Track Session',
         badgeClass: 'tag-lavender',
         time: '03:10 PM - 04:40 PM (90 mins)',
-        venue: 'Room: A3 - 3102',
-        title: 'Track Presentations: AI for Cities: Enhancing Resilience, Improving Liveability',
-        speaker: 'Dr. Nipun Batra (Track Keynote)',
-        affiliation: 'Associate Professor of Computer Science, IIT Gandhinagar',
-        chairs: 'Dr. Anupam Sobti, Dr. Malini Balakrishnan, Dr. Prashanth Suresh Kumar, Dr. Pankaj Pansari',
-        desc: 'Predictive urban management through real-time AI, smart mobility optimization, urban flooding forecasting, and municipal resource planning.',
+        venue: 'Room: A3 - 3007',
+        title: 'Track Presentations: AI in Sensors',
+        chairs: 'Dr. Anil Roy, Dr. Praveen Kumar',
+        desc: 'Intelligent transducers, sensor hardware-software co-design, edge AI systems, quantum sensors, environmental monitoring, and wearable devices.',
         schedule: [
-          { time: '03:10 PM - 03:40 PM', event: 'Track Keynote: Dr. Nipun Batra (IIT Gandhinagar)' },
+          { time: '03:10 PM - 03:40 PM', event: 'Track Keynote Presentation' },
           { time: '03:40 PM - 04:40 PM', event: 'Track Oral Paper Presentations' }
         ]
       },
@@ -983,7 +990,7 @@
         time: '04:40 PM - 05:40 PM (60 mins)',
         venue: 'Corridor & Foyer Area',
         title: 'High Tea Break / Poster Presentation',
-        desc: 'Interactive research posters and discussions with authors across 4 tracks: Track 1: AI in Healthcare, Track 2: AI and Logic, Track 3: AI in the Economy, Track 4: AI 4 Cities.'
+        desc: 'Interactive research posters and discussions with authors across 4 tracks: Track 1: AI in Healthcare, Track 2: AI and Logic, Track 3: AI in the Economy, Track 4: AI in Sensors.'
       },
       'd1-s11': {
         category: 'Campus Experience',
@@ -1030,8 +1037,8 @@
         badgeClass: 'tag-green',
         time: '09:10 AM - 10:00 AM (50 mins)',
         venue: 'Auditorium',
-        title: 'Keynote Address 2',
-        speaker: 'Prof. Sanghamitra Bandyopadhyay',
+        title: 'Plenary Keynote | Dr. Sanghamitra Bandyopadhyay',
+        speaker: 'Dr. Sanghamitra Bandyopadhyay',
         affiliation: 'Ex-Director, Indian Statistical Institute (ISI) Kolkata | Padmashree Awardee | Ph.D. ISI',
         desc: 'Distinguished plenary keynote on machine learning, evolutionary computing, and biological data analytics.',
         buffer: 'The 10-minute gap is retained as a transition/buffer.'
@@ -1040,13 +1047,15 @@
         category: 'Oral Track Session',
         badgeClass: 'tag-lavender',
         time: '10:10 AM - 11:40 AM (90 mins)',
-        venue: 'Room: A3 - 3007',
-        title: 'Track Presentations: AI in Sensors',
-        chairs: 'Dr. Anil Roy, Dr. Praveen Kumar, Dr. Sandilya Garimella',
-        desc: 'Intelligent transducers, sensor hardware-software co-design, edge AI systems, quantum sensors, environmental monitoring, and wearable devices.',
+        venue: 'Room: A3 - 3102',
+        title: 'Track Presentations: AI 4 Cities—Enhancing Resilience, Improving Liveability',
+        speaker: 'Dr. Nipun Batra (Track Keynote)',
+        affiliation: 'Associate Professor of Computer Science, IIT Gandhinagar',
+        chairs: 'Dr. Anupam Sobti, Dr. Malini Balakrishnan, Dr. Prashanth Suresh Kumar, Dr. Pankaj Pansari',
+        desc: 'Predictive urban management through real-time AI, smart mobility optimization, urban flooding forecasting, and municipal resource planning.',
         schedule: [
-          { time: '10:00 AM - 10:30 AM', event: 'Track Keynote Presentation' },
-          { time: '10:30 AM - 11:30 AM', event: 'Track Oral Paper Presentations' }
+          { time: '10:10 AM - 10:40 AM', event: 'Track Keynote: Dr. Nipun Batra (IIT Gandhinagar)' },
+          { time: '10:40 AM - 11:40 AM', event: 'Track Oral Paper Presentations' }
         ]
       },
       'd2-s4b': {
@@ -1055,10 +1064,11 @@
         time: '10:10 AM - 11:40 AM (90 mins)',
         venue: 'Room: A3 - 3009',
         title: 'Track Presentations: Recent Advances in AI',
+        chairs: 'Prof. Ankur Nahar, Prof. Srijita Chakraburty, Prof. Sushant Vijayan',
         desc: 'Frontier foundation models, reasoning techniques, generative AI paradigms, and scalable inference algorithms.',
         schedule: [
-          { time: '10:00 AM - 10:30 AM', event: 'Track Keynote Presentation' },
-          { time: '10:30 AM - 11:30 AM', event: 'Track Oral Paper Presentations' }
+          { time: '10:10 AM - 10:40 AM', event: 'Track Keynote Presentation' },
+          { time: '10:40 AM - 11:40 AM', event: 'Track Oral Paper Presentations' }
         ]
       },
       'd2-s5': {
@@ -1074,7 +1084,7 @@
         badgeClass: 'tag-pink',
         time: '12:00 PM - 01:00 PM (60 mins)',
         venue: 'Discussion Rooms & Library',
-        title: 'One-on-One Mentorship Session',
+        title: 'One-on-One Mentorship Sessions',
         desc: 'Individual mentoring sessions connecting PhD students and emerging researchers with distinguished faculty, senior professors, and research directors.'
       },
       'd2-s7': {
@@ -1094,24 +1104,24 @@
         desc: 'Buffet lunch in the Axis Building Dining Area.'
       },
       'd2-s9': {
-        category: 'Invited Talk',
+        category: 'Plenary Keynote',
         badgeClass: 'tag-green',
         time: '02:10 PM - 03:00 PM (50 mins)',
         venue: 'Auditorium',
-        title: 'Invited Speaker Talk 2',
+        title: 'Plenary Keynote | Dr. Ponnurangam Kumaraguru',
         speaker: 'Dr. Ponnurangam Kumaraguru (PK)',
         affiliation: 'Visiting Scientist, ANRF | Professor of CS, IIIT Hyderabad | Ph.D. Carnegie Mellon University',
-        desc: 'Invited lecture exploring computational social science, cybersecurity, privacy-preserving AI, and online social systems.'
+        desc: 'Plenary keynote exploring computational social science, cybersecurity, privacy-preserving AI, and online social systems.'
       },
       'd2-s10': {
-        category: 'Invited Talk',
+        category: 'Plenary Keynote',
         badgeClass: 'tag-green',
         time: '03:00 PM - 03:50 PM (50 mins)',
         venue: 'Auditorium',
-        title: 'Invited Speaker Talk 3',
+        title: 'Plenary Keynote | Dr. Manish Gupta',
         speaker: 'Dr. Manish Gupta',
         affiliation: 'Senior Director, Google DeepMind | Ph.D. University of Illinois Urbana-Champaign',
-        desc: 'Invited lecture on next-generation AI foundation models, multimodality, and societal applications.'
+        desc: 'Plenary keynote on next-generation AI foundation models, multimodality, and societal applications.'
       },
       'd2-s11': {
         category: 'Poster Showcase & High Tea',
@@ -1119,7 +1129,7 @@
         time: '04:00 PM - 05:00 PM (60 mins)',
         venue: 'Auditorium corridor/porch',
         title: 'High Tea Break / Poster Presentation',
-        desc: 'Poster presentations across 4 tracks: Track 1: AI in Sensors, Track 2: Recent Advances in AI, Track 3: VLM, Track 4: Responsible and Ethical AI.'
+        desc: 'Poster presentations across 4 tracks: Track 1: AI 4 Cities, Track 2: Recent Advances in AI, Track 3: Reasoning in Vision Language Models, Track 4: Responsible and Ethical AI.'
       },
       'd2-s12': {
         category: 'Plenary Panel',
@@ -1166,7 +1176,7 @@
         badgeClass: 'tag-green',
         time: '09:10 AM - 10:00 AM (50 mins)',
         venue: 'Auditorium',
-        title: 'Keynote Address 3',
+        title: 'Plenary Keynote | Dr. Balaraman Ravindran',
         speaker: 'Dr. Balaraman Ravindran',
         affiliation: 'Head, Dept. of Data Science & AI, IIT Madras | Ph.D. University of Massachusetts Amherst',
         desc: 'Plenary keynote on reinforcement learning, graph neural representations, and scalable AI frameworks.'
@@ -1176,7 +1186,7 @@
         badgeClass: 'tag-pink',
         time: '10:00 AM - 11:00 AM (60 mins)',
         venue: 'Room: A3 - 3007',
-        title: 'Track Presentations: VLM (Reasoning in Vision Language Models)',
+        title: 'Track Presentations: Reasoning in Vision Language Models',
         speaker: 'Vineeth N Balasubramanian (Track Keynote)',
         affiliation: 'Professor of CS, IIT Hyderabad',
         chairs: 'Dr. Pankaj Pansari, Dr. Deepan Muthirayan',
