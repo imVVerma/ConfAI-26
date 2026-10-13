@@ -7914,7 +7914,8 @@ body.agenda-page.sharp-theme,
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 360px));
   gap: 2rem;
-  margin: 1.5rem 0 0;
+  justify-content: center;
+  margin: 1.5rem auto 0;
 }
 
 .general-chair-card {
@@ -8071,6 +8072,7 @@ body.agenda-page.sharp-theme,
     grid-template-columns: 1fr;
     max-width: 360px;
     gap: 1.5rem;
+    margin: 1.5rem auto 0;
   }
 
   .chair-avatar-wrap {
