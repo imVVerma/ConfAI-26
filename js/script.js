@@ -976,7 +976,7 @@
         badgeClass: 'tag-lavender',
         time: '03:10 PM - 04:40 PM (90 mins)',
         venue: 'Room: A3 - 3007',
-        title: 'Track Presentations: AI in Sensors',
+        title: 'Track Presentations: AI in Sensing',
         chairs: 'Dr. Anil Roy, Dr. Praveen Kumar',
         desc: 'Intelligent transducers, sensor hardware-software co-design, edge AI systems, quantum sensors, environmental monitoring, and wearable devices.',
         schedule: [
@@ -990,7 +990,7 @@
         time: '04:40 PM - 05:40 PM (60 mins)',
         venue: 'Corridor & Foyer Area',
         title: 'High Tea Break / Poster Presentation',
-        desc: 'Interactive research posters and discussions with authors across 4 tracks: Track 1: AI in Healthcare, Track 2: AI and Logic, Track 3: AI in the Economy, Track 4: AI in Sensors.'
+        desc: 'Interactive research posters and discussions with authors across 4 tracks: Track 1: AI in Healthcare, Track 2: AI and Logic, Track 3: AI in the Economy, Track 4: AI in Sensing.'
       },
       'd1-s11': {
         category: 'Campus Experience',

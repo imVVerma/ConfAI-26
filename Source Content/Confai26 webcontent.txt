@@ -172,7 +172,7 @@ This session aims to explore how AI technologies can be designed and deployed to
 
  
 
-Track 3: AI in Sensors 
+Track 3: AI in Sensing 
 
 Track Co-Chairs 
 Dr. Anil Roy, Dr. Praveen Kumar, Dr. Sandilya Garimella 
