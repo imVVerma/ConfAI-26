@@ -4,6 +4,8 @@
 *.pptx
 *.xlsx
 *.zip
+*.csv
 
 # Local system & untracked notes
 er.name
+

@@ -869,6 +869,14 @@
   /* ── CONFAI 2026 GANTT TIMETABLE CONTROLLER & DATABASE ──────────────────── */
   (function initGanttBoard() {
     var sessionsDb = {
+      'd1-s0': {
+        category: 'Breakfast',
+        badgeClass: 'tag-green',
+        time: '07:00 AM - 08:30 AM (90 mins)',
+        venue: 'Dining Hall',
+        title: 'Breakfast',
+        desc: 'Morning breakfast for conference attendees, speakers, and delegates.'
+      },
       'd1-s1': {
         category: 'Arrival & Registration',
         badgeClass: 'tag-green',
@@ -890,15 +898,15 @@
         badgeClass: 'tag-green',
         time: '10:00 AM - 10:50 AM (50 mins)',
         venue: 'Auditorium',
-        title: 'Plenary Keynote | Dr. Parag Singla',
-        speaker: 'Dr. Parag Singla',
-        affiliation: 'Professor, Department of Computer Science & Engineering, IIT Delhi | Ph.D. University of Washington',
-        desc: 'Plenary keynote exploring statistical relational AI, neuro-symbolic reasoning, and scalable probabilistic models.'
+        title: 'Plenary Keynote | Dr. Santanu Chaudhury',
+        speaker: 'Dr. Santanu Chaudhury',
+        affiliation: 'Dean, Vachani School of Advanced Computing, Ashoka University | Professor of CS, Ph.D. IIT Kharagpur',
+        desc: 'Plenary keynote address focusing on fundamental frontiers in artificial intelligence, learning representations, and intelligent systems.'
       },
       'd1-s4': {
         category: 'Refreshment Break',
         badgeClass: 'tag-green',
-        time: '10:50 AM - 11:15 AM (25 mins)',
+        time: '10:55 AM - 11:05 AM (10 mins)',
         venue: 'Dining & Corridor Area',
         title: 'Tea Break',
         desc: 'Morning tea, coffee, and informal networking for all delegates.'
@@ -906,33 +914,33 @@
       'd1-s5a': {
         category: 'Oral Track Session',
         badgeClass: 'tag-lavender',
-        time: '11:15 AM - 12:45 PM (90 mins)',
+        time: '11:05 AM - 12:45 PM (100 mins)',
         venue: 'Room: A3 - 3202',
         title: 'Track Presentations: AI In Healthcare',
         chairs: 'Dr. Sunita Chauhan, Dr. Sandeep Manjanna, Dr. Monika Sharma',
         desc: 'Exploring how AI technologies deliver tailored healthcare solutions, precision diagnostics, adaptive care pathways, and language-inclusive clinical tools.',
         schedule: [
-          { time: '11:15 AM - 11:45 AM', event: 'Track Keynote Presentation' },
-          { time: '11:45 AM - 12:45 PM', event: 'Track Oral Paper Presentations' }
+          { time: '11:05 AM - 11:35 AM', event: 'Track Keynote Presentation' },
+          { time: '11:35 AM - 12:45 PM', event: 'Track Oral Paper Presentations' }
         ]
       },
       'd1-s5b': {
         category: 'Oral Track Session',
         badgeClass: 'tag-lavender',
-        time: '11:15 AM - 12:45 PM (90 mins)',
+        time: '11:05 AM - 12:45 PM (100 mins)',
         venue: 'Room: A3 - 3203 (MSAI Classroom)',
         title: 'Track Presentations: AI and Logic: Relations and Applications',
         chairs: 'Dr. Deepak Khemani, Dr. Saeed Salehi, Dr. Tapas Pandit',
         desc: 'The interaction of logical frameworks, formal methods, theorem proving, model checking, and multi-agent epistemic reasoning in modern AI.',
         schedule: [
-          { time: '11:15 AM - 11:45 AM', event: 'Track Keynote Presentation' },
-          { time: '11:45 AM - 12:45 PM', event: 'Track Oral Paper Presentations' }
+          { time: '11:05 AM - 11:35 AM', event: 'Track Keynote Presentation' },
+          { time: '11:35 AM - 12:45 PM', event: 'Track Oral Paper Presentations' }
         ]
       },
       'd1-s6': {
         category: 'Photo Session',
         badgeClass: 'tag-green',
-        time: '12:45 PM - 01:10 PM (25 mins)',
+        time: '12:55 PM - 01:10 PM (15 mins)',
         venue: 'Grand Staircase',
         title: 'Group Photograph',
         desc: 'Official conference group photograph with keynote speakers, organizing chairs, authors, delegates, and guests on the Grand Staircase.'
@@ -940,7 +948,7 @@
       'd1-s7': {
         category: 'Lunch & Networking',
         badgeClass: 'tag-green',
-        time: '01:10 PM - 02:10 PM (60 mins)',
+        time: '01:10 PM - 02:00 PM (50 mins)',
         venue: 'Dining Hall (First Floor)',
         title: 'Lunch',
         desc: 'Buffet lunch in the First Floor Dining Hall with dedicated discussion tables.'
@@ -950,16 +958,15 @@
         badgeClass: 'tag-green',
         time: '02:10 PM - 03:00 PM (50 mins)',
         venue: 'Auditorium',
-        title: 'Plenary Keynote | Dr. Santanu Chaudhury',
-        speaker: 'Dr. Santanu Chaudhury',
-        affiliation: 'Dean, Vachani School of Advanced Computing, Ashoka University | Professor of CS, Ph.D. IIT Kharagpur',
-        desc: 'Plenary keynote address focusing on fundamental frontiers in artificial intelligence, learning representations, and intelligent systems.',
-        buffer: 'The 10-minute gap is retained as a transition/buffer.'
+        title: 'Plenary Keynote | Dr. Parag Singla',
+        speaker: 'Dr. Parag Singla',
+        affiliation: 'Professor, Department of Computer Science & Engineering, IIT Delhi | Ph.D. University of Washington',
+        desc: 'Plenary keynote exploring statistical relational AI, neuro-symbolic reasoning, and scalable probabilistic models.'
       },
       'd1-s9a': {
         category: 'Oral Track Session',
         badgeClass: 'tag-lavender',
-        time: '03:10 PM - 04:40 PM (90 mins)',
+        time: '03:10 PM - 04:50 PM (100 mins)',
         venue: 'Room: A3 - 3103',
         title: 'Track Presentations: AI In the Economy',
         speaker: 'Mr. Sajjid Chinoy (Track Keynote)',
@@ -968,26 +975,28 @@
         desc: 'Focusing on AI as a transformative force in labor markets, algorithmic trading, fraud detection, credit scoring, and public resource allocation.',
         schedule: [
           { time: '03:10 PM - 03:40 PM', event: 'Track Keynote: Mr. Sajjid Chinoy (Chief India Economist, J.P. Morgan)' },
-          { time: '03:40 PM - 04:40 PM', event: 'Track Oral Paper Presentations' }
+          { time: '03:40 PM - 04:50 PM', event: 'Track Oral Paper Presentations' }
         ]
       },
       'd1-s9b': {
         category: 'Oral Track Session',
         badgeClass: 'tag-lavender',
-        time: '03:10 PM - 04:40 PM (90 mins)',
+        time: '03:10 PM - 04:50 PM (100 mins)',
         venue: 'Room: A3 - 3007',
         title: 'Track Presentations: AI in Sensing',
+        speaker: 'Dr. Mohan Kumar (Track Keynote)',
+        affiliation: 'Distinguished Professor, Department of Computer Science, RIT',
         chairs: 'Dr. Anil Roy, Dr. Praveen Kumar',
         desc: 'Intelligent transducers, sensor hardware-software co-design, edge AI systems, quantum sensors, environmental monitoring, and wearable devices.',
         schedule: [
-          { time: '03:10 PM - 03:40 PM', event: 'Track Keynote Presentation' },
-          { time: '03:40 PM - 04:40 PM', event: 'Track Oral Paper Presentations' }
+          { time: '03:10 PM - 03:40 PM', event: 'Track Keynote: Dr. Mohan Kumar' },
+          { time: '03:40 PM - 04:50 PM', event: 'Track Oral Paper Presentations' }
         ]
       },
       'd1-s10': {
         category: 'Poster Showcase & High Tea',
         badgeClass: 'tag-pink',
-        time: '04:40 PM - 05:40 PM (60 mins)',
+        time: '04:50 PM - 05:40 PM (50 mins)',
         venue: 'Corridor & Foyer Area',
         title: 'High Tea Break / Poster Presentation',
         desc: 'Interactive research posters and discussions with authors across 4 tracks: Track 1: AI in Healthcare, Track 2: AI and Logic, Track 3: AI in the Economy, Track 4: AI in Sensing.'
@@ -1016,6 +1025,14 @@
         title: 'Networking Dinner',
         desc: 'Evening dinner banquet connecting delegates, authors, keynote speakers, and academic partners in a relaxed atmosphere.'
       },
+      'd2-s0': {
+        category: 'Breakfast',
+        badgeClass: 'tag-green',
+        time: '07:00 AM - 08:30 AM (90 mins)',
+        venue: 'Dining Hall',
+        title: 'Breakfast',
+        desc: 'Morning breakfast for conference attendees, speakers, and delegates.'
+      },
       'd2-s1': {
         category: 'Morning Refreshments',
         badgeClass: 'tag-green',
@@ -1037,16 +1054,33 @@
         badgeClass: 'tag-green',
         time: '09:10 AM - 10:00 AM (50 mins)',
         venue: 'Auditorium',
-        title: 'Plenary Keynote | Dr. Sanghamitra Bandyopadhyay',
-        speaker: 'Dr. Sanghamitra Bandyopadhyay',
+        title: 'Plenary Keynote | Prof. Sanghamitra Bandyopadhyay',
+        speaker: 'Prof. Sanghamitra Bandyopadhyay',
         affiliation: 'Ex-Director, Indian Statistical Institute (ISI) Kolkata | Padmashree Awardee | Ph.D. ISI',
-        desc: 'Distinguished plenary keynote on machine learning, evolutionary computing, and biological data analytics.',
-        buffer: 'The 10-minute gap is retained as a transition/buffer.'
+        desc: 'Distinguished plenary keynote on machine learning, evolutionary computing, and biological data analytics.'
       },
-      'd2-s4a': {
+      'd2-s4': {
+        category: 'Plenary Keynote',
+        badgeClass: 'tag-green',
+        time: '10:10 AM - 11:00 AM (50 mins)',
+        venue: 'Auditorium',
+        title: 'Plenary Keynote | Dr. Ponnurangam Kumaraguru (PK)',
+        speaker: 'Dr. Ponnurangam Kumaraguru (PK)',
+        affiliation: 'Visiting Scientist, ANRF | Professor of CS, IIIT Hyderabad | Ph.D. Carnegie Mellon University',
+        desc: 'Plenary keynote exploring computational social science, cybersecurity, privacy-preserving AI, and online social systems.'
+      },
+      'd2-s5': {
+        category: 'Refreshment Break',
+        badgeClass: 'tag-green',
+        time: '11:00 AM - 11:20 AM (20 mins)',
+        venue: 'Corridor Area',
+        title: 'Tea Break',
+        desc: 'Short tea and refreshment break.'
+      },
+      'd2-s6a': {
         category: 'Oral Track Session',
         badgeClass: 'tag-lavender',
-        time: '10:10 AM - 11:40 AM (90 mins)',
+        time: '11:20 AM - 01:00 PM (100 mins)',
         venue: 'Room: A3 - 3102',
         title: 'Track Presentations: AI 4 Cities—Enhancing Resilience, Improving Liveability',
         speaker: 'Dr. Nipun Batra (Track Keynote)',
@@ -1054,38 +1088,22 @@
         chairs: 'Dr. Anupam Sobti, Dr. Malini Balakrishnan, Dr. Prashanth Suresh Kumar, Dr. Pankaj Pansari',
         desc: 'Predictive urban management through real-time AI, smart mobility optimization, urban flooding forecasting, and municipal resource planning.',
         schedule: [
-          { time: '10:10 AM - 10:40 AM', event: 'Track Keynote: Dr. Nipun Batra (IIT Gandhinagar)' },
-          { time: '10:40 AM - 11:40 AM', event: 'Track Oral Paper Presentations' }
+          { time: '11:20 AM - 11:50 AM', event: 'Track Keynote: Dr. Nipun Batra (IIT Gandhinagar)' },
+          { time: '11:50 AM - 01:00 PM', event: 'Track Oral Paper Presentations' }
         ]
       },
-      'd2-s4b': {
+      'd2-s6b': {
         category: 'Oral Track Session',
         badgeClass: 'tag-lavender',
-        time: '10:10 AM - 11:40 AM (90 mins)',
+        time: '11:20 AM - 01:00 PM (100 mins)',
         venue: 'Room: A3 - 3009',
         title: 'Track Presentations: Recent Advances in AI',
         chairs: 'Prof. Ankur Nahar, Prof. Srijita Chakraburty, Prof. Sushant Vijayan',
         desc: 'Frontier foundation models, reasoning techniques, generative AI paradigms, and scalable inference algorithms.',
         schedule: [
-          { time: '10:10 AM - 10:40 AM', event: 'Track Keynote Presentation' },
-          { time: '10:40 AM - 11:40 AM', event: 'Track Oral Paper Presentations' }
+          { time: '11:20 AM - 11:50 AM', event: 'Track Keynote Presentation' },
+          { time: '11:50 AM - 01:00 PM', event: 'Track Oral Paper Presentations' }
         ]
-      },
-      'd2-s5': {
-        category: 'Refreshment Break',
-        badgeClass: 'tag-green',
-        time: '11:40 AM - 12:00 PM (20 mins)',
-        venue: 'Corridor Area',
-        title: 'Tea Break',
-        desc: 'Short tea and refreshment break.'
-      },
-      'd2-s6': {
-        category: 'Mentorship',
-        badgeClass: 'tag-pink',
-        time: '12:00 PM - 01:00 PM (60 mins)',
-        venue: 'Discussion Rooms & Library',
-        title: 'One-on-One Mentorship Sessions',
-        desc: 'Individual mentoring sessions connecting PhD students and emerging researchers with distinguished faculty, senior professors, and research directors.'
       },
       'd2-s7': {
         category: 'Photo Session',
@@ -1104,14 +1122,12 @@
         desc: 'Buffet lunch in the Axis Building Dining Area.'
       },
       'd2-s9': {
-        category: 'Plenary Keynote',
+        category: 'Plaksha Conversations',
         badgeClass: 'tag-green',
-        time: '02:10 PM - 03:00 PM (50 mins)',
+        time: '02:15 PM - 03:00 PM (45 mins)',
         venue: 'Auditorium',
-        title: 'Plenary Keynote | Dr. Ponnurangam Kumaraguru',
-        speaker: 'Dr. Ponnurangam Kumaraguru (PK)',
-        affiliation: 'Visiting Scientist, ANRF | Professor of CS, IIIT Hyderabad | Ph.D. Carnegie Mellon University',
-        desc: 'Plenary keynote exploring computational social science, cybersecurity, privacy-preserving AI, and online social systems.'
+        title: 'Plaksha Conversations',
+        desc: 'Special dialogue and panel interaction as part of Plaksha Conversations.'
       },
       'd2-s10': {
         category: 'Plenary Keynote',
@@ -1155,6 +1171,14 @@
         title: 'Gala Dinner',
         desc: 'Formal conference gala banquet for all registered attendees, dignitaries, authors, and speakers.'
       },
+      'd3-s0': {
+        category: 'Breakfast',
+        badgeClass: 'tag-green',
+        time: '07:00 AM - 08:30 AM (90 mins)',
+        venue: 'Dining Hall',
+        title: 'Breakfast',
+        desc: 'Morning breakfast for conference attendees, speakers, and delegates.'
+      },
       'd3-s1': {
         category: 'Morning Refreshments',
         badgeClass: 'tag-green',
@@ -1184,7 +1208,7 @@
       'd3-s4': {
         category: 'Oral Track Session',
         badgeClass: 'tag-pink',
-        time: '10:00 AM - 11:00 AM (60 mins)',
+        time: '10:10 AM - 11:40 AM (90 mins)',
         venue: 'Room: A3 - 3007',
         title: 'Track Presentations: Reasoning in Vision Language Models',
         speaker: 'Vineeth N Balasubramanian (Track Keynote)',
@@ -1192,50 +1216,58 @@
         chairs: 'Dr. Pankaj Pansari, Dr. Deepan Muthirayan',
         desc: 'Benchmarking reasoning in VLMs, fine-tuning, test-time scaling, interpretability, and multimodal understanding.',
         schedule: [
-          { time: '10:00 AM - 10:30 AM', event: 'Track Keynote: Vineeth N Balasubramanian (IIT Hyderabad)' },
-          { time: '10:30 AM - 11:00 AM', event: 'Track Oral Paper Presentations' }
+          { time: '10:10 AM - 10:40 AM', event: 'Track Keynote: Vineeth N Balasubramanian (IIT Hyderabad)' },
+          { time: '10:40 AM - 11:40 AM', event: 'Track Oral Paper Presentations' }
         ]
       },
       'd3-s5': {
+        category: 'Refreshment Break',
+        badgeClass: 'tag-green',
+        time: '11:40 AM - 12:00 PM (20 mins)',
+        venue: 'Corridor Area',
+        title: 'Tea Break',
+        desc: 'Short tea and refreshment break.'
+      },
+      'd3-s6': {
         category: 'Oral Track Session',
         badgeClass: 'tag-pink',
-        time: '11:00 AM - 12:00 PM (60 mins)',
+        time: '12:00 PM - 01:00 PM (60 mins)',
         venue: 'Room: A3 - 3009',
         title: 'Track Presentations: Responsible and Ethical AI',
         chairs: 'Dr. Rajesh Sharma, Dr. Sachindranath',
         desc: 'Ethical, legal, and sociotechnical dimensions of AI, algorithmic fairness, governance models, epistemic risks, and compliance standards.',
         schedule: [
-          { time: '11:00 AM - 12:00 PM', event: 'Track Oral Paper Presentations (11:00 AM - 12:00 PM)' }
+          { time: '12:00 PM - 01:00 PM', event: 'Track Oral Paper Presentations' }
         ]
-      },
-      'd3-s6': {
-        category: 'Awards & Recognition',
-        badgeClass: 'tag-pink',
-        time: '12:00 PM - 12:30 PM (30 mins)',
-        venue: 'Auditorium',
-        title: 'Award Ceremony',
-        desc: 'Presentation of Best Paper Awards across all research tracks, student recognition, and research grant honors.'
       },
       'd3-s7': {
         category: 'Valedictory',
         badgeClass: 'tag-pink',
-        time: '12:30 PM - 01:00 PM (30 mins)',
+        time: '01:00 PM - 01:10 PM (10 mins)',
         venue: 'Auditorium',
         title: 'Valedictory & Concluding Remarks',
         desc: 'Closing address, conference summary, vote of thanks, and preview of ConfAI 2027.'
       },
       'd3-s8': {
+        category: 'Awards & Recognition',
+        badgeClass: 'tag-pink',
+        time: '01:10 PM - 01:40 PM (30 mins)',
+        venue: 'Auditorium',
+        title: 'Award Ceremony',
+        desc: 'Presentation of Best Paper Awards across all research tracks, student recognition, and research grant honors.'
+      },
+      'd3-s9': {
         category: 'Farewell Lunch',
         badgeClass: 'tag-green',
-        time: '01:00 PM - 02:00 PM (60 mins)',
+        time: '01:40 PM - 02:30 PM (50 mins)',
         venue: 'Dining Hall (First Floor)',
         title: 'Lunch',
         desc: 'Farewell lunch buffet for all attendees and guests.'
       },
-      'd3-s9': {
+      'd3-s10': {
         category: 'Local Excursion & Departure',
         badgeClass: 'tag-pink',
-        time: '02:00 PM - 06:00 PM',
+        time: '02:30 PM Onwards',
         venue: 'Departure for Local Tour',
         title: 'Chandigarh Tour & Departure',
         desc: 'Guided tour of Chandigarh landmarks (Rock Garden, Sukhna Lake, Capitol Complex) followed by airport/railway station drop-offs.'
