@@ -2668,4 +2668,258 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
+/* ==========================================================================
+   CONFAI 2026 - AGENDA KEYNOTE SPEAKER TALK DETAILS MODAL CONTROLLER
+   ========================================================================== */
+
+const KEYNOTE_SPEAKERS = {
+  'santanu-chaudhury': {
+    id: 'santanu-chaudhury',
+    name: 'Dr. Santanu Chaudhury',
+    role: 'Plenary Keynote Speaker',
+    affiliation: 'Dean, Vachani School of Advanced Computing, Ashoka University | Former Director, IIT Jodhpur',
+    photo: 'img/speakers/chaudhary.png',
+    initials: 'SC',
+    time: 'Day 1: Friday, Oct 30, 2026 | 10:00 AM – 10:50 AM',
+    venue: 'Main Auditorium',
+    talkTitle: 'Representations, Reasoning, and Scalable Learning in Frontier AI',
+    abstract: 'An in-depth exploration of emerging paradigm shifts at the intersection of symbolic AI, deep learning representations, and neural reasoning frameworks. The talk delves into foundational challenges in scaling intelligent perception systems, knowledge-guided deep networks, and adaptive learning architectures tailored for complex, multi-agent real-world settings.',
+    bio: 'Dr. Santanu Chaudhury is the Dean of the Vachani School of Advanced Computing at Ashoka University and former Director of IIT Jodhpur. He earned his Ph.D. from IIT Kharagpur and is an acclaimed Fellow of IEEE, INAE, and IAPR, recognized globally for his foundational contributions in artificial intelligence, computer vision, and multimedia systems.',
+    link: 'https://www.ashoka.edu.in/profile/santanu-chaudhury/'
+  },
+  'parag-singla': {
+    id: 'parag-singla',
+    name: 'Dr. Parag Singla',
+    role: 'Plenary Keynote Speaker',
+    affiliation: 'Professor, Department of Computer Science & Engineering, IIT Delhi',
+    photo: 'img/speakers/singla.png',
+    initials: 'PS',
+    time: 'Day 1: Friday, Oct 30, 2026 | 02:10 PM – 03:00 PM',
+    venue: 'Main Auditorium',
+    talkTitle: 'Neuro-Symbolic AI & Scalable Statistical Relational Models',
+    abstract: 'Bridging the semantic gap between statistical machine learning and formal symbolic reasoning. This keynote examines how neuro-symbolic representations and lifted probabilistic inference algorithms enable transparent, domain-grounded decision making with mathematical guarantees, achieving high sample efficiency and interpretability in critical applications.',
+    bio: 'Dr. Parag Singla is a Professor of Computer Science & Engineering at IIT Delhi. He received his Ph.D. from the University of Washington, Seattle. His pioneering research in Statistical Relational AI, Markov Logic Networks, and Neuro-Symbolic learning has earned widespread international distinction across NeurIPS, AAAI, and IJCAI.',
+    link: 'https://homecse.iitd.ac.in/team/parag-singla/'
+  },
+  'sajjid-chinoy': {
+    id: 'sajjid-chinoy',
+    name: 'Mr. Sajjid Chinoy',
+    role: 'Track Keynote Speaker • AI in the Economy',
+    affiliation: 'Chief India Economist, J.P. Morgan',
+    photo: '',
+    initials: 'SC',
+    time: 'Day 1: Friday, Oct 30, 2026 | 03:10 PM – 03:40 PM',
+    venue: 'Track Room (AI in the Economy)',
+    talkTitle: 'AI as an Economic Force: Labor Dynamics, Financial Modeling & Policy Implications',
+    abstract: 'Analyzing how generative and analytical AI technologies are transforming economic productivity, labor market structures, financial risk modeling, and public resource allocation. The session presents a macroeconomic perspective on technological adoption, structural transition, and competitive advantage in emerging markets.',
+    bio: 'Mr. Sajjid Chinoy is the Chief India Economist at J.P. Morgan and previously served as a Member of the Prime Minister\'s Economic Advisory Council (PMEAC). He is a leading authority on Indian macroeconomic policy, financial systems, and technological transitions.',
+    link: ''
+  },
+  'mohan-kumar': {
+    id: 'mohan-kumar',
+    name: 'Dr. Mohan Kumar',
+    role: 'Track Keynote Speaker • AI in Sensing',
+    affiliation: 'Distinguished Professor, Department of Computer Science, Rochester Institute of Technology (RIT)',
+    photo: '',
+    initials: 'MK',
+    time: 'Day 1: Friday, Oct 30, 2026 | 03:10 PM – 03:40 PM',
+    venue: 'Track Room (AI in Sensing)',
+    talkTitle: 'Intelligent Transducers & Edge AI: Hardware-Software Co-Design for Real-Time Sensing',
+    abstract: 'Exploration of intelligent sensing, edge AI architectures, and low-power sensor analytics. The keynote focuses on co-designing physical transducers and neural inference units to enable dependable, real-time sensing across ambient environments, critical infrastructure, and wearable devices.',
+    bio: 'Dr. Mohan Kumar is a Distinguished Professor of Computer Science at Rochester Institute of Technology (RIT). His extensive research spans pervasive computing, wireless sensor networks, edge intelligence, and distributed cyber-physical systems.',
+    link: ''
+  },
+  'sanghamitra-bandyopadhyay': {
+    id: 'sanghamitra-bandyopadhyay',
+    name: 'Prof. Sanghamitra Bandyopadhyay',
+    role: 'Plenary Keynote Speaker',
+    affiliation: 'Ex-Director, Indian Statistical Institute (ISI) Kolkata | Padmashree Awardee',
+    photo: 'img/speakers/bandyopadhyay.png',
+    initials: 'SB',
+    time: 'Day 2: Saturday, Oct 31, 2026 | 09:10 AM – 10:00 AM',
+    venue: 'Main Auditorium',
+    talkTitle: 'Evolutionary Machine Learning & Computational Intelligence for Biology',
+    abstract: 'Addressing multi-objective optimization, non-convex clustering, and evolutionary algorithm design in high-dimensional biological and clinical data spaces. The session explores how evolutionary machine learning uncovers cryptic biomarkers, resolves complex genetic interactions, and guides precision computational biology.',
+    bio: 'Prof. Sanghamitra Bandyopadhyay is a distinguished computer scientist, Shanti Swarup Bhatnagar Prize recipient, and Padma Shri awardee. She served as Director of the Indian Statistical Institute (ISI) Kolkata and has published seminal research in evolutionary computation, bioinformatics, and pattern recognition.',
+    link: 'https://en.wikipedia.org/wiki/Sanghamitra_Bandyopadhyay#Awards_and_honours'
+  },
+  'ponnurangam-kumaraguru': {
+    id: 'ponnurangam-kumaraguru',
+    name: 'Dr. Ponnurangam Kumaraguru (PK)',
+    role: 'Plenary Keynote Speaker',
+    affiliation: 'Visiting Scientist, ANRF | Professor of CS, IIIT Hyderabad',
+    photo: 'img/speakers/kumaraguru.png',
+    initials: 'PK',
+    time: 'Day 2: Saturday, Oct 31, 2026 | 10:10 AM – 11:00 AM',
+    venue: 'Main Auditorium',
+    talkTitle: 'Computational Social Science, Online Safety & Scalable AI Governance',
+    abstract: 'Investigating misinformation diffusion, digital trust, and systemic vulnerabilities across modern hyper-connected information ecosystems. The talk presents scalable algorithmic methodologies for auditing social graph interactions, detecting adversarial coordinated behavior, and architecting privacy-preserving AI frameworks.',
+    bio: 'Dr. Ponnurangam Kumaraguru ("PK") is Professor of Computer Science at IIIT Hyderabad and Visiting Scientist at ANRF. He received his Ph.D. from Carnegie Mellon University. Renowned for his work in computational social systems, cybersecurity, and societal AI, he is an ACM Distinguished Member and recipient of multiple prestigious honours.',
+    link: 'https://www.iiit.ac.in/faculty/ponnurangam-kumaraguru/'
+  },
+  'nipun-batra': {
+    id: 'nipun-batra',
+    name: 'Dr. Nipun Batra',
+    role: 'Track Keynote Speaker • AI 4 Cities',
+    affiliation: 'Associate Professor of Computer Science, IIT Gandhinagar',
+    photo: '',
+    initials: 'NB',
+    time: 'Day 2: Saturday, Oct 31, 2026 | 11:20 AM – 11:50 AM',
+    venue: 'Track Room (AI 4 Cities)',
+    talkTitle: 'Real-Time Sensing & AI for Resilient Urban Infrastructure',
+    abstract: 'Leveraging machine learning and low-cost sensor arrays for urban environmental monitoring, air quality sensing, building energy efficiency, and municipal disaster mitigation. The keynote shares insights from extensive real-world urban deployments and predictive spatial-temporal modeling.',
+    bio: 'Dr. Nipun Batra is an Associate Professor of Computer Science & Engineering at IIT Gandhinagar. He completed his Ph.D. from IIIT Delhi and postdoctoral work at the University of Virginia. He is widely recognized for his work in computational sustainability, mobile sensing, and IoT systems.',
+    link: ''
+  },
+  'manish-gupta': {
+    id: 'manish-gupta',
+    name: 'Dr. Manish Gupta',
+    role: 'Plenary Keynote Speaker',
+    affiliation: 'Senior Director, Google DeepMind | ACM Fellow',
+    photo: 'img/speakers/gupta.png',
+    initials: 'MG',
+    time: 'Day 2: Saturday, Oct 31, 2026 | 03:00 PM – 03:50 PM',
+    venue: 'Main Auditorium',
+    talkTitle: 'Next-Generation Multimodal Foundation Models & Societal Impact',
+    abstract: 'Advancements in frontier multimodal foundation architectures, test-time compute scaling, and localized language understanding. This session highlights how cutting-edge research in generative models is being translated into high-impact societal deployments across healthcare access, education, and linguistic diversity in the Global South.',
+    bio: 'Dr. Manish Gupta is Senior Director at Google DeepMind and leads foundational research initiatives in AI. He holds a Ph.D. from the University of Illinois Urbana-Champaign and has previously held leadership roles at Xerox Research and IBM India Research Lab.',
+    link: 'https://research.google/people/106704/?&'
+  },
+  'balaraman-ravindran': {
+    id: 'balaraman-ravindran',
+    name: 'Dr. Balaraman Ravindran',
+    role: 'Plenary Keynote Speaker',
+    affiliation: 'Head, Dept. of Data Science & AI, IIT Madras | Head, RBCDSAI',
+    photo: 'img/speakers/ravindran.png',
+    initials: 'BR',
+    time: 'Day 3: Sunday, Nov 01, 2026 | 09:10 AM – 10:00 AM',
+    venue: 'Main Auditorium',
+    talkTitle: 'Reinforcement Learning & Graph Neural Representations: Foundations and Frontiers',
+    abstract: 'Recent theoretical breakthroughs and practical frameworks in reinforcement learning, representation learning on graphs, and relational inductive biases. The talk addresses sample efficiency in complex action spaces, hierarchical policy discovery, and topological neural representations for structured physical and relational domains.',
+    bio: 'Dr. Balaraman Ravindran is Professor and Head of the Department of Data Science and AI at IIT Madras, and heads the Robert Bosch Centre for Data Science and Artificial Intelligence (RBCDSAI). He obtained his Ph.D. from UMass Amherst and is recognized internationally for his foundational contributions to reinforcement learning and graph neural networks.',
+    link: 'https://wsai.iitm.ac.in/~ravi/'
+  },
+  'vineeth-balasubramanian': {
+    id: 'vineeth-balasubramanian',
+    name: 'Prof. Vineeth N Balasubramanian',
+    role: 'Track Keynote Speaker • Reasoning in VLMs',
+    affiliation: 'Professor, Department of Computer Science & Engineering, IIT Hyderabad',
+    photo: '',
+    initials: 'VB',
+    time: 'Day 3: Sunday, Nov 01, 2026 | 10:10 AM – 10:40 AM',
+    venue: 'Track Room (Reasoning in Vision Language Models)',
+    talkTitle: 'Beyond Pattern Matching: Reasoning, Causality & Interpretability in Vision-Language Models',
+    abstract: 'Benchmarking reasoning capabilities in multimodal foundation models, test-time inference scaling, and causal representation learning. The talk explores how vision-language models can move beyond superficial associative correlations toward verifiable step-by-step reasoning and trustworthy visual problem-solving.',
+    bio: 'Prof. Vineeth N Balasubramanian is a Professor in the Department of Computer Science and Engineering at IIT Hyderabad. His research group focuses on deep learning, explainable AI, causal machine learning, and computer vision, with extensive publications in top AI venues (CVPR, ICCV, ECCV, NeurIPS, ICML).',
+    link: ''
+  }
+};
+
+document.addEventListener('DOMContentLoaded', function () {
+  const modal = document.getElementById('sharp-speaker-modal');
+  if (!modal) return;
+
+  const avatarWrap = document.getElementById('modal-speaker-avatar-wrap');
+  const badgeEl = document.getElementById('modal-speaker-badge');
+  const nameEl = document.getElementById('modal-speaker-name');
+  const affilEl = document.getElementById('modal-speaker-affil');
+  const timeValEl = document.getElementById('modal-speaker-time-val');
+  const talkTitleEl = document.getElementById('modal-talk-title');
+  const abstractEl = document.getElementById('modal-talk-abstract');
+  const bioSection = document.getElementById('modal-bio-section');
+  const bioEl = document.getElementById('modal-speaker-bio');
+  const linkEl = document.getElementById('modal-speaker-link');
+  const closeButtons = modal.querySelectorAll('[data-close-modal]');
+
+  let previousActiveElement = null;
+
+  function openSpeakerModal(speakerId, triggerEl) {
+    const data = KEYNOTE_SPEAKERS[speakerId];
+    if (!data) return;
+
+    previousActiveElement = triggerEl || document.activeElement;
+
+    // Render Avatar / Photo
+    if (avatarWrap) {
+      if (data.photo) {
+        avatarWrap.innerHTML = '<img src="' + data.photo + '" alt="' + data.name + '" class="sharp-modal-photo" onerror="this.style.display=\'none\'; this.nextElementSibling.style.display=\'flex\';" />' +
+          '<div class="sharp-modal-initials" style="display:none;">' + (data.initials || data.name.charAt(0)) + '</div>';
+      } else {
+        avatarWrap.innerHTML = '<div class="sharp-modal-initials">' + (data.initials || data.name.charAt(0)) + '</div>';
+      }
+    }
+
+    if (badgeEl) badgeEl.textContent = data.role || 'Keynote Speaker';
+    if (nameEl) nameEl.textContent = data.name || '';
+    if (affilEl) affilEl.textContent = data.affiliation || '';
+    if (timeValEl) timeValEl.textContent = (data.time ? data.time : '') + (data.venue ? ' (' + data.venue + ')' : '');
+    if (talkTitleEl) talkTitleEl.textContent = data.talkTitle || 'To Be Announced';
+    if (abstractEl) abstractEl.textContent = data.abstract || 'Abstract will be made available closer to the conference date.';
+
+    if (bioSection && bioEl) {
+      if (data.bio) {
+        bioSection.style.display = 'block';
+        bioEl.textContent = data.bio;
+      } else {
+        bioSection.style.display = 'none';
+      }
+    }
+
+    if (linkEl) {
+      if (data.link) {
+        linkEl.href = data.link;
+        linkEl.style.display = 'inline-flex';
+      } else {
+        linkEl.style.display = 'none';
+      }
+    }
+
+    // Display modal
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('modal-open');
+
+    // Focus close button for keyboard accessibility
+    const closeBtn = modal.querySelector('.sharp-modal-close');
+    if (closeBtn) {
+      setTimeout(() => closeBtn.focus(), 50);
+    }
+  }
+
+  function closeSpeakerModal() {
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('modal-open');
+
+    if (previousActiveElement && typeof previousActiveElement.focus === 'function') {
+      previousActiveElement.focus();
+    }
+  }
+
+  // Trigger buttons delegation
+  document.addEventListener('click', function (e) {
+    const btn = e.target.closest('[data-speaker-id]');
+    if (btn) {
+      e.preventDefault();
+      const speakerId = btn.getAttribute('data-speaker-id');
+      openSpeakerModal(speakerId, btn);
+    }
+  });
+
+  // Close triggers
+  closeButtons.forEach(function (btn) {
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      closeSpeakerModal();
+    });
+  });
+
+  // Escape key handler
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && modal.classList.contains('is-open')) {
+      e.preventDefault();
+      closeSpeakerModal();
+    }
+  });
+});
 

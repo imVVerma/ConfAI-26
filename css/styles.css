@@ -8887,3 +8887,406 @@ body.agenda-page.sharp-theme,
   }
 }
 
+/* ==========================================================================
+   CONFAI 2026 - AGENDA KEYNOTE SPEAKER TALK DETAILS MODAL
+   ========================================================================== */
+
+/* Speaker Trigger Button in Agenda */
+.sharp-speaker-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: transparent;
+  border: none;
+  padding: 0.15rem 0.45rem;
+  margin: -0.15rem -0.25rem -0.15rem 0.15rem;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  color: var(--color-teal, #007878);
+  cursor: pointer;
+  text-align: left;
+  line-height: inherit;
+  text-decoration: underline;
+  text-decoration-color: rgba(0, 120, 120, 0.4);
+  text-underline-offset: 3px;
+  transition: all 0.18s ease;
+}
+
+.sharp-speaker-btn:hover {
+  background: rgba(0, 120, 120, 0.08);
+  color: #005078;
+  text-decoration-color: var(--color-teal, #007878);
+}
+
+.sharp-speaker-btn:focus-visible {
+  outline: 2px solid var(--color-teal, #007878);
+  outline-offset: 2px;
+  background: rgba(0, 120, 120, 0.1);
+}
+
+.sharp-speaker-btn .speaker-btn-cue {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  background: var(--color-teal, #007878);
+  padding: 0.15rem 0.5rem;
+  border-radius: 12px;
+  text-decoration: none !important;
+  margin-left: 0.4rem;
+  vertical-align: middle;
+  transition: all 0.18s ease;
+  white-space: nowrap;
+}
+
+.sharp-speaker-btn:hover .speaker-btn-cue {
+  background: #005078;
+  transform: translateX(2px);
+}
+
+/* Modal Overlay & Backdrop */
+.sharp-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 1rem;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.25s ease;
+}
+
+.sharp-modal-overlay.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.sharp-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  cursor: pointer;
+}
+
+/* Modal Card */
+.sharp-modal-card {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 680px;
+  max-height: 90vh;
+  background: #FFFFFF;
+  border-radius: 16px;
+  box-shadow: 0 24px 60px -12px rgba(15, 23, 42, 0.35), 0 0 0 1px rgba(0, 120, 120, 0.15);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transform: translateY(18px) scale(0.97);
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sharp-modal-overlay.is-open .sharp-modal-card {
+  transform: translateY(0) scale(1);
+}
+
+/* Modal Close Button */
+.sharp-modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid #E2E8F0;
+  background: #FFFFFF;
+  color: #64748B;
+  font-size: 1.25rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 2;
+  transition: all 0.15s ease;
+}
+
+.sharp-modal-close:hover {
+  background: #F1F5F9;
+  color: #0F172A;
+  border-color: #CBD5E1;
+  transform: scale(1.05);
+}
+
+.sharp-modal-close:focus-visible {
+  outline: 2px solid var(--color-teal, #007878);
+  outline-offset: 2px;
+}
+
+/* Modal Header */
+.sharp-modal-header {
+  padding: 1.75rem 2rem 1.25rem;
+  border-bottom: 1px solid #E2E8F0;
+  background: linear-gradient(180deg, #FAFDFD 0%, #FFFFFF 100%);
+  display: flex;
+  gap: 1.25rem;
+  align-items: center;
+}
+
+.sharp-modal-avatar-col {
+  flex-shrink: 0;
+}
+
+.sharp-modal-photo {
+  width: 82px;
+  height: 82px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #FFFFFF;
+  box-shadow: 0 4px 14px rgba(0, 120, 120, 0.18), 0 0 0 1px rgba(0, 120, 120, 0.2);
+  display: block;
+}
+
+.sharp-modal-initials {
+  width: 82px;
+  height: 82px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #007878 0%, #005078 100%);
+  color: #FFFFFF;
+  font-size: 1.6rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid #FFFFFF;
+  box-shadow: 0 4px 14px rgba(0, 120, 120, 0.25);
+}
+
+.sharp-modal-intro {
+  flex: 1;
+  min-width: 0;
+  padding-right: 1.5rem;
+}
+
+.sharp-modal-badge {
+  display: inline-block;
+  padding: 0.22rem 0.65rem;
+  border-radius: 20px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #007878;
+  background: rgba(0, 120, 120, 0.1);
+  border: 1px solid rgba(0, 120, 120, 0.2);
+  margin-bottom: 0.4rem;
+}
+
+.sharp-modal-name {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #0F172A;
+  line-height: 1.25;
+  margin: 0 0 0.25rem;
+  letter-spacing: -0.01em;
+}
+
+.sharp-modal-affil {
+  font-size: 0.88rem;
+  color: #475569;
+  line-height: 1.4;
+  margin: 0 0 0.45rem;
+}
+
+.sharp-modal-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.sharp-modal-time {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #005078;
+}
+
+/* Modal Body */
+.sharp-modal-body {
+  padding: 1.5rem 2rem;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  line-height: 1.6;
+}
+
+.sharp-modal-section-title {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #007878;
+  margin: 0 0 0.5rem;
+}
+
+.sharp-modal-talk-title {
+  font-size: 1.08rem;
+  font-weight: 700;
+  color: #0F172A;
+  line-height: 1.45;
+  background: #F8FAFC;
+  border-left: 3px solid var(--color-teal, #007878);
+  padding: 0.75rem 1rem;
+  border-radius: 0 8px 8px 0;
+  margin: 0;
+}
+
+.sharp-modal-abstract {
+  font-size: 0.92rem;
+  color: #334155;
+  margin: 0;
+  text-align: justify;
+}
+
+.sharp-modal-bio-section {
+  padding-top: 1rem;
+  border-top: 1px dashed #E2E8F0;
+}
+
+.sharp-modal-bio {
+  font-size: 0.88rem;
+  color: #475569;
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* Modal Footer */
+.sharp-modal-footer {
+  padding: 1rem 2rem;
+  background: #F8FAFC;
+  border-top: 1px solid #E2E8F0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.sharp-modal-external-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #007878;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.sharp-modal-external-link:hover {
+  color: #005078;
+  text-decoration: underline;
+}
+
+.sharp-modal-dismiss-btn {
+  padding: 0.5rem 1.25rem;
+  font-size: 0.88rem;
+  font-weight: 700;
+  border-radius: 6px;
+  background: var(--color-teal, #007878);
+  color: #FFFFFF;
+  border: 1px solid var(--color-teal, #007878);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.sharp-modal-dismiss-btn:hover {
+  background: #005078;
+  border-color: #005078;
+}
+
+.sharp-modal-dismiss-btn:focus-visible {
+  outline: 2px solid var(--color-teal, #007878);
+  outline-offset: 2px;
+}
+
+/* Prevent body scrolling when modal is active */
+body.modal-open {
+  overflow: hidden !important;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 640px) {
+  .sharp-modal-header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1.25rem 1.25rem 1rem;
+    gap: 0.85rem;
+  }
+
+  .sharp-modal-photo,
+  .sharp-modal-initials {
+    width: 64px;
+    height: 64px;
+    font-size: 1.3rem;
+  }
+
+  .sharp-modal-intro {
+    padding-right: 0;
+  }
+
+  .sharp-modal-name {
+    font-size: 1.2rem;
+  }
+
+  .sharp-modal-body {
+    padding: 1.25rem;
+    gap: 1rem;
+  }
+
+  .sharp-modal-footer {
+    padding: 0.85rem 1.25rem;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.65rem;
+  }
+
+  .sharp-modal-external-link {
+    justify-content: center;
+  }
+
+  .sharp-modal-dismiss-btn {
+    width: 100%;
+  }
+
+  .sharp-speaker-btn {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  .sharp-speaker-btn .speaker-btn-cue {
+    margin-left: 0;
+  }
+}
+
