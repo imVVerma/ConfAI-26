@@ -2819,6 +2819,11 @@ document.addEventListener('DOMContentLoaded', function () {
   const modal = document.getElementById('sharp-speaker-modal');
   if (!modal) return;
 
+  // Ensure modal is a direct child of document.body so no ancestor transforms affect fixed positioning
+  if (modal.parentElement !== document.body) {
+    document.body.appendChild(modal);
+  }
+
   const avatarWrap = document.getElementById('modal-speaker-avatar-wrap');
   const badgeEl = document.getElementById('modal-speaker-badge');
   const nameEl = document.getElementById('modal-speaker-name');
