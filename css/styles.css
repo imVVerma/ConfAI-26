@@ -9300,3 +9300,12 @@ body.modal-open {
   }
 }
 
+.sharp-modal-abstract p {
+  margin: 0 0 0.85rem;
+  line-height: 1.65;
+}
+
+.sharp-modal-abstract p:last-child {
+  margin-bottom: 0;
+}
+

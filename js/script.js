@@ -2662,3 +2662,165 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 });
+
+/* ==========================================================================
+   CONFAI 2026 - PLENARY KEYNOTE TALK DETAILS MODAL CONTROLLER
+   ========================================================================== */
+
+const PLENARY_KEYNOTES = {
+  'santanu-chaudhury': {
+    name: 'Dr. Santanu Chaudhury',
+    role: 'Plenary Keynote Speaker',
+    affiliation: 'Dean, Vachani School of Advanced Computing, Ashoka University | Former Director, IIT Jodhpur',
+    photo: 'img/speakers/chaudhary.png',
+    initials: 'SC',
+    talkTitle: 'Causal and Explainable AI: Challenge of Solving Real Life Problems',
+    abstract: '<p>Integrating causality into machine learning provides a principled foundation for achieving robustness under distribution shifts, hallucinations and provides a framework for explainable AI. Causality ensures stability across diverse operational conditions and allows models to learn to respond to interventions and shifting environments. In our talk, we shall show how domain based features can be exploited to ensure robust and explainable AI performance in different domains. We shall be considering two distinct contrasting application domains – medical imaging and campaign designs for commercial interventions.</p>',
+    link: 'https://www.ashoka.edu.in/profile/santanu-chaudhury/'
+  },
+  'parag-singla': {
+    name: 'Dr. Parag Singla',
+    role: 'Plenary Keynote Speaker',
+    affiliation: 'Professor, Department of Computer Science & Engineering, IIT Delhi',
+    photo: 'img/speakers/singla.png',
+    initials: 'PS',
+    talkTitle: 'Neuro-Symbolic AI: Enhancing Capabilities of Generative Models and Challenges Ahead.',
+    abstract: '<p>While modern day deep-networks have advanced the state of AI significantly, with applications spanning almost every discipline, some fundamental challenges remain. Many of these pertain to the nature of tasks that involve symbolic reasoning, where SOTA models still seem to falter. In this talk, I will present a broad overview of some of the work in our group on applying neuro-symbolic techniques to enhance the capabilities of generative models.</p><p>(1) We look at the problem of text-conditioned image generation with fine details. We present a novel technique that formulates generation as a sequence of generate, plan and edit steps, allowing the model to correct the original generation iteratively in an object-centric manner by generating a stepwise edit plan.</p><p>(2) We look at the problem of representing grounded spatial-concepts using simpler building blocks, e.g., a staircase is a sequence of towers of increasing height and explore how these can be learned by a robotic agent from a few human demonstrations, in the form of executable (Python) programs. Our approach combines MCTS for searching in the plan space, with LLMs to create the initial task sketch from natural language, and to aid generalisation of learned programs.</p>',
+    link: 'https://homecse.iitd.ac.in/team/parag-singla/'
+  },
+  'sanghamitra-bandyopadhyay': {
+    name: 'Prof. Sanghamitra Bandyopadhyay',
+    role: 'Plenary Keynote Speaker',
+    affiliation: 'Ex-Director, Indian Statistical Institute (ISI) Kolkata | Padmashree Awardee',
+    photo: 'img/speakers/bandyopadhyay.png',
+    initials: 'SB',
+    talkTitle: 'Computational Methods for Life Sciences',
+    abstract: '<p>The application of computational methods to biological data has transformed modern biological research, enabling researchers to identify complex patterns, uncover trends, infer relationships, and detect anomalies that may not be readily apparent through conventional approaches. This has accelerated the pace of biological discovery and provided deeper insights into the molecular and cellular processes underlying life, health, and disease.</p><p>In this talk, I will begin with a brief overview of molecular biology, including the central dogma that describes the flow of genetic information from DNA to RNA and proteins. The diverse types of biological and healthcare will then be introduced. The talk will subsequently focus on selected computational methods developed in our group at the Indian Statistical Institute for biological data analysis and healthcare applications. These will include classification-based approaches for predicting microRNA targets, clustering and computational analysis of single-cell RNA sequencing data, and multiobjective optimization approaches for drug design that seek to balance multiple competing objectives. An ongoing work on the analysis and prediction of adverse events arising from polypharmacy, an increasingly important problem in clinical practice, will also be discussed.</p><p>The talk will conclude with an overview of emerging trends in the application of artificial intelligence and machine learning to healthcare and biomedical research. Key challenges, including data heterogeneity, interpretability, validation, bias, and privacy, will be highlighted, along with some caveats that need to be considered as AI increasingly becomes part of healthcare and biological discovery.</p>',
+    link: 'https://en.wikipedia.org/wiki/Sanghamitra_Bandyopadhyay#Awards_and_honours'
+  },
+  'ponnurangam-kumaraguru': {
+    name: 'Dr. Ponnurangam Kumaraguru (PK)',
+    role: 'Plenary Keynote Speaker',
+    affiliation: 'Visiting Scientist, ANRF | Professor of CS, IIIT Hyderabad',
+    photo: 'img/speakers/kumaraguru.png',
+    initials: 'PK',
+    talkTitle: 'Saral AI: Democratising Scholarly Work by Transforming into Accessible, Multilingual Content',
+    abstract: '<p>Have you ever considered transforming a research paper (or a patent), your own or one you are reading, into a short video, poster, slide deck, reel, podcast, business brief, or a social media post? This talk introduces Saral AI, an open-source, AI-enabled research platform designed to democratise access to research and enable large-scale knowledge diffusion. Saral AI is supported by Anusandhan National Research Foundation (ANRF).</p><p>Saral AI enables researchers to convert scholarly artifacts such as research papers and patents into multiple reusable and accessible formats, including videos, slide decks, posters, reels, podcasts, and social media content. By lowering technical and communication barriers, SARAL supports researchers, educators, and institutions in amplifying the reach and impact of their work. Saral also enables researchers to consume scholarly content in multiple formats and languages, supporting inclusive and accessible knowledge engagement.</p><p>A key capability of Saral AI is multilingual video generation, with outputs currently supported in Assamese, Bengali, Bodo, Dogri, English, Gujarati, Hindi, Kannada, Maithili, Malayalam, Manipuri, Marathi, Odia, Punjabi, Sanskrit, Santali, Tamil, Telugu, and Urdu, enabling research communication at population scale. The session will include a hands-on component; participants are encouraged to bring their own research paper(s) and a laptop so that they can actively use the Saral platform during the session. The talk will also cover the platform architecture, workflows, and adoption experiences.</p><p style="margin-top:0.75rem;">Platform: <a href="https://saral.democratiseresearch.in/" target="_blank" rel="noopener noreferrer" style="color:#007878;text-decoration:underline;font-weight:600;">saral.democratiseresearch.in</a> | Codebase: <a href="https://github.com/DemocratiseResearch/SARAL" target="_blank" rel="noopener noreferrer" style="color:#007878;text-decoration:underline;font-weight:600;">github.com/DemocratiseResearch/SARAL</a></p>',
+    link: 'https://www.iiit.ac.in/faculty/ponnurangam-kumaraguru/'
+  },
+  'manish-gupta': {
+    name: 'Dr. Manish Gupta',
+    role: 'Plenary Keynote Speaker',
+    affiliation: 'Senior Director, Google DeepMind',
+    photo: 'img/speakers/gupta.png',
+    initials: 'MG',
+    talkTitle: 'The Transformative Power of AI and Open Challenges',
+    abstract: '<p>We begin by presenting recent advances in artificial intelligence, and in particular, deep learning, foundation models, and agents. We describe the tremendous progress of these AI models on problems ranging from understanding, prediction and creativity on one hand, and open technical challenges like safety, fairness and transparency on the other hand. These challenges are further amplified as we seek to advance Inclusive AI to tackle problems for billions of human beings in the Global South.</p><p>We present our work on improving multilingual capabilities and cultural understanding of foundation models like Gemini, on improving the computational efficiency of LLMs, and analyzing satellite imagery to transform agriculture and improve the lives of farmers. We then describe how powerful agentic frameworks built using these models can in turn help improve the capabilities of AI models. Through these examples, we hope to convey the excitement of the potential of AI to make a difference in the world, and also a fascinating set of open problems to tackle.</p>',
+    link: 'https://research.google/people/106704/?&'
+  },
+  'balaraman-ravindran': {
+    name: 'Dr. Balaraman Ravindran',
+    role: 'Plenary Keynote Speaker',
+    affiliation: 'Head, Dept. of Data Science & AI, IIT Madras | Head, RBCDSAI',
+    photo: 'img/speakers/ravindran.png',
+    initials: 'BR',
+    talkTitle: 'Measuring What Matters: Evaluation as the Foundation of AI Governance',
+    abstract: '<p>AI systems increasingly shape consequential decisions, from university choices to clinical diagnoses, yet governing them rests on an often-unexamined premise: that we can reliably measure how they behave. Benchmark accuracy reveals little about fairness, safety, explanation faithfulness, or the reliability of evaluators themselves, and poor measurement offers false assurance. This talk argues that responsible AI governance requires context-aware, multidimensional evaluation, as illustrated by recent work from the Centre for Responsible AI at IIT Madras.</p><p>KANEx designs for explainability, using Kolmogorov-Arnold Networks to ground chest X-ray explanations and produce more faithful saliency maps. LLM-judge verdicts can be partially predicted from the rubric text alone, and judges often fail to update in response to counterfactual reversals. We also show that safety is fragile under everyday phrasing: exploratory framings of harmful requests cut safe-response rates by 17–21 percentage points, a gap widened by medical fine-tuning and traced mechanistically to failures in executing refusal.</p><p>If time permits, I will cover two other studies - first, auditing over 25,000 LLM university recommendations, we uncover systematic geographic and gender biases, quantified through new representation scores. Second, LExT scores the trustworthiness of natural language explanations by balancing plausibility and faithfulness. Together, these works position rigorous, scrutinised measurement as the foundation for governing AI.</p>',
+    link: 'https://wsai.iitm.ac.in/~ravi/'
+  }
+};
+
+document.addEventListener('DOMContentLoaded', function () {
+  const modal = document.getElementById('sharp-speaker-modal');
+  if (!modal) return;
+
+  // Guarantee modal is a direct child of document.body for true viewport centering
+  if (modal.parentElement !== document.body) {
+    document.body.appendChild(modal);
+  }
+
+  const avatarWrap = document.getElementById('modal-speaker-avatar-wrap');
+  const badgeEl = document.getElementById('modal-speaker-badge');
+  const nameEl = document.getElementById('modal-speaker-name');
+  const affilEl = document.getElementById('modal-speaker-affil');
+  const talkTitleEl = document.getElementById('modal-talk-title');
+  const abstractEl = document.getElementById('modal-talk-abstract');
+  const linkEl = document.getElementById('modal-speaker-link');
+  const closeButtons = modal.querySelectorAll('[data-close-modal]');
+
+  let previousActiveElement = null;
+
+  function openPlenaryModal(speakerId, triggerEl) {
+    const data = PLENARY_KEYNOTES[speakerId];
+    if (!data) return;
+
+    previousActiveElement = triggerEl || document.activeElement;
+
+    if (avatarWrap) {
+      if (data.photo) {
+        avatarWrap.innerHTML = '<img src="' + data.photo + '" alt="' + data.name + '" class="sharp-modal-photo" onerror="this.style.display=\'none\'; this.nextElementSibling.style.display=\'flex\';" />' +
+          '<div class="sharp-modal-initials" style="display:none;">' + (data.initials || data.name.charAt(0)) + '</div>';
+      } else {
+        avatarWrap.innerHTML = '<div class="sharp-modal-initials">' + (data.initials || data.name.charAt(0)) + '</div>';
+      }
+    }
+
+    if (badgeEl) badgeEl.textContent = data.role || 'Plenary Keynote';
+    if (nameEl) nameEl.textContent = data.name || '';
+    if (affilEl) affilEl.textContent = data.affiliation || '';
+    if (talkTitleEl) talkTitleEl.textContent = data.talkTitle || 'To Be Announced';
+    if (abstractEl) abstractEl.innerHTML = data.abstract || '<p>Abstract will be announced soon.</p>';
+
+    if (linkEl) {
+      if (data.link) {
+        linkEl.href = data.link;
+        linkEl.style.display = 'inline-flex';
+      } else {
+        linkEl.style.display = 'none';
+      }
+    }
+
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('modal-open');
+
+    const closeBtn = modal.querySelector('.sharp-modal-close');
+    if (closeBtn) {
+      setTimeout(() => closeBtn.focus(), 50);
+    }
+  }
+
+  function closePlenaryModal() {
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('modal-open');
+
+    if (previousActiveElement && typeof previousActiveElement.focus === 'function') {
+      previousActiveElement.focus();
+    }
+  }
+
+  document.addEventListener('click', function (e) {
+    const btn = e.target.closest('[data-speaker-id]');
+    if (btn) {
+      e.preventDefault();
+      const speakerId = btn.getAttribute('data-speaker-id');
+      openPlenaryModal(speakerId, btn);
+    }
+  });
+
+  closeButtons.forEach(function (btn) {
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      closePlenaryModal();
+    });
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && modal.classList.contains('is-open')) {
+      e.preventDefault();
+      closePlenaryModal();
+    }
+  });
+});
+
