@@ -7242,15 +7242,25 @@ body.agenda-page.sharp-theme,
   .sharp-timetable-wrapper {
     padding: 0 !important;
     min-height: auto !important;
+    background: #FFFFFF !important;
+  }
+
+  .sharp-timetable-container {
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .sharp-header-block {
+    margin-bottom: 1.25rem !important;
+    break-after: avoid;
+    page-break-after: avoid;
   }
 
   .sharp-day-section {
-    page-break-inside: avoid;
+    break-inside: auto;
+    page-break-inside: auto;
     margin-bottom: 2rem;
-  }
-
-  .sharp-row {
-    page-break-inside: avoid;
   }
 
   .sharp-date-banner {
@@ -7258,6 +7268,13 @@ body.agenda-page.sharp-theme,
     color: #FFFFFF !important;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  .sharp-row {
+    break-inside: avoid;
+    page-break-inside: avoid;
   }
 }
 

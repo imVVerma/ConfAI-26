@@ -1006,7 +1006,7 @@
         category: 'Poster Showcase & High Tea',
         badgeClass: 'tag-pink',
         time: '04:50 PM - 05:40 PM (50 mins)',
-        venue: 'Corridor & Foyer Area',
+        venue: 'A3 First Floor Porch Area',
         title: 'High Tea Break / Poster Presentation',
         desc: 'Interactive research posters and discussions with authors across 4 tracks: Track 1: AI in Healthcare, Track 2: AI and Logic, Track 3: AI in the Economy, Track 4: AI in Sensing.'
       },
@@ -1151,7 +1151,7 @@
         category: 'Poster Showcase & High Tea',
         badgeClass: 'tag-pink',
         time: '04:00 PM - 05:00 PM (60 mins)',
-        venue: 'Auditorium corridor/porch',
+        venue: 'A3 First Floor Porch Area',
         title: 'High Tea Break / Poster Presentation',
         desc: 'Poster presentations across 4 tracks: Track 1: AI 4 Cities, Track 2: Recent Advances in AI, Track 3: Reasoning in Vision Language Models, Track 4: Responsible and Ethical AI.'
       },
@@ -1167,7 +1167,7 @@
         category: 'Cultural Showcase',
         badgeClass: 'tag-pink',
         time: '06:30 PM - 07:30 PM (60 mins)',
-        venue: 'Multipurpose Hall (MPH)',
+        venue: 'Auditorium',
         title: 'Plaksha Cultural Event',
         desc: 'Celebration of music, dance, and creative arts presented by student performance clubs of Plaksha University.'
       },
@@ -1264,14 +1264,22 @@
         desc: 'Presentation of Best Paper Awards across all research tracks, student recognition, and research grant honors.'
       },
       'd3-s9': {
+        category: 'Group Photograph',
+        badgeClass: 'tag-pink',
+        time: '01:40 PM - 01:50 PM (10 mins)',
+        venue: 'Outside Library Grand Staircase',
+        title: 'Group Photograph',
+        desc: 'Official conference group photograph with keynote speakers, organizing chairs, authors, delegates, and guests.'
+      },
+      'd3-s10': {
         category: 'Farewell Lunch',
         badgeClass: 'tag-green',
-        time: '01:40 PM - 02:30 PM (50 mins)',
+        time: '01:50 PM - 02:30 PM (40 mins)',
         venue: 'Dining Hall (First Floor)',
         title: 'Lunch',
         desc: 'Farewell lunch buffet for all attendees and guests.'
       },
-      'd3-s10': {
+      'd3-s11': {
         category: 'Local Excursion & Departure',
         badgeClass: 'tag-pink',
         time: '02:30 PM Onwards',
