@@ -917,7 +917,7 @@
         time: '11:05 AM - 12:45 PM (100 mins)',
         venue: 'Room: A3 - 3202',
         title: 'Track Presentations: AI In Healthcare',
-        chairs: 'Dr. Sunita Chauhan, Dr. Sandeep Manjanna, Dr. Monika Sharma',
+        chairs: 'Dr. Sunita Chauhan, Dr. Sandeep Manjanna, Dr. Monika Sharma, Dr. Chaitanya Lekshmi Indira',
         desc: 'Exploring how AI technologies deliver tailored healthcare solutions, precision diagnostics, adaptive care pathways, and language-inclusive clinical tools.',
         schedule: [
           { time: '11:05 AM - 11:35 AM', event: 'Track Keynote Presentation' },

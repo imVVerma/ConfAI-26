@@ -112,7 +112,7 @@
         <p>No sessions match your search query. Try searching for a different speaker name, session title, or track.</p>
       </div>
 
-            <!-- Timetable Schedule Content -->
+      <!-- Timetable Schedule Content -->
       <div class="sharp-schedule-board" id="sharp-schedule-board">
 
         <!-- ==================== DAY 1 ==================== -->
@@ -122,49 +122,87 @@
           </div>
 
           <div class="sharp-table">
-            <!-- D1-S0 -->
-            <div class="sharp-row sharp-meal-row" data-search="07:00 am to 08:30 am breakfast">
+            <div class="sharp-table-header" aria-hidden="true">
+              <div class="sharp-th-time">Time</div>
+              <div class="sharp-th-session">Event / Session Details</div>
+              <div class="sharp-th-location">Venue / Location</div>
+            </div>
+
+            <!-- D1-S1 -->
+            <div class="sharp-row sharp-meal-row" data-search="07:00 am to 08:30 am breakfast dining hall first floor">
               <div class="sharp-col-time">07:00 AM &ndash; 08:30 AM</div>
               <div class="sharp-col-content">
                 <div class="sharp-session-title">Breakfast</div>
               </div>
-            </div>
-
-            <!-- D1-S1 -->
-            <div class="sharp-row" data-search="08:30 am to 09:30 am arrival registration refreshments">
-              <div class="sharp-col-time">08:30 AM &ndash; 09:30 AM</div>
-              <div class="sharp-col-content">
-                <div class="sharp-session-title">Arrival / Registration &amp; Refreshments</div>
+              <div class="sharp-col-location">
+                <svg class="sharp-col-location-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>Dining Hall (First Floor)</span>
               </div>
             </div>
 
             <!-- D1-S2 -->
-            <div class="sharp-row" data-search="09:30 am to 10:00 am welcome address confai vision">
-              <div class="sharp-col-time">09:30 AM &ndash; 10:00 AM</div>
+            <div class="sharp-row" data-search="08:30 am to 09:30 am arrival registration refreshments outside auditorium">
+              <div class="sharp-col-time">08:30 AM &ndash; 09:30 AM</div>
               <div class="sharp-col-content">
-                <div class="sharp-session-title">Welcome Address &amp; ConfAI Vision</div>
+                <div class="sharp-session-title">Arrival / Registration &amp; Refreshments</div>
+              </div>
+              <div class="sharp-col-location">
+                <svg class="sharp-col-location-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>Outside Auditorium</span>
               </div>
             </div>
 
             <!-- D1-S3 -->
-            <div class="sharp-row highlight-keynote" data-search="10:00 am to 10:50 am plenary keynote dr santanu chaudhury">
-              <div class="sharp-col-time">10:00 AM &ndash; 10:50 AM</div>
+            <div class="sharp-row" data-search="09:30 am to 10:00 am welcome address confai vision auditorium">
+              <div class="sharp-col-time">09:30 AM &ndash; 10:00 AM</div>
               <div class="sharp-col-content">
-                <div class="sharp-session-title">Plenary Keynote | <button type="button" class="sharp-speaker-btn" data-speaker-id="santanu-chaudhury" aria-haspopup="dialog">Dr. Santanu Chaudhury <span class="speaker-btn-cue">View Talk &rarr;</span></button></div>
+                <div class="sharp-session-title">Welcome Address &amp; ConfAI Vision</div>
+              </div>
+              <div class="sharp-col-location">
+                <svg class="sharp-col-location-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>Auditorium</span>
               </div>
             </div>
 
             <!-- D1-S4 -->
-            <div class="sharp-row sharp-buffer-row" data-search="10:55 am to 11:05 am tea break">
+            <div class="sharp-row highlight-keynote" data-search="10:00 am to 10:50 am plenary keynote dr santanu chaudhury causal and explainable ai challenge of solving real life problems auditorium">
+              <div class="sharp-col-time">10:00 AM &ndash; 10:50 AM</div>
+              <div class="sharp-col-content">
+                <div class="sharp-session-title">Plenary Keynote | Dr. Santanu Chaudhury</div>
+                <div class="sharp-talk-block">
+                  <div class="sharp-talk-title"><span class="sharp-talk-badge">Talk</span>Causal and Explainable AI: Challenge of Solving Real Life Problems</div>
+                  <details class="sharp-abstract-details">
+                    <summary class="sharp-abstract-summary">
+                      <svg class="sharp-abstract-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                      <span>View Abstract</span>
+                    </summary>
+                    <div class="sharp-abstract-body">
+                      Integrating causality into machine learning provides a principled foundation for achieving robustness under distribution shifts, hallucinations and provides a framework for explainable AI. Causality ensures stability across diverse operational conditions and allows models to learn to respond to interventions and shifting environments. In our talk, we shall show how domain based features can be exploited to ensure robust and explainable AI performance in different domains. We shall be considering two distinct contrasting application domains – medical imaging and campaign designs for commercial interventions.
+                    </div>
+                  </details>
+                </div>
+              </div>
+              <div class="sharp-col-location">
+                <svg class="sharp-col-location-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>Auditorium</span>
+              </div>
+            </div>
+
+            <!-- D1-S5 -->
+            <div class="sharp-row sharp-buffer-row" data-search="10:55 am to 11:05 am tea break open area infront of classroom a3-007">
               <div class="sharp-col-time">10:55 AM &ndash; 11:05 AM</div>
               <div class="sharp-col-content">
                 <div class="sharp-session-title">Tea Break</div>
               </div>
+              <div class="sharp-col-location">
+                <svg class="sharp-col-location-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>Open Area Infront of Classroom A3-007</span>
+              </div>
             </div>
 
-            <!-- D1-S5: Parallel Tracks -->
+            <!-- D1-S6: Parallel Tracks -->
             <div class="sharp-row"
-              data-search="11:05 am to 12:45 pm track presentations ai in healthcare ai and logic relations and applications keynote oral presentations">
+              data-search="11:05 am to 12:45 pm track presentations ai in healthcare ai and logic relations and applications prof akshay s logic and ai old connections new frontiers a3-007 a3-009">
               <div class="sharp-col-time">11:05 AM &ndash; 12:45 PM</div>
               <div class="sharp-col-content">
                 <div class="sharp-session-title">Track Presentations (Parallel Sessions)</div>
@@ -175,102 +213,189 @@
                       11:05 AM &ndash; 11:35 AM: Track Keynote<br />
                       11:35 AM &ndash; 12:45 PM: Track Oral Presentations
                     </div>
+                    <div class="sharp-track-room-badge">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                      <span>Room: A3 - 007</span>
+                    </div>
                   </div>
                   <div class="sharp-track-subbox">
-                    <div class="sharp-track-subbox-title">Track Presentations: AI and Logic: Relations and Applications
-                    </div>
+                    <div class="sharp-track-subbox-title">Track Presentations: AI and Logic: Relations and Applications</div>
                     <div class="sharp-track-subbox-detail">
-                      11:05 AM &ndash; 11:35 AM: Track Keynote<br />
+                      11:05 AM &ndash; 11:35 AM: Track Keynote: Prof. Akshay S<br />
                       11:35 AM &ndash; 12:45 PM: Track Oral Presentations
+                    </div>
+                    <div class="sharp-talk-block">
+                      <div class="sharp-talk-title"><span class="sharp-talk-badge">Track Keynote Talk</span>Logic and AI: Old Connections, New Frontiers</div>
+                      <details class="sharp-abstract-details">
+                        <summary class="sharp-abstract-summary">
+                          <svg class="sharp-abstract-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                          <span>View Abstract</span>
+                        </summary>
+                        <div class="sharp-abstract-body">
+                          Logic and artificial intelligence have shared a rich relationship since the early days of AI. Logical methods have long helped build intelligent systems through knowledge representation, planning, and automated reasoning, while advances in AI are now helping solve hard problems in logic itself, from SAT/SMT solving to theorem proving. The rise of learned systems has brought a new emphasis to this relationship: using formal and symbolic reasoning to understand and analyse the behaviour of learned models.<br /><br />In this talk, we will explore these evolving connections and illustrate how logical and constraint-based methods enable verification, explainability, and quantification of AI models, using our recent work on decision tree ensembles as an example. We will also take a broader perspective on where this relationship is headed, touching on recent efforts to use logic to characterise the expressive power and limitations of modern learning architectures.
+                        </div>
+                      </details>
+                    </div>
+                    <div class="sharp-track-room-badge">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                      <span>Room: A3 - 009</span>
                     </div>
                   </div>
                 </div>
               </div>
+              <div class="sharp-col-location">
+                <svg class="sharp-col-location-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>AI In Healthcare: A3 - 007<br />AI and Logic: A3 - 009</span>
+              </div>
             </div>
 
-            <!-- D1-S6 -->
-            <div class="sharp-row" data-search="12:55 pm to 01:10 pm group photograph">
+            <!-- D1-S7 -->
+            <div class="sharp-row" data-search="12:55 pm to 01:10 pm group photograph outside library grand staircase">
               <div class="sharp-col-time">12:55 PM &ndash; 01:10 PM</div>
               <div class="sharp-col-content">
                 <div class="sharp-session-title">Group Photograph</div>
               </div>
+              <div class="sharp-col-location">
+                <svg class="sharp-col-location-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>Outside Library Grand Staircase</span>
+              </div>
             </div>
 
-            <!-- D1-S7: Lunch -->
-            <div class="sharp-row sharp-meal-row" data-search="01:10 pm to 02:00 pm lunch">
+            <!-- D1-S8: Lunch -->
+            <div class="sharp-row sharp-meal-row" data-search="01:10 pm to 02:00 pm lunch dining hall first floor">
               <div class="sharp-col-time">01:10 PM &ndash; 02:00 PM</div>
               <div class="sharp-col-content">
                 <div class="sharp-session-title">Lunch</div>
               </div>
-            </div>
-
-            <!-- D1-S8 -->
-            <div class="sharp-row highlight-keynote" data-search="02:10 pm to 03:00 pm plenary keynote dr parag singla">
-              <div class="sharp-col-time">02:10 PM &ndash; 03:00 PM</div>
-              <div class="sharp-col-content">
-                <div class="sharp-session-title">Plenary Keynote | <button type="button" class="sharp-speaker-btn" data-speaker-id="parag-singla" aria-haspopup="dialog">Dr. Parag Singla <span class="speaker-btn-cue">View Talk &rarr;</span></button></div>
+              <div class="sharp-col-location">
+                <svg class="sharp-col-location-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>Dining Hall (First Floor)</span>
               </div>
             </div>
 
-            <!-- D1-S9: Parallel Tracks -->
+            <!-- D1-S9 -->
+            <div class="sharp-row highlight-keynote" data-search="02:10 pm to 03:00 pm plenary keynote dr parag singla neuro-symbolic ai enhancing capabilities of generative models and challenges ahead auditorium">
+              <div class="sharp-col-time">02:10 PM &ndash; 03:00 PM</div>
+              <div class="sharp-col-content">
+                <div class="sharp-session-title">Plenary Keynote | Dr. Parag Singla</div>
+                <div class="sharp-talk-block">
+                  <div class="sharp-talk-title"><span class="sharp-talk-badge">Talk</span>Neuro-Symbolic AI: Enhancing Capabilities of Generative Models and Challenges Ahead.</div>
+                  <details class="sharp-abstract-details">
+                    <summary class="sharp-abstract-summary">
+                      <svg class="sharp-abstract-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                      <span>View Abstract</span>
+                    </summary>
+                    <div class="sharp-abstract-body">
+                      While modern day deep-networks have advanced the state of AI significantly, with applications spanning almost every discipline, some fundamental challenges remain. Many of these pertain to the nature of tasks that involve symbolic reasoning, where SOTA models still seem to falter. In this talk, I will present a broad overview of some of the work in our group on applying neuro-symbolic techniques to enhance the capabilities of generative models (1) We look at the problem of text-conditioned image generation with fine details. We present a novel technique that formulates generation as a sequence of generate, plan and edit steps, allowing the model to correct the original generation iteratively in an object-centric manner by generating a stepwise edit plan. (2) We look at the problem of representing grounded spatial-concepts using simpler building blocks, e.g., a staircase is a sequence of towers of increasing height and explore how these can be learned by a robotic agent from a few human demonstrations, in the form of executable (Python) programs. Our approach combines MCTS for searching in the plan space, with LLMs to create the initial task sketch from natural language, and to aid generalisation of learned programs.
+                    </div>
+                  </details>
+                </div>
+              </div>
+              <div class="sharp-col-location">
+                <svg class="sharp-col-location-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>Auditorium</span>
+              </div>
+            </div>
+
+            <!-- D1-S10: Parallel Tracks -->
             <div class="sharp-row"
-              data-search="03:10 pm to 04:50 pm track presentations ai in the economy ai in sensing keynote oral presentations">
+              data-search="03:10 pm to 04:50 pm track presentations ai in the economy ai in sensing dr mohan kumar ai in sensing from raw signals to personal insight in wearables a3-007 a3-009">
               <div class="sharp-col-time">03:10 PM &ndash; 04:50 PM</div>
               <div class="sharp-col-content">
                 <div class="sharp-session-title">Track Presentations (Parallel Sessions)</div>
                 <div class="sharp-sub-tracks-parallel">
                   <div class="sharp-track-subbox">
-                    <div class="sharp-track-subbox-title">Track Presentations: AI in the Economy</div>
+                    <div class="sharp-track-subbox-title">Track Presentations: AI In the Economy</div>
                     <div class="sharp-track-subbox-detail">
                       03:10 PM &ndash; 03:40 PM: Track Keynote<br />
                       03:40 PM &ndash; 04:50 PM: Track Oral Presentations
+                    </div>
+                    <div class="sharp-track-room-badge">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                      <span>Room: A3 - 007</span>
                     </div>
                   </div>
                   <div class="sharp-track-subbox">
                     <div class="sharp-track-subbox-title">Track Presentations: AI in Sensing</div>
                     <div class="sharp-track-subbox-detail">
-                      03:10 PM &ndash; 03:40 PM: Track Keynote<br />
+                      03:10 PM &ndash; 03:40 PM: Track Keynote: Dr. Mohan Kumar<br />
                       03:40 PM &ndash; 04:50 PM: Track Oral Presentations
+                    </div>
+                    <div class="sharp-talk-block">
+                      <div class="sharp-talk-title"><span class="sharp-talk-badge">Track Keynote Talk</span>AI in Sensing: From Raw Signals to Personal Insight in Wearables</div>
+                      <details class="sharp-abstract-details">
+                        <summary class="sharp-abstract-summary">
+                          <svg class="sharp-abstract-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                          <span>View Abstract</span>
+                        </summary>
+                        <div class="sharp-abstract-body">
+                          Wearables such as smartwatches, rings, patches and earbuds continuously capture physiological and motion signals, including heart rate, ECG, PPG, skin temperature, movement and sleep. Turning this noisy, motion-corrupted data into reliable health insight is where AI makes the difference. This talk explores how machine learning improves signal quality, enables early detection of conditions such as arrhythmia and sleep disorders, and personalizes models to each user. It also examines on-device AI, which delivers real-time, low-power, privacy-preserving inference. Key challenges are discussed, including limited labeled data, variability across users and skin tones, battery constraints, and clinical validation. The talk closes with an outlook on foundation models for biosignals and the path from consumer wellness tracking to trusted medical-grade monitoring.
+                        </div>
+                      </details>
+                    </div>
+                    <div class="sharp-track-room-badge">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                      <span>Room: A3 - 009</span>
                     </div>
                   </div>
                 </div>
               </div>
+              <div class="sharp-col-location">
+                <svg class="sharp-col-location-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>AI In the Economy: A3 - 007<br />AI in Sensing: A3 - 009</span>
+              </div>
             </div>
 
-            <!-- D1-S10 -->
+            <!-- D1-S11 -->
             <div class="sharp-row"
-              data-search="04:50 pm to 05:40 pm high tea break poster presentation tracks ai in healthcare ai and logic ai in the economy ai in sensing">
+              data-search="04:50 pm to 05:40 pm high tea break poster presentation tracks ai in healthcare ai and logic ai in the economy ai in sensors a3 cafeteria ground floor">
               <div class="sharp-col-time">04:50 PM &ndash; 05:40 PM</div>
               <div class="sharp-col-content">
                 <div class="sharp-session-title">High Tea Break / Poster Presentation</div>
                 <div class="sharp-poster-tracks">
                   <strong>Tracks:</strong> Track 1: AI in Healthcare &nbsp;|&nbsp; Track 2: AI and Logic &nbsp;|&nbsp; Track 3: AI in the
-                  Economy &nbsp;|&nbsp; Track 4: AI in Sensing
+                  Economy &nbsp;|&nbsp; Track 4: AI in Sensors
                 </div>
               </div>
-            </div>
-
-            <!-- D1-S11 -->
-            <div class="sharp-row" data-search="05:40 pm to 06:00 pm campus tour">
-              <div class="sharp-col-time">05:40 PM &ndash; 06:00 PM</div>
-              <div class="sharp-col-content">
-                <div class="sharp-session-title">Campus Tour</div>
+              <div class="sharp-col-location">
+                <svg class="sharp-col-location-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>A3 Cafeteria, Ground Floor</span>
               </div>
             </div>
 
             <!-- D1-S12 -->
-            <div class="sharp-row sharp-buffer-row" data-search="06:00 pm to 07:15 pm break">
-              <div class="sharp-col-time">06:00 PM &ndash; 07:15 PM</div>
+            <div class="sharp-row" data-search="05:40 pm to 06:00 pm campus tour plaksha campus">
+              <div class="sharp-col-time">05:40 PM &ndash; 06:00 PM</div>
               <div class="sharp-col-content">
-                <div class="sharp-session-title">Break</div>
+                <div class="sharp-session-title">Campus Tour</div>
+              </div>
+              <div class="sharp-col-location">
+                <svg class="sharp-col-location-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>Plaksha Campus</span>
               </div>
             </div>
 
             <!-- D1-S13 -->
-            <div class="sharp-row sharp-meal-row" data-search="07:15 pm onwards networking dinner">
+            <div class="sharp-row sharp-buffer-row" data-search="06:00 pm to 07:15 pm break campus area">
+              <div class="sharp-col-time">06:00 PM &ndash; 07:15 PM</div>
+              <div class="sharp-col-content">
+                <div class="sharp-session-title">Break</div>
+              </div>
+              <div class="sharp-col-location">
+                <svg class="sharp-col-location-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>Campus Area</span>
+              </div>
+            </div>
+
+            <!-- D1-S14 -->
+            <div class="sharp-row sharp-meal-row" data-search="07:15 pm onwards networking dinner a3 cafeteria">
               <div class="sharp-col-time">07:15 PM Onwards</div>
               <div class="sharp-col-content">
                 <div class="sharp-session-title">Networking Dinner</div>
+              </div>
+              <div class="sharp-col-location">
+                <svg class="sharp-col-location-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>A3 Cafeteria</span>
               </div>
             </div>
           </div>
@@ -283,67 +408,136 @@
           </div>
 
           <div class="sharp-table">
-            <!-- D2-S0 -->
-            <div class="sharp-row sharp-meal-row" data-search="07:00 am to 08:30 am breakfast">
+            <div class="sharp-table-header" aria-hidden="true">
+              <div class="sharp-th-time">Time</div>
+              <div class="sharp-th-session">Event / Session Details</div>
+              <div class="sharp-th-location">Venue / Location</div>
+            </div>
+
+            <!-- D2-S1 -->
+            <div class="sharp-row sharp-meal-row" data-search="07:00 am to 08:30 am breakfast dining hall first floor">
               <div class="sharp-col-time">07:00 AM &ndash; 08:30 AM</div>
               <div class="sharp-col-content">
                 <div class="sharp-session-title">Breakfast</div>
               </div>
-            </div>
-
-            <!-- D2-S1 -->
-            <div class="sharp-row" data-search="08:30 am to 09:00 am refreshments">
-              <div class="sharp-col-time">08:30 AM &ndash; 09:00 AM</div>
-              <div class="sharp-col-content">
-                <div class="sharp-session-title">Refreshments</div>
+              <div class="sharp-col-location">
+                <svg class="sharp-col-location-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>Dining Hall (First Floor)</span>
               </div>
             </div>
 
             <!-- D2-S2 -->
-            <div class="sharp-row" data-search="09:00 am to 09:10 am day 2 opening remarks">
-              <div class="sharp-col-time">09:00 AM &ndash; 09:10 AM</div>
+            <div class="sharp-row" data-search="08:30 am to 09:00 am refreshments outside auditorium">
+              <div class="sharp-col-time">08:30 AM &ndash; 09:00 AM</div>
               <div class="sharp-col-content">
-                <div class="sharp-session-title">Day 2 Opening Remarks</div>
+                <div class="sharp-session-title">Refreshments</div>
+              </div>
+              <div class="sharp-col-location">
+                <svg class="sharp-col-location-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>Outside Auditorium</span>
               </div>
             </div>
 
             <!-- D2-S3 -->
-            <div class="sharp-row highlight-keynote" data-search="09:10 am to 10:00 am plenary keynote prof sanghamitra bandyopadhyay dr sanghamitra bandyopadhyay">
-              <div class="sharp-col-time">09:10 AM &ndash; 10:00 AM</div>
+            <div class="sharp-row" data-search="09:00 am to 09:10 am day 2 opening remarks auditorium">
+              <div class="sharp-col-time">09:00 AM &ndash; 09:10 AM</div>
               <div class="sharp-col-content">
-                <div class="sharp-session-title">Plenary Keynote | <button type="button" class="sharp-speaker-btn" data-speaker-id="sanghamitra-bandyopadhyay" aria-haspopup="dialog">Prof. Sanghamitra Bandyopadhyay <span class="speaker-btn-cue">View Talk &rarr;</span></button></div>
+                <div class="sharp-session-title">Day 2 Opening Remarks</div>
+              </div>
+              <div class="sharp-col-location">
+                <svg class="sharp-col-location-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>Auditorium</span>
               </div>
             </div>
 
             <!-- D2-S4 -->
-            <div class="sharp-row highlight-keynote" data-search="10:10 am to 11:00 am plenary keynote dr ponnurangam kumaraguru pk">
-              <div class="sharp-col-time">10:10 AM &ndash; 11:00 AM</div>
+            <div class="sharp-row highlight-keynote" data-search="09:10 am to 10:00 am plenary keynote prof sanghamitra bandyopadhyay computational methods for life sciences auditorium">
+              <div class="sharp-col-time">09:10 AM &ndash; 10:00 AM</div>
               <div class="sharp-col-content">
-                <div class="sharp-session-title">Plenary Keynote | <button type="button" class="sharp-speaker-btn" data-speaker-id="ponnurangam-kumaraguru" aria-haspopup="dialog">Dr. Ponnurangam Kumaraguru (PK) <span class="speaker-btn-cue">View Talk &rarr;</span></button></div>
+                <div class="sharp-session-title">Plenary Keynote | Prof. Sanghamitra Bandyopadhyay</div>
+                <div class="sharp-talk-block">
+                  <div class="sharp-talk-title"><span class="sharp-talk-badge">Talk</span>Computational Methods for Life Sciences</div>
+                  <details class="sharp-abstract-details">
+                    <summary class="sharp-abstract-summary">
+                      <svg class="sharp-abstract-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                      <span>View Abstract</span>
+                    </summary>
+                    <div class="sharp-abstract-body">
+                      The application of computational methods to biological data has transformed modern biological research, enabling researchers to identify complex patterns, uncover trends, infer relationships, and detect anomalies that may not be readily apparent through conventional approaches. This has accelerated the pace of biological discovery and provided deeper insights into the molecular and cellular processes underlying life, health, and disease.<br /><br />In this talk, I will begin with a brief overview of molecular biology, including the central dogma that describes the flow of genetic information from DNA to RNA and proteins. The diverse types of biological and healthcare will then be introduced. The talk will subsequently focus on selected computational methods developed in our group at the Indian Statistical Institute for biological data analysis and healthcare applications. These will include classification-based approaches for predicting microRNA targets, clustering and computational analysis of single-cell RNA sequencing data, and multiobjective optimization approaches for drug design that seek to balance multiple competing objectives. An ongoing work on the analysis and prediction of adverse events arising from polypharmacy, an increasingly important problem in clinical practice, will also be discussed.<br /><br />The talk will conclude with an overview of emerging trends in the application of artificial intelligence and machine learning to healthcare and biomedical research. Key challenges, including data heterogeneity, interpretability, validation, bias, and privacy, will be highlighted, along with some caveats that need to be considered as AI increasingly becomes part of healthcare and biological discovery.
+                    </div>
+                  </details>
+                </div>
+              </div>
+              <div class="sharp-col-location">
+                <svg class="sharp-col-location-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>Auditorium</span>
               </div>
             </div>
 
             <!-- D2-S5 -->
-            <div class="sharp-row sharp-buffer-row" data-search="11:00 am to 11:20 am tea break">
+            <div class="sharp-row highlight-keynote" data-search="10:10 am to 11:00 am plenary keynote dr ponnurangam kumaraguru pk saral ai democratising scholarly work by transforming into accessible multilingual content auditorium">
+              <div class="sharp-col-time">10:10 AM &ndash; 11:00 AM</div>
+              <div class="sharp-col-content">
+                <div class="sharp-session-title">Plenary Keynote | Dr. Ponnurangam Kumaraguru (PK)</div>
+                <div class="sharp-talk-block">
+                  <div class="sharp-talk-title"><span class="sharp-talk-badge">Talk</span>Saral AI: Democratising Scholarly Work by Transforming into Accessible, Multilingual Content</div>
+                  <details class="sharp-abstract-details">
+                    <summary class="sharp-abstract-summary">
+                      <svg class="sharp-abstract-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                      <span>View Abstract</span>
+                    </summary>
+                    <div class="sharp-abstract-body">
+                      Have you ever considered transforming a research paper (or a patent), your own or one you are reading, into a short video, poster, slide deck, reel, podcast, business brief, or a social media post? This talk introduces Saral AI, an open-source, AI-enabled research platform designed to democratise access to research and enable large-scale knowledge diffusion. Saral AI is supported by Anusandhan National Research Foundation (ANRF). Saral AI enables researchers to convert scholarly artifacts such as research papers and patents into multiple reusable and accessible formats, including videos, slide decks, posters, reels, podcasts, and social media content. By lowering technical and communication barriers, SARAL supports researchers, educators, and institutions in amplifying the reach and impact of their work. Saral also enables researchers to consume scholarly content in multiple formats and languages, supporting inclusive and accessible knowledge engagement. A key capability of Saral AI is multilingual video generation, with outputs currently supported in Assamese, Bengali, Bodo, Dogri, English, Gujarati, Hindi, Kannada, Maithili, Malayalam, Manipuri, Marathi, Odia, Punjabi, Sanskrit, Santali, Tamil, Telugu, and Urdu, enabling research communication at population scale. The session will include a hands-on component; participants are encouraged to bring their own research paper(s) and a laptop so that they can actively use the Saral platform during the session. The talk will also cover the platform architecture, workflows, and adoption experiences. The Saral AI platform is accessible at <a href="https://saral.democratiseresearch.in/" target="_blank" rel="noopener noreferrer">https://saral.democratiseresearch.in/</a> and its open-source codebase is available at <a href="https://github.com/DemocratiseResearch/SARAL" target="_blank" rel="noopener noreferrer">https://github.com/DemocratiseResearch/SARAL</a>
+                    </div>
+                  </details>
+                </div>
+              </div>
+              <div class="sharp-col-location">
+                <svg class="sharp-col-location-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>Auditorium</span>
+              </div>
+            </div>
+
+            <!-- D2-S6 -->
+            <div class="sharp-row sharp-buffer-row" data-search="11:00 am to 11:20 am tea break open area in front of classrooms a3-007">
               <div class="sharp-col-time">11:00 AM &ndash; 11:20 AM</div>
               <div class="sharp-col-content">
                 <div class="sharp-session-title">Tea Break</div>
               </div>
+              <div class="sharp-col-location">
+                <svg class="sharp-col-location-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>Open area in front of classrooms A3-007</span>
+              </div>
             </div>
 
-            <!-- D2-S6: Parallel Tracks -->
+            <!-- D2-S7: Parallel Tracks -->
             <div class="sharp-row"
-              data-search="11:20 am to 01:00 pm track presentations ai 4 cities enhancing resilience improving liveability recent advances in ai keynote oral presentations">
+              data-search="11:20 am to 01:00 pm track presentations ai 4 cities enhancing resilience improving liveability dr nipun batra ai for cleaner air from satellites to city decisions recent advances in ai a3-007 a3-009">
               <div class="sharp-col-time">11:20 AM &ndash; 01:00 PM</div>
               <div class="sharp-col-content">
                 <div class="sharp-session-title">Track Presentations (Parallel Sessions)</div>
                 <div class="sharp-sub-tracks-parallel">
                   <div class="sharp-track-subbox">
-                    <div class="sharp-track-subbox-title">Track Presentations: AI 4 Cities&mdash;Enhancing Resilience,
-                      Improving Liveability</div>
+                    <div class="sharp-track-subbox-title">Track Presentations: AI 4 Cities&mdash;Enhancing Resilience, Improving Liveability</div>
                     <div class="sharp-track-subbox-detail">
-                      11:20 AM &ndash; 11:50 AM: Track Keynote<br />
+                      11:20 AM &ndash; 11:50 AM: Track Keynote: Dr. Nipun Batra<br />
                       11:50 AM &ndash; 01:00 PM: Track Oral Presentations
+                    </div>
+                    <div class="sharp-talk-block">
+                      <div class="sharp-talk-title"><span class="sharp-talk-badge">Track Keynote Talk</span>AI for Cleaner Air: From Satellites to City Decisions</div>
+                      <details class="sharp-abstract-details">
+                        <summary class="sharp-abstract-summary">
+                          <svg class="sharp-abstract-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                          <span>View Abstract</span>
+                        </summary>
+                        <div class="sharp-abstract-body">
+                          Cleaner air requires a clearer picture of pollution sources, better monitoring, and evidence that people can use. This talk presents our work at the Sustainability Lab, IIT Gandhinagar, on applying AI across these challenges. We use satellite imagery and computer vision to map brick kilns and study their evolution and regulatory compliance. We explore how active learning can guide the placement of air-quality monitoring stations, particularly where measurements are sparse. Through VayuChat, we examine how language models can make environmental data accessible through natural-language questions and executable analysis. I will also discuss ongoing work on neural emulators for faster environmental modelling and scenario exploration. These examples motivate broader questions for AI in cities: how to evaluate models under changing conditions, address uneven monitoring coverage, and turn technical advances into useful tools for researchers, citizens, and policymakers.
+                        </div>
+                      </details>
+                    </div>
+                    <div class="sharp-track-room-badge">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                      <span>Room: A3 - 007</span>
                     </div>
                   </div>
                   <div class="sharp-track-subbox">
@@ -352,46 +546,82 @@
                       11:20 AM &ndash; 11:50 AM: Track Keynote<br />
                       11:50 AM &ndash; 01:00 PM: Track Oral Presentations
                     </div>
+                    <div class="sharp-track-room-badge">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                      <span>Room: A3 - 009</span>
+                    </div>
                   </div>
                 </div>
               </div>
+              <div class="sharp-col-location">
+                <svg class="sharp-col-location-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>AI 4 Cities: A3 - 007<br />Recent Advances in AI: A3 - 009</span>
+              </div>
             </div>
 
-            <!-- D2-S7 -->
+            <!-- D2-S8 -->
             <div class="sharp-row" data-search="01:00 pm to 01:15 pm group photograph">
               <div class="sharp-col-time">01:00 PM &ndash; 01:15 PM</div>
               <div class="sharp-col-content">
                 <div class="sharp-session-title">Group Photograph</div>
               </div>
+              <div class="sharp-col-location">
+                <svg class="sharp-col-location-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>Outside Library Grand Staircase</span>
+              </div>
             </div>
 
-            <!-- D2-S8: Lunch -->
-            <div class="sharp-row sharp-meal-row" data-search="01:15 pm to 02:10 pm lunch">
+            <!-- D2-S9: Lunch -->
+            <div class="sharp-row sharp-meal-row" data-search="01:15 pm to 02:10 pm lunch dining hall first floor">
               <div class="sharp-col-time">01:15 PM &ndash; 02:10 PM</div>
               <div class="sharp-col-content">
                 <div class="sharp-session-title">Lunch</div>
               </div>
-            </div>
-
-            <!-- D2-S9 -->
-            <div class="sharp-row" data-search="02:15 pm to 03:00 pm plaksha conversations">
-              <div class="sharp-col-time">02:15 PM &ndash; 03:00 PM</div>
-              <div class="sharp-col-content">
-                <div class="sharp-session-title">Plaksha Conversations</div>
+              <div class="sharp-col-location">
+                <svg class="sharp-col-location-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>Dining Hall (First Floor)</span>
               </div>
             </div>
 
             <!-- D2-S10 -->
-            <div class="sharp-row highlight-keynote" data-search="03:00 pm to 03:50 pm plenary keynote dr manish gupta">
-              <div class="sharp-col-time">03:00 PM &ndash; 03:50 PM</div>
+            <div class="sharp-row" data-search="02:15 pm to 03:00 pm plaksha conversations a1-001 a+b">
+              <div class="sharp-col-time">02:15 PM &ndash; 03:00 PM</div>
               <div class="sharp-col-content">
-                <div class="sharp-session-title">Plenary Keynote | <button type="button" class="sharp-speaker-btn" data-speaker-id="manish-gupta" aria-haspopup="dialog">Dr. Manish Gupta <span class="speaker-btn-cue">View Talk &rarr;</span></button></div>
+                <div class="sharp-session-title">Plaksha Conversations</div>
+              </div>
+              <div class="sharp-col-location">
+                <svg class="sharp-col-location-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>A1-001(A+B)</span>
               </div>
             </div>
 
             <!-- D2-S11 -->
+            <div class="sharp-row highlight-keynote" data-search="03:00 pm to 03:50 pm plenary keynote dr manish gupta the transformative power of ai and open challenges auditorium">
+              <div class="sharp-col-time">03:00 PM &ndash; 03:50 PM</div>
+              <div class="sharp-col-content">
+                <div class="sharp-session-title">Plenary Keynote | Dr. Manish Gupta</div>
+                <div class="sharp-talk-block">
+                  <div class="sharp-talk-title"><span class="sharp-talk-badge">Talk</span>The Transformative Power of AI and Open Challenges</div>
+                  <details class="sharp-abstract-details">
+                    <summary class="sharp-abstract-summary">
+                      <svg class="sharp-abstract-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                      <span>View Abstract</span>
+                    </summary>
+                    <div class="sharp-abstract-body">
+                      We begin by presenting recent advances in artificial intelligence, and in particular, deep learning, foundation models, and agents. We describe the tremendous progress of these AI models on problems ranging from understanding, prediction and creativity on one hand, and open technical challenges like safety, fairness and transparency on the other hand. These challenges are further amplified as we seek to advance Inclusive AI to tackle problems for billions of human beings in the Global South. We present our work on improving multilingual capabilities and cultural understanding of foundation models like Gemini, on improving the computational efficiency of LLMs, and analyzing satellite imagery to transform agriculture and improve the lives of farmers. We then describe how powerful agentic frameworks built using these models can in turn help improve the capabilities of AI models. Through these examples, we hope to convey the excitement of the potential of AI to make a difference in the world, and also a fascinating set of open problems to tackle.
+                    </div>
+                  </details>
+                </div>
+              </div>
+              <div class="sharp-col-location">
+                <svg class="sharp-col-location-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>Auditorium</span>
+              </div>
+            </div>
+
+            <!-- D2-S12 -->
             <div class="sharp-row"
-              data-search="04:00 pm to 05:00 pm high tea break poster presentation tracks ai 4 cities recent advances in ai reasoning in vision language models responsible and ethical ai">
+              data-search="04:00 pm to 05:00 pm high tea break poster presentation tracks ai 4 cities recent advances in ai reasoning in vision language models responsible and ethical ai auditorium corridor porch">
               <div class="sharp-col-time">04:00 PM &ndash; 05:00 PM</div>
               <div class="sharp-col-content">
                 <div class="sharp-session-title">High Tea Break / Poster Presentation</div>
@@ -400,29 +630,45 @@
                   &nbsp;|&nbsp; Track 4: Responsible and Ethical AI
                 </div>
               </div>
-            </div>
-
-            <!-- D2-S12 -->
-            <div class="sharp-row highlight-panel" data-search="05:00 pm to 06:15 pm panel discussion">
-              <div class="sharp-col-time">05:00 PM &ndash; 06:15 PM</div>
-              <div class="sharp-col-content">
-                <div class="sharp-session-title">Panel Discussion</div>
+              <div class="sharp-col-location">
+                <svg class="sharp-col-location-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>Auditorium corridor/porch</span>
               </div>
             </div>
 
             <!-- D2-S13 -->
-            <div class="sharp-row" data-search="06:30 pm to 07:30 pm plaksha cultural event">
-              <div class="sharp-col-time">06:30 PM &ndash; 07:30 PM</div>
+            <div class="sharp-row highlight-panel" data-search="05:00 pm to 06:15 pm panel discussion auditorium">
+              <div class="sharp-col-time">05:00 PM &ndash; 06:15 PM</div>
               <div class="sharp-col-content">
-                <div class="sharp-session-title">Plaksha Cultural Event</div>
+                <div class="sharp-session-title">Panel Discussion</div>
+              </div>
+              <div class="sharp-col-location">
+                <svg class="sharp-col-location-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>Auditorium</span>
               </div>
             </div>
 
             <!-- D2-S14 -->
-            <div class="sharp-row sharp-meal-row" data-search="07:30 pm onwards gala dinner">
+            <div class="sharp-row" data-search="06:30 pm to 07:30 pm plaksha cultural event multipurpose hall auditorium">
+              <div class="sharp-col-time">06:30 PM &ndash; 07:30 PM</div>
+              <div class="sharp-col-content">
+                <div class="sharp-session-title">Plaksha Cultural Event</div>
+              </div>
+              <div class="sharp-col-location">
+                <svg class="sharp-col-location-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>Multipurpose Hall / Auditorium</span>
+              </div>
+            </div>
+
+            <!-- D2-S15 -->
+            <div class="sharp-row sharp-meal-row" data-search="07:30 pm onwards gala dinner multipurpose hall">
               <div class="sharp-col-time">07:30 PM Onwards</div>
               <div class="sharp-col-content">
                 <div class="sharp-session-title">Gala Dinner</div>
+              </div>
+              <div class="sharp-col-location">
+                <svg class="sharp-col-location-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>Multipurpose Hall</span>
               </div>
             </div>
           </div>
@@ -435,66 +681,112 @@
           </div>
 
           <div class="sharp-table">
-            <!-- D3-S0 -->
-            <div class="sharp-row sharp-meal-row" data-search="07:00 am to 08:30 am breakfast">
+            <div class="sharp-table-header" aria-hidden="true">
+              <div class="sharp-th-time">Time</div>
+              <div class="sharp-th-session">Event / Session Details</div>
+              <div class="sharp-th-location">Venue / Location</div>
+            </div>
+
+            <!-- D3-S1 -->
+            <div class="sharp-row sharp-meal-row" data-search="07:00 am to 08:30 am breakfast dining hall first floor">
               <div class="sharp-col-time">07:00 AM &ndash; 08:30 AM</div>
               <div class="sharp-col-content">
                 <div class="sharp-session-title">Breakfast</div>
               </div>
-            </div>
-
-            <!-- D3-S1 -->
-            <div class="sharp-row" data-search="08:30 am to 09:00 am refreshments">
-              <div class="sharp-col-time">08:30 AM &ndash; 09:00 AM</div>
-              <div class="sharp-col-content">
-                <div class="sharp-session-title">Refreshments</div>
+              <div class="sharp-col-location">
+                <svg class="sharp-col-location-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>Dining Hall (First Floor)</span>
               </div>
             </div>
 
             <!-- D3-S2 -->
-            <div class="sharp-row" data-search="09:00 am to 09:10 am day 3 opening remarks">
-              <div class="sharp-col-time">09:00 AM &ndash; 09:10 AM</div>
+            <div class="sharp-row" data-search="08:30 am to 09:00 am refreshments outside auditorium">
+              <div class="sharp-col-time">08:30 AM &ndash; 09:00 AM</div>
               <div class="sharp-col-content">
-                <div class="sharp-session-title">Day 3 Opening Remarks</div>
+                <div class="sharp-session-title">Refreshments</div>
+              </div>
+              <div class="sharp-col-location">
+                <svg class="sharp-col-location-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>Outside Auditorium</span>
               </div>
             </div>
 
             <!-- D3-S3 -->
-            <div class="sharp-row highlight-keynote" data-search="09:10 am to 10:00 am plenary keynote dr balaraman ravindran">
-              <div class="sharp-col-time">09:10 AM &ndash; 10:00 AM</div>
+            <div class="sharp-row" data-search="09:00 am to 09:10 am day 3 opening remarks auditorium">
+              <div class="sharp-col-time">09:00 AM &ndash; 09:10 AM</div>
               <div class="sharp-col-content">
-                <div class="sharp-session-title">Plenary Keynote | <button type="button" class="sharp-speaker-btn" data-speaker-id="balaraman-ravindran" aria-haspopup="dialog">Dr. Balaraman Ravindran <span class="speaker-btn-cue">View Talk &rarr;</span></button></div>
+                <div class="sharp-session-title">Day 3 Opening Remarks</div>
+              </div>
+              <div class="sharp-col-location">
+                <svg class="sharp-col-location-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>Auditorium</span>
               </div>
             </div>
 
-            <!-- D3-S4: Track Presentation Reasoning in Vision Language Models -->
+            <!-- D3-S4 -->
+            <div class="sharp-row highlight-keynote" data-search="09:10 am to 10:00 am plenary keynote dr balaraman ravindran measuring what matters evaluation as the foundation of ai governance auditorium">
+              <div class="sharp-col-time">09:10 AM &ndash; 10:00 AM</div>
+              <div class="sharp-col-content">
+                <div class="sharp-session-title">Plenary Keynote | Dr. Balaraman Ravindran</div>
+                <div class="sharp-talk-block">
+                  <div class="sharp-talk-title"><span class="sharp-talk-badge">Talk</span>Measuring What Matters: Evaluation as the Foundation of AI Governance</div>
+                  <details class="sharp-abstract-details">
+                    <summary class="sharp-abstract-summary">
+                      <svg class="sharp-abstract-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                      <span>View Abstract</span>
+                    </summary>
+                    <div class="sharp-abstract-body">
+                      AI systems increasingly shape consequential decisions, from university choices to clinical diagnoses, yet governing them rests on an often-unexamined premise: that we can reliably measure how they behave. Benchmark accuracy reveals little about fairness, safety, explanation faithfulness, or the reliability of evaluators themselves, and poor measurement offers false assurance. This talk argues that responsible AI governance requires context-aware, multidimensional evaluation, as illustrated by recent work from the Centre for Responsible AI at IIT Madras. KANEx designs for explainability, using Kolmogorov-Arnold Networks to ground chest X-ray explanations and produce more faithful saliency maps. LLM-judge verdicts can be partially predicted from the rubric text alone, and judges often fail to update in response to counterfactual reversals. We also show that safety is fragile under everyday phrasing: exploratory framings of harmful requests cut safe-response rates by 17–21 percentage points, a gap widened by medical fine-tuning and traced mechanistically to failures in executing refusal. If time permits, I will cover two other studies - first, auditing over 25,000 LLM university recommendations, we uncover systematic geographic and gender biases, quantified through new representation scores. Second, LExT scores the trustworthiness of natural language explanations by balancing plausibility and faithfulness. Together, these works position rigorous, scrutinised measurement as the foundation for governing AI.
+                    </div>
+                  </details>
+                </div>
+              </div>
+              <div class="sharp-col-location">
+                <svg class="sharp-col-location-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>Auditorium</span>
+              </div>
+            </div>
+
+            <!-- D3-S5: Track Presentation Reasoning in Vision Language Models -->
             <div class="sharp-row"
-              data-search="10:10 am to 11:40 am track presentations reasoning in vision language models keynote oral presentations">
+              data-search="10:10 am to 11:40 am track presentations reasoning in vision language models dr vineeth n balasubramanian online oral presentations a3-007">
               <div class="sharp-col-time">10:10 AM &ndash; 11:40 AM</div>
               <div class="sharp-col-content">
                 <div class="sharp-session-title">Track Presentations: Reasoning in Vision Language Models</div>
                 <div class="sharp-sub-tracks-parallel" style="grid-template-columns: 1fr;">
                   <div class="sharp-track-subbox">
                     <div class="sharp-track-subbox-detail">
-                      10:10 AM &ndash; 10:40 AM: Track Keynote<br />
+                      10:10 AM &ndash; 10:40 AM: Track Keynote: Dr. Vineeth N Balasubramanian- ONLINE<br />
                       10:40 AM &ndash; 11:40 AM: Track Oral Presentations
+                    </div>
+                    <div class="sharp-track-room-badge">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                      <span>Room: A3 - 007</span>
                     </div>
                   </div>
                 </div>
               </div>
+              <div class="sharp-col-location">
+                <svg class="sharp-col-location-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>A3 - 007</span>
+              </div>
             </div>
 
-            <!-- D3-S5: Tea Break -->
-            <div class="sharp-row sharp-buffer-row" data-search="11:40 am to 12:00 pm tea break">
+            <!-- D3-S6 -->
+            <div class="sharp-row sharp-buffer-row" data-search="11:40 am to 12:00 pm tea break open area in front of classrooms a3-0007">
               <div class="sharp-col-time">11:40 AM &ndash; 12:00 PM</div>
               <div class="sharp-col-content">
                 <div class="sharp-session-title">Tea Break</div>
               </div>
+              <div class="sharp-col-location">
+                <svg class="sharp-col-location-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>Open area in front of classrooms A3-0007</span>
+              </div>
             </div>
 
-            <!-- D3-S6: Track Presentation Responsible and Ethical AI -->
+            <!-- D3-S7: Track Presentation Responsible and Ethical AI -->
             <div class="sharp-row"
-              data-search="12:00 pm to 01:00 pm track presentations responsible and ethical ai oral presentations">
+              data-search="12:00 pm to 01:00 pm track presentations responsible and ethical ai oral presentations a3-009">
               <div class="sharp-col-time">12:00 PM &ndash; 01:00 PM</div>
               <div class="sharp-col-content">
                 <div class="sharp-session-title">Track Presentations: Responsible and Ethical AI</div>
@@ -503,40 +795,64 @@
                     <div class="sharp-track-subbox-detail">
                       12:00 PM &ndash; 01:00 PM: Track Oral Presentations
                     </div>
+                    <div class="sharp-track-room-badge">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                      <span>Room: A3 - 009</span>
+                    </div>
                   </div>
                 </div>
               </div>
+              <div class="sharp-col-location">
+                <svg class="sharp-col-location-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>A3 - 009</span>
+              </div>
             </div>
 
-            <!-- D3-S7: Valedictory & Concluding Remarks -->
-            <div class="sharp-row highlight-award" data-search="01:00 pm to 01:10 pm valedictory & concluding remarks">
+            <!-- D3-S8 -->
+            <div class="sharp-row highlight-award" data-search="01:00 pm to 01:10 pm valedictory & concluding remarks auditorium">
               <div class="sharp-col-time">01:00 PM &ndash; 01:10 PM</div>
               <div class="sharp-col-content">
                 <div class="sharp-session-title">Valedictory &amp; Concluding Remarks</div>
               </div>
+              <div class="sharp-col-location">
+                <svg class="sharp-col-location-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>Auditorium</span>
+              </div>
             </div>
 
-            <!-- D3-S8: Award Ceremony -->
-            <div class="sharp-row highlight-award" data-search="01:10 pm to 01:40 pm award ceremony">
+            <!-- D3-S9 -->
+            <div class="sharp-row highlight-award" data-search="01:10 pm to 01:40 pm award ceremony auditorium">
               <div class="sharp-col-time">01:10 PM &ndash; 01:40 PM</div>
               <div class="sharp-col-content">
                 <div class="sharp-session-title">Award Ceremony</div>
               </div>
+              <div class="sharp-col-location">
+                <svg class="sharp-col-location-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>Auditorium</span>
+              </div>
             </div>
 
-            <!-- D3-S9: Lunch -->
-            <div class="sharp-row sharp-meal-row" data-search="01:40 pm to 02:30 pm lunch">
+            <!-- D3-S10: Lunch -->
+            <div class="sharp-row sharp-meal-row" data-search="01:40 pm to 02:30 pm lunch dining hall first floor">
               <div class="sharp-col-time">01:40 PM &ndash; 02:30 PM</div>
               <div class="sharp-col-content">
                 <div class="sharp-session-title">Lunch</div>
               </div>
+              <div class="sharp-col-location">
+                <svg class="sharp-col-location-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>Dining Hall (First Floor)</span>
+              </div>
             </div>
 
-            <!-- D3-S10: Chandigarh Tour & Departure -->
-            <div class="sharp-row" data-search="02:30 pm onwards chandigarh tour & departure">
+            <!-- D3-S11 -->
+            <div class="sharp-row" data-search="02:30 pm onwards departure for local tour chandigarh tour & departure">
               <div class="sharp-col-time">02:30 PM Onwards</div>
               <div class="sharp-col-content">
                 <div class="sharp-session-title">Chandigarh Tour &amp; Departure</div>
+              </div>
+              <div class="sharp-col-location">
+                <svg class="sharp-col-location-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>Departure for Local Tour</span>
               </div>
             </div>
           </div>
@@ -556,49 +872,8 @@
         entirely with its owner, in accordance with the Plaksha University Website Hosting Policy.</p>
     </div>
   </div>
-  <!-- Reusable Plenary Keynote Talk Details Modal -->
-  <div class="sharp-modal-overlay" id="sharp-speaker-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-speaker-name">
-    <div class="sharp-modal-backdrop" data-close-modal></div>
-    <div class="sharp-modal-card">
-      <button type="button" class="sharp-modal-close" data-close-modal aria-label="Close dialog">&times;</button>
-      
-      <div class="sharp-modal-header">
-        <div class="sharp-modal-avatar-col" id="modal-speaker-avatar-wrap">
-          <!-- Populated dynamically via JS -->
-        </div>
-        <div class="sharp-modal-intro">
-          <span class="sharp-modal-badge" id="modal-speaker-badge">Plenary Keynote</span>
-          <h3 class="sharp-modal-name" id="modal-speaker-name"></h3>
-          <p class="sharp-modal-affil" id="modal-speaker-affil"></p>
-        </div>
-      </div>
-
-      <div class="sharp-modal-body">
-        <div class="sharp-modal-section">
-          <div class="sharp-modal-section-title">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
-              <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
-            </svg>
-            Talk Title &amp; Abstract
-          </div>
-          <h4 class="sharp-modal-talk-title" id="modal-talk-title"></h4>
-          <div class="sharp-modal-abstract" id="modal-talk-abstract"></div>
-        </div>
-      </div>
-
-      <div class="sharp-modal-footer">
-        <a href="#" target="_blank" rel="noopener noreferrer" class="sharp-modal-external-link" id="modal-speaker-link">
-          <span>Official Profile</span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-            <polyline points="15 3 21 3 21 9"></polyline>
-            <line x1="10" y1="14" x2="21" y2="3"></line>
-          </svg>
-        </a>
-        <button type="button" class="sharp-modal-dismiss-btn" data-close-modal>Close</button>
-      </div>
-    </div>
-  </div>
 </body>
+
 </html>
+
+
