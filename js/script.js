@@ -725,6 +725,18 @@
       }
     });
 
+    try {
+      var trackParam = new URLSearchParams(window.location.search).get("track");
+      if (trackParam) {
+        var targetTrigger = Array.from(triggers).find(function (t) {
+          return t.getAttribute("data-track-num") === trackParam;
+        });
+        if (targetTrigger) {
+          setTimeout(function () { openTrackModal(targetTrigger); }, 250);
+        }
+      }
+    } catch (e) {}
+
     // Focus trap inside modal
     modal.addEventListener("keydown", function (event) {
       if (event.key !== "Tab") { return; }
@@ -1552,6 +1564,18 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
   }
+
+  try {
+    const agendaParams = new URLSearchParams(window.location.search);
+    const targetDay = agendaParams.get('day');
+    if (targetDay) {
+      const matchBtn = Array.from(tabButtons).find(btn => btn.getAttribute('data-day') === targetDay);
+      if (matchBtn) matchBtn.click();
+    }
+    if (agendaParams.get('expand') === 'all') {
+      document.querySelectorAll('details.sharp-abstract-details').forEach(d => d.open = true);
+    }
+  } catch (e) {}
 });
 
 

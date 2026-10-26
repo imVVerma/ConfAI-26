@@ -6873,7 +6873,7 @@ body.agenda-page.sharp-theme,
 
 .sharp-table-header {
   display: grid;
-  grid-template-columns: 200px 1fr 220px;
+  grid-template-columns: 190px 1fr 250px;
   background: #F1F5F9;
   border-bottom: 2px solid #CBD5E1;
   font-size: 0.78rem;
@@ -6899,7 +6899,7 @@ body.agenda-page.sharp-theme,
 
 .sharp-row {
   display: grid;
-  grid-template-columns: 200px 1fr 220px;
+  grid-template-columns: 190px 1fr 250px;
   border-left: 4px solid transparent;
   border-bottom: 1px solid #E2E8F0;
   transition: background-color 0.12s ease;
