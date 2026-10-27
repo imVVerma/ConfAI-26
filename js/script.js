@@ -1160,8 +1160,9 @@
         badgeClass: 'tag-green',
         time: '05:00 PM - 06:15 PM (75 mins)',
         venue: 'Auditorium',
-        title: 'Panel Discussion',
-        desc: 'Interactive plenary panel featuring senior leaders exploring key opportunities, governance frameworks, and technological breakthroughs in AI.'
+        title: 'Panel Discussion | Beyond Chatbots: Bridging the Gap Between AI Use and Real-World Impact in India',
+        desc: 'AI adoption in India is already growing through chatbots, coding assistants, and content-generation tools. But how do we move from individual productivity gains to solving harder problems in agriculture, healthcare, education, and small businesses, where AI must operate amid diverse languages, limited resources, unreliable data, and complex real-world conditions? This panel will explore why AI that works well in a chat window can be difficult to translate into dependable solutions on the ground. What technical breakthroughs, better system design, or changes in deployment are needed to make AI genuinely useful beyond the screen?',
+        chairs: 'Panelists: Dr. Balaraman Ravindran (IIT Madras), Dr. Shachindra Nath (Anādi Intelligence), Mr. Anoop G Prabhu (Vehant Technologies), Dr. M Balakrishnan (Plaksha University) | Moderator: Dr. Siddharth (Plaksha University)'
       },
       'd2-s13': {
         category: 'Cultural Showcase',
@@ -1231,7 +1232,7 @@
         category: 'Refreshment Break',
         badgeClass: 'tag-green',
         time: '11:40 AM - 12:00 PM (20 mins)',
-        venue: 'Corridor Area',
+        venue: 'Outside Auditorium',
         title: 'Tea Break',
         desc: 'Short tea and refreshment break.'
       },
