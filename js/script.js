@@ -1217,7 +1217,7 @@
         category: 'Oral Track Session',
         badgeClass: 'tag-pink',
         time: '10:10 AM - 11:40 AM (90 mins)',
-        venue: 'Room: A3 - 3007',
+        venue: 'Auditorium',
         title: 'Track Presentations: Reasoning in Vision Language Models',
         
         chairs: 'Dr. Pankaj Pansari, Dr. Deepan Muthirayan',
@@ -1239,7 +1239,7 @@
         category: 'Oral Track Session',
         badgeClass: 'tag-pink',
         time: '12:00 PM - 01:00 PM (60 mins)',
-        venue: 'Room: A3 - 3009',
+        venue: 'Auditorium',
         title: 'Track Presentations: Responsible and Ethical AI',
         chairs: 'Dr. Rajesh Sharma, Dr. Sachindranath',
         desc: 'Ethical, legal, and sociotechnical dimensions of AI, algorithmic fairness, governance models, epistemic risks, and compliance standards.',
