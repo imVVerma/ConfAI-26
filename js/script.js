@@ -979,14 +979,32 @@
         category: 'Oral Track Session',
         badgeClass: 'tag-lavender',
         time: '03:10 PM - 04:50 PM (100 mins)',
-        venue: 'Room: A3 - 3103',
+        venue: 'Room: A3 - 007',
         title: 'Track Presentations: AI In the Economy',
         
         chairs: 'Dr. Alok Ranjan, Dr. Nikhil George, Dr. Divyanshu Jain',
         desc: 'Focusing on AI as a transformative force in labor markets, algorithmic trading, fraud detection, credit scoring, and public resource allocation.',
         schedule: [
           { time: '03:10 PM - 03:40 PM', event: 'Track Keynote' },
-          { time: '03:40 PM - 04:50 PM', event: 'Track Oral Paper Presentations' }
+          { time: '03:40 PM - 04:50 PM', event: 'Track Oral Presentations & Flash Talks' }
+        ],
+        oralPresentations: [
+          {
+            speaker: 'Zarka Bashir',
+            title: 'FC2L: Federated Continual Graph Contrastive Learning for Evolving Cross-Bank Money Laundering Detection',
+            format: '15 min (12 min talk + 3 min Q&A)'
+          },
+          {
+            speaker: 'Praveen Parthasarathy',
+            title: 'AI career and financial guidance platform designed to close the advisory gap facing Teens',
+            format: '15 min (12 min talk + 3 min Q&A)'
+          }
+        ],
+        flashTalks: [
+          {
+            speaker: 'Daksh Mehta',
+            format: '2 min (1 slide)'
+          }
         ]
       },
       'd1-s9b': {
