@@ -952,21 +952,41 @@
           }
         ],
         flashTalks: [
-          { speaker: 'Tonmoy Rajkhowa', title: 'Flash talk by Tonmoy Rajkhowa', format: '2 min (1 slide)' },
-          { speaker: 'Archit Bhatia', title: 'Flash talk by Archit Bhatia', format: '2 min (1 slide)' }
+          { speaker: 'Tonmoy Rajkhowa', format: '2 min (1 slide)' },
+          { speaker: 'Archit Bhatia', format: '2 min (1 slide)' }
         ]
       },
       'd1-s5b': {
         category: 'Oral Track Session',
         badgeClass: 'tag-lavender',
         time: '11:05 AM - 12:45 PM (100 mins)',
-        venue: 'Room: A3 - 3203 (MSAI Classroom)',
+        venue: 'Room: A3 - 009',
         title: 'Track Presentations: AI and Logic: Relations and Applications',
         chairs: 'Dr. Deepak Khemani, Dr. Saeed Salehi, Dr. Tapas Pandit',
         desc: 'The interaction of logical frameworks, formal methods, theorem proving, model checking, and multi-agent epistemic reasoning in modern AI.',
         schedule: [
-          { time: '11:05 AM - 11:35 AM', event: 'Track Keynote Presentation' },
-          { time: '11:35 AM - 12:45 PM', event: 'Track Oral Paper Presentations' }
+          { time: '11:05 AM - 11:35 AM', event: 'Track Keynote: Prof. Akshay S' },
+          { time: '11:35 AM - 12:45 PM', event: 'Track Oral Presentations & Flash Talk' }
+        ],
+        oralPresentations: [
+          {
+            speaker: 'Ajay M Reje',
+            title: 'AI Futures beyond Technological Determinism: Pratītyasamutpāda and the Relationality of Human-Machine Agency',
+            format: '15 min (12 min talk + 3 min Q&A)'
+          },
+          {
+            speaker: 'Rajesh Kumar',
+            title: 'Event-centric semantic alignment of vulnerabilities with adversarial attack techniques',
+            format: '15 min (12 min talk + 3 min Q&A)'
+          },
+          {
+            speaker: 'Abhishek Gupta',
+            title: 'Adapting to Evolving Graphs: A Scalable Framework for Dynamic Coarsening',
+            format: '15 min (12 min talk + 3 min Q&A)'
+          }
+        ],
+        flashTalks: [
+          { speaker: 'Jaya Prakash Arjarapu', format: '2 min (1 slide)' }
         ]
       },
       'd1-s6': {
@@ -1031,13 +1051,25 @@
         category: 'Oral Track Session',
         badgeClass: 'tag-lavender',
         time: '03:10 PM - 04:50 PM (100 mins)',
-        venue: 'Room: A3 - 3007',
+        venue: 'Room: A3 - 009',
         title: 'Track Presentations: AI in Sensing',
         chairs: 'Dr. Anil Roy, Dr. Praveen Kumar',
         desc: 'Intelligent transducers, sensor hardware-software co-design, edge AI systems, quantum sensors, environmental monitoring, and wearable devices.',
         schedule: [
-          { time: '03:10 PM - 03:40 PM', event: 'Track Keynote' },
-          { time: '03:40 PM - 04:50 PM', event: 'Track Oral Paper Presentations' }
+          { time: '03:10 PM - 03:40 PM', event: 'Track Keynote: Dr. Mohan Kumar' },
+          { time: '03:40 PM - 04:50 PM', event: 'Track Oral Presentations' }
+        ],
+        oralPresentations: [
+          {
+            speaker: 'Debajyoti Biswas',
+            title: 'Exploring Machine Learning and Large Language Models in Microelectronics',
+            format: '15 min (12 min talk + 3 min Q&A)'
+          },
+          {
+            speaker: 'Devesh Bajaj',
+            title: 'Detecting Asian Elephant Vocalizations Using CNN-LSTM architecture from Acoustic Recordings',
+            format: '15 min (12 min talk + 3 min Q&A)'
+          }
         ]
       },
       'd1-s10': {
@@ -1128,14 +1160,34 @@
         category: 'Oral Track Session',
         badgeClass: 'tag-lavender',
         time: '11:20 AM - 01:00 PM (100 mins)',
-        venue: 'Room: A3 - 3102',
+        venue: 'Room: A3 - 007',
         title: 'Track Presentations: AI 4 Cities—Enhancing Resilience, Improving Liveability',
-        
         chairs: 'Dr. Anupam Sobti, Dr. Malini Balakrishnan, Dr. Prashanth Suresh Kumar, Dr. Pankaj Pansari',
         desc: 'Predictive urban management through real-time AI, smart mobility optimization, urban flooding forecasting, and municipal resource planning.',
         schedule: [
           { time: '11:20 AM - 11:50 AM', event: 'Track Keynote' },
-          { time: '11:50 AM - 01:00 PM', event: 'Track Oral Paper Presentations' }
+          { time: '11:50 AM - 01:00 PM', event: 'Track Oral Presentations & Flash Talks' }
+        ],
+        oralPresentations: [
+          {
+            speaker: 'Anand Kumar Rai',
+            title: 'RailVaani: An Optimized Bilingual ASR Pipeline for Entity-Rich Railway Announcements',
+            format: '15 min (12 min talk + 3 min Q&A)'
+          },
+          {
+            speaker: 'Saurabh Sharma',
+            title: 'STARK: Enhancing Traffic Prediction Through Spatiotemporal Adaptive Refinement With Knowledge Distillation',
+            format: '15 min (12 min talk + 3 min Q&A)'
+          },
+          {
+            speaker: 'Amal A',
+            title: 'Decoding Customer Experience from User-Generated Content: A Multilingual Aspect-Based Sentiment Analysis Approach',
+            format: '15 min (12 min talk + 3 min Q&A)'
+          }
+        ],
+        flashTalks: [
+          { speaker: 'Partha Sarthy', format: '2 min (1 slide)' },
+          { speaker: 'Pranoy Ghosh, Ramam Agarwal, and Sohan Panda', format: '2 min (1 slide)' }
         ]
       },
       'd2-s6b': {
@@ -1156,12 +1208,12 @@
           }
         ],
         flashTalks: [
-          { speaker: 'Jamaluddin', title: 'Flash talk by Jamaluddin', format: '2 min (1 slide)' },
-          { speaker: 'Nandini Arimanda', title: 'Flash talk by Nandini Arimanda', format: '2 min (1 slide)' },
-          { speaker: 'Ravindrakumar M. Purohit', title: 'Flash talk by Ravindrakumar M. Purohit', format: '2 min (1 slide)' },
-          { speaker: 'Hari Prapan', title: 'Flash talk by Hari Prapan', format: '2 min (1 slide)' },
-          { speaker: 'Poonam Sharma', title: 'Flash talk by Poonam Sharma', format: '2 min (1 slide)' },
-          { speaker: 'Akshay Lakhi', title: 'Flash talk by Akshay Lakhi', format: '2 min (1 slide)' }
+          { speaker: 'Jamaluddin', format: '2 min (1 slide)' },
+          { speaker: 'Nandini Arimanda', format: '2 min (1 slide)' },
+          { speaker: 'Ravindrakumar M. Purohit', format: '2 min (1 slide)' },
+          { speaker: 'Hari Prapan', format: '2 min (1 slide)' },
+          { speaker: 'Poonam Sharma', format: '2 min (1 slide)' },
+          { speaker: 'Akshay Lakhi', format: '2 min (1 slide)' }
         ]
       },
       'd2-s7': {
@@ -1275,8 +1327,20 @@
         chairs: 'Dr. Pankaj Pansari, Dr. Deepan Muthirayan',
         desc: 'Benchmarking reasoning in VLMs, fine-tuning, test-time scaling, interpretability, and multimodal understanding.',
         schedule: [
-          { time: '10:10 AM - 10:40 AM', event: 'Track Keynote' },
-          { time: '10:40 AM - 11:40 AM', event: 'Track Oral Paper Presentations' }
+          { time: '10:10 AM - 10:40 AM', event: 'Track Keynote: Dr. Vineeth N Balasubramanian (Online)' },
+          { time: '10:40 AM - 11:40 AM', event: 'Track Oral Presentations' }
+        ],
+        oralPresentations: [
+          {
+            speaker: 'Ayush Shrivastava',
+            title: 'ThermEval: A Structured Benchmark for Evaluation of Vision-Language Models on Thermal Imagery',
+            format: '15 min (12 min talk + 3 min Q&A)'
+          },
+          {
+            speaker: 'Kartik Bose',
+            title: 'How Much Did the Image Matter? An Audit of Evidence Use in Medical Vision-Language Models',
+            format: '15 min (12 min talk + 3 min Q&A)'
+          }
         ]
       },
       'd3-s5': {
