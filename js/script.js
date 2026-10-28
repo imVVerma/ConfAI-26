@@ -1132,7 +1132,7 @@
       'd2-s9': {
         category: 'Plaksha Conversations',
         badgeClass: 'tag-green',
-        time: '02:15 PM - 03:00 PM (45 mins)',
+        time: '02:15 PM - 02:50 PM (35 mins)',
         venue: 'Auditorium',
         title: 'Plaksha Conversations',
         desc: 'Special dialogue and panel interaction as part of Plaksha Conversations.'

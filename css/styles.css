@@ -6804,6 +6804,30 @@ body.agenda-page.sharp-theme,
   line-height: 1;
 }
 
+.sharp-brochure-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.55rem 1rem;
+  background: #FFFFFF;
+  color: var(--color-teal);
+  border: 1.5px solid var(--color-teal);
+  border-radius: 6px;
+  font-size: 0.86rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.sharp-brochure-btn:hover {
+  background: var(--color-teal);
+  color: #FFFFFF;
+  border-color: var(--color-teal);
+  text-decoration: none;
+}
+
 .sharp-print-btn {
   display: inline-flex;
   align-items: center;
@@ -7277,7 +7301,8 @@ body.agenda-page.sharp-theme,
     max-width: 100%;
   }
 
-  .sharp-print-btn {
+  .sharp-print-btn,
+  .sharp-brochure-btn {
     justify-content: center;
   }
 }
