@@ -893,7 +893,7 @@
         category: 'Arrival & Registration',
         badgeClass: 'tag-green',
         time: '08:30 AM - 09:30 AM (60 mins)',
-        venue: 'A1-005 (Tentative)',
+        venue: 'A1 - MR 1005',
         title: 'Arrival / Registration & Refreshments',
         desc: 'Delegate check-in, conference kit distribution, attendee badge pickup, and welcome morning refreshments.'
       },
@@ -1030,7 +1030,7 @@
         category: 'Networking Banquet',
         badgeClass: 'tag-green',
         time: '07:15 PM Onwards',
-        venue: 'Axis Building Dining Area',
+        venue: 'Dining Hall ( First Floor )',
         title: 'Networking Dinner',
         desc: 'Evening dinner banquet connecting delegates, authors, keynote speakers, and academic partners in a relaxed atmosphere.'
       },
@@ -1046,9 +1046,9 @@
         category: 'Morning Refreshments',
         badgeClass: 'tag-green',
         time: '08:30 AM - 09:00 AM (30 mins)',
-        venue: 'A1-005',
+        venue: 'A1 - MR 1005',
         title: 'Refreshments',
-        desc: 'Morning tea and coffee at A1-005.'
+        desc: 'Morning tea and coffee at A1 - MR 1005.'
       },
       'd2-s2': {
         category: 'Opening Remarks',
@@ -1192,7 +1192,7 @@
         category: 'Morning Refreshments',
         badgeClass: 'tag-green',
         time: '08:30 AM - 09:00 AM (30 mins)',
-        venue: 'A1-005',
+        venue: 'A1 - MR 1005',
         title: 'Refreshments',
         desc: 'Morning tea and breakfast refreshments.'
       },
