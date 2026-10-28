@@ -1122,13 +1122,26 @@
         category: 'Oral Track Session',
         badgeClass: 'tag-lavender',
         time: '11:20 AM - 01:00 PM (100 mins)',
-        venue: 'Room: A3 - 3009',
+        venue: 'Room: A3 - 009',
         title: 'Track Presentations: Recent Advances in AI',
         chairs: 'Prof. Ankur Nahar, Prof. Srijita Chakraburty, Prof. Sushant Vijayan',
         desc: 'Frontier foundation models, reasoning techniques, generative AI paradigms, and scalable inference algorithms.',
         schedule: [
-          { time: '11:20 AM - 11:50 AM', event: 'Track Keynote Presentation' },
-          { time: '11:50 AM - 01:00 PM', event: 'Track Oral Paper Presentations' }
+          { time: '11:30 AM - 01:00 PM', event: 'Track Oral Presentations & Flash Talks' }
+        ],
+        oralPresentations: [
+          {
+            speaker: 'Anirban Majumdar',
+            title: 'About Time: Model-free Reinforcement Learning with Timed Reward Machines'
+          }
+        ],
+        flashTalks: [
+          { speaker: 'Jamaluddin' },
+          { speaker: 'Nandini Arimanda' },
+          { speaker: 'Ravindrakumar M. Purohit' },
+          { speaker: 'Hari Prapan' },
+          { speaker: 'Poonam Sharma' },
+          { speaker: 'Akshay Lakhi' }
         ]
       },
       'd2-s7': {
