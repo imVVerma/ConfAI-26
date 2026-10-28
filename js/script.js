@@ -927,13 +927,33 @@
         category: 'Oral Track Session',
         badgeClass: 'tag-lavender',
         time: '11:05 AM - 12:45 PM (100 mins)',
-        venue: 'Room: A3 - 3202',
+        venue: 'Room: A3 - 007',
         title: 'Track Presentations: AI In Healthcare',
         chairs: 'Dr. Sunita Chauhan, Dr. Sandeep Manjanna, Dr. Monika Sharma, Dr. Chaitanya Lekshmi Indira',
         desc: 'Exploring how AI technologies deliver tailored healthcare solutions, precision diagnostics, adaptive care pathways, and language-inclusive clinical tools.',
         schedule: [
-          { time: '11:05 AM - 11:35 AM', event: 'Track Keynote Presentation' },
-          { time: '11:35 AM - 12:45 PM', event: 'Track Oral Paper Presentations' }
+          { time: '11:15 AM - 12:45 PM', event: 'Track Oral Presentations & Flash Talks' }
+        ],
+        oralPresentations: [
+          {
+            speaker: 'B H V S P Subrahmanyam',
+            title: 'Generate, Verify and Select: Evolutionary Fitness Shaping for Safe Clinical Text Generation',
+            format: '15 min (12 min talk + 3 min Q&A)'
+          },
+          {
+            speaker: 'Aarju Dixit',
+            title: 'FedBio-AD: Federated learning enabled digital biomarker framework for early Alzheimer’s disease detection',
+            format: '15 min (12 min talk + 3 min Q&A)'
+          },
+          {
+            speaker: 'Antara Roy Choudhury',
+            title: 'Towards Scalable, Explainable Early Detection of Autism Spectrum Disorder through Multimodal Behavior Modeling in Triadic Play',
+            format: '15 min (12 min talk + 3 min Q&A)'
+          }
+        ],
+        flashTalks: [
+          { speaker: 'Tonmoy Rajkhowa', title: 'Flash talk by Tonmoy Rajkhowa', format: '2 min (1 slide)' },
+          { speaker: 'Archit Bhatia', title: 'Flash talk by Archit Bhatia', format: '2 min (1 slide)' }
         ]
       },
       'd1-s5b': {
@@ -1136,12 +1156,12 @@
           }
         ],
         flashTalks: [
-          { speaker: 'Jamaluddin' },
-          { speaker: 'Nandini Arimanda' },
-          { speaker: 'Ravindrakumar M. Purohit' },
-          { speaker: 'Hari Prapan' },
-          { speaker: 'Poonam Sharma' },
-          { speaker: 'Akshay Lakhi' }
+          { speaker: 'Jamaluddin', title: 'Flash talk by Jamaluddin', format: '2 min (1 slide)' },
+          { speaker: 'Nandini Arimanda', title: 'Flash talk by Nandini Arimanda', format: '2 min (1 slide)' },
+          { speaker: 'Ravindrakumar M. Purohit', title: 'Flash talk by Ravindrakumar M. Purohit', format: '2 min (1 slide)' },
+          { speaker: 'Hari Prapan', title: 'Flash talk by Hari Prapan', format: '2 min (1 slide)' },
+          { speaker: 'Poonam Sharma', title: 'Flash talk by Poonam Sharma', format: '2 min (1 slide)' },
+          { speaker: 'Akshay Lakhi', title: 'Flash talk by Akshay Lakhi', format: '2 min (1 slide)' }
         ]
       },
       'd2-s7': {

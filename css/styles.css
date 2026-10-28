@@ -9099,6 +9099,44 @@ body.agenda-page.sharp-theme,
   line-height: 1.4;
 }
 
+.sharp-flash-speakers-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.15rem;
+}
+
+.sharp-flash-pill {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #1E293B;
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 120, 120, 0.22);
+  border-radius: 4px;
+  padding: 0.2rem 0.55rem;
+  line-height: 1.35;
+  transition: all 0.15s ease;
+}
+
+.sharp-flash-pill:hover {
+  background: rgba(0, 120, 120, 0.06);
+  border-color: var(--color-teal, #007878);
+  color: var(--color-teal, #007878);
+}
+
+.sharp-track-details-toggle {
+  margin-top: 0.35rem;
+}
+
+.sharp-track-details-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.65rem 0.75rem;
+}
+
 /* ==========================================================================
    MOBILE SPONSORSHIP TABLE: STICKY COLUMN & HORIZONTAL SWIPE (< 768px)
    ========================================================================== */
