@@ -1135,7 +1135,7 @@
         venue: 'Auditorium',
         title: 'Plenary Keynote | Prof. Sanghamitra Bandyopadhyay',
         speaker: 'Prof. Sanghamitra Bandyopadhyay',
-        affiliation: 'Ex-Director, Indian Statistical Institute (ISI) Kolkata | Padmashree Awardee | Ph.D. ISI',
+        affiliation: 'Ex-Director, Indian Statistical Institute (ISI) Kolkata | Padam Shri Awardee | Ph.D. ISI',
         desc: 'Distinguished plenary keynote on machine learning, evolutionary computing, and biological data analytics.'
       },
       'd2-s4': {
@@ -2870,7 +2870,7 @@ const PLENARY_KEYNOTES = {
   'sanghamitra-bandyopadhyay': {
     name: 'Prof. Sanghamitra Bandyopadhyay',
     role: 'Plenary Keynote Speaker',
-    affiliation: 'Ex-Director, Indian Statistical Institute (ISI) Kolkata | Padmashree Awardee',
+    affiliation: 'Ex-Director, Indian Statistical Institute (ISI) Kolkata | Padam Shri Awardee',
     photo: 'img/speakers/bandyopadhyay.png',
     initials: 'SB',
     talkTitle: 'Computational Methods for Life Sciences',
