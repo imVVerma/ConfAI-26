@@ -1360,7 +1360,38 @@
         chairs: 'Dr. Rajesh Sharma, Dr. Sachindranath',
         desc: 'Ethical, legal, and sociotechnical dimensions of AI, algorithmic fairness, governance models, epistemic risks, and compliance standards.',
         schedule: [
-          { time: '12:00 PM - 01:00 PM', event: 'Track Oral Paper Presentations' }
+          { time: '12:00 PM - 01:00 PM', event: 'Track Oral Presentations & Flash Talks' }
+        ],
+        oralPresentations: [
+          {
+            speaker: 'S Aarthi',
+            title: 'Understanding Speech, Missing Deepfake Artifacts: The Explainability Gap in Audio Language Models',
+            format: '8 min (6 min talk + 2 min Q&A)'
+          },
+          {
+            speaker: 'Prashasti Agarwal',
+            title: 'Understanding Speech, Missing Deepfake Artifacts: The Explainability Gap in Audio Language Models',
+            format: '8 min (6 min talk + 2 min Q&A)'
+          },
+          {
+            speaker: 'Amit Kalita',
+            title: 'Operationalizing fairness: A bounded threshold heuristic under hard resource limits',
+            format: '8 min (6 min talk + 2 min Q&A)'
+          },
+          {
+            speaker: 'Sanchet Sharma',
+            title: 'AI Personhood and the Colonial Architecture of Accountability: From Legal Fictions to Supervisory Strict Liability',
+            format: '8 min (6 min talk + 2 min Q&A)'
+          }
+        ],
+        flashTalks: [
+          { speaker: 'Rishi Ahuja', format: '2 min (1 slide)' },
+          { speaker: 'Poulomi Bhattacharya', format: '2 min (1 slide)' },
+          { speaker: 'Praveen Parthasarathy', format: '2 min (1 slide)' },
+          { speaker: 'Anshumaan Goel', format: '2 min (1 slide)' },
+          { speaker: 'Gagan Jain', format: '2 min (1 slide)' },
+          { speaker: 'Rounak Mukhopadhyay', format: '2 min (1 slide)' },
+          { speaker: 'Priyanshi Tanwar', format: '2 min (1 slide)' }
         ]
       },
       'd3-s7': {
