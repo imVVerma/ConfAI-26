@@ -932,7 +932,7 @@
         chairs: 'Dr. Sunita Chauhan, Dr. Sandeep Manjanna, Dr. Monika Sharma, Dr. Chaitanya Lekshmi Indira',
         desc: 'Exploring how AI technologies deliver tailored healthcare solutions, precision diagnostics, adaptive care pathways, and language-inclusive clinical tools.',
         schedule: [
-          { time: '11:15 AM - 12:45 PM', event: 'Track Oral Presentations & Flash Talks' }
+          { time: '11:15 AM - 12:45 PM', event: 'Track Oral Presentations & Flash Talk' }
         ],
         oralPresentations: [
           {
@@ -952,7 +952,6 @@
           }
         ],
         flashTalks: [
-          { speaker: 'Tonmoy Rajkhowa', format: '2 min (1 slide)' },
           { speaker: 'Archit Bhatia', format: '2 min (1 slide)' }
         ]
       },
@@ -1386,7 +1385,6 @@
         ],
         flashTalks: [
           { speaker: 'Rishi Ahuja', format: '2 min (1 slide)' },
-          { speaker: 'Poulomi Bhattacharya', format: '2 min (1 slide)' },
           { speaker: 'Praveen Parthasarathy', format: '2 min (1 slide)' },
           { speaker: 'Anshumaan Goel', format: '2 min (1 slide)' },
           { speaker: 'Gagan Jain', format: '2 min (1 slide)' },
