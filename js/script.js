@@ -95,49 +95,6 @@
     }
   });
 
-  /* ── COUNTDOWN CLOCK ────────────────────────────────────────────────────── */
-  (function initCountdown() {
-    var TARGET_START = Date.UTC(2026, 9, 30, 4, 0, 0); // Oct 30 2026 09:30 IST
-    var navDays = document.getElementById("nav-countdown-days");
-    var navHours = document.getElementById("nav-countdown-hours");
-    var navMinutes = document.getElementById("nav-countdown-minutes");
-    var navSeconds = document.getElementById("nav-countdown-seconds");
-
-    if (!navDays || !navHours || !navMinutes || !navSeconds) { return; }
-
-    function pad(n) {
-      return n < 10 ? "0" + n : String(n);
-    }
-
-    function tick() {
-      var now = Date.now();
-      var diff = TARGET_START - now;
-
-      if (diff <= 0) {
-        navDays.textContent = "00";
-        navHours.textContent = "00";
-        navMinutes.textContent = "00";
-        navSeconds.textContent = "00";
-        clearInterval(timer);
-        return;
-      }
-
-      var totalSecs = Math.floor(diff / 1000);
-      var days = Math.floor(totalSecs / 86400);
-      var hours = Math.floor((totalSecs % 86400) / 3600);
-      var minutes = Math.floor((totalSecs % 3600) / 60);
-      var seconds = totalSecs % 60;
-      navDays.textContent = pad(days);
-      navHours.textContent = pad(hours);
-      navMinutes.textContent = pad(minutes);
-      navSeconds.textContent = pad(seconds);
-    }
-
-    // Run immediately to avoid a 1-second blank flash, then tick every second
-    tick();
-    var timer = setInterval(tick, 1000);
-  })();
-
   /* ── RELIVE VIDEO YEAR SELECTOR ────────────────────────────────────────── */
   (function initReliveVideo() {
     var filters = document.querySelectorAll(".video-year-filter");
