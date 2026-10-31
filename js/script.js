@@ -1350,20 +1350,20 @@
         ]
       },
       'd3-s7': {
-        category: 'Valedictory',
-        badgeClass: 'tag-pink',
-        time: '01:00 PM - 01:10 PM (10 mins)',
-        venue: 'Auditorium',
-        title: 'Valedictory & Concluding Remarks',
-        desc: 'Closing address, conference summary, vote of thanks, and preview of ConfAI 2027.'
-      },
-      'd3-s8': {
         category: 'Awards & Recognition',
         badgeClass: 'tag-pink',
-        time: '01:10 PM - 01:40 PM (30 mins)',
+        time: '01:00 PM - 01:20 PM (20 mins)',
         venue: 'Auditorium',
         title: 'Award Ceremony',
         desc: 'Presentation of Best Paper Awards across all research tracks, student recognition, and research grant honors.'
+      },
+      'd3-s8': {
+        category: 'Concluding Remarks',
+        badgeClass: 'tag-pink',
+        time: '01:20 PM - 01:40 PM (20 mins)',
+        venue: 'Auditorium',
+        title: 'Concluding Remarks',
+        desc: 'Closing address, conference summary, vote of thanks, and preview of ConfAI 2027.'
       },
       'd3-s9': {
         category: 'Group Photograph',
